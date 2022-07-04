@@ -1,0 +1,123 @@
+body{
+    background: #171821;
+}
+
+#container{
+    margin-left: 10%;
+    margin-top: -4%;
+}
+#imginicio{
+    display: flex;
+    margin-top: 1%;
+}
+#geral{
+    display: flex;
+    justify-content: space-between;
+}
+#cards{
+    width: 50%;
+    height: 320px;
+    margin-left: 1%;
+    border-radius: 1rem;
+    margin-top: 2%;
+    display: flex;
+    align-items: flex-start;
+
+}
+#pritext h1{
+    color: beige;
+    margin-bottom: 2%;
+    margin-left: 35%;
+}
+#pritext p{
+    color: #A0A0A0;
+    margin-bottom: 2%;
+    margin-left: 35%;
+}
+#tabela{
+    width: 40%;
+    height: 300px;
+    margin-right: 4%;
+    border-radius: 1rem;
+    margin-top: 2%;
+}
+#cardum{
+    width: 20%;
+    height: 207px;
+    margin-top: 8%;   
+    margin-right: 10%;   
+    border-radius: 1rem;
+}
+#cardum h2{
+    color: beige;
+    margin-left: 8%;
+    margin-top: 2%;
+   
+}
+#carddois h2{
+    color: beige;
+    margin-left: 8%;
+    margin-top: 3%;
+}
+#cardtres h2{
+    color: beige;
+    margin-left: 7%;
+    margin-top: 3%;
+}
+#total{
+    color: beige;
+    margin-left: 8%;
+    margin-top: 4%;
+}
+#amarelo{
+    color: #FEB95A;
+    margin-left: 8%;
+    margin-top: 4%;
+}
+#verde{
+    color: #A9DFD8;
+    margin-left: 8%;
+    margin-top: 4%;
+}
+#rosa{
+    color: #F2C8ED;
+    margin-left: 8%;
+    margin-top: 4%;
+}
+#carddois{
+    width: 20%;
+    height: 207px;
+    margin-top: 8%;
+    border-radius: 1rem;
+    margin-right: 11%; 
+}
+
+#cardtres{
+    width: 20%;
+    height: 207px;
+    margin-top: 8%;
+    border-radius: 1rem;
+
+}
+#iconpeople{
+    margin-left: 8%;
+    margin-top: 5%;
+}
+#progress{
+    width: 60%;
+    height: 450px;
+    margin-left: 1%;
+    border-radius: 1rem;
+    margin-top: 2%;
+}
+#task{
+    width: 35%;
+    height: 450px;
+    border-radius: 1rem;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+#geraltwo{
+    display: flex;
+    justify-content: space-between;
+}
