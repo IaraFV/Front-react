@@ -152,7 +152,7 @@ class Pessoas extends React.Component {
     }
 
     submit = () => {
-        if(this.state.id_pessoa == 0){
+        if(this.state.id_pessoa === 0){
             const pessoas = {
             id_pessoa: this.state.id_pessoa,
             nome_pessoa : this.state.nome_pessoa,

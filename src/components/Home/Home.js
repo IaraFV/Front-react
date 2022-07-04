@@ -1,11 +1,10 @@
 import React from "react"; 
 import './Home.css'
 import teste from './img/undraw_Code_typing_re_p8b9-removebg-preview.png'
-import { Activity, Calendar2Check, CardChecklist, Check, ListTask, People, Projector } from 'react-bootstrap-icons';
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import {  Calendar2Check, CardChecklist, People } from 'react-bootstrap-icons';
 import Card from 'react-bootstrap/Card'
-import { Graf } from "./graf";
-import { Graf2 } from "./graf2";
+import { Graf } from "../Graficos/graf";
+import { Graf2 } from "../Graficos/graf2";
 function Home (){
     return(
         <>
@@ -47,14 +46,14 @@ function Home (){
 
             <div id="geraltwo">
                 <div id="progress" style={{background: '#21222D'}}>
-                    <h1>Task's</h1>
-                    <h5>Concluídas</h5>
+                    <h1>Projetos</h1>
+                    <h5>Concluídos</h5>
                     <div id="concluidas">
                         <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluida</Card.Header>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
-                                <Card.Title style={{color:"#fff"}}>Título da task</Card.Title>
+                                <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
                                     Some quick example text to build on the card title and make up the bulk
                                     of the card's content.
@@ -64,9 +63,9 @@ function Home (){
                         </div>
                         <div id="taskdois" style={{background: '#171821', borderRadius:'2rem'}}>
                              <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluida</Card.Header>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
-                                <Card.Title style={{color:"#fff"}}>Título da task</Card.Title>
+                                <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
                                     Some quick example text to build on the card title and make up the bulk
                                     of the card's content.
@@ -76,9 +75,9 @@ function Home (){
                         </div>
                         <div id="tasktres" style={{background: '#171821', borderRadius:'2rem'}}>
                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluida</Card.Header>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
-                                <Card.Title style={{color:"#fff"}}>Título da task</Card.Title>
+                                <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
                                     Some quick example text to build on the card title and make up the bulk
                                     of the card's content.
@@ -91,9 +90,9 @@ function Home (){
                     <div id="concluidas">
                         <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluida</Card.Header>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
-                                <Card.Title style={{color:"#fff"}}>Título da task</Card.Title>
+                                <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
                                     Some quick example text to build on the card title and make up the bulk
                                     of the card's content.
@@ -103,9 +102,9 @@ function Home (){
                         </div>
                         <div id="taskdois" style={{background: '#171821', borderRadius:'2rem'}}>
                              <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluida</Card.Header>
+                                <Card.Header  style={{color:"#A9DFD8"}}>Concluido</Card.Header>
                                 <Card.Body>
-                                <Card.Title style={{color:"#fff"}}>Título da task</Card.Title>
+                                <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
                                     Some quick example text to build on the card title and make up the bulk
                                     of the card's content.
@@ -117,7 +116,7 @@ function Home (){
                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
                                 <Card.Header  style={{color:"#A9DFD8"}} >Concluida</Card.Header>
                                 <Card.Body>
-                                <Card.Title style={{color:"#fff"}}>Título da task</Card.Title>
+                                <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
                                     Some quick example text to build on the card title and make up the bulk
                                     of the card's content.
