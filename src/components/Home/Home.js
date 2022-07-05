@@ -11,7 +11,7 @@ function Home (){
             <div id="imginicio" ><img src={teste} alt=" " width={'10%'} /></div>
             <div id="container">
                 <h1 id="h1" style={{color: '#FFF'}} >Olá</h1>
-                <p style={{color: '#A0A0A0'}}>Bem-vindo a segunda fase do desafio</p>
+                <h5 style={{color: '#A0A0A0'}}>Bem-vindo a segunda fase do desafio</h5>
             </div>
 
             <div id="geral">

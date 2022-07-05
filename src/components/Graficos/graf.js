@@ -35,9 +35,8 @@ export function Graf() {
   return (
     <Chart
       chartType="LineChart"
-      width="100%"
-      height="350px"
-      marginLeft="20%"
+      width="105%"
+      height="390px"
       data={data}
       options={options}
 

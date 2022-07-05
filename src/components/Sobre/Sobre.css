@@ -1,4 +1,58 @@
-#descricao{
-    width: 50%;
-
+#geralparteum h1{
+    color: #28AEF3;
+    margin-left: 2%;
+  
+}
+#geralparteum h5{
+    color: #A0A0A0;
+    margin-top: 8%;
+    margin-left: 2%;
+    width: 90%;
+}
+#geralparteum h4{
+    color: #A0A0A0;
+    margin-top: 4%;
+    margin-left: 2%;
+    width: 90%;
+}
+#geralparteum{
+    background: #21222D;
+    width: 30%;
+    border-radius: 2rem;
+    height: 550px;
+    margin-left: 9%;
+    margin-top: -23.5%;
+}
+#integrantes{
+    background: #21222D;
+    width: 80%;
+    margin-left: 9%;
+    margin-top: 2%;
+    height: 650px;
+}
+#integrantes h1{
+    color: #28AEF3;
+    margin-left: 2%;
+}
+#integrantes h5{
+    color: #A0A0A0;
+    margin-left: 2%;
+}
+#membros{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3%;
+    width: 100%;
+}
+#linguagens{
+    background: #21222D;
+    width: 80%;
+    margin-left: 9%;
+    margin-top: 2%;
+    height: 350px;
+}
+#linguagens h1{
+    color: #28AEF3;
+    margin-left: 2%;
+  
 }
