@@ -1,8 +1,9 @@
 import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import './Pessoas.css';
-class Pessoas extends React.Component {
 
+
+class Pessoas extends React.Component {
     constructor(props) {
         super(props);
 
@@ -11,11 +12,12 @@ class Pessoas extends React.Component {
             nome_pessoa: '',
             funcao_pessoa: '',
             equipe_id: '',
+            data_contratacao: 0,
             pessoas : [],
             modalAberta: false,
+            
         }
     }
-
     componentDidMount(){
         this.buscarPessoas();
     }
@@ -23,6 +25,8 @@ class Pessoas extends React.Component {
         
     }
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Metodos POST DELETE GET UPDATE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+
+
     buscarPessoas = () => {
          fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
             .then(resposta => resposta.json())
@@ -40,7 +44,8 @@ class Pessoas extends React.Component {
                     id_pessoa: pessoas.id_pessoa,
                     nome_pessoa: pessoas.nome_pessoa,
                     funcao_pessoa: pessoas.funcao_pessoa,
-                    equipe_id: pessoas.equipe_id
+                    equipe_id: pessoas.equipe_id,
+                    data_contratacao: pessoas.data_contratacao
                 })
 
                 this.abrirModal();
@@ -73,11 +78,11 @@ class Pessoas extends React.Component {
 
     }
 
-    atualizarPesssoas = (pessoas) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", {
+    atualizarPesssoas = (id_pessoa) => {
+        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/"+id_pessoa, {
             method: 'PUT' ,
             headers: { 'Content-Type':'application/json' },
-            body: JSON.stringify(pessoas)
+            body: JSON.stringify(id_pessoa)
         })
             .then(resposta => {
                 if(resposta.ok){
@@ -90,7 +95,8 @@ class Pessoas extends React.Component {
     }
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
 
-/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDERTABELA=--=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDERTABELA=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=*/
+
     renderTabela(){
         return <Table id="table" striped bordered hover variant="dark">
             <thead>
@@ -99,6 +105,7 @@ class Pessoas extends React.Component {
                 <th>nome_pessoa</th>
                 <th>funcao_pessoa</th>
                 <th>equipe_id</th>
+                <th>data_contratacao</th>
                 <th>Opcoes</th>
                 </tr>
             </thead>
@@ -106,10 +113,11 @@ class Pessoas extends React.Component {
                 {
                     this.state.pessoas.map((pessoas) =>
                         <tr>
-                            <td> {pessoas.id_pessoa} </td>
+                            <td> {pessoas.id_pessoa } </td>
                             <td> {pessoas.nome_pessoa} </td>
                             <td> {pessoas.funcao_pessoa} </td>
                             <td> {pessoas.equipe_id} </td>
+                            <td> {pessoas.data_contratacao} </td>
                             <td> <Button variant="outline-danger" onClick={() => this.carregaPessoas(pessoas.id_pessoa)}>Atualizar</Button> 
                                  <Button variant="outline-danger" onClick={() => this.deletarPessoas(pessoas.id_pessoa)}>Deletar</Button> </td>
                         </tr>
@@ -122,6 +130,7 @@ class Pessoas extends React.Component {
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FUCOES=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
 
+    
     atualizaId = (e) => {
         this.setState(
             {
@@ -129,6 +138,7 @@ class Pessoas extends React.Component {
             }
         )
     }
+
     atualizaNome = (e) => {
         this.setState(
             {
@@ -136,6 +146,7 @@ class Pessoas extends React.Component {
             }
         )
     }
+
     atualizaFuncao = (e) => {
         this.setState(
             {
@@ -143,10 +154,18 @@ class Pessoas extends React.Component {
             }
         )
     }
-    atualizaEquipe = (e) => {
+     atualizaEquipe = (e) => {
         this.setState(
             {
                 equipe_id: e.target.value
+            }
+        )
+    }
+
+      atualizadata = (e) => {
+        this.setState(
+            {
+                data_contratacao: e.target.value
             }
         )
     }
@@ -158,18 +177,20 @@ class Pessoas extends React.Component {
             nome_pessoa : this.state.nome_pessoa,
             funcao_pessoa: this.state.funcao_pessoa,
             equipe_id: this.state.equipe_id,
+            data_contratacao: this.state.data_contratacao,
         }
         this.cadastraPesssoas(pessoas);
 
         }else{
-            const pessoas = {
+            const id_pessoa = {
             id_pessoa: this.state.id_pessoa,
             nome_pessoa : this.state.nome_pessoa,
             funcao_pessoa: this.state.funcao_pessoa,
             equipe_id: this.state.equipe_id,
+            data_contratacao: this.state.data_contratacao,
         }
 
-        this.atualizarPesssoas(pessoas);
+        this.atualizarPesssoas(id_pessoa);
         }
     }
 
@@ -196,35 +217,41 @@ class Pessoas extends React.Component {
 render(){
     return(
         <div id="modal">
-
         <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
+
                 <Modal.Header closeButton>
                 <Modal.Title>Adicionar uma nova Pessoa:</Modal.Title>
                 </Modal.Header>
+
                 <Modal.Body>
                      <Form>
-            <Form.Group className="mb-3">
-                <Form.Label>id_pessoa</Form.Label>
-                <Form.Control type="text" value={this.state.id_pessoa} readOnly={true}/>
-            </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>id_pessoa</Form.Label>
+                            <Form.Control type="text" value={this.state.id_pessoa} defaultValue={false}/>
+                        </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>nome_pessoa</Form.Label>
-                <Form.Control type="text" placeholder="nome" value={this.state.nome_pessoa} onChange={this.atualizaNome}/>
-            </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>nome_pessoa</Form.Label>
+                            <Form.Control type="text" placeholder="nome" value={this.state.nome_pessoa} onChange={this.atualizaNome}/>
+                        </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>funcao_pessoa</Form.Label>
-                <Form.Control type="text" placeholder="funcao" value={this.state.funcao_pessoa} onChange={this.atualizaFuncao}/>
-            </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>funcao_pessoa</Form.Label>
+                            <Form.Control type="text" placeholder="funcao" value={this.state.funcao_pessoa} onChange={this.atualizaFuncao}/>
+                        </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>equipe_id</Form.Label>
-                <Form.Control type="number" placeholder="equipe" value={this.state.equipe_id} onChange={this.atualizaEquipe}/>
-            </Form.Group>
-            </Form>
-            
+                        <Form.Group className="mb-3">
+                            <Form.Label>equipe_id</Form.Label>
+                            <Form.Control type="number" placeholder="equipe" value={this.state.equipe_id} onChange={this.atualizaEquipe}/>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>data_contratacao</Form.Label>
+                            <Form.Control type="number"  value={this.state.data_contratacao}  defaultValue={false}/>
+                        </Form.Group>
+                    </Form>
                 </Modal.Body>
+
                 <Modal.Footer>
                 <Button variant="secondary" onClick={this.fecharModal}>
                     Cancelar
