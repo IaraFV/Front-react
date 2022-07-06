@@ -7,7 +7,8 @@
     color: #A0A0A0;
     margin-top: 8%;
     margin-left: 2%;
-    width: 90%;
+    width: 95%;
+    font-size: 1.5rem;
 }
 #geralparteum h4{
     color: #A0A0A0;
@@ -28,7 +29,7 @@
     width: 80%;
     margin-left: 9%;
     margin-top: 2%;
-    height: 650px;
+    height: 480px;
 }
 #integrantes h1{
     color: #28AEF3;
@@ -55,4 +56,23 @@
     color: #28AEF3;
     margin-left: 2%;
   
+}
+#fram{
+    justify-content: center;
+    border: 1px solid #FEB95A;
+    height: 45%;
+    width: 90%;
+    margin-top: 3.5%;
+    margin-left: 4.9%;
+    background: #171821;
+    border-radius: 2rem;
+}
+#linguagens h1{
+    margin-top: 2%;
+}
+#linguagens h5{
+    color: #A0A0A0;
+    margin-top: 1%;
+    margin-left: 2%;
+    width: 90%;
 }

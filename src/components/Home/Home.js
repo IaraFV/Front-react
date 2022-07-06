@@ -17,20 +17,20 @@ function Home (){
             <div id="geral">
 
                 <div id="cards" style={{background: '#21222D'}}>
-                    <div id="pritext"><h1>Titulo</h1><h5>Porcentagem</h5></div>
+               
                     
-                    <div id="cardum"  style={{background: '#171821'}}><People id="iconpeople" color="#FEB95A" size={56}  />
+                    <div id="cardum"  style={{background: '#171821'}}><People id="iconpeople" color="beige" size={56}  />
                     <h2>300</h2>
                     <p id="total">Total</p>
                     <p id="amarelo">Pessoas adicionadas + </p>
                     </div>
 
-                    <div id="carddois"  style={{background: '#171821'}}><Calendar2Check id="iconpeople" color="#A9DFD8" size={56}/>
+                    <div id="carddois"  style={{background: '#171821'}}><Calendar2Check id="iconpeople" color="beige" size={56}/>
                     <h2>150</h2>
                     <p id="total">Total</p>
                     <p id="verde">Projetos adicionados + </p>
                     </div>
-                    <div id="cardtres"  style={{background: '#171821'}}><CardChecklist id="iconpeople" color="#F2C8ED" size={60}/>
+                    <div id="cardtres"  style={{background: '#171821' }}><CardChecklist id="iconpeople" color="beige" size={60}/>
                     <h2>50</h2>
                     <p id="total">Total</p>
                     <p id="rosa">Task's feitas + </p>
@@ -50,8 +50,8 @@ function Home (){
                     <h5>Concluídos</h5>
                     <div id="concluidas">
                         <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -62,8 +62,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="taskdois" style={{background: '#171821', borderRadius:'2rem'}}>
-                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
+                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -74,8 +74,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="tasktres" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -89,8 +89,8 @@ function Home (){
 
                     <div id="concluidas">
                         <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -101,8 +101,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="taskdois" style={{background: '#171821', borderRadius:'2rem'}}>
-                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}}>Concluido</Card.Header>
+                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#FEB95A"}}>Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -113,8 +113,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="tasktres" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #A9DFD8', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#A9DFD8"}} >Concluida</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
