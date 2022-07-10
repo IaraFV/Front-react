@@ -3,4 +3,13 @@
     margin-top: 1%;
     margin-bottom: 1%;
 }
-
+#personperson{
+    width: 50%;
+    
+}
+#modal{
+    border-radius: 1rem;
+}
+#closeButton{
+    color: #fff;
+}

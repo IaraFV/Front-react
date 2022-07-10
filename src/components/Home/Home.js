@@ -1,10 +1,11 @@
 import React from "react"; 
 import './Home.css'
 import teste from './img/undraw_Code_typing_re_p8b9-removebg-preview.png'
-import {  Calendar2Check, CardChecklist, People } from 'react-bootstrap-icons';
+import {  ClipboardCheckFill,  FileEarmarkFill,  PeopleFill,  } from 'react-bootstrap-icons';
 import Card from 'react-bootstrap/Card'
 import { Graf } from "../Graficos/graf";
 import { Graf2 } from "../Graficos/graf2";
+
 function Home (){
     return(
         <>
@@ -15,31 +16,32 @@ function Home (){
             </div>
 
             <div id="geral">
-
+                
                 <div id="cards" style={{background: '#21222D'}}>
                
                     
-                    <div id="cardum"  style={{background: '#171821'}}><People id="iconpeople" color="beige" size={56}  />
-                    <h2>300</h2>
-                    <p id="total">Total</p>
-                    <p id="amarelo">Pessoas adicionadas + </p>
+                    <div id="cardum" style={{background: '#171821'}}>
+                    <PeopleFill id="iconpeoplefill" color="beige" size={60}/>
+                    <p id="sabermais">Saber mais</p>
+                    <p id="amarelo">Total de pessoas<br/>adicionadas ate hoje:</p>
+                    <h3>300 +</h3>
                     </div>
 
-                    <div id="carddois"  style={{background: '#171821'}}><Calendar2Check id="iconpeople" color="beige" size={56}/>
-                    <h2>150</h2>
-                    <p id="total">Total</p>
-                    <p id="verde">Projetos adicionados + </p>
+                    <div id="carddois"  style={{background: '#171821'}}><FileEarmarkFill id="iconprojeto" color="beige" size={52}/>
+                    <p id="sabermais">Saber mais</p>
+                    <p id="amarelo">Total de projetos<br/>adicionadas ate hoje:</p>
+                    <h3>300 +</h3>
                     </div>
-                    <div id="cardtres"  style={{background: '#171821' }}><CardChecklist id="iconpeople" color="beige" size={60}/>
-                    <h2>50</h2>
-                    <p id="total">Total</p>
-                    <p id="rosa">Task's feitas + </p>
+                    <div id="cardtres"  style={{background: '#171821' }}><ClipboardCheckFill id="iconpeople" color="beige" size={56}/>
+                     <p id="sabermais">Saber mais</p>
+                    <p id="amarelo">Total de projetos<br/>adicionadas ate hoje:</p>
+                    <h3>300 +</h3>
                     </div>
                 </div>
 
                 <div id="tabela" style={{background: '#21222D'}}>
-                   <h1>Task's adicionadas</h1>
-                   <p>Task's adicionadas em ua semana</p>
+                   <h1>Task's </h1>
+                  
                     <Graf2/>
                 </div>
             </div>
@@ -50,8 +52,8 @@ function Home (){
                     <h5>Concluídos</h5>
                     <div id="concluidas">
                         <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821',  borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -62,8 +64,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="taskdois" style={{background: '#171821', borderRadius:'2rem'}}>
-                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
+                             <Card  style={{ width: '18rem', background:'#171821',  borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -74,8 +76,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="tasktres" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821',  borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -89,8 +91,8 @@ function Home (){
 
                     <div id="concluidas">
                         <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -101,8 +103,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="taskdois" style={{background: '#171821', borderRadius:'2rem'}}>
-                             <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#FEB95A"}}>Concluido</Card.Header>
+                             <Card  style={{ width: '18rem', background:'#171821', borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#A9DFD8"}}>Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -113,8 +115,8 @@ function Home (){
                             </Card>
                         </div>
                         <div id="tasktres" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem'}}>
-                                <Card.Header  style={{color:"#FEB95A"}} >Concluido</Card.Header>
+                            <Card  style={{ width: '18rem', background:'#171821',  borderRadius:'2rem'}}>
+                                <Card.Header  style={{color:"#A9DFD8"}} >Concluido</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Título do projeto</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0"}}>
@@ -128,7 +130,7 @@ function Home (){
                 </div>
 
                 <div id="pc" style={{background: '#21222D'}}>
-                <h2>Pesssoas Adicionadas</h2>
+                <h2>Pessoas</h2>
                 <h5>Pessoas adicionadas no período de uma semana</h5>
                 <Graf/>
                 </div>

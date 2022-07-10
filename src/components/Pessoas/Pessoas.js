@@ -1,18 +1,15 @@
 import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import './Pessoas.css';
-
-
+import {   PeopleFill } from 'react-bootstrap-icons';
 class Pessoas extends React.Component {
     constructor(props) {
         super(props);
 
         this.state ={
-            id_pessoa: 0,
+    
             nome_pessoa: '',
-            funcao_pessoa: '',
-            equipe_id: '',
-            data_contratacao: 0,
+            funcao_pessoa: '',         
             pessoas : [],
             modalAberta: false,
             
@@ -112,7 +109,7 @@ class Pessoas extends React.Component {
             <tbody>
                 {
                     this.state.pessoas.map((pessoas) =>
-                        <tr>
+                        <tr key={pessoas.id_pessoa}>
                             <td> {pessoas.id_pessoa } </td>
                             <td> {pessoas.nome_pessoa} </td>
                             <td> {pessoas.funcao_pessoa} </td>
@@ -130,15 +127,6 @@ class Pessoas extends React.Component {
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FUCOES=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
 
-    
-    atualizaId = (e) => {
-        this.setState(
-            {
-                id_pessoa: e.target.value
-            }
-        )
-    }
-
     atualizaNome = (e) => {
         this.setState(
             {
@@ -154,45 +142,19 @@ class Pessoas extends React.Component {
             }
         )
     }
-     atualizaEquipe = (e) => {
-        this.setState(
-            {
-                equipe_id: e.target.value
-            }
-        )
-    }
-
-      atualizadata = (e) => {
-        this.setState(
-            {
-                data_contratacao: e.target.value
-            }
-        )
-    }
-
+  
     submit = () => {
-        if(this.state.id_pessoa === 0){
-            const pessoas = {
-            id_pessoa: this.state.id_pessoa,
+
+        
+           const pessoas = {
             nome_pessoa : this.state.nome_pessoa,
-            funcao_pessoa: this.state.funcao_pessoa,
-            equipe_id: this.state.equipe_id,
-            data_contratacao: this.state.data_contratacao,
+            funcao_pessoa : this.state.funcao_pessoa,
         }
+
         this.cadastraPesssoas(pessoas);
-
-        }else{
-            const id_pessoa = {
-            id_pessoa: this.state.id_pessoa,
-            nome_pessoa : this.state.nome_pessoa,
-            funcao_pessoa: this.state.funcao_pessoa,
-            equipe_id: this.state.equipe_id,
-            data_contratacao: this.state.data_contratacao,
-        }
-
-        this.atualizarPesssoas(id_pessoa);
-        }
+        
     }
+
 
     fecharModal = () => {
         this.setState(
@@ -216,43 +178,36 @@ class Pessoas extends React.Component {
 
 render(){
     return(
+    <>
         <div id="modal">
-        <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
+             <div id="personperson">
+                        <PeopleFill id="palb"  color="#fff" size={60}/>
+                        <h1 style={{color: 'beige', marginLeft:'7%', marginTop:'-5.3%'}}>Cadastro de pessoas</h1>
+                        <h6 style={{color: '#A0A0A0',}}>Cadastro de pessoas: Incluir, Listar, Alterar, Excluir.</h6>
+                    </div>
+        <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
 
-                <Modal.Header closeButton>
-                <Modal.Title>Adicionar uma nova Pessoa:</Modal.Title>
+                <Modal.Header closeButton style={{background: '#171821', border: 'none' }}>
+                <Modal.Title style={{color: 'beige'}}>Cadastrar Pessoa</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body style={{background: '#21222D'}}>
                      <Form>
+                      
                         <Form.Group className="mb-3">
-                            <Form.Label>id_pessoa</Form.Label>
-                            <Form.Control type="text" value={this.state.id_pessoa} defaultValue={false}/>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>nome_pessoa</Form.Label>
+                            <Form.Label>Nome</Form.Label>
                             <Form.Control type="text" placeholder="nome" value={this.state.nome_pessoa} onChange={this.atualizaNome}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>funcao_pessoa</Form.Label>
+                            <Form.Label style={{color: 'beige'}}>Função</Form.Label>
                             <Form.Control type="text" placeholder="funcao" value={this.state.funcao_pessoa} onChange={this.atualizaFuncao}/>
                         </Form.Group>
 
-                        <Form.Group className="mb-3">
-                            <Form.Label>equipe_id</Form.Label>
-                            <Form.Control type="number" placeholder="equipe" value={this.state.equipe_id} onChange={this.atualizaEquipe}/>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>data_contratacao</Form.Label>
-                            <Form.Control type="number"  value={this.state.data_contratacao}  defaultValue={false}/>
-                        </Form.Group>
                     </Form>
                 </Modal.Body>
 
-                <Modal.Footer>
+                <Modal.Footer style={{background: '#171821', border: 'none'}}>
                 <Button variant="secondary" onClick={this.fecharModal}>
                     Cancelar
                 </Button>
@@ -265,11 +220,12 @@ render(){
              <div id="add">
                  <Button variant="primary" type="submit" onClick={this.abrirModal} >
                 Adicionar
-            </Button>
+                 </Button>
             </div>
             
             {this.renderTabela()}
         </div>
+</>
     )
   }
 }

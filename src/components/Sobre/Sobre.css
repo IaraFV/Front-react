@@ -1,14 +1,15 @@
 #geralparteum h1{
     color: #28AEF3;
-    margin-left: 2%;
+    margin-left: 2.8%;
   
 }
-#geralparteum h5{
+#geralparteum h6{
     color: #A0A0A0;
     margin-top: 8%;
     margin-left: 2%;
     width: 95%;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    text-align: justify;
 }
 #geralparteum h4{
     color: #A0A0A0;
@@ -59,7 +60,7 @@
 }
 #fram{
     justify-content: center;
-    border: 1px solid #FEB95A;
+    border: 1px solid #E9C46A;
     height: 45%;
     width: 90%;
     margin-top: 3.5%;

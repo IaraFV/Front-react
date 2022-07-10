@@ -16,9 +16,9 @@ function Sobre (){
         <div id="geralparteum">
         <h1>Projeto</h1>
         <h4 >Descrição</h4>
-        <h5>Criar um Sistema que mantém projetos. O sistema deve cadastrar projetos e equipes, e cada equipe pode receber um número não delimitado de pessoas. Cada projeto tem tasks e possui uma equipe, cada task pode ser atribuída a uma determinada pessoa que está na equipe do projeto.<br/>
+        <h6>Criar um Sistema que mantém projetos. O sistema deve cadastrar projetos e equipes, e cada equipe pode receber um número não delimitado de pessoas. Cada projeto tem tasks e possui uma equipe, cada task pode ser atribuída a uma determinada pessoa que está na equipe do projeto.<br/>
         Primeira fase do desafio: Implementar Back-End e Banco de dados<br/>
-        Segunda fase do desafio: Implementar Front-End e Teste</h5>
+        Segunda fase do desafio: Implementar Front-End e Teste</h6>
         </div>
 
         <div id="integrantes" style={{ borderRadius:"2rem"}}>
@@ -27,8 +27,8 @@ function Sobre (){
                     <h5>Membros</h5>
                     <div id="membros">
                         <div id="pessoaum" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '30rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem', height:'120%'}}>
-                                <Card.Header  style={{color:"#FEB95A", fontSize:'1.2rem'}} >Bruno Nascimento</Card.Header>
+                            <Card  style={{ width: '30rem', background:'#171821', border:'1px solid #E9C46A', borderRadius:'2rem', height:'120%'}}>
+                                <Card.Header  style={{color:"#E9C46A", fontSize:'1.2rem'}} >Bruno Nascimento</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Tarefas Feitas</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0", fontSize:'1.2rem', marginTop:'9%'}}>
@@ -41,8 +41,8 @@ function Sobre (){
                         </div>
 
                          <div id="pessoadois" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '30rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem', height:'120%'}}>
-                                <Card.Header  style={{color:"#FEB95A", fontSize:'1.2rem'}} >Iara Ferreira</Card.Header>
+                            <Card  style={{ width: '30rem', background:'#171821', border:'1px solid #E9C46A', borderRadius:'2rem', height:'120%'}}>
+                                <Card.Header  style={{color:"#E9C46A", fontSize:'1.2rem'}} >Iara Ferreira</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Tarefas Feitas</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0", fontSize:'1.2rem', marginTop:'9%'}}>
@@ -54,8 +54,8 @@ function Sobre (){
                         </div>
 
                          <div id="pessoatres" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '30rem', background:'#171821', border:'1px solid #FEB95A', borderRadius:'2rem', height:'120%'}}>
-                                <Card.Header  style={{color:"#FEB95A", fontSize:'1.2rem'}} >Lucas Martins</Card.Header>
+                            <Card  style={{ width: '30rem', background:'#171821', border:'1px solid #E9C46A', borderRadius:'2rem', height:'120%'}}>
+                                <Card.Header  style={{color:"#E9C46A", fontSize:'1.2rem'}} >Lucas Martins</Card.Header>
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Tarefas Feitas</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0", fontSize:'1.2rem', marginTop:'9%'}}>

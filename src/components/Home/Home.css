@@ -14,16 +14,24 @@ body{
 #geral{
     display: flex;
     justify-content: space-between;
+    width: 92%;
+}
+#textogeral h1{
+    color: beige;
+    margin-top: 0.5%;
+    margin-left: 2.8%; 
+}
+#textogeral h5{
+    color: #A0A0A0;
+    margin-top: 0.5%;
+    margin-left: 2.8%; 
 }
 #cards{
-    width: 50%;
-    height: 320px;
+    width: 45%;
+    height: 300px;
     margin-left: 1%;
     border-radius: 1rem;
     margin-top: 2%;
-    display: flex;
-    justify-content: space-around;
-
 }
 #pritext h1{
     color: #28AEF3;
@@ -36,9 +44,9 @@ body{
     margin-left: 35%;
 }
 #tabela{
-    width: 40%;
-    height: 320px;
-    margin-right: 4%;
+    width: 55%;
+    height: 300px;
+    margin-right: -6.5%;
     border-radius: 1rem;
     margin-top: 2%;
 }
@@ -47,47 +55,43 @@ body{
     margin-top: 0.5%;
     margin-left: 2.8%; 
 }
-#tabela p{
+#tabela h5{
     color: #A0A0A0;
     margin-top: 0.5%;
     margin-left: 2.8%;
 }
 #cardum{
-    width: 20%;
-    height: 207px;
-    margin-top: 5%;   
-    border-radius: 1rem;
-       
+    width: 28%;
+    height: 65%;
+    margin-top: 5.5%;
+    margin-left: 3%;
+    border-radius: 0.5rem;
 }
-#cardum h2{
+#cardum h3{
     color: beige;
     margin-left: 8%;
-    margin-top: 2%;
+    margin-top: -2%;
    
 }
-#carddois h2{
+#carddois h3{
     color: beige;
     margin-left: 8%;
-    margin-top: 3%;
+    margin-top: -2%;
     
 }
-#cardtres h2{
+#cardtres h3{
     color: beige;
     margin-left: 7%;
     margin-top: 3%;
 }
-#total{
-    color: #A0A0A0;
-    margin-left: 8%;
-    margin-top: 4%;
-}
 #amarelo{
-    color: #FEB95A;
+    color: #E9C46A;
     margin-left: 8%;
-    margin-top: 4%;
+    margin-top: 23%;
+    text-align:start;
 }
 #verde{
-    color: #8AEB97;
+    color: #A9DFD8;
     margin-left: 8%;
     margin-top: 4%;
 }
@@ -97,17 +101,19 @@ body{
     margin-top: 4%;
 }
 #carddois{
-    width: 20%;
-    height: 207px;
-    margin-top: 5%;
-    border-radius: 1rem;
+    width: 28%;
+    height: 65%;
+    margin-top: -23.2%;
+    border-radius: 0.5rem;
+    margin-left: 36%;
 }
 
 #cardtres{
-    width: 20%;
-    height: 207px;
-    margin-top: 5%;
-    border-radius: 1rem; 
+    width: 28%;
+    height: 65%;
+    border-radius: 0.5rem; 
+    margin-left: 68%;
+    margin-top: -23.2%;
 }
 #iconpeople{
     margin-left: 8%;
@@ -118,13 +124,15 @@ body{
     height: 580px;
     margin-left: 1%;
     border-radius: 1rem;
-    margin-top: 2%;
+    margin-top: 2%; 
 }
 #concluidas{
     display: flex;
-    justify-content: space-around;
-    margin-top: 3%;
-    width: 100%;
+    justify-content: space-between;
+    margin-top: 3.5%;
+    width: 80%;
+    margin-left: 6%;
+    
 }
 #progress h1{
     color: beige;
@@ -147,7 +155,7 @@ body{
 }
 #pc{
     width: 35%;
-    height: 450px;
+    height: 580px;
     border-radius: 1rem;
     margin-top: 2%;
     margin-right: 2%;
@@ -165,4 +173,19 @@ body{
 #geraltwo{
     display: flex;
     justify-content: space-between;
+}
+
+#iconpeoplefill{
+    margin-left: 10%;
+    margin-top: 5%;
+}
+#iconprojeto{
+    margin-left: 5.5%;
+    margin-top: 7.7%;
+}
+#sabermais{
+    margin-left: 70%;
+    margin-top: -24%;
+    color: #A0A0A0;
+    font-size: 0.7rem;
 }
