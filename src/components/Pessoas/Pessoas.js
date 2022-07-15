@@ -7,9 +7,10 @@ class Pessoas extends React.Component {
         super(props);
 
         this.state ={
-    
+            id_pessoa: 0,
             nome_pessoa: '',
-            funcao_pessoa: '',         
+            funcao_pessoa: '',  
+            equipe_id: parseInt(''),       
             pessoas : [],
             modalAberta: false,
             
@@ -42,9 +43,7 @@ class Pessoas extends React.Component {
                     nome_pessoa: pessoas.nome_pessoa,
                     funcao_pessoa: pessoas.funcao_pessoa,
                     equipe_id: pessoas.equipe_id,
-                    data_contratacao: pessoas.data_contratacao
                 })
-
                 this.abrirModal();
             })
     }
@@ -59,7 +58,7 @@ class Pessoas extends React.Component {
         })
     }
 
-    cadastraPesssoas = (pessoas) => {
+    cadastraPessoas = (pessoas) => {
         fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", {
             method: 'POST' ,
             headers: { 'Content-Type':'application/json' },
@@ -75,11 +74,11 @@ class Pessoas extends React.Component {
 
     }
 
-    atualizarPesssoas = (id_pessoa) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/"+id_pessoa, {
+    atualizarPessoas = (pessoas) => {
+        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", {
             method: 'PUT' ,
             headers: { 'Content-Type':'application/json' },
-            body: JSON.stringify(id_pessoa)
+            body: JSON.stringify(pessoas)
         })
             .then(resposta => {
                 if(resposta.ok){
@@ -142,17 +141,35 @@ class Pessoas extends React.Component {
             }
         )
     }
-  
-    submit = () => {
 
-        
-           const pessoas = {
-            nome_pessoa : this.state.nome_pessoa,
-            funcao_pessoa : this.state.funcao_pessoa,
+    atualizaEquipe_ID = (e) => {
+        this.setState(
+            {
+                equipe_id: e.target.value
+            }
+        )
+    }
+  
+
+    submit = () => {
+        if(this.state.id_pessoa == 0){
+            const pessoas = {
+                nome_pessoa : this.state.nome_pessoa,
+                funcao_pessoa: this.state.funcao_pessoa,
+                equipe_id: this.state.equipe_id,
+        }
+        this.cadastraPessoas(pessoas);
+
+        }else{
+            const pessoas = {
+             
+                nome_pessoa : this.state.nome_pessoa,
+                funcao_pessoa: this.state.funcao_pessoa,
+                equipe_id: this.state.equipe_id,
         }
 
-        this.cadastraPesssoas(pessoas);
-        
+        this.atualizarPessoas(pessoas);
+        }
     }
 
 
@@ -193,7 +210,6 @@ render(){
 
                 <Modal.Body style={{background: '#21222D'}}>
                      <Form>
-                      
                         <Form.Group className="mb-3">
                             <Form.Label>Nome</Form.Label>
                             <Form.Control type="text" placeholder="nome" value={this.state.nome_pessoa} onChange={this.atualizaNome}/>
@@ -204,17 +220,25 @@ render(){
                             <Form.Control type="text" placeholder="funcao" value={this.state.funcao_pessoa} onChange={this.atualizaFuncao}/>
                         </Form.Group>
 
+                        <Form.Group className="mb-3">
+                            <Form.Label style={{color: 'beige'}}>Equipe</Form.Label>
+                            <Form.Control type="number" placeholder="equipe" value={this.state.equipe_id} onChange={this.atualizaEquipe_ID}/>
+                        </Form.Group>
                     </Form>
                 </Modal.Body>
 
                 <Modal.Footer style={{background: '#171821', border: 'none'}}>
-                <Button variant="secondary" onClick={this.fecharModal}>
-                    Cancelar
-                </Button>
-                <Button  variant="primary" type="submit" onClick={this.submit} >
-                    Adicionar
-                </Button>
+
+                    <Button variant="secondary" onClick={this.fecharModal}>
+                        Cancelar
+                    </Button>
+
+                    <Button  variant="primary" type="submit" onClick={this.submit} >
+                        Adicionar
+                    </Button>
+
                 </Modal.Footer>
+                
             </Modal>
 
              <div id="add">
