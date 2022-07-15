@@ -11,15 +11,13 @@ function Home (){
         <>
             <div id="imginicio" ><img src={teste} alt=" " width={'10%'} /></div>
             <div id="container">
-                <h1 id="h1" style={{color: '#FFF'}} >Olá</h1>
-                <h5 style={{color: '#A0A0A0'}}>Bem-vindo a segunda fase do desafio</h5>
+                <h1 id="h1" style={{color: '#FFF'}} >Olá,</h1>
+                <h5 style={{color: '#A0A0A0'}}>Bem-vindo a segunda fase do desafio!</h5>
             </div>
 
             <div id="geral">
                 
-                <div id="cards" style={{background: '#21222D'}}>
-               
-                    
+                <div id="cards" style={{background: '#21222D'}}>                  
                     <div id="cardum" style={{background: '#171821'}}>
                     <PeopleFill id="iconpeoplefill" color="beige" size={60}/>
                     <p id="sabermais">Saber mais</p>

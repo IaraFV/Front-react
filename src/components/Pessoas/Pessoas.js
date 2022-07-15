@@ -2,6 +2,16 @@ import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import './Pessoas.css';
 import {   PeopleFill } from 'react-bootstrap-icons';
+import Spinner from 'react-bootstrap/Spinner'
+
+function FSpinner() {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
+
 class Pessoas extends React.Component {
     constructor(props) {
         super(props);
@@ -94,14 +104,12 @@ class Pessoas extends React.Component {
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDERTABELA=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=*/
 
     renderTabela(){
-        return <Table id="table" striped bordered hover variant="dark">
-            <thead>
+        return <Table id="table" striped bordered hover variant="dark" style={{borderRadius: '2rem'}}>
+            <thead style={{marginBottom: 'none'}}>
                 <tr>
                 <th>id_pessoa</th>
                 <th>nome_pessoa</th>
                 <th>funcao_pessoa</th>
-                <th>equipe_id</th>
-                <th>data_contratacao</th>
                 <th>Opcoes</th>
                 </tr>
             </thead>
@@ -112,8 +120,7 @@ class Pessoas extends React.Component {
                             <td> {pessoas.id_pessoa } </td>
                             <td> {pessoas.nome_pessoa} </td>
                             <td> {pessoas.funcao_pessoa} </td>
-                            <td> {pessoas.equipe_id} </td>
-                            <td> {pessoas.data_contratacao} </td>
+                           
                             <td> <Button variant="outline-danger" onClick={() => this.carregaPessoas(pessoas.id_pessoa)}>Atualizar</Button> 
                                  <Button variant="outline-danger" onClick={() => this.deletarPessoas(pessoas.id_pessoa)}>Deletar</Button> </td>
                         </tr>
@@ -196,6 +203,7 @@ class Pessoas extends React.Component {
 render(){
     return(
     <>
+        
         <div id="modal">
              <div id="personperson">
                         <PeopleFill id="palb"  color="#fff" size={60}/>
