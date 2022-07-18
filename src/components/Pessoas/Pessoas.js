@@ -213,7 +213,8 @@ render(){
 
         <div id="informativo">
             <h1 id="cadtitle" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h1>
-            <img src={pers} alt=" " width={'28%'} style={{marginLeft:'68%', marginTop: '-6%'}}/>
+            <h6 style={{color: 'beige'}}> A página Cadastrode pessoas tem funções de incluir, deletar, atualizar e inpecionar usuario, onde são apresentados dados de pessoas que foram inseridas no período de uma semana....</h6>
+            <img src={pers} alt=" " width={'28%'} style={{marginLeft:'68%', marginTop: '-12.5%'}}/>
         </div>
         <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
 

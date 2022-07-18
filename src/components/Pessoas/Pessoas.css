@@ -49,3 +49,9 @@
     width: 30%;
    
 }
+#informativo h6{
+    width: 30%;
+    margin-left: 2%;
+    margin-top: 2%;
+    text-align: justify;
+}
