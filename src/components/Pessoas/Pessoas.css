@@ -50,8 +50,12 @@
    
 }
 #informativo h6{
-    width: 30%;
+    width: 50%;
     margin-left: 2%;
     margin-top: 2%;
     text-align: justify;
+}
+#icon{
+    display: flex;
+    justify-content: space-evenly;
 }

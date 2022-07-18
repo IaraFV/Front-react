@@ -123,7 +123,7 @@ class Pessoas extends React.Component {
                             <td> {pessoas.id_pessoa } </td>
                             <td> {pessoas.nome_pessoa} </td>
                             <td> {pessoas.funcao_pessoa} </td>
-                            <td> 
+                            <td id="icon"> 
                                 <AiFillEdit onClick={() => this.carregaPessoas(pessoas.id_pessoa)}/> 
                                 <AiFillDelete onClick={() => this.deletarPessoas(pessoas.id_pessoa)}/>
                                 <BsSearch/>
@@ -207,14 +207,11 @@ class Pessoas extends React.Component {
 render(){
     return(
     <>
-        
         <div id="modal">
-        
-
         <div id="informativo">
             <h1 id="cadtitle" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h1>
-            <h6 style={{color: 'beige'}}> A página Cadastrode pessoas tem funções de incluir, deletar, atualizar e inpecionar usuario, onde são apresentados dados de pessoas que foram inseridas no período de uma semana....</h6>
-            <img src={pers} alt=" " width={'28%'} style={{marginLeft:'68%', marginTop: '-12.5%'}}/>
+            <h6 style={{color: 'beige'}}> A página Cadastro de pessoas tem funções de incluir, deletar, atualizar e inspecionar usuario, onde são apresentados dados de pessoas que foram inseridas no período de uma semana e possibilita analisar cada usuario individualmente.</h6>
+            <img src={pers} alt=" " width={'28%'} style={{marginLeft:'65%', marginTop: '-11.4%'}}/>
         </div>
         <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
 

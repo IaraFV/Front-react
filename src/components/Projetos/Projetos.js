@@ -177,9 +177,7 @@ render(){
                 </Button>
                 </Modal.Footer>
             </Modal>
-            <div id="divBusca">
-                <input type="text" id="txtBusca" placeholder="Buscar..."/>
-            </div>
+            
             
             {this.renderTabela()}
         </div>
