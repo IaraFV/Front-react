@@ -5,7 +5,8 @@
 }
 #personperson{
     width: 50%;
-    
+    margin-left: 2%;
+    margin-top: 4%;
 }
 #modal{
     border-radius: 1rem;
@@ -15,6 +16,36 @@
 }
  
 #table{
-    width: 95%;
-    margin-left: 2%;
+    width: 80%;
+    margin-left: 8%;
+}
+#add{
+    color: #E9C46A;
+    margin-left: 8.3%;
+    margin-top: 4%;
+    margin-bottom: 0.5%;
+}
+#titulo{
+    width: 5%;
+}
+#titulodois{
+    width: 5%;
+}
+#titulotres{
+    width: 5%;
+}
+#tituloquatro{
+    width: 5%;
+}
+#informativo{
+    background-color:  #21222D;
+    width: 80%;
+    border-radius: 2rem;
+    height: 18rem;
+    margin-left: 8%;
+    margin-top: 4%;
+}
+#cadtitle{
+    width: 30%;
+   
 }

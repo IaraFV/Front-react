@@ -46,8 +46,7 @@ function Sobre (){
                                 <Card.Body>
                                 <Card.Title style={{color:"#fff"}}>Tarefas Feitas</Card.Title>
                                 <Card.Text style={{color:"#A0A0A0", fontSize:'1.2rem', marginTop:'9%'}}>
-                                    Some quick example text to build on the card title and make up the bulk
-                                    of the card's content.
+                                    Andamento - Front
                                 </Card.Text>
                                 </Card.Body>
                             </Card>

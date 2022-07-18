@@ -3,7 +3,10 @@ import {Button, Form, Table, Modal} from "react-bootstrap";
 import './Pessoas.css';
 import {   PeopleFill } from 'react-bootstrap-icons';
 import Spinner from 'react-bootstrap/Spinner'
-
+import { BsPlusLg } from "react-icons/bs";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { BsSearch } from "react-icons/bs";
+import pers from './img/undraw_Filter_re_sa16-removebg-preview.png'
 function FSpinner() {
     return (
       <Spinner animation="border" role="status">
@@ -106,11 +109,11 @@ class Pessoas extends React.Component {
     renderTabela(){
         return <Table id="table" striped bordered hover variant="dark" style={{borderRadius: '2rem'}}>
             <thead style={{marginBottom: 'none'}}>
-                <tr>
-                <th>id_pessoa</th>
-                <th>nome_pessoa</th>
-                <th>funcao_pessoa</th>
-                <th>Opcoes</th>
+                <tr id="inicio">
+                <th id="titulo">ID</th>
+                <th id="titulodois">Nome</th>
+                <th id="titulotres">Função</th>
+                <th id="tituloquatro">Opções</th>
                 </tr>
             </thead>
             <tbody>
@@ -120,13 +123,14 @@ class Pessoas extends React.Component {
                             <td> {pessoas.id_pessoa } </td>
                             <td> {pessoas.nome_pessoa} </td>
                             <td> {pessoas.funcao_pessoa} </td>
-                           
-                            <td> <Button variant="outline-danger" onClick={() => this.carregaPessoas(pessoas.id_pessoa)}>Atualizar</Button> 
-                                 <Button variant="outline-danger" onClick={() => this.deletarPessoas(pessoas.id_pessoa)}>Deletar</Button> </td>
+                            <td> 
+                                <AiFillEdit onClick={() => this.carregaPessoas(pessoas.id_pessoa)}/> 
+                                <AiFillDelete onClick={() => this.deletarPessoas(pessoas.id_pessoa)}/>
+                                <BsSearch/>
+                            </td>
                         </tr>
                     )
                 }
-                
             </tbody>
         </Table>
     }
@@ -205,11 +209,12 @@ render(){
     <>
         
         <div id="modal">
-             <div id="personperson">
-                        <PeopleFill id="palb"  color="#fff" size={60}/>
-                        <h1 style={{color: 'beige', marginLeft:'7%', marginTop:'-5.3%'}}>Cadastro de pessoas</h1>
-                        <h6 style={{color: '#A0A0A0',}}>Cadastro de pessoas: Incluir, Listar, Alterar, Excluir.</h6>
-                    </div>
+        
+
+        <div id="informativo">
+            <h1 id="cadtitle" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h1>
+            <img src={pers} alt=" " width={'28%'} style={{marginLeft:'68%', marginTop: '-6%'}}/>
+        </div>
         <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
 
                 <Modal.Header closeButton style={{background: '#171821', border: 'none' }}>
@@ -250,9 +255,7 @@ render(){
             </Modal>
 
              <div id="add">
-                 <Button variant="primary" type="submit" onClick={this.abrirModal} >
-                Adicionar
-                 </Button>
+                <BsPlusLg type="submit" onClick={this.abrirModal}/>
             </div>
             
             {this.renderTabela()}

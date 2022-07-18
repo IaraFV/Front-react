@@ -1,5 +1,7 @@
 import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { BsSearch } from "react-icons/bs";
 class Equipes extends React.Component {
 
     state ={
@@ -77,8 +79,9 @@ atualizaNome = (e) => {
                             <td> {pessoas.nome_equipe} </td>
                             <td>
                                 <Button variant="outline-danger" onClick={() => this.abrirModal(pessoas.id_pessoa)}>Adicionar</Button> 
-                                <Button variant="outline-danger" onClick={() => this.carregaPessoas(pessoas.id_pessoa)}>Atualizar</Button> 
-                                <Button variant="outline-danger" onClick={() => this.deletarPessoas(pessoas.id_pessoa)}>Deletar</Button> 
+                                <AiFillEdit onClick={() => this.carregaPessoas(pessoas.id_pessoa)}/> 
+                                <AiFillDelete onClick={() => this.deletarPessoas(pessoas.id_pessoa)}/>
+                                <BsSearch/>
                             </td>
                         </tr>
                     )
@@ -151,9 +154,7 @@ render(){
                 </Button>
                 </Modal.Footer>
             </Modal>
-            <div id="divBusca">
-                <input type="text" id="txtBusca" placeholder="Buscar..."/>
-            </div>
+            
             
             {this.renderTabela()}
         </div>
