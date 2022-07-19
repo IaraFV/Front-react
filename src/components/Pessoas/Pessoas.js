@@ -254,16 +254,19 @@ render(){
                 
             </Modal>
             <div id="iconsgeral">
-
                 <div id="add">
                     <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
                 </div>
-                
+
                 <div id="ordemalfa">
                     <AiOutlineOrderedList/>
                     <p>Order</p>
                 </div>
-            <div id="filtrobusca"><AiTwotoneFilter/></div>
+
+                <div id="filtrobusca">
+                    <AiTwotoneFilter/>
+                    <input style={{ width: '15%', heigth: '4px', borderRadius: '5rem'}}/>
+                </div>
             </div>
         
             

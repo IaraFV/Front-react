@@ -27,18 +27,29 @@
 #ordemalfa{
     color: #E9C46A;
     margin-left: 94%;
-    margin-top: -1.5%;
+    margin-top: -0.2%;
 }
 #ordemalfa p{
     font-size: 0.8rem;
     margin-left: 25%;
-    margin-top: -21%;
+    margin-top: -20.5%;
 }
 #filtrobusca{
     color: #E9C46A;
     margin-left: 60%;
-    margin-top: -1.6%;
+    margin-top: -1.4%;
 }
+#filtobusca p{
+    font-size: 0.5rem;
+    margin-left: 50%;
+    margin-top: -36%;
+}
+
+#filtrobysca input{
+    height: 2px;
+    background: #21222D;
+}
+
 #titulo{
     width: 5%;
 }
@@ -70,7 +81,6 @@
 }
 #iconsgeral{
     width: 80%;
-    background-color:  #21222D;
     border-radius: 0.8rem;
     height: 2rem;
     margin-left: 8%;
