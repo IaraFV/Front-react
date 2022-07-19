@@ -202,7 +202,7 @@ render(){
     <>
         <div id="modal">
         <div id="informativo">
-            <h2 id="titlepessoa" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h2>
+            <h2 id="titlepessoa" style={{color: '#fff', marginLeft: '0.5%'}}>Cadastro de Pessoas</h2>
             <h6> </h6>
             <div id="usuarios">
             <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
@@ -260,12 +260,10 @@ render(){
 
                 <div id="ordemalfa">
                     <AiOutlineOrderedList/>
-                    <p>Order</p>
                 </div>
 
                 <div id="filtrobusca">
                     <AiTwotoneFilter/>
-                    <input style={{ width: '15%', heigth: '4px', borderRadius: '5rem'}}/>
                 </div>
             </div>
         

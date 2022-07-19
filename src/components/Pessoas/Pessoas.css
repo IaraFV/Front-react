@@ -20,24 +20,22 @@
     margin-left: 8%;
 }
 #add{
+    font-size: 1.8rem;
     color: #E9C46A;
-    margin-left: 1%;
+    margin-left: 0.5%;
     margin-top: 2%;
 }
 #ordemalfa{
+    font-size: 1.8rem;
     color: #E9C46A;
-    margin-left: 94%;
-    margin-top: -0.2%;
-}
-#ordemalfa p{
-    font-size: 0.8rem;
-    margin-left: 25%;
-    margin-top: -20.5%;
+    margin-left: 96%;
+    margin-top: -2.7%;
 }
 #filtrobusca{
+    font-size: 1.8rem;
     color: #E9C46A;
-    margin-left: 60%;
-    margin-top: -1.4%;
+    margin-left: 93.5%;
+    margin-top: -2.7%;
 }
 #filtobusca p{
     font-size: 0.5rem;
@@ -63,9 +61,7 @@
     width: 5%;
 }
 #informativo{
-    background-color:  #21222D;
     width: 80%;
-    border-radius: 0.8rem;
     height: 3.3rem;
     margin-left: 8%;
     margin-top: 3%;
