@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import './Pessoas.css';
 import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
+import { AiTwotoneFilter} from "react-icons/ai";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
 import { BsSearch } from "react-icons/bs";
@@ -201,7 +202,7 @@ render(){
     <>
         <div id="modal">
         <div id="informativo">
-            <h2 id="cadtitle" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h2>
+            <h2 id="titlepessoa" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h2>
             <h6> </h6>
             <div id="usuarios">
             <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
@@ -253,10 +254,16 @@ render(){
                 
             </Modal>
             <div id="iconsgeral">
-            <div id="add">
-                <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
-            </div>
-            <div id="ordemalfa"><AiOutlineOrderedList/></div>
+
+                <div id="add">
+                    <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
+                </div>
+                
+                <div id="ordemalfa">
+                    <AiOutlineOrderedList/>
+                    <p>Order</p>
+                </div>
+            <div id="filtrobusca"><AiTwotoneFilter/></div>
             </div>
         
             

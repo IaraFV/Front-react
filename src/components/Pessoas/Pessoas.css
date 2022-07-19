@@ -21,14 +21,23 @@
 }
 #add{
     color: #E9C46A;
-    margin-left: 8.3%;
+    margin-left: 1%;
     margin-top: 2%;
-    margin-bottom: 0.5%;
 }
 #ordemalfa{
     color: #E9C46A;
-    margin-left: 50%;
-    margin-bottom: 0.5%;
+    margin-left: 94%;
+    margin-top: -1.5%;
+}
+#ordemalfa p{
+    font-size: 0.8rem;
+    margin-left: 25%;
+    margin-top: -21%;
+}
+#filtrobusca{
+    color: #E9C46A;
+    margin-left: 60%;
+    margin-top: -1.6%;
 }
 #titulo{
     width: 5%;
