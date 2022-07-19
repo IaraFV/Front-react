@@ -100,8 +100,8 @@ class Pessoas extends React.Component {
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDERTABELA=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=*/
 
     renderTabela(){
-        return <Table id="table" striped bordered hover variant="dark" style={{borderRadius: '2rem'}}>
-            <thead style={{marginBottom: 'none'}}>
+        return <Table id="table"  style={{borderRadius: '1rem', background: '#21222D', }}>
+            <thead style={{marginBottom: 'none', color: '#fff'}}>
                 <tr id="inicio">
                 <th id="titulo">ID</th>
                 <th id="titulodois">Nome</th>
@@ -109,7 +109,7 @@ class Pessoas extends React.Component {
                 <th id="tituloquatro">Opções</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style={{marginBottom: 'none', color: '#fff'}}>
                 {
                     this.state.pessoas.map((pessoas) =>
                         <tr key={pessoas.id_pessoa}>
