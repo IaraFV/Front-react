@@ -1,41 +1,52 @@
 import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { BsPlusLg } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
+import { BsPlusLg } from "react-icons/bs";
+import './Equipe.css';
+import Spinner from 'react-bootstrap/Spinner';
+
+function FSpinner() {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
+
 class Equipes extends React.Component {
 
     state ={
             nome_equipe:'',
-            pessoas : [],
+            equipes : [],
             modalAberta: false,
         }
 
 
     componentDidMount(){
-        this.buscarPessoas();
+        this.buscarEquipes();
     }
     componentWillUnmount(){
         
     }
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Metodos POST DELETE GET UPDATE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-    buscarPessoas = () => {
+    buscarEquipes = () => {
          fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/")
             .then(resposta => resposta.json())
             .then(dados => {
-                this.setState({ pessoas : dados})
+                this.setState({ equipes : dados})
         })
     }
 
-    cadastraPessoas = (pessoas) => {
+    cadastraEquipes = (equipes) => {
         fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/", {
             method: 'POST' ,
             headers: { 'Content-Type':'application/json' },
-            body: JSON.stringify(pessoas)
+            body: JSON.stringify(equipes)
         })
             .then(resposta => {
                 if(resposta.ok){
-                    this.buscarPessoas();
+                    this.buscarequipes();
                     }else{
                         alert("nao add")
             }
@@ -44,12 +55,12 @@ class Equipes extends React.Component {
     }
    
 
-    deletarPessoas = (id_equipe) => {
+    deletarEquipes = (id_equipe) => {
         fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/"+id_equipe, 
         { method: 'DELETE' })
             .then(resposta => {
                 if(resposta.ok){
-                    this.buscarPessoas();
+                    this.buscarequipes();
                 }
         })
     }
@@ -74,14 +85,13 @@ atualizaNome = (e) => {
             </thead>
             <tbody>
                 {
-                    this.state.pessoas.map((pessoas) =>
+                    this.state.equipes.map((equipes) =>
                         <tr>
-                            <td> {pessoas.id_equipe} </td>
-                            <td> {pessoas.nome_equipe} </td>
-                            <td>
-                              
-                                <AiFillEdit onClick={() => this.carregaPessoas(pessoas.id_pessoa)}/> 
-                                <AiFillDelete onClick={() => this.deletarPessoas(pessoas.id_pessoa)}/>
+                            <td> {equipes.id_equipe} </td>
+                            <td> {equipes.nome_equipe} </td>
+                            <td id="icon">
+                                <AiFillEdit onClick={() => this.carregaEquipes(equipes.id_pessoa)}/> 
+                                <AiFillDelete onClick={() => this.deletarEquipes(equipes.id_pessoa)}/>
                                 <BsSearch/>
                             </td>
                         </tr>
@@ -96,11 +106,11 @@ atualizaNome = (e) => {
 
 
     submit = () => {
-            const pessoas = {
+            const equipes = {
             nome_equipe : this.state.nome_equipe,
         }
 
-        this.cadastraPessoas(pessoas);
+        this.cadastraEquipes(equipes);
         
     }
 
@@ -156,10 +166,10 @@ render(){
                 </Modal.Footer>
             </Modal>
             
-          
             <div id="add">
                 <BsPlusLg type="submit" onClick={this.abrirModal}/>
             </div>
+            
 
             {this.renderTabela()}
         </div>
