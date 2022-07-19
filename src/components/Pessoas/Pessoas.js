@@ -1,19 +1,11 @@
 import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import './Pessoas.css';
-import {   PeopleFill } from 'react-bootstrap-icons';
-import Spinner from 'react-bootstrap/Spinner'
-import { BsPlusLg } from "react-icons/bs";
+import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+
 import { BsSearch } from "react-icons/bs";
-import pers from './img/undraw_Filter_re_sa16-removebg-preview.png'
-function FSpinner() {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    );
-  }
+import usuario from './img/usuario.png'
 
 class Pessoas extends React.Component {
     constructor(props) {
@@ -209,10 +201,19 @@ render(){
     <>
         <div id="modal">
         <div id="informativo">
-            <h1 id="cadtitle" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h1>
-            <h6 style={{color: 'beige'}}> A página Cadastro de pessoas tem funções de incluir, deletar, atualizar e inspecionar usuario, onde são apresentados dados de pessoas que foram inseridas no período de uma semana e possibilita analisar cada usuario individualmente.</h6>
-            <img src={pers} alt=" " width={'28%'} style={{marginLeft:'65%', marginTop: '-11.4%'}}/>
+            <h2 id="cadtitle" style={{color: '#E9C46A', marginLeft: '2%'}}>Cadastro de Pessoas</h2>
+            <h6> </h6>
+            <div id="usuarios">
+            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
+            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
+            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
+            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
+            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
+            </div>
+            <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}>+ 8</p>
         </div>
+
+
         <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
 
                 <Modal.Header closeButton style={{background: '#171821', border: 'none' }}>
@@ -251,10 +252,13 @@ render(){
                 </Modal.Footer>
                 
             </Modal>
-
-             <div id="add">
-                <BsPlusLg type="submit" onClick={this.abrirModal}/>
+            <div>
+            <div id="add">
+                <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
             </div>
+            <div id="ordemal"><AiOutlineOrderedList/></div>
+            </div>
+        
             
             {this.renderTabela()}
         </div>

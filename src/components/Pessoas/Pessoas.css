@@ -22,7 +22,7 @@
 #add{
     color: #E9C46A;
     margin-left: 8.3%;
-    margin-top: 4%;
+    margin-top: 2%;
     margin-bottom: 0.5%;
 }
 #titulo{
@@ -40,22 +40,17 @@
 #informativo{
     background-color:  #21222D;
     width: 80%;
-    border-radius: 2rem;
-    height: 18rem;
+    border-radius: 0.8rem;
+    height: 3.3rem;
     margin-left: 8%;
-    margin-top: 4%;
+    margin-top: 3%;
 }
 #cadtitle{
     width: 30%;
-   
 }
-#informativo h6{
-    width: 50%;
-    margin-left: 2%;
-    margin-top: 2%;
-    text-align: justify;
-}
-#icon{
+#usuarios{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    margin-top: -2.6%;
+    margin-right: 2.8%;
 }
