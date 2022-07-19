@@ -252,11 +252,11 @@ render(){
                 </Modal.Footer>
                 
             </Modal>
-            <div>
+            <div id="iconsgeral">
             <div id="add">
                 <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
             </div>
-            <div id="ordemal"><AiOutlineOrderedList/></div>
+            <div id="ordemalfa"><AiOutlineOrderedList/></div>
             </div>
         
             

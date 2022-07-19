@@ -25,6 +25,11 @@
     margin-top: 2%;
     margin-bottom: 0.5%;
 }
+#ordemalfa{
+    color: #E9C46A;
+    margin-left: 50%;
+    margin-bottom: 0.5%;
+}
 #titulo{
     width: 5%;
 }
@@ -53,4 +58,13 @@
     justify-content: flex-end;
     margin-top: -2.6%;
     margin-right: 2.8%;
+}
+#iconsgeral{
+    width: 80%;
+    background-color:  #21222D;
+    border-radius: 0.8rem;
+    height: 2rem;
+    margin-left: 8%;
+    margin-top: -0.5%;
+    margin-bottom: 1%;
 }
