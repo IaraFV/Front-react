@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import { useEffect, useState } from "react";
 import './Equipe.css';
+import modalEquipe from './modalTeste.js'
 
 function Equipes(){
 
@@ -25,7 +26,7 @@ function Equipes(){
                     <Card style={{ width: '18rem',  }} key={key}>
                     <Card.Body style={{background: '#21222D', border: ' 4px', color:'white'}}>
                       <Card.Title>{post.nome_equipe}</Card.Title>
-                      <Card.Link href="./modalTeste.js">Atualiza</Card.Link>
+                      <Card.Link href="">Atualiza</Card.Link>
                       <Card.Link href="#">Deletar</Card.Link>
                     </Card.Body>
                   </Card>
