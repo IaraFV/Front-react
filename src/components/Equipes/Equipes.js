@@ -4,21 +4,12 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { BsPlusLg } from "react-icons/bs";
 import './Equipe.css';
-import Spinner from 'react-bootstrap/Spinner';
-
-function FSpinner() {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    );
-  }
 
 class Equipes extends React.Component {
 
     state ={
             nome_equipe:'',
-            equipes : [],
+            equipes: [],
             modalAberta: false,
         }
 
@@ -75,15 +66,15 @@ atualizaNome = (e) => {
 }
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDER TABELA=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
     renderTabela(){
-        return <Table id="table" striped bordered hover variant="dark">
-            <thead>
+        return <Table id="table"  style={{borderRadius: '1rem', background: '#21222D', }}>
+             <thead style={{marginBottom: 'none', color: '#fff'}}>
                 <tr>
                 <th>id_equipe</th>
                 <th>nome_equipe</th>
                 <th>Opcoes</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style={{marginBottom: 'none', color: '#fff'}}>
                 {
                     this.state.equipes.map((equipes) =>
                         <tr>
