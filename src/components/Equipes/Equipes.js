@@ -23,13 +23,13 @@ function Equipes(){
         {
             post.map((post,key) => {
                 return(
-                    <Card style={{ width: '18rem',  }} key={key}>
-                    <Card.Body style={{background: '#21222D', border: ' 4px', color:'white'}}>
-                      <Card.Title>{post.nome_equipe}</Card.Title>
-                      <Card.Link href="">Atualiza</Card.Link>
-                      <Card.Link href="#">Deletar</Card.Link>
-                    </Card.Body>
+                  <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
+                  <Card  style={{ width: '18rem', background:'#21222D',  borderRadius:'2rem'}} key={key}>
+                      <Card.Header  style={{color:'white'}} >{post.nome_equipe}</Card.Header>
+                      <Card.Body>
+                      </Card.Body>
                   </Card>
+              </div>
                     
                 )
 
