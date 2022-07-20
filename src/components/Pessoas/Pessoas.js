@@ -218,14 +218,14 @@ render(){
         <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
 
                 <Modal.Header closeButton style={{background: '#171821', border: 'none' }}>
-                <Modal.Title style={{color: 'beige'}}>Cadastrar Pessoa</Modal.Title>
+                <h1 style={{color: 'beige'}}>Cadastrar Pessoa</h1>
                 </Modal.Header>
 
                 <Modal.Body style={{background: '#21222D'}}>
                      <Form>
                         <Form.Group className="mb-3">
-                            <Form.Label>Nome</Form.Label>
-                            <Form.Control type="text" placeholder="nome" value={this.state.nome_pessoa} onChange={this.atualizaNome}/>
+                            <Form.Label style={{color: 'beige'}}>Nome</Form.Label>
+                            <Form.Control type="text" placeholder="digite o nome" value={this.state.nome_pessoa} onChange={this.atualizaNome}/>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
