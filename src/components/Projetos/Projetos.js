@@ -1,7 +1,8 @@
 import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import Spinner from 'react-bootstrap/Spinner'
-import { BsPlusLg } from "react-icons/bs";
+import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
+import { AiTwotoneFilter} from "react-icons/ai";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import './Projetos.css';
@@ -185,7 +186,7 @@ render(){
     return(
         <div id="modal">
 
-        <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
+            <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
                 <Modal.Header closeButton>
                 <Modal.Title>Adicionar um novo projeto:</Modal.Title>
                 </Modal.Header>
@@ -213,15 +214,25 @@ render(){
                 </Modal.Footer>
             </Modal>
             
-            <div id="add">
-                <BsPlusLg type="submit" onClick={this.abrirModal}/>
+            <div id="iconsgeral">
+                <div id="add">
+                    <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
+                </div>
+
+                <div id="ordemalfa">
+                    <AiOutlineOrderedList/>
+                </div>
+
+                <div id="filtrobusca">
+                    <AiTwotoneFilter/>
+                </div>
             </div>
-            
             {this.renderTabela()}
         </div>
-    )
+    );
   }
- 
 }
+
+
 
 export default Projetos;
