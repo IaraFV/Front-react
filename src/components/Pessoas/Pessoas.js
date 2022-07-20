@@ -4,11 +4,13 @@ import './Pessoas.css';
 import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
 import { AiTwotoneFilter} from "react-icons/ai";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-
 import { BsSearch } from "react-icons/bs";
 import usuario from './img/usuario.png'
 
+const pessoasPath = window.location.pathname;
+
 class Pessoas extends React.Component {
+   
     constructor(props) {
         super(props);
 
@@ -30,6 +32,7 @@ class Pessoas extends React.Component {
     }
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Metodos POST DELETE GET UPDATE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 
+    
 
     buscarPessoas = () => {
          fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
@@ -81,12 +84,13 @@ class Pessoas extends React.Component {
     }
 
     atualizarPessoas = (pessoas) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", {
+        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas", {
             method: 'PUT' ,
             headers: { 'Content-Type':'application/json' },
             body: JSON.stringify(pessoas)
         })
             .then(resposta => {
+                console.log(pessoas)
                 if(resposta.ok){
                     this.buscarPessoas();
                     }else{
@@ -95,6 +99,7 @@ class Pessoas extends React.Component {
         })
 
     }
+    
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDERTABELA=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=*/
@@ -115,11 +120,11 @@ class Pessoas extends React.Component {
                         <tr key={pessoas.id_pessoa}>
                             <td> {pessoas.id_pessoa } </td>
                             <td> {pessoas.nome_pessoa} </td>
-                            <td> {pessoas.funcao_pessoa} </td>
+                            <td id="funcao"> {pessoas.funcao_pessoa} </td>
                             <td id="icon"> 
                                 <AiFillEdit onClick={() => this.carregaPessoas(pessoas.id_pessoa)}/> 
                                 <AiFillDelete onClick={() => this.deletarPessoas(pessoas.id_pessoa)}/>
-                                <BsSearch/>
+                                <BsSearch onClick={this.openModal}/>
                             </td>
                         </tr>
                     )
@@ -195,6 +200,25 @@ class Pessoas extends React.Component {
          )
     }
 
+    closeModal = () => {
+        this.setState(
+            {
+                modalOpen: false
+
+            }
+         )
+    }
+
+    openModal = () => {
+        this.setState(
+            {
+                modalOpen: true
+
+            }
+         )
+    }
+
+
 /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDER PESSOA=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
 render(){
@@ -214,12 +238,34 @@ render(){
             <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}>+ 8</p>
         </div>
 
+      
+        <Modal show={this.state.modalOpen} onHide={this.closeModal}>
+            <div id="modalinsp" style={{ width: '100%', background: '#21222D', height: '200px', border: '1px ridge #21222D'}}>
+                <div id="header">
+                <img src={usuario} alt=" " width={'20%'} style={{marginLeft: '2%', marginTop: '2%'}}  />
+                <div>
+                    {
+                        this.state.pessoas.map((pessoas)=>
+                        
+                        { 
+                            <li key={pessoas.id_pessoa}>
+                                <h2>
+                                    {pessoas.nome_pessoa}
+                                </h2>
+                            </li>
+                        })
+                    }
+                </div>
+                </div>
+            </div>
 
-        <Modal show={this.state.modalAberta} onHide={this.fecharModal} style={{borderRadius: '1rem'}}>
+        </Modal>
+       
 
-                <Modal.Header closeButton style={{color: '#fff', border: 'none' }}>
-                <h1 style={{color: 'beige'}}>Cadastrar Pessoa</h1>
-                </Modal.Header>
+
+        <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
+
+                
 
                 <Modal.Body style={{background: '#21222D'}}>
                      <Form>
@@ -237,12 +283,7 @@ render(){
                             <Form.Label style={{color: 'beige'}}>Equipe</Form.Label>
                             <Form.Control type="number" placeholder="equipe" value={this.state.equipe_id} onChange={this.atualizaEquipe_ID}/>
                         </Form.Group>
-                    </Form>
-                </Modal.Body>
-
-                <Modal.Footer style={{background: '#171821', border: 'none'}}>
-
-                    <Button variant="secondary" onClick={this.fecharModal}>
+                        <Button variant="secondary" onClick={this.fecharModal}>
                         Cancelar
                     </Button>
 
@@ -250,9 +291,10 @@ render(){
                         Adicionar
                     </Button>
 
-                </Modal.Footer>
-                
+                    </Form>
+                </Modal.Body>                
             </Modal>
+
             <div id="iconsgeral">
                 <div id="add">
                     <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
