@@ -84,11 +84,10 @@ class Pessoas extends React.Component {
     }
 
     atualizarPessoas = (pessoas) => {
-<<<<<<< HEAD
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas"+pessoas.id_pessoa, {
-=======
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas", {
->>>>>>> b3d9368793c4454a5f33f85e997afebc788629a3
+
+        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/"+pessoas.id_pessoa, {
+
+        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", {
             method: 'PUT' ,
             headers: { 'Content-Type':'application/json' },
             body: JSON.stringify(pessoas)
