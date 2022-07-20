@@ -1,66 +1,172 @@
-import axios from "axios";
 import React from "react";
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
-import { useEffect, useState } from "react";
+import {Button, Form, Table, Modal} from "react-bootstrap";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { BsSearch } from "react-icons/bs";
+import { BsPlusLg } from "react-icons/bs";
 import './Equipe.css';
 
-function Equipes(){
+class Equipes extends React.Component {
 
-    const [post, setpost] = useState([])
-    useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
-        .then((response) => {
-            setpost(response.data)
-        }).catch(() => {
-            console.log("Deu BO Men")
+    state ={
+            nome_equipe:'',
+            equipes: [],
+            modalAberta: false,
+        }
+
+
+    componentDidMount(){
+        this.buscarEquipes();
+    }
+    componentWillUnmount(){
+        
+    }
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Metodos POST DELETE GET UPDATE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+    buscarEquipes = () => {
+         fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/")
+            .then(resposta => resposta.json())
+            .then(dados => {
+                this.setState({ equipes : dados})
         })
-    },[])
-  return(
-    <div>
-        <div className="geralcards">     
+    }
+
+    cadastraEquipes = (equipes) => {
+        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/", {
+            method: 'POST' ,
+            headers: { 'Content-Type':'application/json' },
+            body: JSON.stringify(equipes)
+        })
+            .then(resposta => {
+                if(resposta.ok){
+                    this.buscarequipes();
+                    }else{
+                        alert("nao add")
+            }
+        })
+
+    }
+   
+
+    deletarEquipes = (id_equipe) => {
+        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/"+id_equipe, 
+        { method: 'DELETE' })
+            .then(resposta => {
+                if(resposta.ok){
+                    this.buscarequipes();
+                }
+        })
+    }
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
+atualizaNome = (e) => {
+    this.setState(
         {
-            post.map((post,key) => {
-                return(
-                    <Card style={{ width: '18rem',  }} key={key}>
-                    <Card.Body style={{background: '#21222D', border: ' 4px', color:'white'}}>
-                      <Card.Title>{post.nome_equipe}</Card.Title>
-                      <Card.Link href="./modalTeste.js">Atualiza</Card.Link>
-                      <Card.Link href="#">Deletar</Card.Link>
-                    </Card.Body>
-                  </Card>
-                    
-                )
+            nome_equipe: e.target.value
+        }
+    )
+}
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDER TABELA=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
+    renderTabela(){
+        return <Table id="table"  style={{borderRadius: '1rem', background: '#21222D', }}>
+             <thead style={{marginBottom: 'none', color: '#fff'}}>
+                <tr>
+                <th>id_equipe</th>
+                <th>nome_equipe</th>
+                <th>Opcoes</th>
+                </tr>
+            </thead>
+            <tbody style={{marginBottom: 'none', color: '#fff'}}>
+                {
+                    this.state.equipes.map((equipes) =>
+                        <tr>
+                            <td> {equipes.id_equipe} </td>
+                            <td> {equipes.nome_equipe} </td>
+                            <td id="icon">
+                                <AiFillEdit onClick={() => this.carregaEquipes(equipes.id_pessoa)}/> 
+                                <AiFillDelete onClick={() => this.deletarEquipes(equipes.id_pessoa)}/>
+                                <BsSearch/>
+                            </td>
+                        </tr>
+                    )
+                }
+                
+            </tbody>
+        </Table>
+    }
 
-            })
-        }   
-           
-    </div>
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FUCOES=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
 
-    </div>
-  );
 
-        /*<Card style={{ width: '18rem' }} key={key}>
-                    <Card.Body style={{background: '#21222D', border: 'none', color:'white'}}>
-                      <Card.Title>{post.nome_equipe}</Card.Title>
-                      <Card.Link href="#">Card Link</Card.Link>
-                      <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                  </Card>
-                  <CardGroup>
-                        <Card key={key} style={{ width: '18px' }}>
-                            <Card.Img variant="top" src="holder.js/100px160" />
-                            <Card.Body>
-                            <Card.Title>{post.nome_equipe}</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </CardGroup>
-                  
-                  
-                  */
-    
-  
-  
+    submit = () => {
+            const equipes = {
+            nome_equipe : this.state.nome_equipe,
+        }
+
+        this.cadastraEquipes(equipes);
+        
+    }
+
+    fecharModal = () => {
+        this.setState(
+            {
+                modalAberta: false
+
+            }
+         )
+    }
+
+    abrirModal = () => {
+        this.setState(
+            {
+                modalAberta: true
+
+            }
+         )
+    }
+
+/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDER PESSOA=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+render(){
+    return(
+        <div id="modal">
+
+        <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
+                <Modal.Header closeButton>
+                <Modal.Title>Adicionar uma nova Equipe:</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                     <Form>
+            <Form.Group className="mb-3">
+                <Form.Label>id_equipe</Form.Label>
+                <Form.Control type="text" value={this.state.id_equipe} readOnly={true}/>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>nome_equipe</Form.Label>
+                <Form.Control type="text" placeholder="nome" value={this.state.nome_equipe} onChange={this.atualizaNome}/>
+            </Form.Group>
+            </Form>
+            
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={this.fecharModal}>
+                    Cancelar
+                </Button>
+                <Button  variant="primary" type="submit" onClick={this.submit} >
+                    Adicionar
+                </Button>
+                </Modal.Footer>
+            </Modal>
+            
+            <div id="add">
+                <BsPlusLg type="submit" onClick={this.abrirModal}/>
+            </div>
+            
+
+            {this.renderTabela()}
+        </div>
+    )
+  }
+ 
 }
 
 export default Equipes;

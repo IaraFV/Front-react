@@ -2,25 +2,3 @@
     display: flex;
     justify-content: space-evenly;
 }
-#add{
-    font-size: 1.8rem;
-    color: #E9C46A;
-    margin-left: 0.5%;
-    margin-top: 2%;
-}
-#ordemalfa{
-    font-size: 1.8rem;
-    color: #E9C46A;
-    margin-left: 96%;
-    margin-top: -2.7%;
-}
-#filtrobusca{
-    font-size: 1.8rem;
-    color: #E9C46A;
-    margin-left: 93.5%;
-    margin-top: -2.7%;
-}
-.geralcards{
-    display: flex;
-    justify-content: space-around;
-}
