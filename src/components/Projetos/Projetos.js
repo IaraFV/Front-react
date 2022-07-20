@@ -1,11 +1,11 @@
 import React from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import Spinner from 'react-bootstrap/Spinner'
-import { AiTwotoneFilter} from "react-icons/ai";
+import { BsPlusLg } from "react-icons/bs";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import './Projetos.css';
-import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
+import './getequipe'
 function FSpinner() {
     return (
       <Spinner animation="border" role="status">
@@ -219,18 +219,8 @@ render(){
                 </Modal.Footer>
             </Modal>
             
-            <div id="iconsgeral">
-                <div id="add">
-                    <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
-                </div>
-
-                <div id="ordemalfa">
-                    <AiOutlineOrderedList/>
-                </div>
-
-                <div id="filtrobusca">
-                    <AiTwotoneFilter/>
-                </div>
+            <div id="add">
+                <BsPlusLg type="submit" onClick={this.abrirModal}/>
             </div>
             
             {this.renderTabela()}
