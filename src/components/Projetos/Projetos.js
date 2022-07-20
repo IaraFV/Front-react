@@ -6,13 +6,8 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import './Projetos.css';
 import './getequipe'
-function FSpinner() {
-    return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    );
-  }
+ 
+
 class Projetos extends React.Component {
 
     state ={

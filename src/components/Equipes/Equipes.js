@@ -41,8 +41,6 @@ function Equipes(){
     </div>
   );
 
-  
-
         /*<Card style={{ width: '18rem' }} key={key}>
                     <Card.Body style={{background: '#21222D', border: 'none', color:'white'}}>
                       <Card.Title>{post.nome_equipe}</Card.Title>
