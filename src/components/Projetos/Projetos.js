@@ -23,7 +23,6 @@ class Projetos extends React.Component {
         status:'',
         projetos : [],
         modalAberta: false,
-        
         }
 
 
