@@ -215,9 +215,9 @@ render(){
         </div>
 
 
-        <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
+        <Modal show={this.state.modalAberta} onHide={this.fecharModal} style={{borderRadius: '1rem'}}>
 
-                <Modal.Header closeButton style={{background: '#171821', border: 'none' }}>
+                <Modal.Header closeButton style={{color: '#fff', border: 'none' }}>
                 <h1 style={{color: 'beige'}}>Cadastrar Pessoa</h1>
                 </Modal.Header>
 
