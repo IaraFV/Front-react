@@ -4,6 +4,7 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { BsPlusLg } from "react-icons/bs";
 import './Equipe.css';
+import modalEquipe from './modalTeste.js'
 
 class Equipes extends React.Component {
 
@@ -92,6 +93,17 @@ atualizaNome = (e) => {
             </tbody>
         </Table>
     }
+            post.map((post,key) => {
+                return(
+                    <Card style={{ width: '18rem',  }} key={key}>
+                    <Card.Body style={{background: '#21222D', border: ' 4px', color:'white'}}>
+                      <Card.Title>{post.nome_equipe}</Card.Title>
+                      <Card.Link href="">Atualiza</Card.Link>
+                      <Card.Link href="#">Deletar</Card.Link>
+                    </Card.Body>
+                  </Card>
+                    
+                )
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FUCOES=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
 
