@@ -4,3 +4,9 @@
     width: 50%;
     height: 40%;
 }
+#usuarios{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -2.6%;
+    margin-right: 2.8%;
+}

@@ -4,8 +4,6 @@ import './Pessoas.css';
 import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
 import { AiTwotoneFilter} from "react-icons/ai";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
-import usuario from './img/usuario.png'
 import axios  from "axios";
 import CardGroup from 'react-bootstrap/CardGroup';
 import { styled } from '@mui/material/styles';
@@ -17,11 +15,11 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red, yellow } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 function Pessoas() {
 
@@ -36,11 +34,31 @@ function Pessoas() {
             .catch(() => {
                 console.log("deu errado")
             })
-    }, [])
+    }, []
+    )
+
+ 
+
+
 
 return(
       <div>
          <div> 
+            <div id="informativo">
+                <h2 id="titlepessoa" style={{color: '#fff', marginLeft: '0.5%'}}>Cadastro de Pessoas</h2>
+                <div id="usuarios">
+                <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
+                    i
+                </Avatar>
+                <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
+                    f
+                </Avatar>
+                <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
+                    v
+                </Avatar>
+                </div>
+                <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}>+ 8</p>
+            </div>
          {
             posts.map((posts,key) => {
             return (
@@ -72,7 +90,7 @@ return(
                 </IconButton>
 
                 <IconButton aria-label="share" sx={{color: 'white'}} >
-                    <ShareIcon />
+                    <DeleteIcon />
                 </IconButton>
                 </CardActions>
             </Card>
@@ -83,7 +101,7 @@ return(
         </div>
 )
 }
-        
+
             
     
 export default Pessoas;
