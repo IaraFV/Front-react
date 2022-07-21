@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Button, Form, Table, Modal} from "react-bootstrap";
 import './Pessoas.css';
 import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
@@ -6,315 +6,84 @@ import { AiTwotoneFilter} from "react-icons/ai";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import usuario from './img/usuario.png'
+import axios  from "axios";
+import CardGroup from 'react-bootstrap/CardGroup';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red, yellow } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
-const pessoasPath = window.location.pathname;
+function Pessoas() {
 
-class Pessoas extends React.Component {
-   
-    constructor(props) {
-        super(props);
+    const [ posts, setPosts ] = useState([])
 
-        this.state ={
-            id_pessoa: 0,
-            nome_pessoa: '',
-            funcao_pessoa: '',  
-            equipe_id: parseInt(''),       
-            pessoas : [],
-            modalAberta: false,
-            
-        }
-    }
-    componentDidMount(){
-        this.buscarPessoas();
-    }
-    componentWillUnmount(){
-        
-    }
-/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Metodos POST DELETE GET UPDATE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 
-    
-
-    buscarPessoas = () => {
-         fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
-            .then(resposta => resposta.json())
-            .then(dados => {
-                this.setState({ pessoas : dados})
-        })
-    }
-
-   carregaPessoas = (id_pessoa) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/"+id_pessoa, 
-        { method: 'GET' })
-            .then(resposta => resposta.json())
-            .then(pessoas => {
-                this.setState({
-                    id_pessoa: pessoas.id_pessoa,
-                    nome_pessoa: pessoas.nome_pessoa,
-                    funcao_pessoa: pessoas.funcao_pessoa,
-                    equipe_id: pessoas.equipe_id,
-                })
-                this.abrirModal();
+    useEffect(() => {
+            axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
+            .then((response) => {
+                setPosts(response.data)
             })
-    }
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, [])
 
-    deletarPessoas = (id_pessoa) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/"+id_pessoa, 
-        { method: 'DELETE' })
-            .then(resposta => {
-                if(resposta.ok){
-                    this.buscarPessoas();
+return(
+      <div>
+         <div> 
+         {
+            posts.map((posts,key) => {
+            return (
+            <Card sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} id="geralcards">
+                <CardHeader
+                avatar={
+                    <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
+                    i
+                    </Avatar>
                 }
-        })
-    }
-
-    cadastraPessoas = (pessoas) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", {
-            method: 'POST' ,
-            headers: { 'Content-Type':'application/json' },
-            body: JSON.stringify(pessoas)
-        })
-            .then(resposta => {
-                if(resposta.ok){
-                    this.buscarPessoas();
-                    }else{
-                        alert("nao add")
-            }
-        })
-
-    }
-
-    atualizarPessoas = (pessoas) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/"+pessoas.id_pessoa, {
-            method: 'PUT' ,
-            headers: { 'Content-Type':'application/json' },
-            body: JSON.stringify(pessoas)
-        })
-            .then(resposta => {
-                console.log(pessoas)
-                if(resposta.ok){
-                    this.buscarPessoas();
-                    }else{
-                        alert("nao atualiza")
-            }
-        })
-
-    }
-    
-/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
-
-/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDERTABELA=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=*/
-
-    renderTabela(){
-        return <Table id="table"  style={{borderRadius: '1rem', background: '#21222D', }}>
-            <thead style={{marginBottom: 'none', color: '#fff'}}>
-                <tr id="inicio">
-                <th id="titulo">ID</th>
-                <th id="titulodois">Nome</th>
-                <th id="titulotres">Função</th>
-                <th id="tituloquatro">Opções</th>
-                </tr>
-            </thead>
-            <tbody style={{marginBottom: 'none', color: '#fff'}}>
-                {
-                    this.state.pessoas.map((pessoas) =>
-                        <tr key={pessoas.id_pessoa}>
-                            <td> {pessoas.id_pessoa } </td>
-                            <td> {pessoas.nome_pessoa} </td>
-                            <td id="funcao"> {pessoas.funcao_pessoa} </td>
-                            <td id="icon"> 
-                                <AiFillEdit onClick={() => this.carregaPessoas(pessoas.id_pessoa)}/> 
-                                <AiFillDelete onClick={() => this.deletarPessoas(pessoas.id_pessoa)}/>
-                                <BsSearch onClick={this.openModal}/>
-                            </td>
-                        </tr>
-                    )
+                action={
+                    <IconButton aria-label="settings"  sx={{color: 'white'}}>
+                    <MoreVertIcon />
+                    </IconButton>
                 }
-            </tbody>
-        </Table>
-    }
+                title={posts.nome_pessoa}
 
-/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FUCOES=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
-
-    atualizaNome = (e) => {
-        this.setState(
-            {
-                nome_pessoa: e.target.value
-            }
-        )
-    }
-
-    atualizaFuncao = (e) => {
-        this.setState(
-            {
-                funcao_pessoa: e.target.value
-            }
-        )
-    }
-
-    atualizaEquipe_ID = (e) => {
-        this.setState(
-            {
-                equipe_id: e.target.value
-            }
-        )
-    }
-  
-
-    submit = () => {
-        if(this.state.id_pessoa == 0){
-            const pessoas = {
-                nome_pessoa : this.state.nome_pessoa,
-                funcao_pessoa: this.state.funcao_pessoa,
-                equipe_id: this.state.equipe_id,
-        }
-        this.cadastraPessoas(pessoas);
-
-        }else{
-            const pessoas = {
-             
-                nome_pessoa : this.state.nome_pessoa,
-                funcao_pessoa: this.state.funcao_pessoa,
-                equipe_id: this.state.equipe_id,
-        }
-
-        this.atualizarPessoas(pessoas);
-        }
-    }
-
-
-    fecharModal = () => {
-        this.setState(
-            {
-                modalAberta: false
-
-            }
-         )
-    }
-
-    abrirModal = () => {
-        this.setState(
-            {
-                modalAberta: true
-
-            }
-         )
-    }
-
-    closeModal = () => {
-        this.setState(
-            {
-                modalOpen: false
-
-            }
-         )
-    }
-
-    openModal = () => {
-        this.setState(
-            {
-                modalOpen: true
-
-            }
-         )
-    }
-
-
-/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDER PESSOA=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-render(){
-    return(
-    <>
-        <div id="modal">
-        <div id="informativo">
-            <h2 id="titlepessoa" style={{color: '#fff', marginLeft: '0.5%'}}>Cadastro de Pessoas</h2>
-            <h6> </h6>
-            <div id="usuarios">
-            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
-            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
-            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
-            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
-            <img src={usuario} alt=" " width={'2.5%'} style={{}}  />
-            </div>
-            <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}>+ 8</p>
-        </div>
-
-      
-        <Modal show={this.state.modalOpen} onHide={this.closeModal}>
-            <div id="modalinsp" style={{ width: '100%', background: '#21222D', height: '200px', border: '1px ridge #21222D'}}>
-                <div id="header">
-                <img src={usuario} alt=" " width={'20%'} style={{marginLeft: '2%', marginTop: '2%'}}  />
-                <div>
-                    {
-                        this.state.pessoas.map((pessoas)=>
-                        
-                        { 
-                            <li key={pessoas.id_pessoa}>
-                                <h2>
-                                    {pessoas.nome_pessoa}
-                                </h2>
-                            </li>
-                        })
-                    }
-                </div>
-                </div>
-            </div>
-
-        </Modal>
-       
-
-
-        <Modal show={this.state.modalAberta} onHide={this.fecharModal} >
-
+                subheader= {posts.data_contratacao}
+                />
+                <CardContent sx={{color: 'white' }}>
+                <Typography variant="body2" color="white">
+                {posts.funcao_pessoa}
+                </Typography>
+                </CardContent>
                 
+                <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites" sx={{color: 'white'}} >
+                    <ModeEditIcon />
+                </IconButton>
 
-                <Modal.Body style={{background: '#21222D'}}>
-                     <Form>
-                        <Form.Group className="mb-3">
-                            <Form.Label style={{color: 'beige'}}>Nome</Form.Label>
-                            <Form.Control type="text" placeholder="digite o nome" value={this.state.nome_pessoa} onChange={this.atualizaNome}/>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label style={{color: 'beige'}}>Função</Form.Label>
-                            <Form.Control type="text" placeholder="funcao" value={this.state.funcao_pessoa} onChange={this.atualizaFuncao}/>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label style={{color: 'beige'}}>Equipe</Form.Label>
-                            <Form.Control type="number" placeholder="equipe" value={this.state.equipe_id} onChange={this.atualizaEquipe_ID}/>
-                        </Form.Group>
-                        <Button variant="secondary" onClick={this.fecharModal}>
-                        Cancelar
-                    </Button>
-
-                    <Button  variant="primary" type="submit" onClick={this.submit} >
-                        Adicionar
-                    </Button>
-
-                    </Form>
-                </Modal.Body>                
-            </Modal>
-
-            <div id="iconsgeral">
-                <div id="add">
-                    <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
-                </div>
-
-                <div id="ordemalfa">
-                    <AiOutlineOrderedList/>
-                </div>
-
-                <div id="filtrobusca">
-                    <AiTwotoneFilter/>
-                </div>
+                <IconButton aria-label="share" sx={{color: 'white'}} >
+                    <ShareIcon />
+                </IconButton>
+                </CardActions>
+            </Card>
+                )
+              })
+            }
             </div>
+        </div>
+)
+}
         
             
-            {this.renderTabela()}
-        </div>
-</>
-    )
-  }
-}
-
+    
 export default Pessoas;
