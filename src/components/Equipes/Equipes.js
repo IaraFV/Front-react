@@ -1,10 +1,11 @@
 import axios from "axios";
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import { useEffect, useState } from "react";
 import './Equipe.css';
-import modalEquipe from './modalTeste.js'
+import ModalEquipe from './PostBusca';
+import PostBusca from './PostBusca';
+import { render } from "@testing-library/react";
 
 function Equipes(){
 
@@ -17,19 +18,26 @@ function Equipes(){
             console.log("Deu BO Men")
         })
     },[])
+    
   return(
     <div>
-        <div className="geralcards">     
+        <div className="geralcards"> 
+            <div id="PostBuscaEQ">
+                <PostBusca/>
+            </div>    
         {
             post.map((post,key) => {
                 return(
-                  <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
-                  <Card  style={{ width: '18rem', background:'#21222D',  borderRadius:'2rem'}} key={key}>
-                      <Card.Header  style={{color:'white'}} >{post.nome_equipe}</Card.Header>
-                      <Card.Body>
-                      </Card.Body>
-                  </Card>
-              </div>
+                    <div>
+                        <div id="taskum" style={{background: '#171821', borderRadius:'2rem'}}>
+                            <Card  style={{ width: '18rem', background:'#21222D',  borderRadius:'2rem'}} key={key}>
+                                <Card.Header  style={{color:'white'}}></Card.Header>
+                                <Card.Title style={{color:"#fff"}}>{post.nome_equipe}</Card.Title>
+                                <Card.Body>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    </div>
                     
                 )
 

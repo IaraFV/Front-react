@@ -1,8 +1,20 @@
-#icon{
-    display: flex;
-    justify-content: space-evenly;
-}
+
 .geralcards{
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 3%;
 }
+
+/*codigo do arquivo PostBusca(inicio)*/
+#PostBuscaEQ{ 
+    color: #E9C46A;
+    font-size: 26px;  
+    width: 90%;
+    margin-bottom: 1rem;
+}
+#lucas{
+    display: flex;
+    float: right;
+}
+
+/*codigo do arquivo PostBusca(FIM)*/
