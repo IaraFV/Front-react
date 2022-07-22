@@ -77,7 +77,7 @@ return(
                 </CardContent>
                 
                 <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites" sx={{color: 'white'}} >          <Link to="/Edit">
+                <IconButton aria-label="add to favorites" sx={{color: 'white'}} >          <Link to={{ pathname: `/Edit/:${posts._id_pessoa}` }}>
                         <ModeEditIcon />
                      </Link>
                     

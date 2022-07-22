@@ -5,7 +5,7 @@ import Task from './components/Task/Task';
 import Projetos from './components/Projetos/Projetos';
 import Sobre from './components/Sobre/Sobre';
 import Post from './components/Post/Post';
-import Edit from './components/Pessoas/edit';
+import Edit from './components/Edit/edit';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,6 +32,7 @@ function App() {
 
     <div id='img'><img src={teste} alt=" " width={'80%'} style={{marginTop:'-53px'}}/></div>
     </Nav>
+
     <Routes>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/Pessoas" element={<Pessoas/>}></Route>
@@ -40,7 +41,7 @@ function App() {
       <Route path="/Task" element={<Task/>}></Route>
       <Route path="/Sobre" element={<Sobre/>}></Route>
      <Route path="/Post" element={<Post/>}></Route>
-      <Route path="/Edit" element={<Edit/>}></Route>
+      <Route path="/Edit/:id_pessoa" element={<Edit/>}></Route>
 
     </Routes>
     </BrowserRouter>

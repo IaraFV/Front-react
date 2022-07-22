@@ -1,38 +1,50 @@
+import React, { useEffect } from "react";
 import { Link } from "@mui/material";
-import React from "react";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import IconButton from '@mui/material/IconButton';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
-import './Post.css'
-import { useNavigate } from 'react-router-dom'
+import './edit.css'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 
-const validacaoPost = yup.object().shape({
+
+
+const validacaoGet = yup.object().shape({
     nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
     funcao_pessoa: yup.string().required("A função é obrigatoria")
 })
 
-function Post() {
 
-    let navigate = useNavigate()
+function Edit() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(validacaoPost)
+    const { id_pessoa } = useParams()
+
+   let navigate = useNavigate()
+
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(validacaoGet)
 })
 
-    const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", data)
-    .then(() => {
-        console.log("foi")
-        navigate("/Pessoas");
-    })
-    .catch(() => {
-        console.log("n foi")
-    })
+    const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/:${id_pessoa}`, data)
+        .then(() => {
+            console.log("foi")
+            navigate("/Pessoas");
+        })
+        .catch(() => {
+            console.log("n foi")
+        })
+
+    useEffect(() => {
+        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/:${id_pessoa}`)
+        .then((response) => {
+            reset(response.data)
+        })
+    }, [])
 
     return(
-<>
         <div>
             <IconButton sx={{color: 'white'}}>
                 <Link to="/Pessoas" />
@@ -41,7 +53,7 @@ function Post() {
 
             <main>
                 <div className="card-post">
-                    <h1>Criar Cadastro</h1>
+                    <h1>Editar Cadastro</h1>
                     <div className="line-post"></div>
 
                     <div className="body-post">
@@ -68,11 +80,8 @@ function Post() {
                     </div>
                 </div>
             </main>
-
         </div>
-</>
     )
-
 }
 
-export default Post;
+export default Edit;
