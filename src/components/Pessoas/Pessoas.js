@@ -59,6 +59,7 @@ return(
             </div>
          {
             posts.map((posts,key) => {
+
             return (
             <div className="cardpessoas">
             <Card  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
@@ -66,8 +67,8 @@ return(
                 avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
 
                 action={
-                    <IconButton aria-label="settings"  sx={{color: '#E9C46A'}}>
-                    <SearchIcon/>
+                    <IconButton aria-label="settings">
+                    <Link to="/Inspecionar"><SearchIcon  sx={{color: '#E9C46A'}}/></Link>
                     </IconButton>
                 }
                 

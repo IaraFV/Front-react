@@ -4,8 +4,9 @@ import Equipes from './components/Equipes/Equipes'
 import Task from './components/Task/Task';
 import Projetos from './components/Projetos/Projetos';
 import Sobre from './components/Sobre/Sobre';
-import Post from './components/Post/Post';
-import Edit from './components/Edit/edit';
+import Post from './components/Pessoas/Post/Post';
+import Edit from './components/Pessoas/Edit/edit';
+import Inspecionar from './components/Pessoas/Inspecionar/Inspecionar'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -40,8 +41,9 @@ function App() {
       <Route path="/Projetos" element={<Projetos/>}></Route>
       <Route path="/Task" element={<Task/>}></Route>
       <Route path="/Sobre" element={<Sobre/>}></Route>
-     <Route path="/Post" element={<Post/>}></Route>
+      <Route path="/Post" element={<Post/>}></Route>
       <Route path="/Edit/:id_pessoa" element={<Edit/>}></Route>
+      <Route path="/Inspecionar" element={<Inspecionar/>}></Route>
 
     </Routes>
     </BrowserRouter>
