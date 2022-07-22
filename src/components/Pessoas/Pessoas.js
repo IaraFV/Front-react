@@ -12,6 +12,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 
 function Pessoas() {
 
@@ -38,10 +39,7 @@ return(
       <div>
          <div> 
             <div id="informativo">
-                <h2 id="titlepessoa" style={{color: '#fff', marginLeft: '0.5%'}}>Cadastro de Pessoas</h2>
-                <Link to="/Post">
-                    <button>add new post</button>
-                </Link>
+                <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '2%', marginTop: '4%'}}>Cadastro de Pessoas</h1>
                 <div id="usuarios">
                 <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
                     i
@@ -53,27 +51,31 @@ return(
                     v
                 </Avatar>
                 </div>
-                <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}>+ 8</p>
+                <Link to="/Post">
+                    <button className="btn-adicionar">Adicionar Pessoa</button>
+                </Link>
+                
+                <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
             </div>
          {
             posts.map((posts,key) => {
             return (
-            <Card sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} id="geralcards">
-                <CardHeader
-                avatar={
-                    <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
-                    i
-                    </Avatar>
-                }
+            <div className="cardpessoas">
+            <Card  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
+                <CardHeader className="titlecinco"
+                avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
+
                 action={
-                    <IconButton aria-label="settings"  sx={{color: 'white'}}>
-                    <MoreVertIcon />
+                    <IconButton aria-label="settings"  sx={{color: '#E9C46A'}}>
+                    <SearchIcon/>
                     </IconButton>
                 }
-                title={posts.nome_pessoa}
-
-                subheader= {posts.data_contratacao}
+                
+                title={
+                posts.nome_pessoa
+                }
                 />
+                
                 <CardContent sx={{color: 'white' }}>
                 <Typography variant="body2" color="white">
                 {posts.funcao_pessoa}
@@ -81,17 +83,18 @@ return(
                 </CardContent>
                 
                 <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites" sx={{color: 'white'}} >          <Link to={{ pathname: `/Edit/${posts._id}` }}>
-                        <ModeEditIcon />
+                <IconButton> 
+                     <Link to={{ pathname: `/Edit/${posts._id}` }}>
+                        <ModeEditIcon sx={{color: '#E9C46A'}}/>
                      </Link>
-                    
                 </IconButton>
 
-                <IconButton onClick={() => deletePost(posts._id) } aria-label="share" sx={{color: 'white'}} >
+                <IconButton onClick={() => deletePost(posts._id) } aria-label="share" sx={{color: '#E9C46A'}} >
                     <DeleteIcon  />
                 </IconButton>
                 </CardActions>
             </Card>
+            </div>
                 )
               })
             }

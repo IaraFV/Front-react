@@ -79,16 +79,12 @@ textarea {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
-
     padding: 5px 50px;
     color: #fff;
     background-color: #3DECB1;
-
     border: 0;
     border-radius: 10px;
-
     cursor: pointer;
-
 }
 
 .error-message {
