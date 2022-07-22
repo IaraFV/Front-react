@@ -96,6 +96,4 @@ return(
 )
 }
 
-            
-    
 export default Pessoas;
