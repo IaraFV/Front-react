@@ -4,10 +4,11 @@ import Equipes from './components/Equipes/Equipes'
 import Task from './components/Task/Task';
 import Projetos from './components/Projetos/Projetos';
 import Sobre from './components/Sobre/Sobre';
+import Post from './components/Post/Post';
+import Edit from './components/Pessoas/edit';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Activity, Calendar2Check, CardChecklist, Check, ListTask, People, Projector } from 'react-bootstrap-icons';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
 function App() {
@@ -38,6 +39,8 @@ function App() {
       <Route path="/Projetos" element={<Projetos/>}></Route>
       <Route path="/Task" element={<Task/>}></Route>
       <Route path="/Sobre" element={<Sobre/>}></Route>
+     <Route path="/Post" element={<Post/>}></Route>
+      <Route path="/Edit" element={<Edit/>}></Route>
 
     </Routes>
     </BrowserRouter>
