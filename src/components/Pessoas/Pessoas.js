@@ -29,6 +29,10 @@ function Pessoas() {
     }, []
     )
 
+    function deletePost (id) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id}`)
+    }
+
 
 return(
       <div>
@@ -77,14 +81,14 @@ return(
                 </CardContent>
                 
                 <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites" sx={{color: 'white'}} >          <Link to={{ pathname: `/Edit/:${posts._id_pessoa}` }}>
+                <IconButton aria-label="add to favorites" sx={{color: 'white'}} >          <Link to={{ pathname: `/Edit/${posts._id}` }}>
                         <ModeEditIcon />
                      </Link>
                     
                 </IconButton>
 
-                <IconButton aria-label="share" sx={{color: 'white'}} >
-                    <DeleteIcon />
+                <IconButton onClick={() => deletePost(posts._id) } aria-label="share" sx={{color: 'white'}} >
+                    <DeleteIcon  />
                 </IconButton>
                 </CardActions>
             </Card>

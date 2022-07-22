@@ -9,8 +9,6 @@ import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 
-
-
 const validacaoGet = yup.object().shape({
     nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
     funcao_pessoa: yup.string().required("A função é obrigatoria")
@@ -28,7 +26,7 @@ function Edit() {
     resolver: yupResolver(validacaoGet)
 })
 
-    const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/:${id_pessoa}`, data)
+    const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
         .then(() => {
             console.log("foi")
             navigate("/Pessoas");
@@ -38,7 +36,7 @@ function Edit() {
         })
 
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/:${id_pessoa}`)
+        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
         .then((response) => {
             reset(response.data)
         })
