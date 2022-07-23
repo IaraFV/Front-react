@@ -21,20 +21,18 @@ function Projetos(){
    const meuNovopost = post.filter((valorAtual) => {
         return valorAtual.status.includes("Em planejamento")
     })
+
     console.log(meuNovopost)
     
   return(
-    <div>
-        <div className="geralcards"> 
-            <div id="PostBuscaEQ">
-                
-            </div>    
+        <div className="geralprojeto"> 
+               
         {
             post.map((post,key) => {
                 return(
-                    <div>
+                    <div >
                         <div id="projetocard" style={{background: '#171821', borderRadius:'2rem'}}>
-                            <Card  style={{ width: '18rem', background:'#21222D',  borderRadius:'2rem'}} key={key}>
+                            <Card  style={{ width: '18rem', height: '10rem', marginRight: '2%', background:'#21222D',  borderRadius:'2rem'}} key={key}>
                                 <Card.Header id="header" style={{color:'#A9DFD8'}}>{post.status}</Card.Header>
                                 <Card.Title style={{color:"#A9DFD8"}}></Card.Title>
                                 <Card.Body>
@@ -42,16 +40,19 @@ function Projetos(){
                             </Card>
                         </div>
                     </div>
-                    
+                  
                 )
 
             })
+
         }   
            
-    </div>
-
+    
+     
     </div>
   );
+
+
 
         /*<Card style={{ width: '18rem' }} key={key}>
                     <Card.Body style={{background: '#21222D', border: 'none', color:'white'}}>

@@ -78,7 +78,7 @@ return(
                 posts.nome_pessoa
                 }
                 />
-                
+            
                 <CardContent sx={{color: 'white' }}>
                 <Typography variant="body2" color="white">
                 {posts.funcao_pessoa}

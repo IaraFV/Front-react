@@ -1,11 +1,12 @@
-#projetocard{
-    width: 20%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3.5%;
-    margin-left: 6%;
-    height: 150px;
-}
 #header{
      height: 35px;
+}
+.geralprojeto{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    width: 50%;
+    padding: 3%;
+    justify-content: space-around;
+    margin-top: 12%;
 }
