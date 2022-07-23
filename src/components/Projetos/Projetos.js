@@ -1,238 +1,79 @@
+import axios from "axios";
 import React from "react";
-import {Button, Form, Table, Modal} from "react-bootstrap";
-import Spinner from 'react-bootstrap/Spinner'
-import { AiFillPlusSquare, AiOutlineOrderedList } from "react-icons/ai";
-import { AiTwotoneFilter} from "react-icons/ai";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
+import Card from 'react-bootstrap/Card';
+import { useEffect, useState } from "react";
 import './Projetos.css';
-import './getequipe'
- 
 
-class Projetos extends React.Component {
+function Projetos(){
 
-    state ={
-        id_projeto:0,
-        nome_projeto:'',
-        equipe_id:parseInt(''),
-        nome_equipe:'',
-        status:'',
-        projetos : [],
-        modalAberta: false,
-        }
+    
 
-
-    componentDidMount(){
-        this.buscarprojetos();
-    }
-    componentWillUnmount(){
-        
-    }
-/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Metodos POST DELETE GET UPDATE-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-    buscarprojetos = () => {
-         fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/")
-            .then(resposta => resposta.json())
-            .then(dados => {
-                this.setState({ projetos : dados})
+    const  [post, setpost] = useState([])
+    useEffect(() => {
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
+        .then((response) => {
+            setpost(response.data)
+        }).catch(() => {
+            console.log("Deu BO Men")
         })
-    }
-
-    cadastraprojetos = (projetos) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/", {
-            method: 'POST' ,
-            headers: { 'Content-Type':'application/json' },
-            body: JSON.stringify(projetos)
-        })
-            .then(resposta => {
-                if(resposta.ok){
-                    this.buscarprojetos();
-                    }else{
-                        alert("nao add")
-            }
-        })
-
-    }
-    carregaprojetos = (id_projetos) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/"+id_projetos, 
-        { method: 'GET' })
-            .then(resposta => resposta.json())
-            .then(projetos => {
-                this.setState({
-                    id_projeto: projetos.id_projeto,
-                    nome_projeto: projetos.nome_projeto,
-                    nome_equipe: projetos.nome_equipe,
-                })
-                this.abrirModal();
-            })
-    }
-
-    deletarprojetos = (id_projeto) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/"+id_projeto, 
-        { method: 'DELETE' })
-            .then(resposta => {
-                if(resposta.ok){
-                    this.buscarprojetos();
-                }
-        })
-    }
-    atualizarprojetos = (projetos) => {
-        fetch("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/", {
-            method: 'PUT' ,
-            headers: { 'Content-Type':'application/json' },
-            body: JSON.stringify(projetos)
-        })
-            .then(resposta => {
-                if(resposta.ok){
-                    this.buscarprojetos();
-                    }else{
-                        alert("nao atualiza")
-            }
-        })
-
-    }
-
-/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
-atualizaNome = (e) => {
-    this.setState(
-        {
-            nome_projeto: e.target.value
-        }
-    )
-}
-atualizaEquipe_id = (e) => {
-    this.setState(
-        {
-            equipe_id: e.target.value
-        }
-    )
-}
-
-/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDER TABELA=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
-    renderTabela(){
-        return <Table id="table" striped bordered hover variant="dark">
-            <thead>
-                <tr>
-                <th>id_projeto</th>
-                <th>nome_projeto</th>
-                <th>nome_equipe</th>
-                <th>Opcoes</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    this.state.projetos.map((projetos) =>
-                        <tr>
-                            <td> {projetos.id_projeto} </td>
-                            <td> {projetos.nome_projeto} </td>
-                            <td> {projetos.nome_equipe} </td>
-                            <td id="icon">
-                                <AiFillEdit onClick={() => this.carregaprojetos(projetos.id_projeto)}/> 
-                                <AiFillDelete onClick={() => this.deletarprojetos(projetos.id_projeto)}/>
-                                <BsSearch/> 
-                            </td>
-                        </tr>
-                    )
-                }
+    },[])
+    
+   const meuNovopost = post.filter((valorAtual) => {
+        return valorAtual.status.includes("Em planejamento")
+    })
+    console.log(meuNovopost)
+    
+  return(
+    <div>
+        <div className="geralcards"> 
+            <div id="PostBuscaEQ">
                 
-            </tbody>
-        </Table>
-    }
+            </div>    
+        {
+            post.map((post,key) => {
+                return(
+                    <div>
+                        <div id="projetocard" style={{background: '#171821', borderRadius:'2rem'}}>
+                            <Card  style={{ width: '18rem', background:'#21222D',  borderRadius:'2rem'}} key={key}>
+                                <Card.Header id="header" style={{color:'#A9DFD8'}}>{post.status}</Card.Header>
+                                <Card.Title style={{color:"#A9DFD8"}}></Card.Title>
+                                <Card.Body>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    </div>
+                    
+                )
 
-/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-FUCOES=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=*/
+            })
+        }   
+           
+    </div>
 
+    </div>
+  );
 
-submit = () => {
-    if(this.state.id_pessoa == 0){
-        const pessoas = {
-        id_projeto: this.state.id_pessoa,
-        nome_projeto : this.state.nome_pessoa,
-        nome_equipe: this.state.nome_equipe,
-    }
-    this.cadastraprojetos(pessoas);
-
-    }else{
-        const pessoas = {
-        id_pessoa: this.state.id_pessoa,
-        nome_pessoa : this.state.nome_pessoa,
-        funcao_pessoa: this.state.funcao_pessoa,
-        equipe_id: this.state.equipe_id,
-    }
-
-    this.atualizarprojetos(pessoas);
-    }
+        /*<Card style={{ width: '18rem' }} key={key}>
+                    <Card.Body style={{background: '#21222D', border: 'none', color:'white'}}>
+                      <Card.Title>{post.nome_equipe}</Card.Title>
+                      <Card.Link href="#">Card Link</Card.Link>
+                      <Card.Link href="#">Another Link</Card.Link>
+                    </Card.Body>
+                  </Card>
+                  <CardGroup>
+                        <Card key={key} style={{ width: '18px' }}>
+                            <Card.Img variant="top" src="holder.js/100px160" />
+                            <Card.Body>
+                            <Card.Title>{post.nome_equipe}</Card.Title>
+                            </Card.Body>
+                        </Card>
+                    </CardGroup>
+                  
+                  
+                  */
+    
+  
+  
 }
-
-    fecharModal = () => {
-        this.setState(
-            {
-                modalAberta: false
-
-            }
-         )
-    }
-
-    abrirModal = () => {
-        this.setState(
-            {
-                modalAberta: true
-
-            }
-         )
-    }
-
-/*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=RENDER PESSOA=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
-
-render(){
-    return(
-        <div id="modal">
-
-            <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
-                <Modal.Header closeButton>
-                <Modal.Title>Adicionar um novo projeto:</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                     <Form>
-
-            <Form.Group className="mb-3">
-                <Form.Label>nome_projeto</Form.Label>
-                <Form.Control type="text" placeholder="nome" value={this.state.nome_projeto} onChange={this.atualizaNome}/>
-            </Form.Group>
-             <Form.Group className="mb-3">
-                <Form.Label>equipe_id</Form.Label>
-                 <Form.Control type="number" placeholder="equipe" value={this.state.equipe_id} onChange={this.atualizaEquipe_id}/>
-            </Form.Group>
-            </Form>
-            
-                </Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={this.fecharModal}>
-                    Cancelar
-                </Button>
-                <Button  variant="primary" type="submit" onClick={this.submit} >
-                    Adicionar
-                </Button>
-                </Modal.Footer>
-            </Modal>
-            
-            <div id="iconsgeral">
-                <div id="add">
-                    <AiFillPlusSquare type="submit" onClick={this.abrirModal}/>
-                </div>
-
-                <div id="ordemalfa">
-                    <AiOutlineOrderedList/>
-                </div>
-
-                <div id="filtrobusca">
-                    <AiTwotoneFilter/>
-                </div>
-            </div>
-            {this.renderTabela()}
-        </div>
-    );
-  }
-}
-
-
 
 export default Projetos;
