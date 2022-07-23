@@ -17,7 +17,7 @@ import SearchIcon from '@mui/icons-material/Search';
 function Pessoas() {
 
     const [ posts, setPosts ] = useState([])
-
+    
 
     useEffect(() => {
             axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
@@ -29,6 +29,7 @@ function Pessoas() {
             })
     }, []
     )
+
 
     function deletePost (id) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id}`)

@@ -7,11 +7,14 @@ import Sobre from './components/Sobre/Sobre';
 import Post from './components/Pessoas/Post/Post';
 import Edit from './components/Pessoas/Edit/edit';
 import Inspecionar from './components/Pessoas/Inspecionar/Inspecionar'
+import Add from './components/Equipes/Add/add'
+import EditE from './components/Equipes/EditE/edit'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
+import PostE from './components/Equipes/Add/add';
 function App() {
 
   return (
@@ -44,7 +47,8 @@ function App() {
       <Route path="/Post" element={<Post/>}></Route>
       <Route path="/Edit/:id_pessoa" element={<Edit/>}></Route>
       <Route path="/Inspecionar" element={<Inspecionar/>}></Route>
-
+      <Route path="/Add" element={<Add/>}></Route>
+      <Route path="/EditE/:id_equipe" element={<Edit/>}></Route>
     </Routes>
     </BrowserRouter>
 </div>
