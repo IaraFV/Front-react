@@ -36,10 +36,10 @@ function Pessoas() {
 
 
 return(
-      <div>
+      <div >
          <div> 
             <div id="informativo">
-                <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '2%', marginTop: '4%'}}>Cadastro de Pessoas</h1>
+                <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '5%', marginTop: '4%'}}>Cadastro de Pessoas</h1>
                 <div id="usuarios">
                 <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
                     i
@@ -57,12 +57,13 @@ return(
                 
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
             </div>
+            <div id="geralpessoas">
          {
             posts.map((posts,key) => {
 
             return (
             <div className="cardpessoas">
-            <Card  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
+            <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
                 <CardHeader className="titlecinco"
                 avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
 
@@ -100,6 +101,7 @@ return(
               })
             }
             </div>
+</div>
         </div>
 )
 }

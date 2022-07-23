@@ -7,24 +7,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import './inspecionar.css'
 
 function Inspecionar () {
-return(
-<>
-        <div>
-            <IconButton sx={{color: 'white'}}>
-                <Link to="/Pessoas" />
-                <ArrowBackIcon/>
-            </IconButton>
 
-            <main>
-                <div className="card-inspecionar">
-                    
-                </div>
-            </main>
-
-        </div>
-</>
-    )
 }
-
 
 export default Inspecionar;
