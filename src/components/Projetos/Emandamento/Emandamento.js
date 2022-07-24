@@ -4,9 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from "react";
 import './Emandamento.css';
 import { Link } from 'react-router-dom';
-import AlarmIcon from '@mui/icons-material/Alarm';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+
 
 function Emandamento(){
 
@@ -46,7 +44,7 @@ function Emandamento(){
 
                 <div className="line-concluidos"></div>
                 <Link to="/Post">
-                    <button className="btn-adicionar-projeto">Adicionar Projeto</button>
+                    <button id="btn-adicionar-projeto">Adicionar Projeto</button>
                 </Link>
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
         </div>

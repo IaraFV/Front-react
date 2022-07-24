@@ -20,19 +20,20 @@
     color: #fff;
     
 }
-.btn-adicionar-projeto{
+#adicionar{
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
-    padding: 3% 25px;
+    padding: 5px 25px;
     color: #fff;
     background-color: #A9DFD8;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
     margin-left: 5%;
-    margin-top: 555%;
-    margin-bottom: 5%;
+    margin-top: -1%;
+    margin-bottom: 3%;
+    
 }
 .renderutprojeto{
     margin-top: -23%;

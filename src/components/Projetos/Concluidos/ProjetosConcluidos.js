@@ -45,7 +45,7 @@ function Projetos(){
                 </div>
                 <div className="line-concluidos"></div>
                 <Link to="/Post">
-                    <button className="btn-adicionar-projeto">Adicionar Projeto</button> 
+                    <button id="adicionar">Adicionar Projeto</button> 
                 </Link>
                 
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
