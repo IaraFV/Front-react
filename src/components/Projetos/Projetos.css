@@ -7,7 +7,7 @@
     width: 50%;
     padding: 3%;
     justify-content: space-around;
-    margin-top: -29%;
+    margin-top: -26.5%;
     margin-left: 1%;
 }
 #rendeprojetos{
@@ -35,7 +35,26 @@
     margin-bottom: 2%;
 }
 .renderutprojeto{
-    margin-top: 5%;
-    border: 1px solid red;
+    margin-top: -23%;
     
+}
+.renderprojetodois{
+    margin-top: 2%;
+    
+}
+.renderprojetotres{
+    margin-top: 2%;
+    
+}
+.renderprojetoquatro{
+    margin-top: 2%;
+    
+}
+.renderprojetocinco{
+    margin-top: 2%;
+    
+}
+#alarme{
+    margin-top: 2.5%;
+    margin-left: 4%;   
 }

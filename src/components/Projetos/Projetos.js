@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from "react";
 import './Projetos.css';
 import { Link } from 'react-router-dom';
+import AlarmIcon from '@mui/icons-material/Alarm';
 
 function Projetos(){
 
@@ -45,10 +46,22 @@ function Projetos(){
         </div>
 
         <div>
-                <div className="renderutprojeto" style={{ background: '#171821', borderRadius: '2rem', height: '2rem', marginLeft: '64%', width: '10%' }}>
-                tv
+                <div className="renderutprojeto" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
+                <AlarmIcon id="alarme" style={{color: '#fff'}}/>
                 </div>
-            </div>
+                <div className="renderprojetodois" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
+                <AlarmIcon id="alarme" style={{color: '#fff'}}/>
+                </div>
+                <div className="renderprojetotres" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
+                <AlarmIcon id="alarme" style={{color: '#fff'}}/>
+                </div>
+                <div className="renderprojetoquatro" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
+                <AlarmIcon id="alarme" style={{color: '#fff'}}/>
+                </div>
+                <div className="renderprojetocinco" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
+                <AlarmIcon id="alarme" style={{color: '#fff'}}/>
+                </div>
+        </div>
         <div className="geralprojeto">
 
               {post.map((post, key) => {
