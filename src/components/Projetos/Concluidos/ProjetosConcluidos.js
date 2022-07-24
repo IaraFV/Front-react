@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import './Projetos.css';
 import { Link } from 'react-router-dom';
 import AlarmIcon from '@mui/icons-material/Alarm';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-
+import Checkbox from '@mui/material/Checkbox';
+import IconButton from '@mui/material/IconButton';
+import { AiOutlineMore } from "react-icons/ai";
 
 function Projetos(){
 
@@ -26,6 +26,7 @@ function Projetos(){
     })
 
     console.log(meuNovopost)
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     
    
   return(
@@ -45,7 +46,7 @@ function Projetos(){
                 </div>
                 <div className="line-concluidos"></div>
                 <Link to="/Post">
-                    <button className="btn-adicionar-projeto">Adicionar Projeto</button>
+                    <button className="btn-adicionar-projeto">Adicionar Projeto</button> 
                 </Link>
                 
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
@@ -85,7 +86,13 @@ function Projetos(){
                         <div>
                           <div id="projetocard" style={{ background: '#171821', borderRadius: '2rem' }}>
                               <Card style={{ width: '18rem', height: '9rem', marginRight: '2%', background: '#21222D', borderRadius: '2rem' }} key={key}>
-                                  <Card.Header id="header" style={{ color: '#A9DFD8' }}>{post.status}</Card.Header>
+                                  <Card.Header id="header" style={{ color: '#A9DFD8' }}>
+                                    <div className="poststatus">{post.status}</div>
+                                    <Checkbox {...label} defaultChecked style={{color:'#CCCCCC', border: '#444444', display: 'flex', justifyContent:'flex-end', marginTop: '-13.5%', marginRight: '4%'}} id="check"/>
+                                    <IconButton >
+                                        <AiOutlineMore style={{color:'#CCCCCC'}} />
+                                    </IconButton>
+                                  </Card.Header>
                                   <Card.Title style={{ color: "#A9DFD8" }}></Card.Title>
                                   <Card.Body>
                                       <h4 style={{ color: '#fff' }}>{post.nome_projeto}</h4>
