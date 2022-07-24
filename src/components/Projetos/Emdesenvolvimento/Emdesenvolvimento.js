@@ -2,13 +2,13 @@ import axios from "axios";
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from "react";
-import './Projetos.css';
+import './Emdesenvolvimento.css';
 import { Link } from 'react-router-dom';
 import AlarmIcon from '@mui/icons-material/Alarm';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
-function Projetos(){
-
-    
+function Emdesenvolvimento(){
 
     const  [post, setpost] = useState([])
     useEffect(() => {
@@ -26,15 +26,33 @@ function Projetos(){
 
     console.log(meuNovopost)
     
+   
   return(
        
 <>
 
         <div id="informativo">
             <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '5%', marginTop: '4%'}}>Cadastro de Projetos</h1>
+
                 <Link to="/Post">
                     <button className="btn-adicionar-projeto">Adicionar Projeto</button>
                 </Link>
+
+
+                 <Tabs
+                    defaultActiveKey="profile"
+                    id="justify-tab-example"
+                    className="mb-3"
+                    justify
+                    >
+                    <Tab eventKey="home" title="Concluidas"/>
+
+                    <Tab eventKey="profile" title="Em desenvolvimento"/>
+                        
+                    <Tab eventKey="longer-tab" title="Em planejamento"/>
+                        
+                    
+                    </Tabs>
                 
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
         </div>
@@ -67,7 +85,9 @@ function Projetos(){
               {post.map((post, key) => {
                   return (
                 
-<>                  <div>
+<>                  
+
+                        <div>
                           <div id="projetocard" style={{ background: '#171821', borderRadius: '2rem' }}>
                               <Card style={{ width: '18rem', height: '9rem', marginRight: '2%', background: '#21222D', borderRadius: '2rem' }} key={key}>
                                   <Card.Header id="header" style={{ color: '#A9DFD8' }}>{post.status}</Card.Header>
@@ -78,7 +98,6 @@ function Projetos(){
                               </Card>
                           </div>
                       </div>
-
                        
 </>
                 
@@ -118,4 +137,4 @@ function Projetos(){
   
 }
 
-export default Projetos;
+export default Emdesenvolvimento;

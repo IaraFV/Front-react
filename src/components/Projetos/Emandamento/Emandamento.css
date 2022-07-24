@@ -1,0 +1,61 @@
+
+#header{
+     height: 35px;
+}
+.geralprojeto{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding: 3%;
+    justify-content: space-around;
+    margin-top: -26.5%;
+    margin-left: 1%;
+}
+#rendeprojetos{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 60%;
+    width: 25%;
+}
+.statusprojetoh5{
+    color: #fff;
+    
+}
+.btn-adicionar-projeto{
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 25px;
+    color: #fff;
+    background-color: #A9DFD8;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 5%;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+.renderutprojeto{
+    margin-top: -23%;
+    
+}
+.renderprojetodois{
+    margin-top: 2%;
+    
+}
+.renderprojetotres{
+    margin-top: 2%;
+    
+}
+.renderprojetoquatro{
+    margin-top: 2%;
+    
+}
+.renderprojetocinco{
+    margin-top: 2%;
+    
+}
+#alarme{
+    margin-top: 2.5%;
+    margin-left: 4%;   
+}

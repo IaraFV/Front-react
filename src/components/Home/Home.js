@@ -5,6 +5,7 @@ import {  ClipboardCheckFill,  FileEarmarkFill,  PeopleFill,  } from 'react-boot
 import Card from 'react-bootstrap/Card'
 import { Graf } from "../Graficos/graf";
 import { Graf2 } from "../Graficos/graf2";
+import { Link } from 'react-router-dom';
 
 function Home (){
     return(
@@ -20,19 +21,20 @@ function Home (){
                 <div id="cards" style={{background: '#21222D'}}>                  
                     <div id="cardum" style={{background: '#171821'}}>
                     <PeopleFill id="iconpeoplefill" color="beige" size={60}/>
-                    <p id="sabermais">Saber mais</p>
+                    <Link to="/Pessoas"><p id="sabermais">Saber mais</p></Link>
+            
                     <p id="amarelo">Total de pessoas<br/>adicionadas ate hoje:</p>
                     <h3>300 +</h3>
                     </div>
 
                     <div id="carddois"  style={{background: '#171821'}}><FileEarmarkFill id="iconprojeto" color="beige" size={52}/>
-                    <p id="sabermais">Saber mais</p>
+                    <Link to="/Projetos"><p id="sabermais">Saber mais</p></Link>
                     <p id="amarelo">Total de projetos<br/>adicionadas ate hoje:</p>
                     <h3>300 +</h3>
                     </div>
                     <div id="cardtres"  style={{background: '#171821' }}><ClipboardCheckFill id="iconpeople" color="beige" size={56}/>
-                     <p id="sabermais">Saber mais</p>
-                    <p id="amarelo">Total de projetos<br/>adicionadas ate hoje:</p>
+                     <Link to="/Task"><p id="sabermais">Saber mais</p></Link>
+                    <p id="amarelo">Total de Task's<br/>adicionadas ate hoje:</p>
                     <h3>300 +</h3>
                     </div>
                 </div>

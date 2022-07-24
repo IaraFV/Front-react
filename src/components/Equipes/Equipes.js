@@ -63,7 +63,6 @@ return(
                     </IconButton>
                 }
                 
-                
                 />
                 <div className="equipeuser">
                     <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">i</Avatar>

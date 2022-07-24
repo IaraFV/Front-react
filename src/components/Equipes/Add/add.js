@@ -34,7 +34,7 @@ function PostE() {
 <>
         <div>
             <IconButton sx={{color: 'white'}}>
-                <Link to="/Equipes" />
+                <Link to="/Equipes"/>
                 <ArrowBackIcon/>
             </IconButton>
 

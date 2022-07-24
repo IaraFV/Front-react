@@ -12,7 +12,7 @@ main {
     border-radius: 15px;
 }
 
-.card-post h1{
+.card-post-equipe h1{
     font-family: Heebo;
     font-weight: 800;
     text-align: center;
@@ -75,13 +75,13 @@ textarea {
 
 }
 
-.btn-post button{
+.btn-post-equipe button{
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
     padding: 5px 50px;
     color: #fff;
-    background-color: #3DECB1;
+    background-color: #E9C46A;
     border: 0;
     border-radius: 10px;
     cursor: pointer;

@@ -2,7 +2,7 @@ import Home from './components/Home/Home'
 import Pessoas from './components/Pessoas/Pessoas'
 import Equipes from './components/Equipes/Equipes'
 import Task from './components/Task/Task';
-import Projetos from './components/Projetos/Projetos';
+import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConcluidos';
 import Sobre from './components/Sobre/Sobre';
 import Post from './components/Pessoas/Post/Post';
 import Edit from './components/Pessoas/Edit/edit';
@@ -15,6 +15,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
 import PostE from './components/Equipes/Add/add';
+import Emdesenvolvimento from './components/Projetos/Emdesenvolvimento/Emdesenvolvimento'
+import Emandamento from './components/Projetos/Emandamento/Emandamento'
 function App() {
 
   return (
@@ -28,7 +30,7 @@ function App() {
 
       <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Equipes">Equipes</Nav.Link>
 
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Projetos">Projetos</Nav.Link>
+      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/ProjetosCnc">Projetos</Nav.Link>
 
       <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Task">Task</Nav.Link>
 
@@ -41,7 +43,7 @@ function App() {
       <Route path="/" element={<Home/>}></Route>
       <Route path="/Pessoas" element={<Pessoas/>}></Route>
       <Route path="/Equipes" element={<Equipes/>}></Route>
-      <Route path="/Projetos" element={<Projetos/>}></Route>
+      <Route path="/ProjetosCnc" element={<ProjetosConcluidos/>}></Route>
       <Route path="/Task" element={<Task/>}></Route>
       <Route path="/Sobre" element={<Sobre/>}></Route>
       <Route path="/Post" element={<Post/>}></Route>
@@ -49,6 +51,9 @@ function App() {
       <Route path="/Inspecionar" element={<Inspecionar/>}></Route>
       <Route path="/Add" element={<Add/>}></Route>
       <Route path="/EditE/:id_equipe" element={<Edit/>}></Route>
+      <Route path="/Emdesenvolvimento" element={<Emdesenvolvimento/>}></Route>
+    <Route path="/Emandamento" element={<Emandamento/>}></Route>
+
     </Routes>
     </BrowserRouter>
 </div>
