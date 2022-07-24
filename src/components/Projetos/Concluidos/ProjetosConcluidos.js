@@ -6,8 +6,7 @@ import './Projetos.css';
 import { Link } from 'react-router-dom';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import { AiOutlineMore } from "react-icons/ai";
+import { FiMoreVertical } from "react-icons/fi";
 
 function Projetos(){
 
@@ -88,10 +87,10 @@ function Projetos(){
                               <Card style={{ width: '18rem', height: '9rem', marginRight: '2%', background: '#21222D', borderRadius: '2rem' }} key={key}>
                                   <Card.Header id="header" style={{ color: '#A9DFD8' }}>
                                     <div className="poststatus">{post.status}</div>
-                                    <Checkbox {...label} defaultChecked style={{color:'#CCCCCC', border: '#444444', display: 'flex', justifyContent:'flex-end', marginTop: '-13.5%', marginRight: '4%'}} id="check"/>
-                                    <IconButton >
-                                        <AiOutlineMore style={{color:'#CCCCCC'}} />
-                                    </IconButton>
+                                    <Checkbox {...label} defaultChecked style={{color:'#CCCCCC', border: '#444444', display: 'flex', justifyContent:'flex-end', marginTop: '-13.5%', marginRight: '3%'}} id="check"/>
+                                   
+                                    <FiMoreVertical style={{color:'#CCCCCC', display: 'flex', justifyContent:'flex-end', marginLeft: '95%', marginTop: '-11.7%'}} />
+                                
                                   </Card.Header>
                                   <Card.Title style={{ color: "#A9DFD8" }}></Card.Title>
                                   <Card.Body>
