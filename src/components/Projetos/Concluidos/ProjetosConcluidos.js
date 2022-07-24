@@ -35,14 +35,18 @@ function Projetos(){
         <div id="informativo">
             <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '5%', marginTop: '4%'}}>Cadastro de Projetos</h1>
 
+                
+
+                <div className="links">
+                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/ProjetosCnc"><h5>Concluído</h5></Link>
+                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/Emdesenvolvimento"><h5>Em desenvolvimento</h5></Link>
+                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/Emandamento"><h5>Em andamento</h5></Link>
+                    
+                </div>
+                <div className="line-concluidos"></div>
                 <Link to="/Post">
                     <button className="btn-adicionar-projeto">Adicionar Projeto</button>
                 </Link>
-
-
-                <Link to="/ProjetosConcluidos">Concluídos</Link>
-                <Link to="/Emdesenvolvimento">Em desenvolvimento</Link>
-                <Link to="/Emandamento">Em andamento</Link>
                 
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
         </div>
@@ -70,7 +74,8 @@ function Projetos(){
                 <AlarmIcon id="alarme" style={{color: '#fff'}}/>
                 </div>
         </div>
-        <div className="geralprojeto">
+
+        <div className="geralprojetoc">
 
               {post.map((post, key) => {
                   return (

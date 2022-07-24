@@ -39,20 +39,13 @@ function Emdesenvolvimento(){
                 </Link>
 
 
-                 <Tabs
-                    defaultActiveKey="profile"
-                    id="justify-tab-example"
-                    className="mb-3"
-                    justify
-                    >
-                    <Tab eventKey="home" title="Concluidas"/>
-
-                    <Tab eventKey="profile" title="Em desenvolvimento"/>
-                        
-                    <Tab eventKey="longer-tab" title="Em planejamento"/>
-                        
+                 <div className="links">
+                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/ProjetosCnc"><h5>Concluído</h5></Link>
+                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/Emdesenvolvimento"><h5>Em desenvolvimento</h5></Link>
+                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/Emandamento"><h5>Em andamento</h5></Link>
                     
-                    </Tabs>
+                </div>
+                <div className="line-concluidos"></div>
                 
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
         </div>
@@ -80,7 +73,7 @@ function Emdesenvolvimento(){
                 <AlarmIcon id="alarme" style={{color: '#fff'}}/>
                 </div>
         </div>
-        <div className="geralprojeto">
+        <div className="geralprojetodesenv">
 
               {post.map((post, key) => {
                   return (
