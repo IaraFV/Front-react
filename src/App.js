@@ -9,7 +9,7 @@ import Edit from './components/Pessoas/Edit/edit';
 import Inspecionar from './components/Pessoas/Inspecionar/Inspecionar'
 import Add from './components/Equipes/Add/add'
 import AddProjeto from './components/Projetos/AddProjeto/AddProjeto'
-import EditE from './components/Equipes/EditE/edit'
+import EditE from './components/Equipes/EditE/edite'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,7 +52,7 @@ function App() {
       <Route path="/Inspecionar" element={<Inspecionar/>}></Route>
       <Route path="/Add" element={<Add/>}></Route>
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
-      <Route path="/EditE/:id" element={<Edit/>}></Route>
+      <Route path="/EditE/:id" element={<EditE/>}></Route>
       <Route path="/Emdesenvolvimento" element={<Emdesenvolvimento/>}></Route>
     <Route path="/Emandamento" element={<Emandamento/>}></Route>
 

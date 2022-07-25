@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
-import './edit.css'
+
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 
@@ -64,11 +64,7 @@ function Edit() {
                                 <p className="error-message">{errors.nome_pessoa?.message} </p>
                             </div>
 
-                            <div className="fields">
-                                <label>Função</label>
-                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")}/>
-                                <p className="error-message">{errors.funcao_pessoa?.message} </p>
-                            </div>
+                            
 
                             <div className="btn-post">
                                 <button type="submit">Cadastrar</button>
