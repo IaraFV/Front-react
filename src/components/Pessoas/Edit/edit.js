@@ -19,14 +19,9 @@ function Edit() {
 
     const { id_pessoa } = useParams()
 
-   let navigate = useNavigate()
+    let navigate = useNavigate()
 
-
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(validacaoGet)
-})
-
-    const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
+     const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
         .then(() => {
             console.log("foi")
             navigate("/Pessoas");
@@ -35,12 +30,19 @@ function Edit() {
             console.log("n foi")
         })
 
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(validacaoGet)
+})
+
+   
+
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
         .then((response) => {
             reset(response.data)
         })
     }, [])
+
 
     return(
         <div>
