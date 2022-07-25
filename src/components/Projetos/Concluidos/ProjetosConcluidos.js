@@ -44,7 +44,7 @@ function Projetos(){
                     
                 </div>
                 <div className="line-concluidos"></div>
-                <Link to="/Post">
+                <Link to="/AddProjeto">
                     <button id="adicionar">Adicionar Projeto</button> 
                 </Link>
                 
@@ -112,29 +112,6 @@ function Projetos(){
           </div>
 </>
   );
-
-
-
-        /*<Card style={{ width: '18rem' }} key={key}>
-                    <Card.Body style={{background: '#21222D', border: 'none', color:'white'}}>
-                      <Card.Title>{post.nome_equipe}</Card.Title>
-                      <Card.Link href="#">Card Link</Card.Link>
-                      <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                  </Card>
-                  <CardGroup>
-                        <Card key={key} style={{ width: '18px' }}>
-                            <Card.Img variant="top" src="holder.js/100px160" />
-                            <Card.Body>
-                            <Card.Title>{post.nome_equipe}</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </CardGroup>
-                  
-                  
-                  */
-    
-  
   
 }
 

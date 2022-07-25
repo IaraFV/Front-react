@@ -8,6 +8,7 @@ import Post from './components/Pessoas/Post/Post';
 import Edit from './components/Pessoas/Edit/edit';
 import Inspecionar from './components/Pessoas/Inspecionar/Inspecionar'
 import Add from './components/Equipes/Add/add'
+import AddProjeto from './components/Projetos/AddProjeto/AddProjeto'
 import EditE from './components/Equipes/EditE/edit'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import {Nav} from 'react-bootstrap'
@@ -50,7 +51,8 @@ function App() {
       <Route path="/Edit/:id_pessoa" element={<Edit/>}></Route>
       <Route path="/Inspecionar" element={<Inspecionar/>}></Route>
       <Route path="/Add" element={<Add/>}></Route>
-      <Route path="/EditE/:id_equipe" element={<Edit/>}></Route>
+      <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
+      <Route path="/EditE/:id" element={<Edit/>}></Route>
       <Route path="/Emdesenvolvimento" element={<Emdesenvolvimento/>}></Route>
     <Route path="/Emandamento" element={<Emandamento/>}></Route>
 

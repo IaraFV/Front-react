@@ -60,6 +60,8 @@ function Post() {
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
+                         
+
                             <div className="btn-post">
                                 <button type="submit">Cadastrar</button>
                             </div>
