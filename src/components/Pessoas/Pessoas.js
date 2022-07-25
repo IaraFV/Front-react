@@ -8,7 +8,6 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
@@ -31,8 +30,9 @@ function Pessoas() {
     )
 
 
-    function deletePost (id) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id}`)
+    function deletePost (id_pessoa) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
     }
 
 
@@ -92,7 +92,7 @@ return(
                      </Link>
                 </IconButton>
 
-                <IconButton onClick={() => deletePost(posts._id) } aria-label="share" sx={{color: '#E9C46A'}} >
+                <IconButton onClick={() => deletePost(posts.id_pessoa) } aria-label="share" sx={{color: '#E9C46A'}} >
                     <DeleteIcon  />
                 </IconButton>
                 </CardActions>
