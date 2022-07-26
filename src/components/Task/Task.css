@@ -1,0 +1,7 @@
+#geraltasks{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3%;
+    margin-top: -2%;
+    border: 1px solid red
+}
