@@ -79,9 +79,11 @@ return(
                 <Box
                     sx={{
                         '& > legend': { mt: 2 },
+                        color: '#E9C46A',
                     }}
                     >
                     <Rating
+                        
                         name="simple-controlled"
                         value={value}
                         onChange={(event, newValue) => {
