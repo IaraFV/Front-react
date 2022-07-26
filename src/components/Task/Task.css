@@ -5,3 +5,19 @@
     margin-top: -2%;
     border: 1px solid red
 }
+.cardtask{
+    border: 2.1px solid #21222D;
+    border-radius: 1.5rem;
+    display: flex;
+    width: 17%;
+    align-items: center;
+    margin-left: 2%;
+    margin-top: 2%;
+   
+}
+.line-task {
+    height: 2px;
+    background-color: #3E445B;
+    width: 100%;
+    margin-top: -3%;
+}

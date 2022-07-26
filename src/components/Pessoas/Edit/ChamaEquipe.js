@@ -44,15 +44,15 @@ export default function ChamaEquipe() {
     return (
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label"></InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id_equipe="demo-simple-select"
             value={age}
-            label="Age"
+            label=""
             onChange={handleChange}>
-                { equipe.map((repo) =>
-            <MenuItem value={10} key={equipe.id_equipe}>{repo.id_equipe}</MenuItem>
+                { equipe.map((equipe) =>
+            <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.id_equipe}</MenuItem>
             )}
           </Select>
         </FormControl>

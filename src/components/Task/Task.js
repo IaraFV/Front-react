@@ -12,11 +12,12 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import Checkbox from '@mui/material/Checkbox';
 
 function Task() {
 
     const [ posts, setPosts ] = useState([])
-    
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     useEffect(() => {
             axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
@@ -49,14 +50,14 @@ return(
             posts.map((posts,key) => {
 
             return (
-            <div className="cardpessoas">
-            <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
+            <div className="cardtask">
+            <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white', borderRadius: '1.5rem' }} key={key} >
                 <CardHeader className="titlecinco"
-                avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
+
 
                 action={
                     <IconButton aria-label="settings">
-                    <Link to="/Inspecionar"><SearchIcon  sx={{color: '#E9C46A'}}/></Link>
+                    <Checkbox {...label} style={{color:'#CCCCCC', border: '#444444', display: 'flex', justifyContent:'flex-end', marginTop: '-13.5%', marginRight: '3%'}} defaultChecked />
                     </IconButton>
                 }
                 
@@ -70,7 +71,7 @@ return(
                 {posts.nome_pessoa}
                 </Typography>
                 </CardContent>
-                
+                <div className="line-task"></div>
                 <CardActions disableSpacing>
                 <IconButton> 
                      <Link to={{ pathname: `/Edit/${posts.id_pessoa}` }}>
