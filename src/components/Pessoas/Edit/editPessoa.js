@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import IconButton from '@mui/material/IconButton';
@@ -10,16 +10,22 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 import ChamaEquipe from './ChamaEquipe'
 
-const validacaoGet = yup.object().shape({
-    nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
-    funcao_pessoa: yup.string().required("A função é obrigatoria")
-})
 
 
 function Edit() {
-
+    const [equipeEscolhida, setEquipeEscolhida] = useState()
+    const childToParent = (childdata) => {
+        setEquipeEscolhida(childdata);
+        console.log(childdata)
+    }
+    
     const { id_pessoa } = useParams()
-
+    const validacaoGet = yup.object().shape({
+        nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
+        funcao_pessoa: yup.string().required("A função é obrigatoria"),
+        id_equipe: equipeEscolhida
+    })
+    
     let navigate = useNavigate()
 
      const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
@@ -74,7 +80,7 @@ function Edit() {
                             </div>
 
                             <div>
-                                <ChamaEquipe/>
+                                <ChamaEquipe childToParent={childToParent}/>
 
                             </div>
 

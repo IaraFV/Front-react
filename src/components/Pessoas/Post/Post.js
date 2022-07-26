@@ -8,6 +8,7 @@ import * as yup from 'yup'
 import './Post.css'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
+import ChamaEquipe from "../Edit/ChamaEquipe";
 
 const validacaoPost = yup.object().shape({
     nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
@@ -24,7 +25,7 @@ function Post() {
 
     const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", data)
     .then(() => {
-        console.log("foi")
+        console.log(addPost)
         navigate("/Pessoas");
     })
     .catch(() => {
@@ -60,7 +61,10 @@ function Post() {
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
-                         
+                            <div>
+                                <ChamaEquipe/>
+
+                            </div>
 
                             <div className="btn-post">
                                 <button type="submit">Cadastrar</button>
