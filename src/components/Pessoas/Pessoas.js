@@ -70,7 +70,7 @@ return(
 
                 action={
                     <IconButton aria-label="settings">
-                    <Link to="/Inspecionar"><SearchIcon  sx={{color: '#E9C46A'}}/></Link>
+                    <Link to={{ pathname: `/Inspecionar/${posts.id_pessoa}` }}><SearchIcon  sx={{color: '#E9C46A'}}/></Link>
                     </IconButton>
                 }
                 

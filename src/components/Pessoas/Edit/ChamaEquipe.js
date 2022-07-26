@@ -13,6 +13,7 @@ export default function ChamaEquipe(Props) {
     const handleChange = (event) => {
       setAge(event.target.value);
     };
+
     const [initialequipe, setInitialequipe] = useState([])
     const [equipe, setequipe] = useState([])
 
@@ -40,7 +41,7 @@ export default function ChamaEquipe(Props) {
             labelId="demo-simple-select-label"
             id_equipe="demo-simple-select"
             value={age}
-            label=""
+            label="Age"
             onChange={handleChange}>
                 { equipe.map((equipe) =>
             <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.id_equipe}</MenuItem>
