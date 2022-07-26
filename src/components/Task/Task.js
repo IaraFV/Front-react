@@ -11,13 +11,16 @@ import Typography from '@mui/material/Typography';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
 import Checkbox from '@mui/material/Checkbox';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+
 
 function Task() {
 
     const [ posts, setPosts ] = useState([])
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const [value, setValue] = React.useState(2);
 
     useEffect(() => {
             axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
@@ -72,17 +75,21 @@ return(
                 </Typography>
                 </CardContent>
                 <div className="line-task"></div>
-                <CardActions disableSpacing>
-                <IconButton> 
-                     <Link to={{ pathname: `/Edit/${posts.id_pessoa}` }}>
-                        <ModeEditIcon sx={{color: '#E9C46A'}}/>
-                     </Link>
-                </IconButton>
-
-                <IconButton onClick={() => deletePost(posts.id_pessoa) } aria-label="share" sx={{color: '#E9C46A'}} >
-                    <DeleteIcon  />
-                </IconButton>
-                </CardActions>
+               
+                <Box
+                    sx={{
+                        '& > legend': { mt: 2 },
+                    }}
+                    >
+                    <Rating
+                        name="simple-controlled"
+                        value={value}
+                        onChange={(event, newValue) => {
+                        setValue(newValue);
+                        }}
+                    />  
+                </Box>
+                
             </Card>
             </div>
                 )
