@@ -10,42 +10,44 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 
 const validacaoGet = yup.object().shape({
-    nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
-    funcao_pessoa: yup.string().required("A função é obrigatoria")
+    nome_equipe:  yup.string().required("O nome é obrigatorio!"),
+
 })
 
 
-function Edit() {
+function Edite() {
 
-    const { id_pessoa } = useParams()
+    const { id_equipe } = useParams()
 
-   let navigate = useNavigate()
+    let navigate = useNavigate()
 
-
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(validacaoGet)
-})
-
-    const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
+     const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`, data)
         .then(() => {
             console.log("foi")
-            navigate("/Pessoas");
+            navigate("/equipes");
         })
         .catch(() => {
             console.log("n foi")
         })
 
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(validacaoGet)
+})
+
+   
+
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         .then((response) => {
             reset(response.data)
         })
     }, [])
 
+
     return(
         <div>
             <IconButton sx={{color: 'white'}}>
-                <Link to="/Pessoas" />
+                <Link to="/equipes" />
                 <ArrowBackIcon/>
             </IconButton>
 
@@ -60,11 +62,9 @@ function Edit() {
 
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")}/>
-                                <p className="error-message">{errors.nome_pessoa?.message} </p>
+                                <input type="text" name="nome_equipe" {...register("nome_equipe")}/>
+                                <p className="error-message">{errors.nome_equipe?.message} </p>
                             </div>
-
-                            
 
                             <div className="btn-post">
                                 <button type="submit">Cadastrar</button>
@@ -78,4 +78,4 @@ function Edit() {
     )
 }
 
-export default Edit;
+export default Edite;

@@ -82,7 +82,7 @@ return(
                 
                 <CardActions disableSpacing>
                 <IconButton> 
-                     <Link to={{ pathname: `/EditE/${posts._id}` }}>
+                     <Link to={{ pathname: `/EditE/${posts.id_equipe}` }}>
                         <ModeEditIcon sx={{color: '#E9C46A'}}/>
                      </Link>
                 </IconButton>
