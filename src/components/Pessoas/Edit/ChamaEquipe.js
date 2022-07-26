@@ -30,16 +30,7 @@ export default function ChamaEquipe() {
         };
         fetchequipe();
     }, []);
-    const handlechange = ({target}) =>{
-        if(!target.value) {
-            setequipe(initialequipe)
-            return
-        }
-        const filterepo = equipe.filter(({id_equipe}) =>
-        id_equipe.includes(target.value))
-
-        setequipe(filterepo);
-    }
+    
   
     return (
       <Box sx={{ minWidth: 120 }}>
