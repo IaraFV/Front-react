@@ -29,6 +29,7 @@
     "react-router-dom": "^6.3.0",
     "react-script": "^2.0.5",
     "react-scripts": "^5.0.1",
+    "react-update": "^0.4.4",
     "recharts": "^2.1.12",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",

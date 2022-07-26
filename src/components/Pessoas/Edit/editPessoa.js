@@ -8,6 +8,7 @@ import * as yup from 'yup'
 import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
+import ChamaEquipe from './ChamaEquipe'
 
 const validacaoGet = yup.object().shape({
     nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
@@ -70,6 +71,11 @@ function Edit() {
                                 <label>Função</label>
                                 <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")}/>
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
+                            </div>
+
+                            <div>
+                                <ChamaEquipe/>
+
                             </div>
 
                             <div className="btn-post">
