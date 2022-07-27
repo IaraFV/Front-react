@@ -27,39 +27,37 @@ function Inspecionar() {
     )
 
 
-return(
-      <div >
-         <div> 
-            
-            <div id="geralpessoas">
+return( 
+        <div id="geralpessoas">
          {
             posts.map((posts,key) => {
 
             return (
-            <div className="cardpessoas">
-            <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
-                <CardHeader className="titlecinco"
-                avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
+                <div className="cardpessoas">
 
-                title={
-                posts.nome_pessoa
-                }
-                />
-            
-                <CardContent sx={{color: 'white' }}>
-                <Typography variant="body2" color="white">
-                {posts.funcao_pessoa}
-                </Typography>
-                </CardContent>
+                <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
+                    <CardHeader className="titlecinco"
+                    avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
+
+                    title={
+                    posts.nome_pessoa
+                    }
+                    />
                 
-            </Card>
-            </div>
+                    <CardContent sx={{color: 'white' }}>
+                    <Typography variant="body2" color="white">
+                    {posts.funcao_pessoa}
+                    </Typography>
+                    </CardContent>
+                    
+                </Card>
+                </div>
                 )
               })
             }
-            </div>
-</div>
         </div>
+   
+        
 )
 }
 

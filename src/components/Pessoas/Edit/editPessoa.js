@@ -8,7 +8,12 @@ import * as yup from 'yup'
 import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
-import ChamaEquipe from './ChamaEquipe'
+
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 
@@ -16,21 +21,22 @@ function Edit() {
     const [equipeEscolhida, setEquipeEscolhida] = useState()
     const childToParent = (childdata) => {
         setEquipeEscolhida(childdata);
-        console.log(childdata)
+        console.log(equipeEscolhida)
     }
     
     const { id_pessoa } = useParams()
     const validacaoGet = yup.object().shape({
         nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
-        id_equipe: equipeEscolhida
+        equipe_id: yup.number()
     })
     
     let navigate = useNavigate()
 
      const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
         .then(() => {
-            console.log("foi")
+            console.log("foi");
+            console.log(age);
             navigate("/Pessoas");
         })
         .catch(() => {
@@ -48,8 +54,25 @@ function Edit() {
         .then((response) => {
             reset(response.data)
         })
+
+        const fetchequipe = async () => {
+            try {
+                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/');
+                const data = await response.json();
+                setequipe(data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchequipe();
     }, [])
 
+    const [age, setAge] = React.useState('');
+    const [equipe, setequipe] = useState([]);
+    const handleChange = (event) => {
+        setAge(event.target.value);
+      };
 
     return(
         <div>
@@ -80,8 +103,22 @@ function Edit() {
                             </div>
 
                             <div>
-                                <ChamaEquipe childToParent={childToParent}/>
-
+                            <Box sx={{ minWidth: 120 }}>
+                                <FormControl fullWidth>
+                                <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
+                                <Select
+                                    {...register("equipe_id")}
+                                    labelId="demo-simple-select-label"
+                                    id_equipe="demo-simple-select"
+                                    value={age}
+                                    label="Age"
+                                    onChange={handleChange}>
+                                    { equipe.map((equipe) =>
+                                        <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.id_equipe}</MenuItem>
+                                    )}
+                                </Select>
+                                </FormControl>
+                            </Box>
                             </div>
 
                             <div className="btn-post">
