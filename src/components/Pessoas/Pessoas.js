@@ -12,7 +12,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
 function Pessoas() {
 
     const [ posts, setPosts ] = useState([])
@@ -69,10 +69,9 @@ return(
                 avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
 
                 action={
-                    <IconButton aria-label="settings">
-                        <Link to={{ pathname: `/Inspecionar/${posts.id_pessoa}` }}>
-                            <SearchIcon  sx={{color: '#E9C46A'}}/>
-                        </Link>
+                    <IconButton aria-label="settings" >
+                    <Link to={{ pathname: `/Inspecionar/${posts.id_pessoa}` }}><VisibilityIcon  
+                    sx={{color: '#FFFFFF', marginTop: '-108%'}}/></Link>
                     </IconButton>
                 }
                 

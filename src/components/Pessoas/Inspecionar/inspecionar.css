@@ -6,10 +6,11 @@ main {
     padding: 3rem 0;
 }
 
-.card-post {
+.card-insp {
     background-color: #2F3644;
     padding: 30px 70px;
     border-radius: 15px;
+    width: 85%;
 }
 
 .card-post h1{
