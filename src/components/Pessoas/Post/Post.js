@@ -8,7 +8,7 @@ import * as yup from 'yup'
 import './Post.css'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
-import ChamaEquipe from "../Edit/ChamaEquipe";
+
 
 const validacaoPost = yup.object().shape({
     nome_pessoa:  yup.string().required("O nome é obrigatorio!"),

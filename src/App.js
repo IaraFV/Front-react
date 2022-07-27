@@ -6,7 +6,6 @@ import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConclui
 import Sobre from './components/Sobre/Sobre';
 import Post from './components/Pessoas/Post/Post';
 import Edit from './components/Pessoas/Edit/editPessoa';
-import Inspecionar from './components/Pessoas/Inspecionar/Inspecionar'
 import Add from './components/Equipes/Add/add'
 import AddProjeto from './components/Projetos/AddProjeto/AddProjeto'
 import EditE from './components/Equipes/EditE/editeEquipe'
@@ -48,7 +47,6 @@ function App() {
       <Route path="/Sobre" element={<Sobre/>}></Route>
       <Route path="/Post" element={<Post/>}></Route>
       <Route path="/Edit/:id_pessoa" element={<Edit/>}></Route>
-      <Route path="/Inspecionar/:id_pessoa" element={<Inspecionar/>}></Route>
       <Route path="/Add" element={<Add/>}></Route>
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>

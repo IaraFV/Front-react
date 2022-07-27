@@ -8,7 +8,7 @@ import * as yup from 'yup'
 import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
-import ChamaEquipe from './ChamaEquipe'
+
 
 
 
@@ -81,10 +81,7 @@ function Edit() {
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
-                            <div>
-                                <ChamaEquipe childToParent={childToParent}/>
-
-                            </div>
+                            
 
                             <div className="btn-post">
                                 <button type="submit">Cadastrar</button>
