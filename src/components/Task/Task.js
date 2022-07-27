@@ -4,12 +4,8 @@ import axios  from "axios";
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
@@ -32,13 +28,6 @@ function Task() {
             })
     }, []
     )
-
-
-    function deletePost (id_pessoa) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
-    }
-
 
 return(
       <div >

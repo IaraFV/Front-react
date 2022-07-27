@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from "react";
 import './inspecionar.css';
 import axios  from "axios";
@@ -62,3 +63,5 @@ return(
 }
 
 export default Inspecionar;
+=======
+>>>>>>> e4b3caf68aafdd10c79e26913665aa40572eafb7

@@ -6,7 +6,6 @@ import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConclui
 import Sobre from './components/Sobre/Sobre';
 import Post from './components/Pessoas/Post/Post';
 import Edit from './components/Pessoas/Edit/editPessoa';
-import Inspecionar from './components/Pessoas/Inspecionar/Inspecionar'
 import Add from './components/Equipes/Add/add'
 import AddProjeto from './components/Projetos/AddProjeto/AddProjeto'
 import EditE from './components/Equipes/EditE/editeEquipe'
@@ -15,7 +14,6 @@ import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
-import PostE from './components/Equipes/Add/add';
 import Emdesenvolvimento from './components/Projetos/Emdesenvolvimento/Emdesenvolvimento'
 import Emandamento from './components/Projetos/Emandamento/Emandamento'
 function App() {
@@ -49,7 +47,6 @@ function App() {
       <Route path="/Sobre" element={<Sobre/>}></Route>
       <Route path="/Post" element={<Post/>}></Route>
       <Route path="/Edit/:id_pessoa" element={<Edit/>}></Route>
-      <Route path="/Inspecionar/:id_pessoa" element={<Inspecionar/>}></Route>
       <Route path="/Add" element={<Add/>}></Route>
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>

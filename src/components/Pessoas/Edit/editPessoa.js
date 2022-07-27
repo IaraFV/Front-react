@@ -9,11 +9,14 @@ import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 
+<<<<<<< HEAD
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+=======
+>>>>>>> e4b3caf68aafdd10c79e26913665aa40572eafb7
 
 
 
@@ -25,11 +28,18 @@ function Edit() {
     }
     
     const { id_pessoa } = useParams()
+    
     const validacaoGet = yup.object().shape({
         nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
+<<<<<<< HEAD
         equipe_id: yup.number()
+=======
+        equipe_id: equipeEscolhida
+>>>>>>> e4b3caf68aafdd10c79e26913665aa40572eafb7
     })
+
+    console.log(equipeEscolhida)
     
     let navigate = useNavigate()
 
@@ -102,9 +112,10 @@ function Edit() {
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
+<<<<<<< HEAD
                             <div>
                             <Box sx={{ minWidth: 120 }}>
-                                <FormControl fullWidth>
+                                < fullWidth>
                                 <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
                                 <Select
                                     {...register("equipe_id")}
@@ -117,9 +128,12 @@ function Edit() {
                                         <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.id_equipe}</MenuItem>
                                     )}
                                 </Select>
-                                </FormControl>
-                            </Box>
+                                </>
+                            </Box>FormControl
                             </div>
+=======
+                            
+>>>>>>> e4b3caf68aafdd10c79e26913665aa40572eafb7
 
                             <div className="btn-post">
                                 <button type="submit">Cadastrar</button>
