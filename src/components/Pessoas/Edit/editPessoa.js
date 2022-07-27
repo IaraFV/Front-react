@@ -8,7 +8,7 @@ import * as yup from 'yup'
 import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
-import ChamaEquipe from './ChamaEquipe'
+
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
