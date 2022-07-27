@@ -114,7 +114,7 @@ function Edit() {
                                     label="Age"
                                     onChange={handleChange}>
                                     { equipe.map((equipe) =>
-                                        <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.id_equipe}</MenuItem>
+                                        <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
                                     )}
                                 </Select>
                                 </FormControl>
