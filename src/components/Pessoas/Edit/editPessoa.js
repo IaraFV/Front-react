@@ -76,10 +76,7 @@ function Edit() {
 
     return(
         <div>
-            <IconButton sx={{color: 'white'}}>
-                <Link to="/Pessoas" />
-                <ArrowBackIcon/>
-            </IconButton>
+         
 
             <main>
                 <div className="card-post">
@@ -102,7 +99,8 @@ function Edit() {
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
-                            <div>
+                            <div className="fields">
+                            <label>Equipe</label>
                             <Box sx={{ minWidth: 120 }}>
                                 <FormControl fullWidth>
                                 <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
@@ -112,6 +110,7 @@ function Edit() {
                                     id_equipe="demo-simple-select"
                                     value={age}
                                     label="Age"
+                                    sx={{bgcolor: '#fff', borderRadius: '1rem'}}
                                     onChange={handleChange}>
                                     { equipe.map((equipe) =>
                                         <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
@@ -121,8 +120,10 @@ function Edit() {
                             </Box>
                             </div>
 
-                            <div className="btn-post">
-                                <button type="submit">Cadastrar</button>
+                            <div className="botoes">
+                            <button className="btn-cancelar"  to='/Pessoas'>Cancelar</button>
+                            <button className="btn-edit" type="submit">Cadastrar</button>
+                                
                             </div>
                         </form>
 
