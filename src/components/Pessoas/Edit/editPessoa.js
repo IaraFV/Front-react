@@ -20,11 +20,13 @@ function Edit() {
     }
     
     const { id_pessoa } = useParams()
+    
     const validacaoGet = yup.object().shape({
         nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
-        id_equipe: equipeEscolhida
+        equipe_id: equipeEscolhida
     })
+    console.log(equipeEscolhida)
     
     let navigate = useNavigate()
 

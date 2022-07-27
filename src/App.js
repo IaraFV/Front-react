@@ -15,7 +15,6 @@ import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
-import PostE from './components/Equipes/Add/add';
 import Emdesenvolvimento from './components/Projetos/Emdesenvolvimento/Emdesenvolvimento'
 import Emandamento from './components/Projetos/Emandamento/Emandamento'
 function App() {

@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import Form from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useParams } from 'react-router-dom'
-import axios from "axios";
 
 export default function ChamaEquipe(Props) {
     const [age, setAge] = React.useState('');
@@ -14,7 +12,7 @@ export default function ChamaEquipe(Props) {
       setAge(event.target.value);
     };
 
-    const [initialequipe, setInitialequipe] = useState([])
+    const [ setInitialequipe] = useState([])
     const [equipe, setequipe] = useState([])
 
     useEffect(() => {
@@ -35,8 +33,9 @@ export default function ChamaEquipe(Props) {
   
     return (
       <Box sx={{ minWidth: 120 }}>
-        <FormControl fullWidth onChange={(e) => Props.childToParent(e.target.value)}>
+        <Form fullWidth onChange={(e) => Props.childToParent(e.target.value)}>
           <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
+
           <Select
             labelId="demo-simple-select-label"
             id_equipe="demo-simple-select"
@@ -44,11 +43,10 @@ export default function ChamaEquipe(Props) {
             label="Age"
             onChange={handleChange}>
                 { equipe.map((equipe) =>
-            <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.id_equipe}</MenuItem>
+            <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
             )}
           </Select>
-        </FormControl>
+        </Form>
       </Box>
     );
   }
-  
