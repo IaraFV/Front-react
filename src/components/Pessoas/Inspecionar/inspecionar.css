@@ -1,34 +1,8 @@
-.btn-edit {
-    font-family: Heebo;
-    font-weight: 800;
-    font-size: 1.3rem;
-    padding: 5px 50px;
-    color: #fff;
-    background-color: #E9C46A;
-    border: 0;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 1px solid red
+#card-inspecionar {
+    background-color: #2F3644;
+    padding: 30px 70px;
+    border-radius: 15px;
 }
-.btn-cancelar {
-    font-family: Heebo;
-    font-weight: 800;
-    font-size: 1.3rem;
-    padding: 5px 45px;
-    color: #fff;
-    background-color: #A4A4A4;
-    border: 0;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 1px solid red;
-    
-}
-.botoes{
+#card-header{
     display: flex;
-    justify-content: space-around;
-    width: 130%;
-    border: 1px solid red;
-}
-#testeh{
-    height: 50px;
 }

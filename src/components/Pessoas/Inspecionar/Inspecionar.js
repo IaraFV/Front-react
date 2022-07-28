@@ -8,75 +8,43 @@ import * as yup from 'yup'
 import './inspecionar.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
 function Inspecionar() {
-    const [equipeEscolhida, setEquipeEscolhida] = useState()
-    const childToParent = (childdata) => {
-        setEquipeEscolhida(childdata);
-        console.log(equipeEscolhida)
-    }
-    
+
+    const [posts, setPosts] = useState([])
     const { id_pessoa } = useParams()
-    
-    let navigate = useNavigate()
-
-     const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
-        .then(() => {
-            console.log("foi");
-            console.log(age);
-            navigate("/Pessoas");
-        })
-        .catch(() => {
-            console.log("n foi")
-        })
-
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver()
-})
 
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        .then((response) => {
-            reset(response.data)
-        })
-    }, [])
-
-    const [age, setAge] = React.useState('');
-    const [equipe] = useState([]);
-    const handleChange = (event) => {
-        setAge(event.target.value);
-      };
-
-    return(
-        <div>
-            <main>
-                <div className="card-post">
-                    <h1>Editar Cadastro</h1>
-                    <div className="line-post"></div>
-                    <div className="body-post">
-                        <div>
-                            <div className="fields">
-                                <label>Nome</label>
-                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")}/>
-                                <p className="error-message">{errors.nome_pessoa?.message} </p>
-                            </div>
-
-                            <div className="fields">
-                                <label>Função</label>
-                                <div name="funcao_pessoa" {...register("funcao_pessoa")}/>
-                                <p className="error-message">{errors.funcao_pessoa?.message} </p>
-                            </div>
-                        </div>
-
-                    </div>
+            .then((response) => {
+                setPosts(response.data)
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+    return (
+        <>
+            <div id="card-inspecionar">
+                <div id="card-header">
+                    <Avatar sx={{ width: '10rem', height: '10rem', fontSize:'5rem' }} aria-label="recipe">A</Avatar>
+                <h1>{posts.nome_pessoa}</h1>
                 </div>
-            </main>
-        </div>
+
+                <CardContent sx={{ color: 'white' }}>
+                    <Typography variant="body2" color="white">
+                        {posts.funcao_pessoa}
+                    </Typography>
+                </CardContent>
+            </div>
+        </>
     )
 }
 
