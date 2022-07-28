@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 function Pessoas() {
 
@@ -34,7 +33,6 @@ function Pessoas() {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
         setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
     }
-
 
 return(
       <div >
