@@ -1,82 +1,4 @@
-main {
-    display: flex;
-    justify-content: center;
-
-
-    padding: 3rem 0;
-}
-
-.card-insp {
-    background-color: #2F3644;
-    padding: 30px 70px;
-    border-radius: 15px;
-    width: 85%;
-}
-
-.card-post h1{
-    font-family: Heebo;
-    font-weight: 800;
-    text-align: center;
-
-    color: #D2DAF5;
-
-    font-size: 3rem;
-    margin-bottom: 5px;
-}
-
-.line-post {
-    height: 2px;
-    background-color: #3E445B;
-}
-
-.card-body-post {
-    margin-top: 25px;
-
-}
-
-.fields {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 7px;
-    font-size: 1.2rem;
-
-    color: #D2DAF5;
-
-    font-family: Poppins;
-}
-
-input, textarea {
-    width: 100%;
-    border-radius: 10px;
-    border: 0;
-    outline: 0;
-
-    font-size: 1.2rem;
-
-    padding-left: 15px;
-}
-
-input {
-    height: 45px;
-}
-
-textarea {
-    height: 190px;
-    resize: none;
-
-    padding-top: 10px;
-}
-
-.btn-post{
-    margin-top: 30px;
-    text-align: center;
-
-}
-
-.btn-post button{
+.btn-edit {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -86,8 +8,27 @@ textarea {
     border: 0;
     border-radius: 10px;
     cursor: pointer;
+    border: 1px solid red
 }
-
-.error-message {
-    color: rgb(240, 47, 47);
+.btn-cancelar {
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 45px;
+    color: #fff;
+    background-color: #A4A4A4;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid red;
+    
+}
+.botoes{
+    display: flex;
+    justify-content: space-around;
+    width: 130%;
+    border: 1px solid red;
+}
+#testeh{
+    height: 50px;
 }
