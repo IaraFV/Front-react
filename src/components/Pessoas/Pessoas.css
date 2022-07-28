@@ -1,11 +1,12 @@
 .cardpessoas{
     border: 2.1px solid #21222D;
-    border-radius: 0.5rem;
+    border-radius: 3rem;
     display: flex;
     width: 17%;
     align-items: center;
     margin-left: 2%;
     margin-top: 2%;
+    border: none;
 }
 #usuarios{
     display: flex;
@@ -14,23 +15,33 @@
     margin-left: 82%;
     width: 12%;
 }
-.btn-adicionar{
-    font-family: Heebo;
-    font-weight: 800;
+.btn-adicionarpessoa{
+    width: 110%;
     font-size: 1.3rem;
-    padding: 5px 25px;
     color: #fff;
     background-color: #E9C46A;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
-    margin-left: 5%;
-    margin-top: 4%;
-    margin-bottom: 2%;
+    margin-left: -173%;
 }
+
 #geralpessoas{
     display: flex;
     flex-wrap: wrap;
     padding: 3%;
     margin-top: -2%;
+}
+#filtro input{
+   width: 90%;
+   margin-left: 119%;
+   height: 32px;
+   margin-top:10.5%;
+}
+
+#filtroebtn{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
 }

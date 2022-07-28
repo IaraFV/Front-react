@@ -12,13 +12,14 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import Filter from "./filtro";
+import { FiSearch } from "react-icons/fi";
+
 
 function Pessoas() {
 
-    const [posts, setPosts, setInitialPosts, initialPosts] = useState([])
-   
-   
+    const [posts, setPosts] = useState([])
+    const [initialPosts, setInitialPosts] = useState([])
+
 
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
@@ -35,12 +36,12 @@ function Pessoas() {
     const handlechange = ({ target }) => {
         if (!target.value) {
             setPosts(initialPosts)
-            return
+            return;
         }
-        const filterepo = posts.filter(({ nome_pessoa }) =>
-            nome_pessoa.includes(target.value))
+        const filter = posts.filter(({ nome_pessoa }) =>
+            nome_pessoa.toUpperCase().includes(target.value.toUpperCase()))
 
-        setPosts(filterepo);
+        setPosts(filter);
     }
 
     function deletePost(id_pessoa) {
@@ -64,14 +65,21 @@ function Pessoas() {
                             v
                         </Avatar>
                     </div>
-                    <Link to="/Post">
-                        <button className="btn-adicionar">Adicionar Pessoa</button>
-                    </Link>
-                    <div>
-                        <div>
-                            <input type={"text"} onChange={handlechange}></input>
+
+                    <div id="filtroebtn">
+
+                        <Link to="/Post">
+                            <button className="btn-adicionarpessoa">Adicionar Pessoa</button>
+                        </Link>
+                        <div id="filtro">
+                            <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
+                            <FiSearch style={{marginLeft: "196%", color: "#E9C46A", marginTop: "-27%"}}/>
                         </div>
+
                     </div>
+
+
+
 
                     <p style={{ color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%' }}></p>
                 </div>
@@ -102,18 +110,6 @@ function Pessoas() {
                                                 {posts.funcao_pessoa}
                                             </Typography>
                                         </CardContent>
-
-                                        <CardActions disableSpacing>
-                                            <IconButton>
-                                                <Link to={{ pathname: `/Edit/${posts.id_pessoa}` }}>
-                                                    <ModeEditIcon sx={{ color: '#E9C46A' }} />
-                                                </Link>
-                                            </IconButton>
-
-                                            <IconButton onClick={() => deletePost(posts.id_pessoa)} aria-label="share" sx={{ color: '#E9C46A' }} >
-                                                <DeleteIcon />
-                                            </IconButton>
-                                        </CardActions>
                                     </Card>
                                 </div>
                             )
