@@ -12,11 +12,12 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import { FiSearch } from "react-icons/fi";
 
 function Equipe() {
 
     const [ posts, setPosts ] = useState([])
-    
+    const [initialPosts, setInitialPosts] = useState([])
 
     useEffect(() => {
             axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
@@ -29,6 +30,16 @@ function Equipe() {
     }, []
     )
 
+    const handlechange = ({ target }) => {
+        if (!target.value) {
+            setPosts(initialPosts)
+            return;
+        }
+        const filter = posts.filter(({ nome_pessoa }) =>
+            nome_pessoa.toUpperCase().includes(target.value.toUpperCase()))
+
+        setPosts(filter);
+    }
 
     function deletePost (id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
@@ -41,11 +52,17 @@ return(
          <div> 
             <div id="informativo">
                 <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '5%', marginTop: '4%'}}>Equipes Cadastradas</h1>
-
-                <Link to="/Add">
-                    <button className="btn-adicionar">Adicionar Equipe</button>
-                </Link>
                 
+                <div id="filtroebtnl">
+                    <Link to="/Add">
+                        <button className="btn-adicionar">Adicionar Equipe</button>
+                    </Link>
+                    <div id="filtror">
+                         <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
+                        <FiSearch style={{marginLeft: "196%", color: "#E9C46A", marginTop: "-27%"}}/>
+                    </div>
+                </div>
+
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
             </div>
             <div id="geralpessoas">

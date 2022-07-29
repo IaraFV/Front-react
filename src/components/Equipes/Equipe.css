@@ -36,3 +36,16 @@
     margin-left: 3%;
     width: 12%;
 }
+#filtror input{
+    width: 90%;
+    margin-left: 119%;
+    height: 32px;
+    margin-top:10.5%;
+ }
+ 
+ #filtroebtnl{
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     margin-top: 5%;
+ }
