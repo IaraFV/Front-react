@@ -30,26 +30,20 @@ function Inspecionar() {
         <>
             <div id="card-inspecionar">
                 <div id="card-header">
-                    <Avatar sx={{ width: '10rem', height: '10rem', fontSize: '5rem' }} aria-label="recipe">A</Avatar>
-                    <div id="nomeefuncao">
-                        <h1>{posts.nome_pessoa}</h1>
-                        <h3>{posts.funcao_pessoa}</h3>
-                        <div className="line-insp"></div>
-
-                        <div id="botoes-insp">
-                            <div className="btn-editar">
-                            <Link to={{ pathname: `/Edit/${posts.id_pessoa}` }}>
-                                <button type="submit">Editar</button>
-                                </Link>
-                            </div>
-                            <div className="btn-excluir">
-                                <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit">Deletar</button>
-                            </div>
-                        </div>
-                    </div>
+                    <Avatar sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">A</Avatar>
 
                 </div>
+                <div id="nome">
+                    <h1>{posts.nome_pessoa}</h1>
+                </div>
+                <div>
+                    <div>
 
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
 
             </div>
         </>

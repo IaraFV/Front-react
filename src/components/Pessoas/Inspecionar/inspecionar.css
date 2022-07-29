@@ -2,25 +2,37 @@
     background-color: #2F3644;
     padding: 30px 70px;
     border-radius: 15px;
-    width: 70%;
+    width: 30%;
+    height: 50rem;
+    margin-left: 5%;
 }
-#card-header{
+
+#card-header {
     display: flex;
+    justify-content: center;
 }
-#nomeefuncao{
+
+#nome {
     margin-left: 2%;
-    margin-top: 3%;
+    margin-top: 8%;
+    font-family: Heebo;
+    display: flex;
+    justify-content: center;
 }
-h1, h3{
+
+h1,
+h3 {
     color: #fff;
 }
+
 .line-insp {
     height: 2px;
     background-color: #3E445B;
     width: 63rem;
     margin-top: 2%;
 }
-.btn-editar button{
+
+.btn-editar button {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -31,7 +43,8 @@ h1, h3{
     border-radius: 7px;
     cursor: pointer;
 }
-.btn-excluir button{
+
+.btn-excluir button {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -42,7 +55,8 @@ h1, h3{
     border-radius: 7px;
     cursor: pointer;
 }
-#botoes-insp{
+
+#botoes-insp {
     display: flex;
     justify-content: space-evenly;
     width: 25%;
