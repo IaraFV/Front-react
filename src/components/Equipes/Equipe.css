@@ -9,20 +9,17 @@
 
 }
 
-.btn-adicionar{
-    font-family: Heebo;
-    font-weight: 800;
+.btn-adicionarequipe{
+    width: 110%;
     font-size: 1.3rem;
-    padding: 5px 25px;
     color: #fff;
     background-color: #E9C46A;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
-    margin-left: 5%;
-    margin-top: 4%;
-    margin-bottom: 2%;
+    margin-left: -173%;
 }
+
 #geralpessoas{
     display: flex;
     flex-wrap: wrap;

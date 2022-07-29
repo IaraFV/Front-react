@@ -89,3 +89,30 @@ textarea {
 .error-message {
     color: rgb(240, 47, 47);
 }
+.btn-cancelar-post {
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 45px;
+    color: #fff;
+    background-color: #A4A4A4;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.botoespost{
+    display: flex;
+    justify-content: space-between;
+    width: 103%;
+}
+.btn-post {
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 50px;
+    color: #fff;
+    background-color: #E9C46A;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}

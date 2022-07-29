@@ -5,14 +5,11 @@ import * as yup from 'yup'
 import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
-
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
-
 
 function Edit() {
     
@@ -25,7 +22,7 @@ function Edit() {
     
     let navigate = useNavigate()
 
-     const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
+     const editPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
         .then(() => {
             console.log("foi");
             navigate("/Pessoas");
@@ -67,8 +64,6 @@ function Edit() {
 
     return(
         <div>
-         
-
             <main>
                 <div className="card-post">
                     <h1>Editar Cadastro</h1>
@@ -76,7 +71,7 @@ function Edit() {
 
                     <div className="body-post">
 
-                        <form onSubmit={handleSubmit(addPost)}>
+                        <form onSubmit={handleSubmit(editPost)}>
 
                             <div className="fields">
                                 <label>Nome</label>

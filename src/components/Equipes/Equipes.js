@@ -55,7 +55,7 @@ return(
                 
                 <div id="filtroebtnl">
                     <Link to="/Add">
-                        <button className="btn-adicionar">Adicionar Equipe</button>
+                        <button className="btn-adicionarequipe">Adicionar Equipe</button>
                     </Link>
                     <div id="filtror">
                          <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
