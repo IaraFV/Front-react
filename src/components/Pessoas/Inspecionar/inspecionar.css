@@ -2,7 +2,50 @@
     background-color: #2F3644;
     padding: 30px 70px;
     border-radius: 15px;
+    width: 70%;
 }
 #card-header{
     display: flex;
+}
+#nomeefuncao{
+    margin-left: 2%;
+    margin-top: 3%;
+}
+h1, h3{
+    color: #fff;
+}
+.line-insp {
+    height: 2px;
+    background-color: #3E445B;
+    width: 63rem;
+    margin-top: 2%;
+}
+.btn-editar button{
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 25px;
+    color: #fff;
+    background-color: #E9C46A;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.btn-excluir button{
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 20px;
+    color: #fff;
+    background-color: #EB5757;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+}
+#botoes-insp{
+    display: flex;
+    justify-content: space-evenly;
+    width: 25%;
+    margin-left: 75.5%;
+    margin-top: -9%;
 }

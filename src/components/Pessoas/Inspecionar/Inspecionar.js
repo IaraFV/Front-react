@@ -34,15 +34,25 @@ function Inspecionar() {
         <>
             <div id="card-inspecionar">
                 <div id="card-header">
-                    <Avatar sx={{ width: '10rem', height: '10rem', fontSize:'5rem' }} aria-label="recipe">A</Avatar>
-                <h1>{posts.nome_pessoa}</h1>
+                    <Avatar sx={{ width: '10rem', height: '10rem', fontSize: '5rem' }} aria-label="recipe">A</Avatar>
+                    <div id="nomeefuncao">
+                        <h1>{posts.nome_pessoa}</h1>
+                        <h3>{posts.funcao_pessoa}</h3>
+                        <div className="line-insp"></div>
+
+                        <div id="botoes-insp">
+                            <div className="btn-editar">
+                                <button type="submit">Editar</button>
+                            </div>
+                            <div className="btn-excluir">
+                                <button type="submit">Deletar</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <CardContent sx={{ color: 'white' }}>
-                    <Typography variant="body2" color="white">
-                        {posts.funcao_pessoa}
-                    </Typography>
-                </CardContent>
+
             </div>
         </>
     )
