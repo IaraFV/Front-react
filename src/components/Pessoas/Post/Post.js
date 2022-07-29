@@ -51,7 +51,9 @@ function Post() {
         };
         fetchequipe();
     }, [])
-
+    function voltar() {
+        window.history.back();
+    }
 
     const [age, setAge] = React.useState('');
     const [equipe, setequipe] = useState([]);
@@ -104,9 +106,9 @@ function Post() {
                             </div>
 
                             <div className="botoespost">
-                                <Link to="/Pessoas">
-                                    <button className="btn-cancelar-post">Cancelar</button>
-                                </Link>
+                                
+                                <button className="btn-cancelar-post" onClick={voltar}>Cancelar</button>
+                                
                                 <button className="btn-post" type="submit">Cadastrar</button>
 
                             </div>

@@ -14,14 +14,14 @@ import Rating from '@mui/material/Rating';
 
 function Task() {
 
-    const [ task, settask ] = useState([])
+    const [ posts, setPosts ] = useState([])
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [value, setValue] = React.useState(2);
 
     useEffect(() => {
             axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
             .then((response) => {
-                settask(response.data)
+                setPosts(response.data)
             })
             .catch(() => {
                 console.log("deu errado")
@@ -31,58 +31,63 @@ function Task() {
 
 return(
       <div >
-            <div> 
-                <div id="informativo">
-                    <Link to="/Post">
-                        <button className="btn-adicionar">Adicionar Task</button>
-                    </Link>
-                </div>
-                {task.map((task,key) => {
-
-                return (
-                    <div  id="geraltasks">
-                        <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white', borderRadius: '1.5rem' }} key={key} >
-                            <CardHeader className="titlecinco"
-
-
-                            action={
-                                <IconButton aria-label="settings">
-                                    <Checkbox {...label} style={{color:'#CCCCCC', border: '#444444', display: 'flex', justifyContent:'flex-end', marginTop: '-13.5%', marginRight: '3%'}} defaultChecked />
-                                </IconButton>
-                            }
-                            
-                            title={task.descricao_task}  />
-                        
-                            <CardContent sx={{color: 'white' }}>
-                            <Typography variant="body2" color="white">
-                            {task.nome_pessoa}
-                            </Typography>
-                            </CardContent>
-                            <div className="line-task"></div>
-                        
-                            <Box
-                                sx={{
-                                    '& > legend': { mt: 2 },
-                                    color: '#E9C46A',
-                                }}
-                                >
-                                <Rating
-                                    
-                                    name="simple-controlled"
-                                    value={value}
-                                    onChange={(event, newValue) => {
-                                    setValue(newValue);
-                                    }}
-                                />  
-                            </Box>
-                            
-                        </Card>
-                    </div>
-                    )
-                })
-                }
+         <div> 
+            <div id="informativo">
+                <Link to="/Post">
+                    <button className="btn-adicionar">Adicionar Pessoa</button>
+                </Link>
             </div>
+            <div id="geraltasks">
+         {
+            posts.map((posts,key) => {
+
+            return (
+            <div className="cardtask">
+            <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white', borderRadius: '1.5rem' }} key={key} >
+                <CardHeader className="titlecinco"
+
+
+                action={
+                    <IconButton aria-label="settings">
+                    <Checkbox {...label} style={{color:'#CCCCCC', border: '#444444', display: 'flex', justifyContent:'flex-end', marginTop: '-13.5%', marginRight: '3%'}} defaultChecked />
+                    </IconButton>
+                }
+                
+                title={
+                posts.descricao_task
+                }
+                />
             
+                <CardContent sx={{color: 'white' }}>
+                <Typography variant="body2" color="white">
+                {posts.nome_pessoa}
+                </Typography>
+                </CardContent>
+                <div className="line-task"></div>
+               
+                <Box
+                    sx={{
+                        '& > legend': { mt: 2 },
+                        color: '#E9C46A',
+                    }}
+                    >
+                    <Rating
+                        
+                        name="simple-controlled"
+                        value={value}
+                        onChange={(event, newValue) => {
+                        setValue(newValue);
+                        }}
+                    />  
+                </Box>
+                
+            </Card>
+            </div>
+                )
+              })
+            }
+            </div>
+</div>
         </div>
 )
 }

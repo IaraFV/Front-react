@@ -24,7 +24,7 @@ function Filter (){
             return
         }
         const filterepo = pessoa.filter(({nome_pessoa}) =>
-        nome_pessoa.includes(target.value))
+        nome_pessoa.includes(target.value.toUpperCase()))
 
         setPessoa(filterepo);
     }
