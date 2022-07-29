@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "@mui/material";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import IconButton from '@mui/material/IconButton';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
@@ -18,11 +15,6 @@ import Select from '@mui/material/Select';
 
 
 function Edit() {
-    const [equipeEscolhida, setEquipeEscolhida] = useState()
-    const childToParent = (childdata) => {
-        setEquipeEscolhida(childdata);
-        console.log(equipeEscolhida)
-    }
     
     const { id_pessoa } = useParams()
     const validacaoGet = yup.object().shape({
@@ -36,7 +28,6 @@ function Edit() {
      const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
         .then(() => {
             console.log("foi");
-            console.log(age);
             navigate("/Pessoas");
         })
         .catch(() => {
