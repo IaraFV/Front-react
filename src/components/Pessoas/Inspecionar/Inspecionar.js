@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import './inspecionar.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 function Inspecionar() {
 
