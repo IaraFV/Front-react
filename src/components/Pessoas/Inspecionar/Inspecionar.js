@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-
+import { Link } from 'react-router-dom';
 function Inspecionar() {
 
     let navigate = useNavigate()
@@ -43,7 +43,9 @@ function Inspecionar() {
 
                         <div id="botoes-insp">
                             <div className="btn-editar">
+                            <Link to={{ pathname: `/Edit/${posts.id_pessoa}` }}>
                                 <button type="submit">Editar</button>
+                                </Link>
                             </div>
                             <div className="btn-excluir">
                                 <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit">Deletar</button>
