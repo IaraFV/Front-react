@@ -4,6 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
+import DoneIcon from '@mui/icons-material/Done';
+import CheckIcon from '@mui/icons-material/Check';
+import { AiOutlineStar } from "react-icons/ai";
 function Inspecionar() {
 
     let navigate = useNavigate()
@@ -28,6 +31,7 @@ function Inspecionar() {
 
     return (
         <>
+            <div id="geral-card-inspecionar"> 
             <div id="card-inspecionar">
                 <div id="card-header">
                     <Avatar sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">A</Avatar>
@@ -36,15 +40,47 @@ function Inspecionar() {
                 <div id="nome">
                     <h1>{posts.nome_pessoa}</h1>
                 </div>
-                <div>
-                    <div>
-
+                <div id="geralestatistica">
+                    <div id="estatisticaum">
+                        <div className="doneicon"><CheckIcon /></div>
+                        <div id="textoestatistica">
+                            <p style={{ color: "rgba(186, 186, 186, 0.87)", fontSize: "1.2rem" }}>10</p>
+                            <p style={{ marginTop: '-20%', color: '#fff', width: '5rem' }}>Tasks feitas</p>
+                        </div>
                     </div>
-                    <div>
 
+                    <div id="estatisticadois">
+                        <div className="star"><AiOutlineStar /></div>
                     </div>
                 </div>
 
+                <div id="detalhes">
+                    <div id="cabecariodetalhes">
+                        <h4>Detalhes</h4>
+                        <div className="line-insp"></div>
+                    </div>
+                    <div id="bodydetalhes">
+                        <p>Username: {posts.nome_pessoa}</p>
+                        <p>Função: {posts.funcao_pessoa}</p>
+                        <p>Data de contratação: {posts.data_contratacao}</p>
+                    </div>
+                </div>
+
+                <div id="botoes-insp">
+                    <div className="btn-editar">
+                        <Link to={{ pathname: `/Edit/${posts.id_pessoa}` }}>
+                            <button type="submit">Editar</button>
+                        </Link>
+                    </div>
+                    <div className="btn-excluir">
+                        <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit">Deletar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="card-inspdois">
+                dd        
+            </div>
             </div>
         </>
     )

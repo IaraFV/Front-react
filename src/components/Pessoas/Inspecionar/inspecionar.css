@@ -4,12 +4,74 @@
     border-radius: 15px;
     width: 30%;
     height: 50rem;
+}
+#card-inspdois {
+    background-color: #2F3644;
+    padding: 30px 70px;
+    border-radius: 15px;
+    width: 50%;
+    height: 50rem;
     margin-left: 5%;
 }
-
+#geral-card-inspecionar{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1%;
+}
 #card-header {
     display: flex;
     justify-content: center;
+}
+
+.doneicon {
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    width: 2.6rem;
+    display: flex;
+    justify-content: center;
+    height: 2.1rem;
+    color: #2684FF;
+    font-size: 2rem;
+    align-items: center;
+}
+
+.star {
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    width: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.1rem;
+    color: #2684FF;
+    font-size: 1.5rem;
+
+}
+
+#estatisticaum {
+    display: flex;
+}
+
+#estatisticadois {
+    display: flex;
+}
+
+#geralestatistica {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 30%;
+    margin-top: 8%;
+    width: 38%;
+}
+
+#textoestatistica {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 143%;
+    letter-spacing: 0.15px;
+    margin-left: 5%;
+
 }
 
 #nome {
@@ -20,32 +82,56 @@
     justify-content: center;
 }
 
-h1,
-h3 {
+h1 {
     color: #fff;
+}
+
+h4 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+#detalhes {
+    margin-top: 6%;
 }
 
 .line-insp {
     height: 2px;
     background-color: #3E445B;
-    width: 63rem;
+    width: 100%;
     margin-top: 2%;
 }
 
+#bodydetalhes {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 157%;
+    letter-spacing: 0.1px;
+    color: #BABABA;
+    margin-top: 4%;
+}
+
 .btn-editar button {
-    font-family: Heebo;
+    font-family: 'Inter';
     font-weight: 800;
     font-size: 1.3rem;
     padding: 5px 25px;
     color: #fff;
-    background-color: #E9C46A;
+    background-color: #2684FF;
     border: 0;
     border-radius: 7px;
     cursor: pointer;
 }
 
 .btn-excluir button {
-    font-family: Heebo;
+    font-family: 'Inter';
     font-weight: 800;
     font-size: 1.3rem;
     padding: 5px 20px;
@@ -58,8 +144,8 @@ h3 {
 
 #botoes-insp {
     display: flex;
-    justify-content: space-evenly;
-    width: 25%;
-    margin-left: 75.5%;
-    margin-top: -9%;
+    justify-content: space-around;
+    width: 55%;
+    margin-top: 10%;
+    margin-left: 20%;
 }
