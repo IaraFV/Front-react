@@ -5,6 +5,7 @@
     width: 30%;
     height: 50rem;
 }
+
 #card-inspdois {
     background-color: #2F3644;
     padding: 30px 70px;
@@ -13,11 +14,13 @@
     height: 50rem;
     margin-left: 5%;
 }
-#geral-card-inspecionar{
+
+#geral-card-inspecionar {
     display: flex;
     justify-content: space-evenly;
     margin-top: 1%;
 }
+
 #card-header {
     display: flex;
     justify-content: center;
@@ -148,4 +151,45 @@ h4 {
     width: 55%;
     margin-top: 10%;
     margin-left: 20%;
+}
+
+#card-header-insp {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.line-insp-dois {
+    height: 2px;
+    background-color: #3E445B;
+    width: 100%;
+    margin-top: 2%;
+}
+
+#cards-insp-tasks {
+    width: 17%;
+    height: 23%;
+    left: 5%;
+    margin-top: 15%;
+    background: rgba(186, 186, 186, 0.5);
+    opacity: 0.4;
+    border-radius: 15px;
+}
+
+#file {
+    font-size: 2.5rem;
+    color: #2684FF;
+    width: 70px;
+    height: 72px;
+    border-radius: 5rem;
+    background: rgba(164, 164, 164, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4.6%;
+    margin-top: -16%;
+    
 }
