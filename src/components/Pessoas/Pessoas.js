@@ -44,10 +44,13 @@ function Pessoas() {
         setPosts(filter);
     }
 
-    function deletePost(id_pessoa) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
-    }
+    const meuNovopost = posts.filter((valorAtual) => {
+        return valorAtual.nome_pessoa
+    })
+
+    meuNovopost.indexOf(5);
+
+    console.log(meuNovopost)
 
     return (
         <div >
@@ -73,7 +76,7 @@ function Pessoas() {
                         </Link>
                         <div id="filtro">
                             <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-                            <FiSearch style={{marginLeft: "196%", color: "#E9C46A", marginTop: "-27%"}}/>
+                            <FiSearch style={{ marginLeft: "196%", color: "#E9C46A", marginTop: "-27%" }} />
                         </div>
 
                     </div>
