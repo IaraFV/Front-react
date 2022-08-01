@@ -43,14 +43,15 @@ function Pessoas() {
 
         setPosts(filter);
     }
+/**const materials = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
 
-    const meuNovopost = posts.filter((valorAtual) => {
-        return valorAtual.nome_pessoa
-    })
-
-    meuNovopost.indexOf(5);
-
-    console.log(meuNovopost)
+console.log(materials.map(material => material.charAt(0))); 
+ */
 
     return (
         <div >

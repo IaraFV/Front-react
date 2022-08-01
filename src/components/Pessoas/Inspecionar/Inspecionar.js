@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { BsFillFileEarmarkFill } from "react-icons/bs";
 import CheckIcon from '@mui/icons-material/Check';
 import { AiOutlineStar } from "react-icons/ai";
+
+
 function Inspecionar() {
 
     let navigate = useNavigate()
@@ -23,21 +25,32 @@ function Inspecionar() {
             })
     }, []
     )
+    
 
     function deletePost(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
         setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
     }
-
+/**
+ * const lucas = posts.nome_pessoa;
+console.log(lucas);
+*/   
     return (
         <>
+       
+            
+           
+
             <div id="geral-card-inspecionar">
                 <div id="card-inspecionar">
                     <div id="card-header">
-                        <Avatar sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">A</Avatar>
 
+                        <Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">A</Avatar>
+                        
+                        
+                        <Link to="/Testry"><button>click</button></Link>
                     </div>
-                    <div id="nome">
+                    <div >
                         <h1>{posts.nome_pessoa}</h1>
                     </div>
                     <div id="geralestatistica">
@@ -73,7 +86,7 @@ function Inspecionar() {
                             </Link>
                         </div>
                         <div className="btn-excluir">
-                            <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit">Deletar</button>
+                            <button onClick={() => deletePost(posts.id_pessoa) } aria-label="share" type="submit" to='/pessoas'>Deletar</button>
                         </div>
                     </div>
                 </div>
