@@ -43,15 +43,7 @@ function Pessoas() {
 
         setPosts(filter);
     }
-/**const materials = [
-  'Hydrogen',
-  'Helium',
-  'Lithium',
-  'Beryllium'
-];
 
-console.log(materials.map(material => material.charAt(0))); 
- */
 
     return (
         <div >

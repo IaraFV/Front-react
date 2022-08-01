@@ -45,3 +45,49 @@ function Filter (){
 );
 }
 export default Filter;
+/**import React, {useEffect, useState} from "react";
+import Avatar from '@mui/material/Avatar';
+
+
+
+function lucas(){
+
+const [initialpessoa, setInitialpessoa] = useState([])
+const [pessoa, setPessoa] = useState([])
+
+useEffect(() => {
+    const fetchpessoa = async () => {
+        try {
+            const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/');
+            const data = await response.json();
+            setInitialpessoa(data);
+            setPessoa(data);
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    fetchpessoa();
+}, []);
+
+    return(
+        <div>
+            {
+                pessoa.map(test)
+                <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>
+            }
+            
+        </div>
+    )
+
+}
+export default lucas;
+/*const materials = [
+    'Hydrogen',
+    'Helium',
+    'Lithium',
+    'Beryllium'
+  ];
+  
+  console.log(materials.map(material => material.charAt(0))); 
+  */ 
