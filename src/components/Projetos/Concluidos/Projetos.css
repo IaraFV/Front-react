@@ -1,20 +1,14 @@
-#header{
-     height: 35px;
-}
-.geralprojetoc{
+.geralprojetoc {
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
-    padding: 3%;
+    width: 100%;
+    padding: 1%;
     justify-content: space-around;
-   
+    border: 1px solid red;
+
 }
 
-.statusprojetoh5{
-    color: #fff;
-    
-}
-#adicionar{
+#adicionar {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -25,9 +19,66 @@
     border-radius: 10px;
     cursor: pointer;
     margin-left: 5%;
-  
+
 }
-#projetocard{
+
+#projetocard {
     padding: 8px;
 }
 
+#status {
+    color: #00DB99;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+
+    color: #00DB99;
+}
+
+#titulodesc {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #717986;
+}
+
+#header {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+#corpodesc {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #FFFFFF;
+}
+
+#membros p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    color: #717986;
+    display: flex;
+   
+  
+}
+#membros  {
+    display: block;
+    margin-top: 5%;
+}
+#descricao{
+    margin-top: 5%;
+}
