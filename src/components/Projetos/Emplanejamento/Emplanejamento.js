@@ -2,11 +2,11 @@ import axios from "axios";
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from "react";
-import './Emandamento.css';
+import './Emplanejamento.css';
 import { Link } from 'react-router-dom';
 
 
-function Emandamento(){
+function Emplanejamento(){
 
     const  [post, setpost] = useState([])
     useEffect(() => {
@@ -32,17 +32,7 @@ function Emandamento(){
         <div id="informativo">
             <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '5%', marginTop: '4%'}}>Cadastro de Projetos</h1>
 
-                
-
-
-                 <div className="links">
-                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/ProjetosCnc"><h5>Concluído</h5></Link>
-                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/Emdesenvolvimento"><h5>Em desenvolvimento</h5></Link>
-                    <Link style={{textDecoration: 'none', color: '#9E9E9E'}}to="/Emandamento"><h5>Em andamento</h5></Link>
-                    
-                </div>
-
-                <div className="line-concluidos"></div>
+            
                 <Link to="/Post">
                     <button id="btn-adicionar-projeto">Adicionar Projeto</button>
                 </Link>
@@ -82,30 +72,7 @@ function Emandamento(){
           </div>
 </>
   );
-
-
-
-        /*<Card style={{ width: '18rem' }} key={key}>
-                    <Card.Body style={{background: '#21222D', border: 'none', color:'white'}}>
-                      <Card.Title>{post.nome_equipe}</Card.Title>
-                      <Card.Link href="#">Card Link</Card.Link>
-                      <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                  </Card>
-                  <CardGroup>
-                        <Card key={key} style={{ width: '18px' }}>
-                            <Card.Img variant="top" src="holder.js/100px160" />
-                            <Card.Body>
-                            <Card.Title>{post.nome_equipe}</Card.Title>
-                            </Card.Body>
-                        </Card>
-                    </CardGroup>
-                  
-                  
-                  */
-    
-  
   
 }
 
-export default Emandamento;
+export default Emplanejamento;
