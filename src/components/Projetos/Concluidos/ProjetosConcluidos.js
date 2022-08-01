@@ -4,25 +4,24 @@ import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from "react";
 import './Projetos.css';
 import { Link } from 'react-router-dom';
-import AlarmIcon from '@mui/icons-material/Alarm';
-import Checkbox from '@mui/material/Checkbox';
 import { FiMoreVertical } from "react-icons/fi";
 import Box from '@mui/material/Box';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
+import { BsAlarm } from "react-icons/bs";
+import { BsCheckSquare } from "react-icons/bs";
+import { BsHourglassSplit } from "react-icons/bs";
 
 function Projetos() {
     function voltar() {
         window.history.back();
     }
     const actions = [
-        { icon: <Link to="/Emandamento"><FileCopyIcon/></Link>, name: 'Copy' },
-        { icon: <SaveIcon />, name: 'Save' },
-        { icon: <PrintIcon />, name: 'Print' },
+        { icon: <Link to="/ProjetosConcluidos"><BsCheckSquare/></Link>, name: 'Concluido' },
+        { icon: <Link to="/Emplanejamento"><BsAlarm /></Link>, name: 'Em planejamento' },
+        { icon: <Link to="/Emdesenvolvimento"><BsHourglassSplit/></Link>, name: 'Em desenvovimento' },
+       
     ];
 
     const [post, setpost] = useState([])
@@ -67,43 +66,14 @@ function Projetos() {
                 </Box>
 
 
-                <div className="links">
-                    <Link style={{ textDecoration: 'none', color: '#9E9E9E' }} to="/ProjetosCnc"><h5>Concluído</h5></Link>
-                    <Link style={{ textDecoration: 'none', color: '#9E9E9E' }} to="/Emdesenvolvimento"><h5>Em desenvolvimento</h5></Link>
-                    <Link style={{ textDecoration: 'none', color: '#9E9E9E' }} to="/Emandamento"><h5>Em andamento</h5></Link>
-
-                </div>
-                <div className="line-concluidos"></div>
                 <Link to="/AddProjeto">
                     <button id="adicionar">Adicionar Projeto</button>
                 </Link>
 
-                <p style={{ color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%' }}></p>
-            </div>
-            <div id="rendeprojetos" style={{ background: '#21222D', borderRadius: '2rem', height: '35rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
-                    <h5 className="statusprojetoh5" style={{ marginTop: '5%', marginRight: '40%', height: '2rem', width: '30%' }}>Projects start</h5>
-                    <p style={{ marginTop: '5%', height: '2rem', color: '#A0A0A0' }}>Saber mais</p>
-                </div>
+
             </div>
 
-            <div>
-                <div className="renderutprojeto" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
-                    <AlarmIcon id="alarme" style={{ color: '#fff' }} />
-                </div>
-                <div className="renderprojetodois" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
-                    <AlarmIcon id="alarme" style={{ color: '#fff' }} />
-                </div>
-                <div className="renderprojetotres" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
-                    <AlarmIcon id="alarme" style={{ color: '#fff' }} />
-                </div>
-                <div className="renderprojetoquatro" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
-                    <AlarmIcon id="alarme" style={{ color: '#fff' }} />
-                </div>
-                <div className="renderprojetocinco" style={{ background: '#171821', borderRadius: '2rem', height: '3rem', marginLeft: '62.5%', width: '20%' }}>
-                    <AlarmIcon id="alarme" style={{ color: '#fff' }} />
-                </div>
-            </div>
+
 
             <div className="geralprojetoc">
 
@@ -112,23 +82,21 @@ function Projetos() {
 
                         <>
 
-                            <div>
-                                <div id="projetocard" style={{ background: '#171821', borderRadius: '2rem' }}>
-                                    <Card style={{ width: '18rem', height: '9rem', marginRight: '2%', background: '#21222D', borderRadius: '2rem' }} key={key}>
-                                        <Card.Header id="header" style={{ color: '#A9DFD8' }}>
-                                            <div className="poststatus">{post.status}</div>
-                                            <Checkbox {...label} defaultChecked style={{ color: '#CCCCCC', border: '#444444', display: 'flex', justifyContent: 'flex-end', marginTop: '-13.5%', marginRight: '3%' }} id="check" />
+   
+                                <div style={{ width: '18rem', height: '9rem', marginRight: '2%', background: '#21222D', borderRadius: '2rem' }} key={key}>
+                                    <div id="header" style={{ color: '#A9DFD8' }}>
+                                        <div className="poststatus">{post.status}</div>
 
-                                            <FiMoreVertical style={{ color: '#CCCCCC', display: 'flex', justifyContent: 'flex-end', marginLeft: '95%', marginTop: '-11.7%' }} />
+                                        <FiMoreVertical style={{ color: '#CCCCCC', display: 'flex', justifyContent: 'flex-end', marginLeft: '95%', marginTop: '-1%' }} />
 
-                                        </Card.Header>
-                                        <Card.Title style={{ color: "#A9DFD8" }}></Card.Title>
-                                        <Card.Body>
-                                            <h4 style={{ color: '#fff' }}>{post.nome_projeto}</h4>
-                                        </Card.Body>
-                                    </Card>
+                                    </div>
+
+                                    <Card.Body>
+                                        <h4 style={{ color: '#fff' }}>{post.nome_projeto}</h4>
+                                    </Card.Body>
                                 </div>
-                            </div>
+                       
+
 
                         </>
 

@@ -7,15 +7,9 @@
     width: 50%;
     padding: 3%;
     justify-content: space-around;
-    margin-top: -28%;
-    margin-left: 1%;
+   
 }
-#rendeprojetos{
-    display: flex;
-    justify-content: flex-end;
-    margin-left: 60%;
-    width: 25%;
-}
+
 .statusprojetoh5{
     color: #fff;
     
@@ -31,41 +25,9 @@
     border-radius: 10px;
     cursor: pointer;
     margin-left: 5%;
-    margin-top: -1%;
-    margin-bottom: 3%;
-    
+  
 }
-.renderutprojeto{
-    margin-top: -23%;
-    
+#projetocard{
+    padding: 8px;
 }
-.renderprojetodois{
-    margin-top: 2%;
-    
-}
-.renderprojetotres{
-    margin-top: 2%;
-    
-}
-.renderprojetoquatro{
-    margin-top: 2%;
-    
-}
-.renderprojetocinco{
-    margin-top: 2%;
-    
-}
-#alarme{
-    margin-top: 2.5%;
-    margin-left: 4%;   
-}
-.links{
-    display: flex;
-    justify-content: space-around;
-}
-.line-concluidos {
-    height: 2px;
-    background-color: #3E445B;
-    width: 100%;
-    margin-top: -3%;
-}
+

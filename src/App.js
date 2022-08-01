@@ -2,7 +2,6 @@ import Home from './components/Home/Home'
 import Pessoas from './components/Pessoas/Pessoas'
 import Equipes from './components/Equipes/Equipes'
 import Task from './components/Task/Task';
-import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConcluidos';
 import Sobre from './components/Sobre/Sobre';
 import Post from './components/Pessoas/Post/Post';
 import Edit from './components/Pessoas/Edit/editPessoa';
@@ -16,8 +15,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
 import PostE from './components/Equipes/Add/add';
+import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConcluidos';
 import Emdesenvolvimento from './components/Projetos/Emdesenvolvimento/Emdesenvolvimento'
-import Emandamento from './components/Projetos/Emandamento/Emandamento'
+import Emplanejamento from './components/Projetos/Emplanejamento/Emplanejamento';
 function App() {
 
   return (
@@ -31,7 +31,7 @@ function App() {
 
       <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Equipes">Equipes</Nav.Link>
 
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/ProjetosCnc">Projetos</Nav.Link>
+      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/ProjetosConcluidos">Projetos</Nav.Link>
 
       <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Task">Task</Nav.Link>
 
@@ -44,7 +44,7 @@ function App() {
       <Route path="/" element={<Home/>}></Route>
       <Route path="/Pessoas" element={<Pessoas/>}></Route>
       <Route path="/Equipes" element={<Equipes/>}></Route>
-      <Route path="/ProjetosCnc" element={<ProjetosConcluidos/>}></Route>
+      <Route path="/ProjetosConcluidos" element={<ProjetosConcluidos/>}></Route>
       <Route path="/Task" element={<Task/>}></Route>
       <Route path="/Sobre" element={<Sobre/>}></Route>
       <Route path="/Post" element={<Post/>}></Route>
@@ -54,7 +54,7 @@ function App() {
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>
       <Route path="/Emdesenvolvimento" element={<Emdesenvolvimento/>}></Route>
-    <Route path="/Emandamento" element={<Emandamento/>}></Route>
+    <Route path="/Emplanejamento" element={<Emplanejamento/>}></Route>
 
     </Routes>
     </BrowserRouter>
