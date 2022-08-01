@@ -106,7 +106,7 @@ function Edit() {
                             </Box>
                             </div>
 
-                            <div className="botoes">
+                            <div className="botoes-edit-pessoa">
                             <button className="btn-cancelar"  to='/Pessoas'>Cancelar</button>
                             <button className="btn-edit" type="submit">Cadastrar</button>
                                 

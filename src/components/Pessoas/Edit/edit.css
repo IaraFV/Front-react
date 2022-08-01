@@ -20,11 +20,9 @@
     border: 0;
     border-radius: 10px;
     cursor: pointer;
-    border: 1px solid red;
-    
 }
-.botoes{
+.botoes-edit-pessoa{
     display: flex;
     justify-content: space-around;
-    width: 130%;
+    width: 105%;
 }

@@ -104,6 +104,8 @@ textarea {
     display: flex;
     justify-content: space-between;
     width: 103%;
+   
+    height: 45px;
 }
 .btn-post {
     font-family: Heebo;
@@ -115,4 +117,6 @@ textarea {
     border: 0;
     border-radius: 10px;
     cursor: pointer;
+    height: 44px;
+    margin-top: -0.1%;
 }

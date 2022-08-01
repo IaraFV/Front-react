@@ -65,7 +65,7 @@ function Post() {
         <div>
             <main>
                 <div className="card-post">
-                    <h1>Editar Cadastro</h1>
+                    <h1>Cadastrar Pessoa</h1>
                     <div className="line-post"></div>
 
                     <div className="body-post">
