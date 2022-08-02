@@ -76,17 +76,22 @@ function Projetos() {
 
 
             <div className="geralprojetoc">
-            <div id="d" style={{ background: '#fff' }}>
-                <div style={{ width: '25rem', height: '15rem', marginRight: '2%', background: '#21222D', borderRadius: '0.7rem', padding: '3%' }} ></div>
-                            </div>
+
+                <div id="estatic-project">
+                    <div style={{ width: '25rem', height: '2rem', marginRight: '2%', background: '#21222D', borderRadius: '0.5rem', marginBottom: '1%' }} >
+                            fghthrthtt
+                    </div>
+
+                    <div style={{ width: '25rem', height: '12rem', marginRight: '2%', background: '#21222D', borderRadius: '0.5rem', }}> </div>
+
+                </div>
+
+
 
                 {post.map((post, key) => {
                     return (
 
                         <>
-
-
-
                             <div id="projetocard" style={{ background: '#171821' }}>
                                 <div style={{ width: '25rem', height: '15rem', marginRight: '2%', background: '#21222D', borderRadius: '0.7rem', padding: '3%' }} key={key}>
                                     <div id="header" style={{ color: '#fff' }}>
@@ -135,7 +140,7 @@ function Projetos() {
                         </SpeedDial>
                     </Box>
                 </div>
-                
+
             </div>
 
 
