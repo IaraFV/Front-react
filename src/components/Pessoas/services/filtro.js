@@ -1,3 +1,6 @@
+/*
+teste nao mecher IARA!!
+
 import React, {useEffect, useState} from "react";
 
 function Filter (){
@@ -35,11 +38,11 @@ function Filter (){
         </div>
 );
 }
-export default Filter;
+export default Filter;*/
 
-import React, {useEffect, useState} from "react";
+/*/import React, {useEffect, useState} from "react";
 
-/*function Filter (){
+function Filter (){
     
     const [pessoa, setPessoa] = useState([])
 

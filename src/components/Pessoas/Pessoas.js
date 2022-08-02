@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { FiSearch } from "react-icons/fi";
-
+import  Tested  from './Tested'
 
 function Pessoas() {
 
@@ -26,7 +26,7 @@ function Pessoas() {
             .then((response) => {
                 setPosts(response.data)
                 setInitialPosts(response.data);
-                console.log(posts);
+                
             })
             .catch(() => {
                 console.log("deu errado")
@@ -88,7 +88,7 @@ function Pessoas() {
                                 <div className="cardpessoas">
                                     <Card container spacing={2} sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
                                         <CardHeader className="titlecinco"
-                                            avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">i</Avatar>}
+                                            avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe"><Tested/></Avatar>}
 
                                             action={
                                                 <IconButton aria-label="settings" >
