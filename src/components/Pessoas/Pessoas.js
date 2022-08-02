@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { FiSearch } from "react-icons/fi";
-import  Tested  from './Tested'
+//import  Tested  from './Tested'
 
 function Pessoas() {
 
@@ -88,7 +88,7 @@ function Pessoas() {
                                 <div className="cardpessoas">
                                     <Card container spacing={2} sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
                                         <CardHeader className="titlecinco"
-                                            avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe"><Tested/></Avatar>}
+                                            avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">a</Avatar>}
 
                                             action={
                                                 <IconButton aria-label="settings" >

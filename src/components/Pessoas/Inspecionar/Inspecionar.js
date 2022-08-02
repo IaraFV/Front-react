@@ -30,7 +30,8 @@ function Inspecionar() {
     }, []
     )
 
-var nome = posts.nome_pessoa;
+//var nome = posts.nome_pessoa;
+//<Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">{nome.charAt(0)}</Avatar>
 
     
     function deletePost(id_pessoa) {
@@ -49,7 +50,7 @@ var nome = posts.nome_pessoa;
                 <div id="card-inspecionar">
                 <div id="card-header">
 
-                <Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">{nome.charAt(0)}</Avatar>
+                <Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">a</Avatar>
 
 
 
