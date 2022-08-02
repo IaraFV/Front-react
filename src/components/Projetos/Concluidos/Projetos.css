@@ -1,10 +1,11 @@
 .geralprojetoc {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    padding: 1%;
-    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+    justify-content: space-between;
     border: 1px solid red;
+    position: relative;
 
 }
 
@@ -81,4 +82,35 @@
 }
 #descricao{
     margin-top: 5%;
+}
+
+
+#bola{
+    position: absolute !important;
+}
+#card-header-titulo-projeto{
+    border: 1px solid #21222D;
+    margin-bottom: 2%;
+    background-color: #21222D;
+    border-radius: 2rem;
+    width: 90%;
+    margin-top: 2%;
+}
+#componente-header-titulo{
+    margin-left: 1%;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#filter-projeto{
+    width: 40rem;
+    border: 0;
+    height: 40px;
+    border-radius: 8rem;
+}
+#filtro-Projeto{
+    display: flex;
+    align-items: center;
+
 }

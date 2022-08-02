@@ -13,9 +13,13 @@ import { BsAlarm } from "react-icons/bs";
 import { BsCheckSquare } from "react-icons/bs";
 import { BsHourglassSplit } from "react-icons/bs";
 import Avatar from '@mui/material/Avatar';
-
+import { FiSearch } from "react-icons/fi";
 
 function Projetos() {
+
+    const [posts, setPosts] = useState([])
+    const [initialPosts, setInitialPosts] = useState([])
+
     function voltar() {
         window.history.back();
     }
@@ -43,29 +47,44 @@ function Projetos() {
     console.log(meuNovopost)
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+    const handlechange = ({ target }) => {
+        if (!target.value) {
+            setPosts(initialPosts)
+            return;
+        }
+        const filter = posts.filter(({ nome_pessoa }) =>
+            nome_pessoa.toUpperCase().includes(target.value.toUpperCase()))
+
+        setPosts(filter);
+    }
 
     return (
 
         <>
 
-            <div id="informativo">
-                <h1 id="titlepessoa" style={{ color: '#fff', marginLeft: '5%', marginTop: '4%' }}>Cadastro de Projetos</h1>
+            <div id="card-header-titulo-projeto">
+                <div id="componente-header-titulo">
+                    <h1>Projetos</h1>
+                    <div id="filtro-Projeto">
+                        <input id="filter-projeto" type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
 
-                <Link to="/AddProjeto">
-                    <button id="adicionar">Adicionar Projeto</button>
-                </Link>
-
+                    </div>
+                </div>
 
             </div>
 
 
 
             <div className="geralprojetoc">
+            <div id="d" style={{ background: '#fff' }}>
+                <div style={{ width: '25rem', height: '15rem', marginRight: '2%', background: '#21222D', borderRadius: '0.7rem', padding: '3%' }} ></div>
+                            </div>
 
                 {post.map((post, key) => {
                     return (
 
                         <>
+
 
 
                             <div id="projetocard" style={{ background: '#171821' }}>
@@ -86,7 +105,10 @@ function Projetos() {
                                         <p>Membros</p>
                                         <Avatar sx={{ fontSize: '0.5rem', width: '6%', height: '15px' }}>N</Avatar>
                                     </div>
+
                                 </div>
+
+
                             </div>
 
                         </>
@@ -95,23 +117,25 @@ function Projetos() {
                     );
 
                 })}
-
-                <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1}}>
-                    <SpeedDial
-                        ariaLabel="SpeedDial basic example"
-                        sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                        icon={<SpeedDialIcon />}
-                    >
-                        {actions.map((action) => (
-                            <SpeedDialAction
-                                key={action.name}
-                                icon={action.icon}
-                                tooltipTitle={action.name}
-                            />
-                        ))}
-                    </SpeedDial>
-                </Box>
-
+                <div>
+                    <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
+                        <SpeedDial
+                            id="bola"
+                            ariaLabel="SpeedDial basic example"
+                            sx={{ bottom: 16, right: 16 }}
+                            icon={<SpeedDialIcon />}
+                        >
+                            {actions.map((action) => (
+                                <SpeedDialAction
+                                    key={action.name}
+                                    icon={action.icon}
+                                    tooltipTitle={action.name}
+                                />
+                            ))}
+                        </SpeedDial>
+                    </Box>
+                </div>
+                
             </div>
 
 

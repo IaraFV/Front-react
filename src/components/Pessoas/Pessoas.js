@@ -26,6 +26,7 @@ function Pessoas() {
             .then((response) => {
                 setPosts(response.data)
                 setInitialPosts(response.data);
+                console.log(posts);
             })
             .catch(() => {
                 console.log("deu errado")
