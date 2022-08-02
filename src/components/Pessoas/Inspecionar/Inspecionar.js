@@ -8,6 +8,7 @@ import { BsFillFileEarmarkFill } from "react-icons/bs";
 import CheckIcon from '@mui/icons-material/Check';
 import { AiOutlineStar } from "react-icons/ai";
 
+    
 
 function Inspecionar() {
 
@@ -15,41 +16,45 @@ function Inspecionar() {
     const [posts, setPosts] = useState([])
     const { id_pessoa } = useParams()
 
+    
+
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
             .then((response) => {
                 setPosts(response.data)
+                
             })
             .catch(() => {
                 console.log("deu errado")
             })
     }, []
     )
-    
 
+var nome = posts.nome_pessoa;
+
+    
     function deletePost(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
         setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
     }
-/**
- * const lucas = posts.nome_pessoa;
-console.log(lucas);
-*/   
+    
+
     return (
         <>
        
-            
+         
            
 
             <div id="geral-card-inspecionar">
                 <div id="card-inspecionar">
-                    <div id="card-header">
+                <div id="card-header">
 
-                        <Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">A</Avatar>
-                        
-                        
-                        <Link to="/Testry"><button>click</button></Link>
-                    </div>
+                <Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">{nome.charAt(0)}</Avatar>
+
+
+
+                </div>
+                   
                     <div >
                         <h1>{posts.nome_pessoa}</h1>
                     </div>
