@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { FiSearch } from "react-icons/fi";
-//import  Tested  from './Tested'
+
 
 function Pessoas() {
 
@@ -41,8 +41,21 @@ function Pessoas() {
 
         setPosts(filter);
     }
+    const nome = posts.map((nom) => nom.nome_pessoa);
+    //const letra = nome.map((letr) => letr.charAt(0));
+    console.log(nome);
 
-
+    function stringAvatar(nome) {
+        console.log(nome);
+        return {
+            sx: {
+                //bgcolor: stringToColor(name),
+                width: '14rem', height: '14rem', fontSize: '8rem'
+            },
+            children: `${nome.split(' ')[0][0]}`,
+        };
+    }
+    
     return (
         <div >
             <div>
@@ -85,7 +98,7 @@ function Pessoas() {
                                 <div className="cardpessoas">
                                     <Card container spacing={2} sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
                                         <CardHeader className="titlecinco"
-                                            avatar={<Avatar sx={{ bgcolor: [500] }} aria-label="recipe">a</Avatar>}
+                                            avatar={<Avatar {...stringAvatar(`${nome}`)} />}
 
                                             action={
                                                 <IconButton aria-label="settings" >
