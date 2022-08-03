@@ -5,72 +5,88 @@
     width: 23%;
     justify-content: space-between;
     position: relative;
-    border: 1px solid red;
-
 }
 
 #status {
-    color: #00DB99;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 15px;
-
-    color: #00DB99;
-}
-
-#titulodesc {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: #717986;
-}
-
-#header {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-}
-
-#corpodesc {
+    background: rgba(235, 87, 87, 0.2);
+    border-radius: 4px;
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
+    width: 35%;
+    justify-content: center;
+    display: flex;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #EB5757;
+}
 
+
+
+#nome-projeto {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 60%;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: 2.5%;
+    padding: 1%;
+    line-height: 13px;
     color: #FFFFFF;
 }
 
 #membros p {
-    font-family: 'Roboto';
+
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
     line-height: 15px;
     color: #717986;
     display: flex;
-   
-  
 }
-#membros  {
+
+#data-inicio {
+    color: #717986;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    width: 44%;
+    margin-top: 2%;
+}
+
+
+
+#descricao {
+    margin-top: 2%;
+}
+
+#titulodesc {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 510;
+    color: #717986;
+}
+
+#corpodesc {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0.9;
+    margin-top: -3%;
+}
+#container-membros {
     display: block;
-    margin-top: 5%;
+    justify-content: flex-start;
+    width: 18%;
+    margin-top: -1%;
 }
-#descricao{
-    margin-top: 5%;
+#membros{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 510;
+    color: #717986;
 }
 
-
-#bola{
-    position: absolute !important;
-}
-#card-header-titulo-projeto{
+#card-header-titulo-projeto {
     border: 1px solid #21222D;
     margin-bottom: 2%;
     background-color: #21222D;
@@ -78,26 +94,29 @@
     width: 90%;
     margin-top: 2%;
 }
-#componente-header-titulo{
+
+#componente-header-titulo {
     margin-left: 1%;
     width: 70%;
     display: flex;
     justify-content: space-between;
 }
 
-#filter-projeto{
+#filter-projeto {
     width: 40rem;
     border: 0;
     height: 40px;
     border-radius: 8rem;
 }
-#filtro-Projeto{
+
+#filtro-Projeto {
     display: flex;
     align-items: center;
 
 }
-#estatic-project{
-   
+
+#estatic-project {
+
     display: flex;
     flex-wrap: wrap;
     height: '18rem';
