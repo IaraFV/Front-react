@@ -77,23 +77,12 @@ function Projetos() {
 
             <div className="geralprojetoc">
 
-                <div id="estatic-project">
-                    <div style={{ width: '25rem', height: '2rem', marginRight: '2%', background: '#21222D', borderRadius: '0.5rem', marginBottom: '1%' }} >
-                            fghthrthtt
-                    </div>
-
-                    <div style={{ width: '25rem', height: '12rem', marginRight: '2%', background: '#21222D', borderRadius: '0.5rem', }}> </div>
-
-                </div>
-
-
-
                 {post.map((post, key) => {
                     return (
 
                         <>
-                            <div id="projetocard" style={{ background: '#171821' }}>
-                                <div style={{ width: '25rem', height: '15rem', marginRight: '2%', background: '#21222D', borderRadius: '0.7rem', padding: '3%' }} key={key}>
+                            <div id="projetocard" style={{ border: 'none' }}>
+                                <div style={{ width: '23rem', height: '12rem', marginRight: '2%', background: '#21222D', borderRadius: '0.7rem', padding: '3%' }} key={key}>
                                     <div id="header" style={{ color: '#fff' }}>
                                         {post.nome_projeto}
                                         <div><FiMoreVertical style={{ color: '#CCCCCC', display: 'flex', justifyContent: 'flex-end', marginLeft: '95%', marginTop: '-1%' }} /></div>
@@ -122,25 +111,6 @@ function Projetos() {
                     );
 
                 })}
-                <div>
-                    <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
-                        <SpeedDial
-                            id="bola"
-                            ariaLabel="SpeedDial basic example"
-                            sx={{ bottom: 16, right: 16 }}
-                            icon={<SpeedDialIcon />}
-                        >
-                            {actions.map((action) => (
-                                <SpeedDialAction
-                                    key={action.name}
-                                    icon={action.icon}
-                                    tooltipTitle={action.name}
-                                />
-                            ))}
-                        </SpeedDial>
-                    </Box>
-                </div>
-
             </div>
 
 

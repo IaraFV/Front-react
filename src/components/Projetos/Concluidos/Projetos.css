@@ -2,23 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    width: 95%;
+    width: 23%;
     justify-content: space-between;
     position: relative;
-
-}
-
-#adicionar {
-    font-family: Heebo;
-    font-weight: 800;
-    font-size: 1.3rem;
-    padding: 5px 25px;
-    color: #fff;
-    background-color: #A9DFD8;
-    border: 0;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 5%;
+    border: 1px solid red;
 
 }
 
