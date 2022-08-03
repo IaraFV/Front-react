@@ -9,7 +9,7 @@ import { BsFillFileEarmarkFill } from "react-icons/bs";
 import CheckIcon from '@mui/icons-material/Check';
 import { AiOutlineStar } from "react-icons/ai";
 import { string } from "yup";
-
+import { BsArrowLeft } from "react-icons/bs";
 
 
 function Inspecionar() {
@@ -54,8 +54,13 @@ function Inspecionar() {
 
     return (
         <>
+        
+        
             <div id="geral-card-inspecionar">
                 <div id="card-inspecionar">
+                    <Link to='/Pessoas'> 
+                        <BsArrowLeft/>
+                    </Link>
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
 

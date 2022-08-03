@@ -25,7 +25,6 @@ function Edit() {
      const editPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
         .then(() => {
             console.log("foi");
-            navigate("/Pessoas");
         })
         .catch(() => {
             console.log("n foi")
@@ -61,6 +60,9 @@ function Edit() {
     const handleChange = (event) => {
         setAge(event.target.value);
       };
+      function voltar() {
+        window.history.back();
+    }
 
     return(
         <div>
@@ -107,7 +109,7 @@ function Edit() {
                             </div>
 
                             <div className="botoes-edit-pessoa">
-                            <button className="btn-cancelar"  to='/Pessoas'>Cancelar</button>
+                            <button className="btn-cancelar" onClick={voltar} >Cancelar</button>
                             <button className="btn-edit" type="submit">Cadastrar</button>
                                 
                             </div>
