@@ -48,7 +48,7 @@ function Projetos() {
         setPosts(filter);
     }
 
-    
+
 
     return (
 
@@ -65,12 +65,16 @@ function Projetos() {
 
             </div>
 
+            <div>
+                <div>Em planejamento (5)</div>
+            </div>
+
             <div className="geralprojetoc">
                 {post.map((post, key) => {
                     return (
 
                         <>
-                            <div id="projetocard" style={{ border: 'none', padding: '1%' }}>
+                            <div id="projetocard" style={{ border: 'none', padding: '1%' }} draggable="true">
                                 <div style={{ width: '23rem', height: '14rem', marginRight: '2%', background: '#21222D', borderRadius: '0.7rem', padding: '3%' }} key={key}>
 
                                     <div id="status">
