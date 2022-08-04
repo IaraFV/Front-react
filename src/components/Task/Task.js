@@ -1,15 +1,6 @@
-import CardContent from '@mui/material/CardContent';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { Link } from 'react-router-dom';
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
-import CardHeader from '@mui/material/CardHeader';
-import Avatar from '@mui/material/Avatar';
 import './Task.css';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 
@@ -35,24 +26,18 @@ function Task() {
     }
 
     const arr = posts;
-    var stats = arr.map((statuss) => statuss.status);
-    var numero = stats.map((ret)=> ret.length);
-    console.log(numero);
-    /*
-    function filtrarStatus (){
-        const luc = stats;
-        const teste = 'lucas';
-        console.log(luc);
-        if (luc === 'Em desenvolvimento'){
-            var lucas = (teste+luc);
-            return(
-                <p>{lucas}</p>
-            )
-                
-            
-        }
+    var stats = arr;
+    //.map((statuss) => statuss.status);
+    //var numero = stats.map((ret)=> ret.length);
 
-    }*/
+    var and = stats.filter(states => states.status === "A fazer");
+
+    var fi = stats.filter(states => states.status === 'Em desenvolvimento');
+
+    var Sta = stats.filter(states => states.status === 'Concluído');
+    console.log(and);
+    console.log(fi);
+    console.log(Sta);
 
     return (
         <div>
@@ -68,47 +53,63 @@ function Task() {
                             <th>lucas</th>
                             <th>lucas</th>
                             <th>Last Name</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody >
 
                         <tr>
                             {
-                                posts.map((post,key) => {
-                                    return(
+                                and.map((post, key) => {
+                                    return (
                                         <div>
-                                            <td draggable="true"><Card style={{ width: '18rem' }}>
-                                                <Card.Body>
-                                                    <Card.Title style={{color: 'black'}} key={key}>
-                                                        {post.descricao_task}
-                                                    </Card.Title>
-                                                    <Card.Text>{post.status}
-                                                        
-                                                    </Card.Text>
-                                                </Card.Body>
-                                            </Card></td>
+                                            <td draggable="true">
+
+                                                <Card style={{ width: '18rem' }}>
+                                                    <Card.Body>
+                                                        <Card.Title style={{ color: 'black' }} key={key}>
+                                                            {post.descricao_task}
+                                                        </Card.Title>
+                                                        <Card.Text>{post.status}
+
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </td>
                                         </div>
                                     );
 
-                                    
+
                                 })
-                                }
-                            <td><Card style={{ width: '18rem' }}>
-                                
-                                <Card.Body>
-                                   
-                                </Card.Body>
-                            </Card> </td>
-                            <td><Card style={{ width: '18rem' }}>
-                                
-                                <Card.Body>
+                            }
+
+
+
+                            {
+                                fi.map((las, key) => {
+                                    return (
+
                                     
-                                </Card.Body>
-                            </Card></td>
-                            
+                                            <td draggable="true">
+
+                                                <Card style={{ width: '18rem' }}>
+                                                    <Card.Body>
+                                                        <Card.Title style={{ color: 'black' }} key={key}>
+                                                            {las.descricao_task}
+                                                        </Card.Title>
+                                                        <Card.Text>{las.status}
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </td>
+                                  
+
+                                    )
+                                })
+                            }
+
                         </tr>
-                        
+
                     </tbody>
                 </Table>
             </div>
