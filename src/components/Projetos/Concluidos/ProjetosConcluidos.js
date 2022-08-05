@@ -1,21 +1,29 @@
 import axios from "axios";
-import React from "react";
-import Card from 'react-bootstrap/Card';
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Projetos.css';
+import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import { BsFillFlagFill } from "react-icons/bs";
 import Avatar from '@mui/material/Avatar';
 
 function Projetos() {
 
-    const [posts, setPosts] = useState([])
-    const [initialPosts, setInitialPosts] = useState([])
+
+    function log(message) {
+        console.log('> ' + message)
+    }
+
+
+    const cards = document.querySelectorAll('.card')
+    const dropzones = document.querySelectorAll('.dropzone')
+
+    
+    const [initialPost, setInitialPost] = useState([])
 
     function voltar() {
         window.history.back();
     }
-    
+
     //get projetos
     const [post, setpost] = useState([])
     useEffect(() => {
@@ -28,100 +36,175 @@ function Projetos() {
     }, [])
 
 
-    //filter status
-    const meuNovopost = post.filter((valorAtual) => {
-        return valorAtual.status.includes("Em planejamento")
-    })
-    console.log(meuNovopost);
-
-
-
     //filter pesquisa
     const handlechange = ({ target }) => {
         if (!target.value) {
-            setPosts(initialPosts)
+            setpost(initialPost)
             return;
         }
-        const filter = posts.filter(({ nome_pessoa }) =>
-            nome_pessoa.toUpperCase().includes(target.value.toUpperCase()))
+        const filter = post.filter(({ nome_projeto }) =>
+            nome_projeto.toUpperCase().includes(target.value.toUpperCase()))
 
-        setPosts(filter);
+        setpost(filter);
     }
 
 
 
+
+    const arr = post;
+    var stats = arr;
+    //.map((statuss) => statuss.status);
+    //var numero = stats.map((ret)=> ret.length);
+
+    var planejamento = stats.filter(states => states.status === "Em planejamento");
+
+    var desenvolvimento = stats.filter(states => states.status === 'Em desenvolvimento');
+
+    var finalizado = stats.filter(states => states.status === 'Concluído');
+
+    /** our cards */
+    cards.forEach(card => {
+        card.addEventListener('dragstart', dragstart)
+        card.addEventListener('drag', drag)
+        card.addEventListener('dragend', dragend)
+    })
+
+    function dragstart() {
+        // log('CARD: Start dragging ')
+        dropzones.forEach(dropzone => dropzone.classList.add('highlight'))
+
+        // this = card
+        this.classList.add('is-dragging')
+    }
+
+    function drag() {
+        log('CARD: Is dragging ')
+    }
+
+    function dragend() {
+        // log('CARD: Stop drag! ')
+        dropzones.forEach(dropzone => dropzone.classList.remove('highlight'))
+
+        // this = card
+        this.classList.remove('is-dragging')
+    }
+
+    /** place where we will drop cards */
+    dropzones.forEach(dropzone => {
+        dropzone.addEventListener('dragenter', dragenter)
+        dropzone.addEventListener('dragover', dragover)
+        dropzone.addEventListener('dragleave', dragleave)
+        dropzone.addEventListener('drop', drop)
+    })
+
+    function dragenter() {
+    }
+
+    function dragover() {
+        // this = dropzone
+        this.classList.add('over')
+
+        // get dragging card
+        const cardBeingDragged = document.querySelector('.is-dragging')
+
+        // this = dropzone
+        this.appendChild(cardBeingDragged)
+    }
+
+    function dragleave() {
+        this.classList.remove('over')
+
+    }
+
+    function drop() {
+        this.classList.remove('over')
+    }
+
+
     return (
+        <div>
+            <div className="cabecalho">
+                <h1 style={{ color: 'white' }} >Projetos</h1>
+                <input type="text" className="input" placeholder="Ex: hello"></input>
+            </div>
 
-        <>
+            <div className="d-flex">
+        
+                <div className="col-9 d-flex justify-content-around  align-items-cente" style={{ height: "800px" }}>
 
-            <div id="card-header-titulo-projeto">
-                <div id="componente-header-titulo">
-                    <h1>Projetos</h1>
-                    <div id="filtro-Projeto">
-                        <input id="filter-projeto" type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
 
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board">
+                        <h4 className="text-center mt-2">
+                        Em planejamento
+                        </h4>
+                        {
+                            planejamento.map((post, key) => {
+                                return (
+                                    <div class="dropzone">
+                                        <Card style={{ width: '18rem' }} class="card" draggable="true">
+                                            <Card.Body>
+                                                <Card.Title  id="status" key={key}>{post.status}</Card.Title>
+                                                <Card.Text>{post.nome_projeto}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
+                                );
+                            })
+                        }
                     </div>
+
+
+
+
+
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board" >
+                        <h4 className="text-center mt-2">
+                            Em desenvolvimento
+                        </h4>
+                        {
+                            desenvolvimento.map((post, key) => {
+                                return (
+                                    <div class="dropzone">
+                                        <Card style={{ width: '18rem' }} draggable="true">
+                                            <Card.Body class="dropzone">
+                                                <Card.Title style={{ color: 'black' }} key={key}>{post.nome_projeto}</Card.Title>
+                                                <Card.Text>{post.descricao_projeto}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+
+
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board">
+                        <h4 className="text-center mt-2">
+                            Concluídos
+                        </h4>
+                        {
+                            finalizado.map((post, key) => {
+                                return (
+                                    <div class="dropzone">
+                                        <Card style={{ width: '18rem' }} draggable="true">
+                                            <Card.Body>
+                                                <Card.Title style={{ color: 'black' }} key={key}>{post.nome_projeto}</Card.Title>
+                                                <Card.Text>{post.descricao_projeto}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+
                 </div>
+            </div> 
 
-            </div>
-
-            <div>
-                <div>Em planejamento (5)</div>
-            </div>
-
-            <div className="geralprojetoc">
-                {post.map((post, key) => {
-                    return (
-
-                        <>
-                            <div id="projetocard" style={{ border: 'none', padding: '1%' }} draggable="true">
-                                <div style={{ width: '23rem', height: '14rem', marginRight: '2%', background: '#21222D', borderRadius: '0.7rem', padding: '3%' }} key={key}>
-
-                                    <div id="status">
-                                        {post.status}
-                                    </div>
-
-
-                                    <div id="nome-projeto">
-                                        {post.nome_projeto}
-                                    </div>
-
-                                    <div id="data-inicio">
-                                        <div><BsFillFlagFill/></div>
-                                        {post.data_inicio}
-                                    </div>
-
-
-                                    <div id="descricao">
-                                        <p id="titulodesc">Descrição</p>
-                                        <p id="corpodesc">It is a long established fact that a reader will be distracted by the readable{post.descricao_projeto}</p>
-                                    </div>
-
-                                    <div id="container-membros">
-                                        <p id="membros">Membros</p>
-                                        <Avatar  id="avatar-membros-equipes-projetos" sx={{ fontSize: '0.8rem', width: '30%', height: '1.2rem', marginTop: '-18%' }}>N</Avatar>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-
-                        </>
-
-
-                    );
-
-                })}
-            </div>
-
-
-
-        </>
-
-
-    );
-
+        </div>
+    )
 }
-
 export default Projetos;

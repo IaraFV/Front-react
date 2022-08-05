@@ -16,8 +16,7 @@ import teste from './components/Home/img/Logo.webp'
 import './App.css'
 import PostE from './components/Equipes/Add/add';
 import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConcluidos';
-import Emdesenvolvimento from './components/Projetos/Emdesenvolvimento/Emdesenvolvimento'
-import Emplanejamento from './components/Projetos/Emplanejamento/Emplanejamento';
+
 function App() {
 
   return (
@@ -53,9 +52,6 @@ function App() {
       <Route path="/Add" element={<Add/>}></Route>
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>
-      <Route path="/Emdesenvolvimento" element={<Emdesenvolvimento/>}></Route>
-    <Route path="/Emplanejamento" element={<Emplanejamento/>}></Route>
-
     </Routes>
     </BrowserRouter>
 </div>
