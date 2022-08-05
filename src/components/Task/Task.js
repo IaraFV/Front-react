@@ -31,15 +31,13 @@ function Task() {
     )
 
 
-    function deletePost(id_pessoa) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
+    function deletePost(id_task) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasts/${id_task}`)
+        setPosts(posts.filter(post => post.id_task !== id_task))
     }
 
     const arr = posts;
     var stats = arr;
-    //.map((statuss) => statuss.status);
-    //var numero = stats.map((ret)=> ret.length);
 
     var and = stats.filter(states => states.status === "A fazer");
 

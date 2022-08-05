@@ -36,7 +36,7 @@ function Post() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
-
+/*
     useEffect(() => {
 
         const fetchequipe = async () => {
@@ -50,8 +50,8 @@ function Post() {
             }
         };
         fetchequipe();
-    }, [])
-
+    }, [])*/
+/*
     useEffect(() => {
 
         const fetchequipe = async () => {
@@ -66,7 +66,7 @@ function Post() {
         };
         fetchequipe();
     }, [])
-
+*/
     useEffect(() => {
 
         const fetchequipe = async () => {
@@ -85,26 +85,47 @@ function Post() {
     function voltar() {
         window.history.back();
     }
-
-    const [age, setAge] = React.useState('');
-    const [equipe, setequipe] = useState([]);
-
+    /**projeto */
     const [agea, setAgea] = React.useState('');
     const [projeto, setprojeto] = useState([]);
-
+    /*
+    /**equipe 
+    const [age, setAge] = React.useState('');
+    const [equipe, setequipe] = useState([]);
+    /**pessoas 
     const [ageu, setAgeu] = React.useState('');
     const [Pessoa,setpessoa] = useState([]);
-    
-    
+    */
+    /*
     const handleChange = (event) => {
         setAge(event.target.value);
-    };
+    };*/
     const handleChangea = (event) => {
         setAgea(event.target.value);
-    };
+    };/*
     const handleChangeu = (event) => {
         setAgeu(event.target.value);
-    };
+    };*/
+
+const arr = projeto;
+const proj = arr;
+const filt = proj.filter(pro => pro.id_projeto === agea);
+const Equipe = filt.map(p => p.equipe.nome_equipe)
+//const nomeEquipe = filt.filter(nome => nome.nome_equipe)
+console.log(agea);
+console.log(filt);
+
+console.log(Equipe)
+
+    /**const arr = posts;
+    var stats = arr;
+
+    var and = stats.filter(states => states.status === "A fazer");
+
+    var fi = stats.filter(states => states.status === 'Em desenvolvimento');
+
+    var Sta = stats.filter(states => states.status === 'Concluído');
+ */
 
     return (
         <div>
@@ -122,28 +143,6 @@ function Post() {
                                 <input type="text" name="descricao_task" {...register("descricao_task")} />
                                 <p className="error-message">{errors.descricao_task?.message} </p>
                             </div>
-
-
-                            <div className="fields">
-                                <label>Equipe</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
-                                        <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
-                                        <Select
-                                            {...register("equipe_id")}
-                                            labelId="demo-simple-select-label"
-                                            id_equipe="demo-simple-select"
-                                            value={age}
-                                            label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                            onChange={handleChange}>
-                                            {equipe.map((equipe) =>
-                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
-                                            )}
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-                            </div>
                             <div className="fields">
                                 <label>projeto</label>
                                 <Box sx={{ minWidth: 120 }}>
@@ -159,6 +158,53 @@ function Post() {
                                             onChange={handleChangea}>
                                             {projeto.map((projetos) =>
                                                 <MenuItem value={projetos.id_projeto} key={projetos.id_projeto}>{projetos.nome_projeto}</MenuItem>
+                                            )}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </div>
+                            <div>
+                                <from>{
+                                    Equipe.map((equipe,key) => 
+                                    <from.Control type="text" key={key} value={equipe.nome_equipe} readOnly={true}/>
+                                    )}
+                                </from>
+                            </div>
+                            
+
+                            <div className="botoespost">
+                                
+                                <button className="btn-cancelar-post" onClick={voltar}>Cancelar</button>
+                                
+                                <button className="btn-post" type="submit">Cadastrar</button>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    )
+
+}
+
+export default Post;
+/**<div className="fields">
+                                <label>Equipe</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("equipe_id")}
+                                            labelId="demo-simple-select-label"
+                                            id_equipe="demo-simple-select"
+                                            value={age}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChange}>
+                                            {filt.map((equipe) =>
+                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
                                             )}
                                         </Select>
                                     </FormControl>
@@ -183,24 +229,4 @@ function Post() {
                                         </Select>
                                     </FormControl>
                                 </Box>
-                            </div>
-
-                            <div className="botoespost">
-                                
-                                <button className="btn-cancelar-post" onClick={voltar}>Cancelar</button>
-                                
-                                <button className="btn-post" type="submit">Cadastrar</button>
-
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </main>
-        </div>
-    )
-
-}
-
-export default Post;
-/**to com fome */
+                            </div>*/
