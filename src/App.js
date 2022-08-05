@@ -17,7 +17,7 @@ import './App.css'
 import PostE from './components/Equipes/Add/add';
 import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConcluidos';
 import Emdesenvolvimento from './components/Projetos/Emdesenvolvimento/Emdesenvolvimento'
-import Emplanejamento from './components/Projetos/Emplanejamento/Emplanejamento';
+import PostT from './components/Task/PostT/postT'
 function App() {
 
   return (
@@ -54,7 +54,7 @@ function App() {
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>
       <Route path="/Emdesenvolvimento" element={<Emdesenvolvimento/>}></Route>
-    <Route path="/Emplanejamento" element={<Emplanejamento/>}></Route>
+      <Route path="/postT" element={<PostT/>}></Route>
 
     </Routes>
     </BrowserRouter>
