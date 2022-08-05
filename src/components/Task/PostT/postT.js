@@ -11,6 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Form } from 'react-bootstrap';
 
 function Post() {
 
@@ -164,11 +165,12 @@ console.log(Equipe)
                                 </Box>
                             </div>
                             <div>
-                                <form>{
+                                <Form>
+                                 {
                                     Equipe.map((equipe,key) => 
-                                    <from.Control type="text" key={key} value={equipe.nome_equipe} readOnly={true}/>
+                                    <Form.Control type="text" key={key} value={equipe.nome_equipe} readOnly={true}/>
                                     )}
-                                </form>
+                                </Form>
                             </div>
                             
 
