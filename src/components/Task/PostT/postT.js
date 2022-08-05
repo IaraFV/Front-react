@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useParams } from "react";
+import React, { useEffect, useState,} from "react";
 import { useForm } from 'react-hook-form'
+import { useNavigate, useParams } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './postT.css'
@@ -14,18 +15,19 @@ import Select from '@mui/material/Select';
 function Post() {
 
     const validacaoPostT = yup.object().shape({
-        descricao_task: yup.string().required("O nome é obrigatorio!"),
-        equipe_id: yup.number(),
+        descricao_task: yup.string().required("Descrição é obrigatorio!"),
+        equipe_id: yup.number().required("Campo obrigatorio!"),
         projeto_id:yup.number(),
         pessoa_id:yup.number()
     })
 
-   /* let navigate = useNavigate()
-    navigate("/Inspecionar");*/
+   let navigate = useNavigate()
+
 
     const addpostT = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/", data)
         .then(() => {
             console.log("foi")
+            navigate("/task");
         })
         .catch(() => {
             console.log("n foi")
