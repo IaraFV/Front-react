@@ -164,11 +164,11 @@ console.log(Equipe)
                                 </Box>
                             </div>
                             <div>
-                                <from>{
+                                <form>{
                                     Equipe.map((equipe,key) => 
                                     <from.Control type="text" key={key} value={equipe.nome_equipe} readOnly={true}/>
                                     )}
-                                </from>
+                                </form>
                             </div>
                             
 
