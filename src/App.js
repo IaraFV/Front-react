@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
 import PostE from './components/Equipes/Add/add';
-import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConcluidos';
+import ProjetosConcluidos from './components/Projetos/Projetos';
 function App() {
 
   return (

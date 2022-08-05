@@ -2,27 +2,17 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Projetos.css';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
-import { BsFillFlagFill } from "react-icons/bs";
-import Avatar from '@mui/material/Avatar';
 
 function Projetos() {
-
 
     function log(message) {
         console.log('> ' + message)
     }
 
-
     const cards = document.querySelectorAll('.card')
     const dropzones = document.querySelectorAll('.dropzone')
 
-    
     const [initialPost, setInitialPost] = useState([])
-
-    function voltar() {
-        window.history.back();
-    }
 
     //get projetos
     const [post, setpost] = useState([])
@@ -49,12 +39,13 @@ function Projetos() {
     }
 
 
-
+    //onDrag: Acionado quando um elemento ou seleção de texto está sendo arrastado.
+    //onDragEnd: Acionado quando uma operação de arrastar está terminando
+    // (por eexmplo, ao soltar o botão do mouse ou pressionar a tecla esc).
+    // ondragstart: Acionado quando o usuário começa a arrastar um elemento válido ou seleção de texto. 
 
     const arr = post;
     var stats = arr;
-    //.map((statuss) => statuss.status);
-    //var numero = stats.map((ret)=> ret.length);
 
     var planejamento = stats.filter(states => states.status === "Em planejamento");
 
@@ -62,7 +53,6 @@ function Projetos() {
 
     var finalizado = stats.filter(states => states.status === 'Concluído');
 
-    /** our cards */
     cards.forEach(card => {
         card.addEventListener('dragstart', dragstart)
         card.addEventListener('drag', drag)
@@ -70,10 +60,7 @@ function Projetos() {
     })
 
     function dragstart() {
-        // log('CARD: Start dragging ')
         dropzones.forEach(dropzone => dropzone.classList.add('highlight'))
-
-        // this = card
         this.classList.add('is-dragging')
     }
 
@@ -82,10 +69,9 @@ function Projetos() {
     }
 
     function dragend() {
-        // log('CARD: Stop drag! ')
+        log('CARD: Stop drag! ')
         dropzones.forEach(dropzone => dropzone.classList.remove('highlight'))
 
-        // this = card
         this.classList.remove('is-dragging')
     }
 
@@ -101,13 +87,11 @@ function Projetos() {
     }
 
     function dragover() {
-        // this = dropzone
+
         this.classList.add('over')
 
-        // get dragging card
         const cardBeingDragged = document.querySelector('.is-dragging')
 
-        // this = dropzone
         this.appendChild(cardBeingDragged)
     }
 
@@ -125,26 +109,29 @@ function Projetos() {
         <div>
             <div className="cabecalho">
                 <h1 style={{ color: 'white' }} >Projetos</h1>
-                <input type="text" className="input" placeholder="Ex: hello"></input>
+                <input type="text" className="input" placeholder="Meu nome é Zé"></input>
             </div>
 
             <div className="d-flex">
-        
+
                 <div className="col-9 d-flex justify-content-around  align-items-cente" style={{ height: "800px" }}>
 
 
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board">
-                        <h4 className="text-center mt-2">
-                        Em planejamento
+                    <div className="col-3 d-flex flex-column align-items-center " style={{ height: "745px" }} >
+                        <h4 className="text-center mt-2 ">
+                            Em planejamento
                         </h4>
                         {
                             planejamento.map((post, key) => {
                                 return (
-                                    <div class="dropzone">
-                                        <Card style={{ width: '18rem' }} class="card" draggable="true">
+                                    <div class="dropzone" id="card-projeto-planejamento">
+                                        <Card style={{ background: '#21222D' }} class="card" id="testeplan"draggable="true">
                                             <Card.Body>
-                                                <Card.Title  id="status" key={key}>{post.status}</Card.Title>
-                                                <Card.Text>{post.nome_projeto}
+                                                <Card.Title id="status" key={key}>
+                                                    {post.status}
+                                                </Card.Title>
+                                                <Card.Text>
+                                                    {post.nome_projeto}
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
@@ -155,21 +142,22 @@ function Projetos() {
                     </div>
 
 
-
-
-
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board" >
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}  >
                         <h4 className="text-center mt-2">
                             Em desenvolvimento
                         </h4>
                         {
                             desenvolvimento.map((post, key) => {
                                 return (
-                                    <div class="dropzone">
-                                        <Card style={{ width: '18rem' }} draggable="true">
-                                            <Card.Body class="dropzone">
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.nome_projeto}</Card.Title>
-                                                <Card.Text>{post.descricao_projeto}
+                                    
+                                    <div class="dropzone" id="card-projeto-desenvolvimento">
+                                        <Card style={{ background: '#21222D' }}  id="testedes" class="card" draggable="true">
+                                            <Card.Body>
+                                                <Card.Title id="status-desen" key={key}>
+                                                    {post.status}
+                                                </Card.Title>
+                                                <Card.Text>
+                                                    {post.nome_projeto}
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
@@ -180,7 +168,7 @@ function Projetos() {
                     </div>
 
 
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board">
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             Concluídos
                         </h4>
@@ -202,7 +190,7 @@ function Projetos() {
                     </div>
 
                 </div>
-            </div> 
+            </div>
 
         </div>
     )
