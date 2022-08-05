@@ -11,79 +11,21 @@
 .input{
     max-width: 40%;
 }
-/*fim do cabeçalho*/
-/*Divs gerais*/
-.divGeralCard{
-    display:flex;
-    justify-content:space-around;
-    border:3px solid blue;
+#BarraRolagem{
+    padding: 1rem;
+    overflow: auto;
 }
-.flexWrap{
-    border:1px solid red;
-    flex-wrap: wrap;
+#BarraRolage{
+    padding: 1rem;
+    overflow: auto;
 }
-.cards{
-    margin:1rem;
+#BarraRolag{
+    padding: 1rem;
+    overflow: auto;
 }
-.H_seis{
-    color:red;
-    border:1px solid red;
-    border-radius: 10px;
-    text-align:center;
-    max-width: 40%;
-    font-size: 12px;
+.space{
+    padding: 1rem;
 }
-/*fim divs gerais*/
-/*formatação de h1*/
 .H_um{
     font-size:20px;
 }
-/*fim de formatação de h1*/
-
-/* teste*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*#geraltasks{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 3%;
-    margin-top: -2%;
-    border: 1px solid red
-}
-.cardtask{
-    border: 2.1px solid #21222D;
-    border-radius: 1.5rem;
-    display: flex;
-    width: 17%;
-    align-items: center;
-    margin-left: 2%;
-    margin-top: 2%;
-   
-}
-.line-task {
-    height: 2px;
-    background-color: #3E445B;
-    width: 100%;
-    margin-top: -3%;
-}*/
