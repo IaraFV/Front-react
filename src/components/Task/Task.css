@@ -4,6 +4,10 @@
     justify-content:space-around;
     margin-bottom: 3rem;
 }
+#teste{
+    margin: 2rem;
+    padding: 1rem;
+}
 .input{
     max-width: 40%;
 }

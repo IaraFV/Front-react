@@ -16,7 +16,6 @@ import teste from './components/Home/img/Logo.webp'
 import './App.css'
 import PostE from './components/Equipes/Add/add';
 import ProjetosConcluidos from './components/Projetos/Concluidos/ProjetosConcluidos';
-
 function App() {
 
   return (

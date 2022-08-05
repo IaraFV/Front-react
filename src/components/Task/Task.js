@@ -3,7 +3,10 @@ import React, { useState, useEffect } from "react";
 import './Task.css';
 import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
-
+import { Link } from 'react-router-dom';
+import CardHeader from '@mui/material/CardHeader';
+import Avatar from '@mui/material/Avatar';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 function Task() {
 
 
@@ -113,25 +116,26 @@ function Task() {
                 <h1 style={{ color: 'white' }} >Task</h1>
                 <input type="text" className="input" placeholder="Ex: hello"></input>
             </div>
-
-
-
-
-
-
-            <div className="d-flex">
-                <div className="col-3">
-
-
+            
+            <div className="d-flex ">
+                <div className="col-3 " id="teste">
+                    <Card style={{ width: '20rem' }}>
+                        <Link to="/PostT">
+                            <AddCircleOutlineIcon/>
+                        </Link>
+                    </Card>
+                    <Card style={{ width: '26rem' }}>
+                        <h1 className="H_um" style={{color:'red'}}>Ultimas Atividades</h1>
+                        <CardHeader
+                            avatar={
+                                <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">R</Avatar>}
+                            title="Shrimp and Chorizo Paella"
+                            subheader="September 14, 2016"
+                        />
+                    </Card>
                 </div>
 
-
-
-
-
-
-
-                <div className="col-9 d-flex justify-content-between" style={{ height: "800px" }}>
+                <div className="col-9 d-flex justify-content-around" style={{ height: "800px" }}>
 
 
                     <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board">
@@ -156,10 +160,6 @@ function Task() {
                             })
                         }
                     </div>
-
-
-
-
 
                     <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} class="board" >
                         <h4 className="text-center mt-2">
@@ -208,71 +208,3 @@ function Task() {
     )
 }
 export default Task;
-
-/**
- * <Table striped>
-                    <thead>
-                        <tr>
-                            <th>lucas</th>
-                            <th>lucas</th>
-                            <th>Last Name</th>
-
-                        </tr>
-                    </thead>
-                    <tbody >
-
-                        <tr>
-                            {
-                                and.map((post, key) => {
-                                    return (
-                                        <div>
-                                            <td draggable="true">
-
-                                                <Card style={{ width: '18rem' }}>
-                                                    <Card.Body>
-                                                        <Card.Title style={{ color: 'black' }} key={key}>
-                                                            {post.descricao_task}
-                                                        </Card.Title>
-                                                        <Card.Text>{post.status}
-
-                                                        </Card.Text>
-                                                    </Card.Body>
-                                                </Card>
-                                            </td>
-                                        </div>
-                                    );
-
-
-                                })
-                            }
-
-
-
-                            {
-                                fi.map((las, key) => {
-                                    return (
-
-                                    
-                                            <td draggable="true">
-
-                                                <Card style={{ width: '18rem' }}>
-                                                    <Card.Body>
-                                                        <Card.Title style={{ color: 'black' }} key={key}>
-                                                            {las.descricao_task}
-                                                        </Card.Title>
-                                                        <Card.Text>{las.status}
-                                                        </Card.Text>
-                                                    </Card.Body>
-                                                </Card>
-                                            </td>
-                                  
-
-                                    )
-                                })
-                            }
-
-                        </tr>
-
-                    </tbody>
-                </Table>
- */
