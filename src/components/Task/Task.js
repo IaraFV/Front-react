@@ -36,6 +36,21 @@ function Task() {
 
     var Sta = stats.filter(states => states.status === 'Concluído');
 
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+      }
+      
+      function drag(ev) {
+        ev.dataTransfer.setData("t", ev.target.id);
+      }
+      
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("t");
+        ev.target.appendChild(document.getElementById(data));
+      }
+      
     return (
         <div>
             <div className="cabecalho">
@@ -50,7 +65,7 @@ function Task() {
                 </div>
 
                 <div className="col-9 d-flex justify-content-between" style={{ height: "800px" }}>
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h4 className="text-center mt-2">
                             A fazer
                         </h4>
@@ -58,7 +73,7 @@ function Task() {
                           and.map((post, key) => {
                                 return (
                                     <div>
-                                        <Card style={{ width: '18rem' }}>
+                                        <Card style={{ width: '18rem' }} id="drag1" draggable="true" ondragstart="drag(event)">
                                             <Card.Body>
                                                 <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
                                                 <Card.Text>{post.status}
@@ -70,15 +85,15 @@ function Task() {
                             })
                         }
                     </div>
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" >
                         <h4 className="text-center mt-2">
                             Em desenvolvimento
                         </h4>
                         { 
                           fi.map((post, key) => {
                                 return (
-                                    <div>
-                                        <Card style={{ width: '18rem' }}>
+                                    <div >
+                                        <Card style={{ width: '18rem' }} id="drag1" draggable="true" ondragstart="drag(event)">
                                             <Card.Body>
                                                 <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
                                                 <Card.Text>{post.status}
@@ -90,7 +105,7 @@ function Task() {
                             })
                         }
                     </div>
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}>
+                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <h4 className="text-center mt-2">
                             Concluídos
                         </h4>
@@ -98,7 +113,7 @@ function Task() {
                           Sta.map((post, key) => {
                                 return (
                                     <div>
-                                        <Card style={{ width: '18rem' }}>
+                                        <Card style={{ width: '18rem' }} id="drag1" draggable="true" ondragstart="drag(event)">
                                             <Card.Body>
                                                 <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
                                                 <Card.Text>{post.status}
