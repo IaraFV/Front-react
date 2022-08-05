@@ -1,208 +1,203 @@
-function lucas(){
-    return(
-        <div>
-            <p style={{color:'red'}}>lucas</p>
-        </div>
-    )
-}
-export default lucas;
-/**import axios from "axios";
-import React, { useState, useEffect } from "react";
-import './Task.css';
-import Card from 'react-bootstrap/Card';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { Link } from 'react-router-dom';
-import CardHeader from '@mui/material/CardHeader';
-import Avatar from '@mui/material/Avatar';
+import React, { useEffect, useState, useParams } from "react";
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup'
+import './postT.css'
+//import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
-function Task() {
+function Post() {
 
-    const [posts, setPosts] = useState([])
+    const validacaoPostT = yup.object().shape({
+        descricao_task: yup.string().required("O nome é obrigatorio!"),
+        equipe_id: yup.number(),
+        projeto_id:yup.number(),
+        pessoa_id:yup.number()
+    })
+
+   /* let navigate = useNavigate()
+    navigate("/Inspecionar");*/
+
+    const addpostT = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/", data)
+        .then(() => {
+            console.log("foi")
+        })
+        .catch(() => {
+            console.log("n foi")
+        })
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(validacaoPostT)
+    })
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
-            .then((response) => {
-                setPosts(response.data)
-            })
-            .catch(() => {
-                console.log("deu errado")
-            })
-    }, []
-    )
 
+        const fetchequipe = async () => {
+            try {
+                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/');
+                const data = await response.json();
+                setequipe(data);
 
-    function deletePost(id_pessoa) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchequipe();
+    }, [])
+
+    useEffect(() => {
+
+        const fetchequipe = async () => {
+            try {
+                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/');
+                const data = await response.json();
+                setpessoa(data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchequipe();
+    }, [])
+
+    useEffect(() => {
+
+        const fetchequipe = async () => {
+            try {
+                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/');
+                const data = await response.json();
+                setprojeto(data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchequipe();
+    }, [])
+
+    function voltar() {
+        window.history.back();
     }
 
-    const arr = posts;
-    var stats = arr;
+    const [age, setAge] = React.useState('');
+    const [equipe, setequipe] = useState([]);
 
-    var and = stats.filter(states => states.status === "A fazer");
+    const [agea, setAgea] = React.useState('');
+    const [projeto, setprojeto] = useState([]);
 
-    var fi = stats.filter(states => states.status === 'Em desenvolvimento');
-
-    var Sta = stats.filter(states => states.status === 'Concluído');
+    const [ageu, setAgeu] = React.useState('');
+    const [Pessoa,setpessoa] = useState([]);
+    
+    
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
+    const handleChangea = (event) => {
+        setAgea(event.target.value);
+    };
+    const handleChangeu = (event) => {
+        setAgeu(event.target.value);
+    };
 
     return (
         <div>
-            <div className="cabecalho">
-                <h1 style={{ color: 'white' }} >Task</h1>
-                <input type="text" className="input" placeholder="Ex: hello"></input>
-            </div>
+            <main>
+                <div className="card-post">
+                    <h1>Cadastrar Task</h1>
+                    <div className="line-post"></div>
 
-            <div className="d-flex ">
-                <div className="col-3 ">
-                    <Card sx={{ width: '18rem' }}>
-                        <Link to="/PostT">
-                            <AddCircleOutlineIcon/>
-                        </Link>
-                    </Card>
-                    <Card style={{ width: '18rem' }}>
-                        <h1 className="H_um" style={{color:'red'}}>Ultimas Atividades</h1>
-                        <CardHeader
-                            avatar={
-                                <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">R</Avatar>}
-                            title="Shrimp and Chorizo Paella"
-                            subheader="September 14, 2016"
-                        />
-                    </Card>
+                    <div className="body-post">
+
+                        <form onSubmit={handleSubmit(addpostT)}>
+
+                            <div className="fields">
+                                <label>Descricao</label>
+                                <input type="text" name="descricao_task" {...register("descricao_task")} />
+                                <p className="error-message">{errors.descricao_task?.message} </p>
+                            </div>
+
+
+                            <div className="fields">
+                                <label>Equipe</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("equipe_id")}
+                                            labelId="demo-simple-select-label"
+                                            id_equipe="demo-simple-select"
+                                            value={age}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChange}>
+                                            {equipe.map((equipe) =>
+                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                            )}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </div>
+                            <div className="fields">
+                                <label>projeto</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("equipe_id")}
+                                            labelId="demo-simple-select-label"
+                                            projeto_id="demo-simple-select"
+                                            value={agea}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChangea}>
+                                            {projeto.map((projetos) =>
+                                                <MenuItem value={projetos.id_projeto} key={projetos.id_projeto}>{projetos.nome_projeto}</MenuItem>
+                                            )}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </div>
+                            <div className="fields">
+                                <label>Pessoa</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id_pessoa="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("equipe_id")}
+                                            labelId="demo-simple-select-label"
+                                            id_pessoa="demo-simple-select"
+                                            value={ageu}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChangeu}>
+                                            {Pessoa.map((pessoas) =>
+                                                <MenuItem value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
+                                            )}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </div>
+
+                            <div className="botoespost">
+                                
+                                <button className="btn-cancelar-post" onClick={voltar}>Cancelar</button>
+                                
+                                <button className="btn-post" type="submit">Cadastrar</button>
+
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
-
-                <div className="col-9 d-flex justify-content-around" style={{ height: "800px" }} id='space'>
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                        <h4 className="text-center mt-2">
-                            A fazer
-                        </h4>
-                        { 
-                          and.map((post, key) => {
-                                return (
-                                    <div>
-                                        <Card style={{ width: '18rem' }}>
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                <Card.Text>{post.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                        <h4 className="text-center mt-2">
-                            Em desenvolvimento
-                        </h4>
-                        { 
-                          fi.map((post, key) => {
-                                return (
-                                    <div>
-                                        <Card style={{ width: '18rem' }}>
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                <Card.Text>{post.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}>
-                        <h4 className="text-center mt-2">
-                            Concluídos
-                        </h4>
-                        { 
-                          Sta.map((post, key) => {
-                                return (
-                                    <div>
-                                        <Card style={{ width: '18rem' }}>
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                <Card.Text>{post.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-
-                </div>
-            </div>
+            </main>
         </div>
     )
+
 }
-export default Task;
 
-/**
- * <Table striped>
-                    <thead>
-                        <tr>
-                            <th>lucas</th>
-                            <th>lucas</th>
-                            <th>Last Name</th>
-
-                        </tr>
-                    </thead>
-                    <tbody >
-
-                        <tr>
-                            {
-                                and.map((post, key) => {
-                                    return (
-                                        <div>
-                                            <td draggable="true">
-
-                                                <Card style={{ width: '18rem' }}>
-                                                    <Card.Body>
-                                                        <Card.Title style={{ color: 'black' }} key={key}>
-                                                            {post.descricao_task}
-                                                        </Card.Title>
-                                                        <Card.Text>{post.status}
-
-                                                        </Card.Text>
-                                                    </Card.Body>
-                                                </Card>
-                                            </td>
-                                        </div>
-                                    );
-
-
-                                })
-                            }
-
-
-
-                            {
-                                fi.map((las, key) => {
-                                    return (
-
-                                    
-                                            <td draggable="true">
-
-                                                <Card style={{ width: '18rem' }}>
-                                                    <Card.Body>
-                                                        <Card.Title style={{ color: 'black' }} key={key}>
-                                                            {las.descricao_task}
-                                                        </Card.Title>
-                                                        <Card.Text>{las.status}
-                                                        </Card.Text>
-                                                    </Card.Body>
-                                                </Card>
-                                            </td>
-                                  
-
-                                    )
-                                })
-                            }
-
-                        </tr>
-
-                    </tbody>
-                </Table>
- */ 
+export default Post;

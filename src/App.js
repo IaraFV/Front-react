@@ -51,6 +51,8 @@ function App() {
       <Route path="/Add" element={<Add/>}></Route>
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>
+      <Route path="/postT" element={<PostT/>}></Route>
+      
     </Routes>
     </BrowserRouter>
 </div>
