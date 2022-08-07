@@ -51,6 +51,10 @@
 
 }
 
+.star button:hover path {
+    fill: #EB5757;
+}
+
 #estatisticaum {
     display: flex;
 }
@@ -87,6 +91,9 @@
 
 h1 {
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h4 {
@@ -191,5 +198,13 @@ h4 {
     justify-content: center;
     margin-left: 4.6%;
     margin-top: -16%;
-    
+
+}
+
+#voltar-insp {
+    color: rgba(186, 186, 186, 0.5);
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.5rem;
+    margin-left: -3%;
 }

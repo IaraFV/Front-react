@@ -1,12 +1,10 @@
 .cardpessoas {
-
     border-radius: 3rem;
     display: flex;
     width: 17%;
     align-items: center;
     margin-left: 2%;
     margin-top: 2%;
-    border: 1px solid red;
 }
 
 #usuarios {

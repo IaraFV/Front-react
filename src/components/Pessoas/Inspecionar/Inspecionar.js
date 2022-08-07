@@ -58,14 +58,15 @@ function Inspecionar() {
         
             <div id="geral-card-inspecionar">
                 <div id="card-inspecionar">
+
+
                     <Link to='/Pessoas'> 
-                        <BsArrowLeft/>
+                        <BsArrowLeft id="voltar-insp"/>
                     </Link>
+
+
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
-
-
-
                     </div>
 
                     <div >

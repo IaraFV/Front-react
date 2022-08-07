@@ -95,7 +95,7 @@ function Pessoas() {
 
                             return (
                                 <div className="cardpessoas">
-                                    <Card container spacing={2} sx={{ width: 400, bgcolor: '#21222D', border: '1px solid #fff' }} key={key} >
+                                    <Card container spacing={2} sx={{ width: 400, bgcolor: '#21222D'}} key={key} >
                                         <CardHeader className="titlecinco"
                                             avatar={<Avatar {...stringAvatar(`${nome}`)} />}
 
