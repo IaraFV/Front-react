@@ -23,7 +23,7 @@ function Pessoas() {
             .then((response) => {
                 setPosts(response.data)
                 setInitialPosts(response.data);
-                
+
             })
             .catch(() => {
                 console.log("deu errado")
@@ -49,13 +49,12 @@ function Pessoas() {
         console.log(nome);
         return {
             sx: {
-                //bgcolor: stringToColor(name),
-                width: '14rem', height: '14rem', fontSize: '8rem'
+                width: '4rem', height: '4rem', fontSize: '3rem'
             },
-            children: `${nome.split(' ')[0][0]}`,
+            children: `${nome.charAt(0)}`,
         };
     }
-    
+
     return (
         <div >
             <div>
@@ -96,7 +95,7 @@ function Pessoas() {
 
                             return (
                                 <div className="cardpessoas">
-                                    <Card container spacing={2} sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
+                                    <Card container spacing={2} sx={{ width: 400, bgcolor: '#21222D', border: '1px solid #fff' }} key={key} >
                                         <CardHeader className="titlecinco"
                                             avatar={<Avatar {...stringAvatar(`${nome}`)} />}
 
@@ -106,14 +105,15 @@ function Pessoas() {
                                                         sx={{ color: '#FFFFFF', marginTop: '-108%' }} /></Link>
                                                 </IconButton>
                                             }
-
-                                            title={
-                                                posts.nome_pessoa
-                                            }
                                         />
-
                                         <CardContent sx={{ color: 'white' }}>
-                                            <Typography variant="body2" color="white">
+                                            <Typography id="title-nome-pessoa">
+                                                {
+                                                    posts.nome_pessoa
+                                                }
+                                            </Typography>
+
+                                            <Typography id="sub-title-nome-pessoa" variant="body2" color="white">
                                                 {posts.funcao_pessoa}
                                             </Typography>
                                         </CardContent>
