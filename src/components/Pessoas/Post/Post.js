@@ -85,19 +85,19 @@ function Post() {
 
                             <div className="fields">
                                 <label>Equipe</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
-                                        <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
+                                <Box sx={{ minWidth: 90, border: 'none' }}>
+                                    <FormControl fullWidth sx={{ bgcolor: '#2F3644', border: 'none' }}>
+                                        <InputLabel id_equipe="demo-simple-select-label"> Escolha uma equipe</InputLabel>
                                         <Select
                                             {...register("equipe_id")}
                                             labelId="demo-simple-select-label"
                                             id_equipe="demo-simple-select"
                                             value={age}
                                             label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem', border: 'none' }}
                                             onChange={handleChange}>
                                             {equipe.map((equipe) =>
-                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                                <MenuItem sx={{ bgcolor: '#2F3644', color: '#fff', border: 'none' }} value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
                                             )}
                                         </Select>
                                     </FormControl>

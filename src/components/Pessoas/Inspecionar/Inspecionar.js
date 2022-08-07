@@ -69,7 +69,7 @@ function Inspecionar() {
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
 
-                    <div >
+                    <div id="h1-insp">
                         <h1>{posts.nome_pessoa}</h1>
                     </div>
                     <div id="geralestatistica">
