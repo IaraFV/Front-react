@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './inspecionar.css'
 import { useNavigate, useParams } from 'react-router-dom'
-    import axios from "axios";
+import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,8 @@ import { BsArrowLeft } from "react-icons/bs";
 
 
 function Inspecionar() {
+
+    const [like, setLike] = useState()
 
     let navigate = useNavigate()
     const [posts, setPosts] = useState([])
@@ -54,14 +56,14 @@ function Inspecionar() {
 
     return (
         <>
-        
-        
+
+
             <div id="geral-card-inspecionar">
                 <div id="card-inspecionar">
 
 
-                    <Link to='/Pessoas'> 
-                        <BsArrowLeft id="voltar-insp"/>
+                    <Link to='/Pessoas'>
+                        <BsArrowLeft id="voltar-insp" />
                     </Link>
 
 
@@ -82,7 +84,17 @@ function Inspecionar() {
                         </div>
 
                         <div id="estatisticadois">
-                            <div className="star"><AiOutlineStar /></div>
+
+                            <button onClick={() => setLike(!like)} className="star">
+                                <AiOutlineStar />
+                            </button>
+
+                            <p style={{ color: "rgba(186, 186, 186, 0.87)", fontSize: "1.2rem" }}>
+                                
+                                {posts.favoritar}
+                                {like ? 0 : 1}
+                            </p>
+
                         </div>
                     </div>
 
