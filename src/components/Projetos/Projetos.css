@@ -94,7 +94,7 @@
 .cabecario-projetos-sup {
     display: flex;
     width: 90%;
-    justify-content: space-between;
+    justify-content: space-around;
     background: #21222D;
     border-radius: 10px;
     align-items: center;
