@@ -68,17 +68,18 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 13px;
 }
 
 #bandeira-data {
     color: #717986;
     display: flex;
-    width: 61%;
+    width: 55%;
     justify-content: space-between;
     font-family: 'Poppins';
     margin-top: -2%;
+    font-size: 0.9rem;
 }
 
 #more-button-planejamento button {
@@ -105,4 +106,13 @@
     display: flex;
     justify-content: center;
     margin-top: 2.5%;
+}
+
+#titulo-descricao-projeto {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #717986;
+
 }
