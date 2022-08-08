@@ -6,9 +6,10 @@
     justify-content: center;
     display: flex;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #EB5757;
 }
+
 #status-desen {
     background: rgba(233, 196, 106, 0.2);
     border-radius: 4px;
@@ -22,25 +23,26 @@
 
 }
 
-#card-projeto-planejamento{
-    
+#card-projeto-planejamento {
+
     padding: 0.5rem;
 }
 
-#card-projeto-desenvolvimento{
+#card-projeto-desenvolvimento {
     padding: 0.5rem;
 }
-#testeplan{
-  
+
+#testeplan {
+
     height: 12rem;
     width: 20rem;
 }
 
-#card-desen{
-    padding: 0.5rem;   
+#card-desen {
+    padding: 0.5rem;
 }
 
-#testedes{
+#testedes {
     height: 12rem;
     width: 20rem;
 }
@@ -57,4 +59,33 @@
     display: flex;
     align-items: center;
 
+}
+
+#nome-projeto-plan {
+    color: #fff;
+    margin-left: 1%;
+    margin-top: 7%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 13px;
+}
+
+#bandeira-data {
+    color: #717986;
+    display: flex;
+    width: 61%;
+    justify-content: space-between;
+    font-family: 'Poppins';
+    margin-top: -2%;
+}
+#more-button-planejamento button{
+    color: #8B8B8B;
+    width: 1%;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 84%;
+    margin-top: -13%;
 }

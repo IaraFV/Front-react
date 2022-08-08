@@ -2,8 +2,21 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Projetos.css';
 import Card from 'react-bootstrap/Card';
+import { BsFlagFill } from "react-icons/bs";
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { AiOutlineMore } from "react-icons/ai";
 
 function Projetos() {
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     function log(message) {
         console.log('> ' + message)
@@ -37,6 +50,10 @@ function Projetos() {
 
         setpost(filter);
     }
+    const [show, setShow] = useState(false);
+
+
+    const handleShow = () => setShow(true);
 
 
     //onDrag: Acionado quando um elemento ou seleção de texto está sendo arrastado.
@@ -124,18 +141,56 @@ function Projetos() {
                         {
                             planejamento.map((post, key) => {
                                 return (
+
                                     <div class="dropzone" id="card-projeto-planejamento">
-                                        <Card style={{ background: '#21222D' }} class="card" id="testeplan"draggable="true">
+                                        <Card style={{ background: '#21222D' }} class="card" id="testeplan" draggable="true" >
                                             <Card.Body>
                                                 <Card.Title id="status" key={key}>
                                                     {post.status}
+                                                    
                                                 </Card.Title>
-                                                <Card.Text>
+                                                <div id="more-button-planejamento">
+                                                        <Button
+                                                            id="demo-positioned-button"
+                                                            aria-controls={open ? 'demo-positioned-menu' : undefined}
+                                                            aria-haspopup="true"
+                                                            aria-expanded={open ? 'true' : undefined}
+                                                            onClick={handleClick}
+                                                        >
+                                                            <AiOutlineMore/>
+                                                        </Button>
+                                                        <Menu
+                                                            id="demo-positioned-menu"
+                                                            aria-labelledby="demo-positioned-button"
+                                                            anchorEl={anchorEl}
+                                                            open={open}
+                                                            onClose={handleClose}
+                                                            anchorOrigin={{
+                                                                vertical: 'top',
+                                                                horizontal: 'left',
+                                                            }}
+                                                            transformOrigin={{
+                                                                vertical: 'top',
+                                                                horizontal: 'left',
+                                                            }}
+                                                        >
+                                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                                            <MenuItem onClick={handleClose}>My account</MenuItem>
+                                                            <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                                        </Menu>
+                                                    </div>
+                                                <Card.Text id="nome-projeto-plan">
                                                     {post.nome_projeto}
+                                                </Card.Text>
+                                                <Card.Text id="bandeira-data">
+                                                    <div><BsFlagFill /></div>
+                                                    <div>{post.data_inicio}</div>
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
                                     </div>
+
+
                                 );
                             })
                         }
@@ -149,14 +204,14 @@ function Projetos() {
                         {
                             desenvolvimento.map((post, key) => {
                                 return (
-                                    
+
                                     <div class="dropzone" id="card-projeto-desenvolvimento">
-                                        <Card style={{ background: '#21222D' }}  id="testedes" class="card" draggable="true">
+                                        <Card style={{ background: '#21222D' }} id="testedes" class="card" draggable="true">
                                             <Card.Body>
                                                 <Card.Title id="status-desen" key={key}>
                                                     {post.status}
                                                 </Card.Title>
-                                                <Card.Text>
+                                                <Card.Text >
                                                     {post.nome_projeto}
                                                 </Card.Text>
                                             </Card.Body>
