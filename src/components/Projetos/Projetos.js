@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { AiOutlineMore } from "react-icons/ai";
-
+import { AiOutlinePlusCircle } from "react-icons/ai";
 function Projetos() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -38,6 +38,10 @@ function Projetos() {
             })
     }, [])
 
+    function deletePost(id_projeto) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projeos/${id_projeto}`)
+        setpost(post.filter(posts => posts.id_projeto !== id_projeto))
+    }
 
     //filter pesquisa
     const handlechange = ({ target }) => {
@@ -124,10 +128,15 @@ function Projetos() {
 
     return (
         <div>
-            <div className="cabecalho">
-                <h1 style={{ color: 'white' }} >Projetos</h1>
-                <input type="text" className="input" placeholder="Meu nome é Zé"></input>
+
+            <div id="geral-cabecario-sup">
+                <div className="cabecario-projetos-sup">
+                    <h1 style={{ color: 'white' }} >Projetos</h1>
+                    <input type="text" className="input" placeholder="Meu nome é Zé"></input>
+                    <div><AiOutlinePlusCircle style={{ color: '#fff' }} /></div>
+                </div>
             </div>
+
 
             <div className="d-flex">
 
@@ -147,38 +156,41 @@ function Projetos() {
                                             <Card.Body>
                                                 <Card.Title id="status" key={key}>
                                                     {post.status}
-                                                    
+
                                                 </Card.Title>
                                                 <div id="more-button-planejamento">
-                                                        <Button
-                                                            id="demo-positioned-button"
-                                                            aria-controls={open ? 'demo-positioned-menu' : undefined}
-                                                            aria-haspopup="true"
-                                                            aria-expanded={open ? 'true' : undefined}
-                                                            onClick={handleClick}
-                                                        >
-                                                            <AiOutlineMore/>
-                                                        </Button>
-                                                        <Menu
-                                                            id="demo-positioned-menu"
-                                                            aria-labelledby="demo-positioned-button"
-                                                            anchorEl={anchorEl}
-                                                            open={open}
-                                                            onClose={handleClose}
-                                                            anchorOrigin={{
-                                                                vertical: 'top',
-                                                                horizontal: 'left',
-                                                            }}
-                                                            transformOrigin={{
-                                                                vertical: 'top',
-                                                                horizontal: 'left',
-                                                            }}
-                                                        >
-                                                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                                            <MenuItem onClick={handleClose}>My account</MenuItem>
-                                                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                                                        </Menu>
-                                                    </div>
+                                                    <Button
+                                                        id="demo-positioned-button"
+                                                        aria-controls={open ? 'demo-positioned-menu' : undefined}
+                                                        aria-haspopup="true"
+                                                        aria-expanded={open ? 'true' : undefined}
+                                                        onClick={handleClick}
+                                                    >
+                                                        <AiOutlineMore />
+                                                    </Button>
+                                                    <Menu
+                                                        id="demo-positioned-menu"
+                                                        aria-labelledby="demo-positioned-button"
+                                                        anchorEl={anchorEl}
+                                                        open={open}
+                                                        onClose={handleClose}
+                                                        anchorOrigin={{
+                                                            vertical: 'top',
+                                                            horizontal: 'left',
+                                                        }}
+                                                        transformOrigin={{
+                                                            vertical: 'top',
+                                                            horizontal: 'left',
+                                                        }}
+                                                    >
+                                                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                                        <MenuItem onClick={handleClose}>My account</MenuItem>
+
+                                                        <MenuItem
+                                                            onClick={() => deletePost(post.id_projeto)} aria-label="share" type="submit">Deletar
+                                                        </MenuItem>
+                                                    </Menu>
+                                                </div>
                                                 <Card.Text id="nome-projeto-plan">
                                                     {post.nome_projeto}
                                                 </Card.Text>
