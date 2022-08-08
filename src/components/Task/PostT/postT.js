@@ -11,7 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Form } from 'react-bootstrap';
+import TextField from '@mui/material/TextField';
 
 function Post() {
 
@@ -19,7 +19,8 @@ function Post() {
         descricao_task: yup.string().required("Descrição é obrigatorio!"),
         equipe_id: yup.number().required("Campo obrigatorio!"),
         projeto_id:yup.number(),
-        pessoa_id:yup.number()
+        pessoa_id:yup.number(),
+        
     })
 
    let navigate = useNavigate()
@@ -52,7 +53,7 @@ function Post() {
         };
         fetchequipe();
     }, [])*/
-/*
+
     useEffect(() => {
 
         const fetchequipe = async () => {
@@ -67,7 +68,7 @@ function Post() {
         };
         fetchequipe();
     }, [])
-*/
+
     useEffect(() => {
 
         const fetchequipe = async () => {
@@ -90,34 +91,34 @@ function Post() {
     const [agea, setAgea] = React.useState('');
     const [projeto, setprojeto] = useState([]);
     /*
-    /**equipe 
-    const [age, setAge] = React.useState('');
-    const [equipe, setequipe] = useState([]);
-    /**pessoas 
+    /**equipe  */ 
     const [ageu, setAgeu] = React.useState('');
-    const [Pessoa,setpessoa] = useState([]);
-    */
-    /*
+    const [equipe, setequipe] = useState([]);
+   
+    /**pessoas*/
+    const [age, setAge] = React.useState('');
+    const [pessoa,setpessoa] = useState([]);
+   
+  
     const handleChange = (event) => {
         setAge(event.target.value);
-    };*/
+    };
     const handleChangea = (event) => {
         setAgea(event.target.value);
-    };/*
+    };
     const handleChangeu = (event) => {
         setAgeu(event.target.value);
-    };*/
+    };
 
 const arr = projeto;
 const proj = arr;
 const filt = proj.filter(pro => pro.id_projeto === agea);
-const Equipe = filt.map(p => p.equipe.nome_equipe)
-//const nomeEquipe = filt.filter(nome => nome.nome_equipe)
-console.log(agea);
-console.log(filt);
-
-console.log(Equipe)
-
+const nomeEquipe = filt.map(p => p.equipe.nome_equipe);
+const l = pessoa;
+const puta = l.map((pirata) => pirata.nome_equipe);
+//const putaria = puta.map(fest => fest === nomeEquipe);
+console.log(puta);
+//console.log(putaria);
     /**const arr = posts;
     var stats = arr;
 
@@ -127,7 +128,8 @@ console.log(Equipe)
 
     var Sta = stats.filter(states => states.status === 'Concluído');
  */
-
+    const { nome_pessoa } = useParams()
+    const nomePessoa = filt.map(k => k.equipe.nome_pessoa);
     return (
         <div>
             <main>
@@ -150,8 +152,6 @@ console.log(Equipe)
                                     <FormControl fullWidth>
                                         <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
                                         <Select
-                                            {...register("equipe_id")}
-                                            labelId="demo-simple-select-label"
                                             projeto_id="demo-simple-select"
                                             value={agea}
                                             label="Age"
@@ -165,14 +165,44 @@ console.log(Equipe)
                                 </Box>
                             </div>
                             <div>
-                                <Form>
-                                 {
-                                    Equipe.map((equipe,key) => 
-                                    <Form.Control type="text" key={key} value={equipe.nome_equipe} readOnly={true}/>
-                                    )}
-                                </Form>
+                                <label>Equipe responsavel</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                    <Select 
+                                            labelId="demo-simple-select-label"
+                                            equipes_id="demo-simple-select"
+                                            value={ageu}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChangeu}>
+
+                                            {nomeEquipe.map((equipe) =>
+                                                <MenuItem value={equipe} key={equipe}>{equipe}</MenuItem>
+                                            )}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
                             </div>
-                            
+
+                            <div>
+                                <label>Pessoa</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                    <Select 
+                                            labelId="demo-simple-select-label"
+                                            equipes_id="demo-simple-select"
+                                            value={age}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChangeu}>
+
+                                            {nomePessoa.map((l) =>
+                                                <MenuItem value={l} key={l}>{nome_pessoa}</MenuItem>
+                                            )}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </div>
 
                             <div className="botoespost">
                                 
