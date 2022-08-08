@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { useNavigate, useParams } from 'react-router-dom'
+
 function Task() {
 
 
@@ -107,6 +109,7 @@ function Task() {
         this.classList.remove('over')
     }
 
+    
 
     return (
         <div>
