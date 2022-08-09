@@ -19,9 +19,11 @@ function PostT() {
         descricao_task: yup.string().required("A descrição é obrigatoria!"),
         nivel: yup.string().required("O nivel é obrigatoria!"),
         id_projeto: yup.number(),
-        id_pessoa:  yup.number(),
+        id_pessoa: yup.number(),
 
     })
+
+    
 
     let navigate = useNavigate()
 
@@ -71,14 +73,14 @@ function PostT() {
     function voltar() {
         window.history.back();
     }
-    
+
     const [age, setAge] = React.useState('');
     const [agea, setAgea] = React.useState('');
     const [projeto, setprojeto] = useState([]);
     const [ageu, setAgeu] = React.useState('');
     const [pessoa, setpessoa] = useState([]);
 
-
+    
 
     const handleChangea = (event) => {
         setAgea(event.target.value);
@@ -97,10 +99,9 @@ function PostT() {
 
     const l = pessoa;
     const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
-    //const lucas = luc.map((luc) =>  luc.id_pessoa);
 
-    //console.log(luc);
     console.log(age);
+    console.log(validacaoPostT);
     return (
         <div>
             <main>
@@ -129,11 +130,11 @@ function PostT() {
                                             value={age}
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                            onChange={handleChange}>                                            
-                                                <MenuItem value={'facil'} key={'facil'}>facil</MenuItem>
-                                                <MenuItem value={'medio'} key={'medio'}>medio</MenuItem>
-                                                <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
-                                
+                                            onChange={handleChange}>
+                                            <MenuItem value={'facil'} key={'facil'}>facil</MenuItem>
+                                            <MenuItem value={'medio'} key={'medio'}>medio</MenuItem>
+                                            <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
+
                                         </Select>
                                         <p className="error-message">{errors.nivel?.message} </p>
                                     </FormControl>

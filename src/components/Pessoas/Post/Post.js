@@ -1,4 +1,7 @@
+import { Link } from "@mui/material";
 import React, { useEffect, useState, useParams } from "react";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import IconButton from '@mui/material/IconButton';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
@@ -11,13 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-
-
 function Post() {
 
     const validacaoPost = yup.object().shape({
         nome_pessoa: yup.string().required("O nome é obrigatorio!"),
-        funcao_pessoa: yup.string().required("A função é obrigatoria!"),
+        funcao_pessoa: yup.string().required("A função é obrigatoria"),
         equipe_id: yup.number()
     })
 
@@ -26,7 +27,6 @@ function Post() {
     const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", data)
         .then(() => {
             console.log("foi")
-            navigate("/Inspecionar");
         })
         .catch(() => {
             console.log("n foi")
@@ -50,10 +50,12 @@ function Post() {
         };
         fetchequipe();
     }, [])
+    
     function voltar() {
         window.history.back();
     }
 
+    console.log(voltar);
     const [age, setAge] = React.useState('');
     const [equipe, setequipe] = useState([]);
     const handleChange = (event) => {
@@ -85,20 +87,19 @@ function Post() {
 
                             <div className="fields">
                                 <label>Equipe</label>
-                                <Box sx={{ minWidth: 90, border: 'none' }}>
-                                    <FormControl fullWidth sx={{ bgcolor: '#2F3644', border: 'none' }}>
-                                        <InputLabel id_equipe="demo-simple-select-label"> Escolha uma equipe</InputLabel>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
                                         <Select
                                             {...register("equipe_id")}
                                             labelId="demo-simple-select-label"
                                             id_equipe="demo-simple-select"
                                             value={age}
                                             label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem', border: 'none' }}
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChange}>
                                             {equipe.map((equipe) =>
-                                                <MenuItem sx={{ bgcolor: '#2F3644', color: '#fff', border: 'none' }} 
-                                                value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
                                             )}
                                         </Select>
                                     </FormControl>
@@ -106,18 +107,19 @@ function Post() {
                             </div>
 
                             <div className="botoespost">
-                                
-                                <button className="btn-cancelar-post" onClick={voltar}>Cancelar</button>
-                                
-                                <button className="btn-post" type="submit">Cadastrar</button>
 
+                                <Link className="btn-cancelar-post" onClick={voltar}>Cancelar</Link>
                             </div>
-                        </form>
+                            <div className="botoespost">
+                                <button className="btn-post" type="submit">Cadastrar</button>
+                            </div>
+                    
+                </form>
 
-                    </div>
-                </div>
-            </main>
         </div>
+                </div >
+            </main >
+        </div >
     )
 
 }
