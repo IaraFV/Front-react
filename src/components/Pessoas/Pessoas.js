@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { FiSearch } from "react-icons/fi";
-
+import { AiOutlinePlus } from "react-icons/ai";
 
 function Pessoas() {
 
@@ -58,44 +58,40 @@ function Pessoas() {
     return (
         <div >
             <div>
-                <div id="informativo">
-                    <h1 id="titlepessoa" style={{ color: '#fff', marginLeft: '5%', marginTop: '4%' }}>Cadastro de Pessoas</h1>
-                    <div id="usuarios">
-                        <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
-                            i
-                        </Avatar>
-                        <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
-                            f
-                        </Avatar>
-                        <Avatar sx={{ bgcolor: [500] }} aria-label="recipe">
-                            v
-                        </Avatar>
-                    </div>
 
-                    <div id="filtroebtn">
 
-                        <Link to="/Post">
-                            <button className="btn-adicionarpessoa">Adicionar Pessoa</button>
-                        </Link>
+                <div id="div-geral-do-cab-pessoas">
+                <div id="cabecario-page-pessoas">
+                    <div id="titulo-pessoa-filtro">
+                        <div>
+                            <h1 id="titlepessoa">
+                                Cadastro de Pessoas
+                            </h1>
+                        </div>
                         <div id="filtro">
                             <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-                            <FiSearch style={{ marginLeft: "196%", color: "#E9C46A", marginTop: "-27%" }} />
                         </div>
 
+                        <div id="btn-page-pessoa">
+                            <Link to="/Post">
+                                <AiOutlinePlus className="btn-adicionarpessoa"></AiOutlinePlus>
+                            </Link>
+                        </div>
                     </div>
-
-
-
-
-                    <p style={{ color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%' }}></p>
                 </div>
+                </div>
+                
+
+
+
+
                 <div id="geralpessoas">
                     {
                         posts.map((posts, key) => {
 
                             return (
                                 <div className="cardpessoas">
-                                    <Card container spacing={2} sx={{ width: 400, bgcolor: '#21222D'}} key={key} >
+                                    <Card container spacing={2} sx={{ width: 400, bgcolor: '#21222D' }} key={key} >
                                         <CardHeader className="titlecinco"
                                             avatar={<Avatar {...stringAvatar(`${nome}`)} />}
 
