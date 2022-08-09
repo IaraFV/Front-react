@@ -14,7 +14,7 @@ import { BsArrowLeft } from "react-icons/bs";
 
 function Inspecionar() {
 
-    const [like, setLike] = useState()
+    const [favoritar, setFavoritar] = useState()
 
     let navigate = useNavigate()
     const [posts, setPosts] = useState([])
@@ -85,14 +85,14 @@ function Inspecionar() {
 
                         <div id="estatisticadois">
 
-                            <button onClick={() => setLike(!like)} className="star">
+                            <button onClick={() => setFavoritar(!favoritar)} className="star">
                                 <AiOutlineStar />
                             </button>
 
                             <p style={{ color: "rgba(186, 186, 186, 0.87)", fontSize: "1.2rem" }}>
                                 
-                                {posts.favoritar}
-                                {like ? 0 : 1}
+                               
+                                {favoritar ? 0 : 1}
                             </p>
 
                         </div>

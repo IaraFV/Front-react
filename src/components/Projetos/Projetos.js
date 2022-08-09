@@ -198,6 +198,10 @@ function Projetos() {
                                                     <div><BsFlagFill /></div>
                                                     <div>{post.data_inicio}</div>
                                                 </Card.Text>
+                                                <Card.Text>
+                                                    <div id="titulo-descricao-projeto">Descrição</div>
+                                                    <div id="corpo-descricao-projeto">{post.drescricao}</div>
+                                                </Card.Text>
                                             </Card.Body>
                                         </Card>
                                     </div>
