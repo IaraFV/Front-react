@@ -139,7 +139,7 @@ function Task() {
                 <div className="col-9 d-flex justify-content-around" style={{ height: "800px" }}>
 
 
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" style={{ height: "745px" }} class="board">
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             A fazer
                         </h4>
@@ -148,8 +148,8 @@ function Task() {
                         {
                             and.map((post, key) => {
                                 return (
-                                    <div class="dropzone" className="space" >
-                                        <Card style={{ width: '18rem' }} class="card" draggable="true">
+                                    <div className="dropzone" >
+                                        <Card style={{ width: '18rem' }} className="card" draggable="true">
                                             <Card.Body>
                                                 <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
                                                 <Card.Text>{post.status}
@@ -162,16 +162,16 @@ function Task() {
                         }
                     </div>
 
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage" style={{ height: "745px" }} class="board" >
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             Em desenvolvimento
                         </h4>
                         {
                             fi.map((post, key) => {
                                 return (
-                                    <div class="dropzone" className="space">
+                                    <div className="dropzone" >
                                         <Card style={{ width: '18rem' }} draggable="true">
-                                            <Card.Body class="dropzone">
+                                            <Card.Body className="dropzone">
                                                 <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
                                                 <Card.Text>{post.status}
                                                 </Card.Text>
@@ -182,14 +182,14 @@ function Task() {
                             })
                         }
                     </div>
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag" style={{ height: "745px" }} class="board">
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             Concluídos
                         </h4>
                         {
                             Sta.map((post, key) => {
                                 return (
-                                    <div class="dropzone" className="space">
+                                    <div className="dropzone">
                                         <Card style={{ width: '18rem' }} draggable="true">
                                             <Card.Body>
                                                 <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>

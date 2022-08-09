@@ -97,7 +97,8 @@ function Post() {
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem', border: 'none' }}
                                             onChange={handleChange}>
                                             {equipe.map((equipe) =>
-                                                <MenuItem sx={{ bgcolor: '#2F3644', color: '#fff', border: 'none' }} value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                                <MenuItem sx={{ bgcolor: '#2F3644', color: '#fff', border: 'none' }} 
+                                                value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
                                             )}
                                         </Select>
                                     </FormControl>

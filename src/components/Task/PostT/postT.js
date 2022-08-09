@@ -17,8 +17,9 @@ function PostT() {
 
     const validacaoPostT = yup.object().shape({
         descricao_task: yup.string().required("A descrição é obrigatoria!"),
-        projeto_id: yup.number(),
-        pessoa: yup.string().required("A pessoa é obrigatoria!"),
+        nivel: yup.string().required("O nivel é obrigatoria!"),
+        id_projeto: yup.number(),
+        id_pessoa:  yup.number(),
 
     })
 
@@ -70,16 +71,11 @@ function PostT() {
     function voltar() {
         window.history.back();
     }
-    /**projeto */
+    
+    const [age, setAge] = React.useState('');
     const [agea, setAgea] = React.useState('');
     const [projeto, setprojeto] = useState([]);
-    /*
-    /**equipe  */
     const [ageu, setAgeu] = React.useState('');
-
-
-    /**pessoas*/
-
     const [pessoa, setpessoa] = useState([]);
 
 
@@ -90,7 +86,9 @@ function PostT() {
     const handleChangeu = (event) => {
         setAgeu(event.target.value);
     };
-
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
 
     const proj = projeto;
     const filt = proj.filter(pro => pro.id_projeto === agea);
@@ -99,10 +97,10 @@ function PostT() {
 
     const l = pessoa;
     const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
-    const lucas = luc.map((luc) => luc.nome_pessoa);
+    //const lucas = luc.map((luc) =>  luc.id_pessoa);
 
-    console.log(ageu);
-    console.log(agea);
+    //console.log(luc);
+    console.log(age);
     return (
         <div>
             <main>
@@ -112,12 +110,34 @@ function PostT() {
 
                     <div className="body-post">
 
-                        <form>
+                        <form onSubmit={handleSubmit(addpostT)}>
 
                             <div className="fields">
                                 <label>Descricao</label>
                                 <input type="text" name="descricao_task" {...register("descricao_task")} />
                                 <p className="error-message">{errors.descricao_task?.message} </p>
+                            </div>
+                            <div className="fields">
+                                <label>nivel</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("nivel")}
+                                            labelId="demo-simple-select-label"
+                                            projeto_id="demo-simple-select"
+                                            value={age}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChange}>                                            
+                                                <MenuItem value={'facil'} key={'facil'}>facil</MenuItem>
+                                                <MenuItem value={'medio'} key={'medio'}>medio</MenuItem>
+                                                <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
+                                
+                                        </Select>
+                                        <p className="error-message">{errors.nivel?.message} </p>
+                                    </FormControl>
+                                </Box>
                             </div>
 
                             <div className="fields">
@@ -126,13 +146,15 @@ function PostT() {
                                     <FormControl fullWidth>
                                         <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
                                         <Select
+                                            {...register("id_projeto")}
+                                            labelId="demo-simple-select-label"
                                             projeto_id="demo-simple-select"
                                             value={agea}
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChangea}>
 
-                                                
+
                                             {projeto.map((projetos) =>
                                                 <MenuItem value={projetos.id_projeto} key={projetos.id_projeto}>{projetos.nome_projeto}</MenuItem>
                                             )}
@@ -147,6 +169,7 @@ function PostT() {
                                 <Box sx={{ minWidth: 120 }}>
                                     <FormControl fullWidth>
                                         <Select
+                                            {...register("id_pessoa")}
                                             labelId="demo-simple-select-label"
                                             equipes_id="demo-simple-select"
                                             value={ageu}
@@ -154,8 +177,8 @@ function PostT() {
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChangeu}>
 
-                                            {lucas.map((equipe) =>
-                                                <MenuItem value={equipe} key={equipe}>{equipe}</MenuItem>
+                                            {luc.map((nomePessoa) =>
+                                                <MenuItem value={nomePessoa.id_pessoa} key={nomePessoa.id_pessoa}>{nomePessoa.nome_pessoa}</MenuItem>
                                             )}
                                         </Select>
                                         <p className="error-message">{errors.pessoa_id?.message} </p>
@@ -169,7 +192,7 @@ function PostT() {
 
                                 <button className="btn-cancelar-post" onClick={voltar}>Cancelar</button>
 
-                                <button className="btn-post" type="submit" onClick={addpostT}>Cadastrar</button>
+                                <button className="btn-post" type="submit">Cadastrar</button>
 
                             </div>
                         </form>
