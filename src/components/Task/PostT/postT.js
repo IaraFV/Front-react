@@ -1,4 +1,4 @@
-import React, { useEffect, useState,} from "react";
+import React, { useEffect, useState, } from "react";
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -13,18 +13,16 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 
-function Post() {
+function PostT() {
 
     const validacaoPostT = yup.object().shape({
-        descricao_task: yup.string().required("Descrição é obrigatorio!"),
-        equipe_id: yup.number().required("Campo obrigatorio!"),
-        projeto_id:yup.number(),
-        pessoa_id:yup.number(),
-        
+        descricao_task: yup.string().required("A descrição é obrigatoria!"),
+        projeto_id: yup.number(),
+        pessoa: yup.string().required("A pessoa é obrigatoria!"),
+
     })
 
-   let navigate = useNavigate()
-
+    let navigate = useNavigate()
 
     const addpostT = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/", data)
         .then(() => {
@@ -38,24 +36,9 @@ function Post() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
-/*
-    useEffect(() => {
 
-        const fetchequipe = async () => {
-            try {
-                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/');
-                const data = await response.json();
-                setequipe(data);
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchequipe();
-    }, [])*/
 
     useEffect(() => {
-
         const fetchequipe = async () => {
             try {
                 const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/');
@@ -91,18 +74,16 @@ function Post() {
     const [agea, setAgea] = React.useState('');
     const [projeto, setprojeto] = useState([]);
     /*
-    /**equipe  */ 
+    /**equipe  */
     const [ageu, setAgeu] = React.useState('');
-    const [equipe, setequipe] = useState([]);
-   
+
+
     /**pessoas*/
-    const [age, setAge] = React.useState('');
-    const [pessoa,setpessoa] = useState([]);
-   
-  
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+
+    const [pessoa, setpessoa] = useState([]);
+
+
+
     const handleChangea = (event) => {
         setAgea(event.target.value);
     };
@@ -110,26 +91,18 @@ function Post() {
         setAgeu(event.target.value);
     };
 
-const arr = projeto;
-const proj = arr;
-const filt = proj.filter(pro => pro.id_projeto === agea);
-const nomeEquipe = filt.map(p => p.equipe.nome_equipe);
-const l = pessoa;
-const puta = l.map((pirata) => pirata.nome_equipe);
-//const putaria = puta.map(fest => fest === nomeEquipe);
-console.log(puta);
-//console.log(putaria);
-    /**const arr = posts;
-    var stats = arr;
 
-    var and = stats.filter(states => states.status === "A fazer");
+    const proj = projeto;
+    const filt = proj.filter(pro => pro.id_projeto === agea);
+    const nomeEquipe = filt.map(p => p.equipe.id_equipe);
+    var idEquipe = parseInt(nomeEquipe);
 
-    var fi = stats.filter(states => states.status === 'Em desenvolvimento');
+    const l = pessoa;
+    const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
+    const lucas = luc.map((luc) => luc.nome_pessoa);
 
-    var Sta = stats.filter(states => states.status === 'Concluído');
- */
-    const { nome_pessoa } = useParams()
-    const nomePessoa = filt.map(k => k.equipe.nome_pessoa);
+    console.log(ageu);
+    console.log(agea);
     return (
         <div>
             <main>
@@ -139,13 +112,14 @@ console.log(puta);
 
                     <div className="body-post">
 
-                        <form onSubmit={handleSubmit(addpostT)}>
+                        <form>
 
                             <div className="fields">
                                 <label>Descricao</label>
                                 <input type="text" name="descricao_task" {...register("descricao_task")} />
                                 <p className="error-message">{errors.descricao_task?.message} </p>
                             </div>
+
                             <div className="fields">
                                 <label>projeto</label>
                                 <Box sx={{ minWidth: 120 }}>
@@ -157,29 +131,13 @@ console.log(puta);
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChangea}>
+
+                                                
                                             {projeto.map((projetos) =>
                                                 <MenuItem value={projetos.id_projeto} key={projetos.id_projeto}>{projetos.nome_projeto}</MenuItem>
                                             )}
                                         </Select>
-                                    </FormControl>
-                                </Box>
-                            </div>
-                            <div>
-                                <label>Equipe responsavel</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
-                                    <Select 
-                                            labelId="demo-simple-select-label"
-                                            equipes_id="demo-simple-select"
-                                            value={ageu}
-                                            label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                            onChange={handleChangeu}>
-
-                                            {nomeEquipe.map((equipe) =>
-                                                <MenuItem value={equipe} key={equipe}>{equipe}</MenuItem>
-                                            )}
-                                        </Select>
+                                        <p className="error-message">{errors.projeto_id?.message} </p>
                                     </FormControl>
                                 </Box>
                             </div>
@@ -188,27 +146,30 @@ console.log(puta);
                                 <label>Pessoa</label>
                                 <Box sx={{ minWidth: 120 }}>
                                     <FormControl fullWidth>
-                                    <Select 
+                                        <Select
                                             labelId="demo-simple-select-label"
                                             equipes_id="demo-simple-select"
-                                            value={age}
+                                            value={ageu}
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChangeu}>
 
-                                            {nomePessoa.map((l) =>
-                                                <MenuItem value={l} key={l}>{nome_pessoa}</MenuItem>
+                                            {lucas.map((equipe) =>
+                                                <MenuItem value={equipe} key={equipe}>{equipe}</MenuItem>
                                             )}
                                         </Select>
+                                        <p className="error-message">{errors.pessoa_id?.message} </p>
                                     </FormControl>
                                 </Box>
                             </div>
 
+
+
                             <div className="botoespost">
-                                
+
                                 <button className="btn-cancelar-post" onClick={voltar}>Cancelar</button>
-                                
-                                <button className="btn-post" type="submit">Cadastrar</button>
+
+                                <button className="btn-post" type="submit" onClick={addpostT}>Cadastrar</button>
 
                             </div>
                         </form>
@@ -221,7 +182,7 @@ console.log(puta);
 
 }
 
-export default Post;
+export default PostT;
 /**<div className="fields">
                                 <label>Equipe</label>
                                 <Box sx={{ minWidth: 120 }}>
