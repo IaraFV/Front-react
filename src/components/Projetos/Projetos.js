@@ -6,13 +6,12 @@ import { BsFlagFill } from "react-icons/bs";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { AiOutlineMore } from "react-icons/ai";
-import { AiOutlinePlusCircle } from "react-icons/ai";
-
-    //onDrag: Acionado quando um elemento ou seleção de texto está sendo arrastado.
-    //onDragEnd: Acionado quando uma operação de arrastar está terminando
-    // (por eexmplo, ao soltar o botão do mouse ou pressionar a tecla esc).
-    // ondragstart: Acionado quando o usuário começa a arrastar um elemento válido ou seleção de texto. 
+import { AiOutlineMore, AiOutlinePlusCircle, AiOutlineArrowsAlt } from "react-icons/ai";
+import { Link } from 'react-router-dom';
+//onDrag: Acionado quando um elemento ou seleção de texto está sendo arrastado.
+//onDragEnd: Acionado quando uma operação de arrastar está terminando
+// (por eexmplo, ao soltar o botão do mouse ou pressionar a tecla esc).
+// ondragstart: Acionado quando o usuário começa a arrastar um elemento válido ou seleção de texto. 
 
 
 function Projetos() {
@@ -26,9 +25,7 @@ function Projetos() {
         setAnchorEl(null);
     };
 
-    function log(message) {
-        console.log('> ' + message)
-    }
+   
 
     const cards = document.querySelectorAll('.card')
     const dropzones = document.querySelectorAll('.dropzone')
@@ -47,7 +44,7 @@ function Projetos() {
     }, [])
 
     function deletePost(id_projeto) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projeos/${id_projeto}`)
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
         setpost(post.filter(posts => posts.id_projeto !== id_projeto))
     }
 
@@ -63,61 +60,9 @@ function Projetos() {
         setpost(filter);
     }
 
-    const [show, setShow] = useState(false);
 
 
-    const handleShow = () => setShow(true);
-    
-    cards.forEach(card => {
-        card.addEventListener('dragstart', dragstart)
-        card.addEventListener('drag', drag)
-        card.addEventListener('dragend', dragend)
-    })
-
-    function dragstart() {
-        dropzones.forEach(dropzone => dropzone.classList.add('highlight'))
-        this.classList.add('is-dragging')
-    }
-
-    function drag() {
-        log('CARD: Is dragging ')
-    }
-
-    function dragend() {
-        log('CARD: Stop drag! ')
-        dropzones.forEach(dropzone => dropzone.classList.remove('highlight'))
-
-        this.classList.remove('is-dragging')
-    }
-
-    /** place where we will drop cards */
-    dropzones.forEach(dropzone => {
-        dropzone.addEventListener('dragenter', dragenter)
-        dropzone.addEventListener('dragover', dragover)
-        dropzone.addEventListener('dragleave', dragleave)
-        dropzone.addEventListener('drop', drop)
-    })
-
-    function dragenter() {
-    }
-
-    function dragover() {
-
-        this.classList.add('over')
-
-        const cardBeingDragged = document.querySelector('.is-dragging')
-
-        this.appendChild(cardBeingDragged)
-    }
-
-    function dragleave() {
-        this.classList.remove('over')
-
-    }
-
-    function drop() {
-        this.classList.remove('over')
-    }
+   
 
 
     return (
@@ -127,23 +72,29 @@ function Projetos() {
                 <div className="cabecario-projetos-sup">
                     <h1 style={{ color: 'white' }} >Projetos</h1>
                     <input type="text" className="input" placeholder="Meu nome é Zé" onChange={handlechange}></input>
-                    <div><AiOutlinePlusCircle style={{ color: '#fff' }} /></div>
+                    
+                        <div>
+                            <Link to="/AddProjeto">
+                                <AiOutlinePlusCircle/>
+                            </Link>
+                        </div>
                 </div>
             </div>
 
 
-           
-
-                <div >
 
 
-                    <div id="lucas">
-                        {
-                            post.map((post, key) => {
-                                return (
+            <div >
 
-                                    <div class="dropzone" id="cubanas">
-                                        <Card style={{ background: '#21222D' }} class="card" draggable="true" >
+
+                <div id="lucas">
+                    {
+                        post.map((post, key) => {
+                            return (
+                                <div>
+                                    
+                                    <div id="cubanas">
+                                        <Card style={{ background: '#21222D' }} >
                                             <Card.Body>
                                                 <Card.Title id="status" key={key}>
                                                     {post.status}
@@ -196,16 +147,17 @@ function Projetos() {
                                             </Card.Body>
                                         </Card>
                                     </div>
-                                );
-                            })
-                        }
-                    
-                    </div>
+                                </div>
+                            );
+                        })
+                    }
 
                 </div>
-            </div>
 
-       
+            </div>
+        </div>
+
+
     )
 }
 export default Projetos;

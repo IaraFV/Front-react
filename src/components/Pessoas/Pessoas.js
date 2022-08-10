@@ -82,9 +82,6 @@ function Pessoas() {
                 </div>
                 
 
-
-
-
                 <div id="geralpessoas">
                     {
                         posts.map((posts, key) => {
