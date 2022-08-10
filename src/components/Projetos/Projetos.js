@@ -38,6 +38,7 @@ function Projetos() {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
             .then((response) => {
                 setpost(response.data)
+                setInitialPost(response.data)
             }).catch(() => {
                 console.log("Deu BO Men")
             })
