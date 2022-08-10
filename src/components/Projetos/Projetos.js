@@ -60,11 +60,6 @@ function Projetos() {
         setpost(filter);
     }
 
-
-
-   
-
-
     return (
         <div>
 
@@ -81,20 +76,17 @@ function Projetos() {
                 </div>
             </div>
 
-
-
-
             <div >
 
-
-                <div id="lucas">
+                <div id="caixa-geral-de-projetos">
                     {
                         post.map((post, key) => {
                             return (
                                 <div>
                                     
-                                    <div id="cubanas">
-                                        <Card style={{ background: '#21222D' }} >
+                                    <div id="div-card-page-projetos">
+                                        
+                                        <Card id="div-card-projeto">
                                             <Card.Body>
                                                 <Card.Title id="status" key={key}>
                                                     {post.status}

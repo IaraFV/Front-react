@@ -21,16 +21,21 @@
     font-size: 0.8rem;
     color: #E9C46A;
 }
-#lucas{
-    border: 1px solid blue;
+#caixa-geral-de-projetos{
+  
     display: flex;
     width: 69%;
     flex-wrap: wrap;
     
 }
-#cubanas{
-    border: 2px solid palevioletred;
-    width: 20rem;
+#div-card-page-projetos{
+    width: 26rem;
+    margin-top: 10%;
+    padding: 2%;
+}
+#div-card-projeto{
+    background: #21222D;
+    height: 17rem;
 }
 
 #card-desen {
