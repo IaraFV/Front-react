@@ -95,11 +95,11 @@ function Projetos() {
                                                     {post.nome_projeto}
 
                                                     <div>
-                                                        <Link to="/InspProjeto">
+                                                    <Link to={{ pathname: `/InspProjeto/${post.id_projeto}` }}>
                                                             <AiOutlineArrowsAlt id="more-button-planejamento" />
                                                         </Link>
                                                     </div>
-                                                    
+
                                                 </Card.Title>
 
 
