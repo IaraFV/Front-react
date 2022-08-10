@@ -97,9 +97,10 @@ function PostT() {
     };
 
 
-    /**manioulaçao do dados oriundos do arr de p´rojetos(array geral)*/
+    /**manipulaçao dos dados oriundos do arr de projetos(array geral)*/
     const proj = projeto;
-    const filt = proj.filter(pro => pro.id_projeto === vofProjeto);
+    const filtro_statusProjet = proj.filter( statusPro => statusPro.status === "Em desenvolvimento");
+    const filt = filtro_statusProjet.filter(pro => pro.id_projeto === vofProjeto);
     const nomeEquipe = filt.map(p => p.equipe.id_equipe);
     
     /**pega a a variavel (nomeEquipe que vem como string e muda para intero)*/
@@ -113,8 +114,8 @@ function PostT() {
 
     //console.log(luc);
     //console.log(nomeEquipe);
-    console.log(idEquipe);
-    console.log(vofPessoa);
+    console.log(filt);
+    console.log(filtro_statusProjet);
     
     return (
         <div>
@@ -170,7 +171,7 @@ function PostT() {
                                             onChange={handleChangea}>
 
 
-                                            {projeto.map((projetos) =>
+                                            {filtro_statusProjet.map((projetos) =>
                                                 <MenuItem value={projetos.id_projeto} key={projetos.id_projeto}>{projetos.nome_projeto}</MenuItem>
                                             )}
                                         </Select>
