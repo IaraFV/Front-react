@@ -54,7 +54,7 @@ function App() {
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>
       <Route path="/postT" element={<PostT/>}></Route>
-      <Route path='/InspProjeto' element={<InspProjeto/>}></Route>
+      <Route path='/InspProjeto/:id_projeto' element={<InspProjeto/>}></Route>
       
     </Routes>
     </BrowserRouter>
