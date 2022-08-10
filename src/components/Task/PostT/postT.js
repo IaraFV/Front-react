@@ -18,12 +18,9 @@ function PostT() {
     const validacaoPostT = yup.object().shape({
         descricao_task: yup.string().required("A descrição é obrigatoria!"),
         nivel: yup.string().required("O nivel é obrigatoria!"),
-        id_projeto: yup.number(),
-        id_pessoa: yup.number(),
-
+        projeto_id: yup.number(),
+        pessoa_id: yup.number(),
     })
-
-    
 
     let navigate = useNavigate()
 
@@ -55,6 +52,7 @@ function PostT() {
         fetchequipe();
     }, [])
 
+
     useEffect(() => {
 
         const fetchequipe = async () => {
@@ -73,35 +71,51 @@ function PostT() {
     function voltar() {
         window.history.back();
     }
-
-    const [age, setAge] = React.useState('');
-    const [agea, setAgea] = React.useState('');
+        /**variavesi do seletor */
+    const [vofNivel, setAge] = React.useState('');
+    const [vofProjeto, setAgea] = React.useState('');
+    const [vofPessoa, setVofPessoa] = React.useState('');
+    
+    /**variaveis dos arr de pessoa e projeto */
     const [projeto, setprojeto] = useState([]);
-    const [ageu, setAgeu] = React.useState('');
     const [pessoa, setpessoa] = useState([]);
 
     
-
+    /**funçoes de evento das variaves do seletor */
     const handleChangea = (event) => {
         setAgea(event.target.value);
     };
+
+
     const handleChangeu = (event) => {
-        setAgeu(event.target.value);
+        setVofPessoa(event.target.value);
     };
+
+
     const handleChange = (event) => {
         setAge(event.target.value);
     };
 
-    const proj = projeto;
-    const filt = proj.filter(pro => pro.id_projeto === agea);
-    const nomeEquipe = filt.map(p => p.equipe.id_equipe);
-    var idEquipe = parseInt(nomeEquipe);
 
+    /**manioulaçao do dados oriundos do arr de p´rojetos(array geral)*/
+    const proj = projeto;
+    const filt = proj.filter(pro => pro.id_projeto === vofProjeto);
+    const nomeEquipe = filt.map(p => p.equipe.id_equipe);
+    
+    /**pega a a variavel (nomeEquipe que vem como string e muda para intero)*/
+    var idEquipe = parseInt(nomeEquipe);
+    
+    /**manioulaçao do dados oriundos do arr de pessoas(array geral)*/
     const l = pessoa;
     const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
+    
 
-    console.log(age);
-    console.log(validacaoPostT);
+
+    //console.log(luc);
+    //console.log(nomeEquipe);
+    console.log(idEquipe);
+    console.log(vofPessoa);
+    
     return (
         <div>
             <main>
@@ -127,7 +141,7 @@ function PostT() {
                                             {...register("nivel")}
                                             labelId="demo-simple-select-label"
                                             projeto_id="demo-simple-select"
-                                            value={age}
+                                            value={vofNivel}
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChange}>
@@ -147,10 +161,10 @@ function PostT() {
                                     <FormControl fullWidth>
                                         <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
                                         <Select
-                                            {...register("id_projeto")}
+                                            {...register("projeto_id")}
                                             labelId="demo-simple-select-label"
                                             projeto_id="demo-simple-select"
-                                            value={agea}
+                                            value={vofProjeto}
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChangea}>
@@ -165,15 +179,16 @@ function PostT() {
                                 </Box>
                             </div>
 
+
                             <div>
                                 <label>Pessoa</label>
                                 <Box sx={{ minWidth: 120 }}>
                                     <FormControl fullWidth>
                                         <Select
-                                            {...register("id_pessoa")}
+                                            {...register("pessoa_id")}
                                             labelId="demo-simple-select-label"
                                             equipes_id="demo-simple-select"
-                                            value={ageu}
+                                            value={vofPessoa}
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChangeu}>
@@ -207,43 +222,3 @@ function PostT() {
 }
 
 export default PostT;
-/**<div className="fields">
-                                <label>Equipe</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
-                                        <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
-                                        <Select
-                                            {...register("equipe_id")}
-                                            labelId="demo-simple-select-label"
-                                            id_equipe="demo-simple-select"
-                                            value={age}
-                                            label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                            onChange={handleChange}>
-                                            {filt.map((equipe) =>
-                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
-                                            )}
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-                            </div>
-                            <div className="fields">
-                                <label>Pessoa</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
-                                        <InputLabel id_pessoa="demo-simple-select-label"></InputLabel>
-                                        <Select
-                                            {...register("equipe_id")}
-                                            labelId="demo-simple-select-label"
-                                            id_pessoa="demo-simple-select"
-                                            value={ageu}
-                                            label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                            onChange={handleChangeu}>
-                                            {Pessoa.map((pessoas) =>
-                                                <MenuItem value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
-                                            )}
-                                        </Select>
-                                    </FormControl>
-                                </Box>
-                            </div>*/
