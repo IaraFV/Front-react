@@ -25,7 +25,7 @@ function Projetos() {
         setAnchorEl(null);
     };
 
-   
+
 
     const cards = document.querySelectorAll('.card')
     const dropzones = document.querySelectorAll('.dropzone')
@@ -64,29 +64,32 @@ function Projetos() {
     return (
         <div>
 
-            <div id="geral-cabecario-sup">
-                <div className="cabecario-projetos-sup">
-                    <h1 style={{ color: 'white' }} >Projetos</h1>
-                    <input type="text" className="input" placeholder="Meu nome é Zé" onChange={handlechange}></input>
-                    
-                        <div>
-                            <Link to="/AddProjeto">
-                                <AiOutlinePlusCircle/>
-                            </Link>
-                        </div>
-                </div>
+            <div id="geral-cabecario-projetos-sup">
+            <div className="cabecario-projetos-sup">
+                <h1 style={{ color: 'white' }} >Projetos</h1>
+                <input type="text" id="input" placeholder="Meu nome é Zé" onChange={handlechange}></input>
+
+
+            </div>
+            </div>
+            
+
+            <div>
+                <Link to="/AddProjeto">
+                    <AiOutlinePlusCircle />
+                </Link>
             </div>
 
             <div >
 
-                <div id="caixa-geral-de-projetos" style={{ height: "800px" }}>
+                <div id="caixa-geral-de-projetos" style={{ height: "650px" }}>
                     {
                         post.map((post, key) => {
                             return (
                                 <div>
-                                    
+
                                     <div id="div-card-page-projetos">
-                                        
+
                                         <Card id="div-card-projeto">
                                             <Card.Body>
                                                 <Card.Title id="status" key={key}>
