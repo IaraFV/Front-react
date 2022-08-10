@@ -8,7 +8,15 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { AiOutlineMore } from "react-icons/ai";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+
+    //onDrag: Acionado quando um elemento ou seleção de texto está sendo arrastado.
+    //onDragEnd: Acionado quando uma operação de arrastar está terminando
+    // (por eexmplo, ao soltar o botão do mouse ou pressionar a tecla esc).
+    // ondragstart: Acionado quando o usuário começa a arrastar um elemento válido ou seleção de texto. 
+
+
 function Projetos() {
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -54,26 +62,12 @@ function Projetos() {
 
         setpost(filter);
     }
+
     const [show, setShow] = useState(false);
 
 
     const handleShow = () => setShow(true);
-
-
-    //onDrag: Acionado quando um elemento ou seleção de texto está sendo arrastado.
-    //onDragEnd: Acionado quando uma operação de arrastar está terminando
-    // (por eexmplo, ao soltar o botão do mouse ou pressionar a tecla esc).
-    // ondragstart: Acionado quando o usuário começa a arrastar um elemento válido ou seleção de texto. 
-
-    const arr = post;
-    var stats = arr;
-
-    var planejamento = stats.filter(states => states.status === "Em planejamento");
-
-    var desenvolvimento = stats.filter(states => states.status === 'Em desenvolvimento');
-
-    var finalizado = stats.filter(states => states.status === 'Concluído');
-
+    
     cards.forEach(card => {
         card.addEventListener('dragstart', dragstart)
         card.addEventListener('drag', drag)
@@ -132,27 +126,24 @@ function Projetos() {
             <div id="geral-cabecario-sup">
                 <div className="cabecario-projetos-sup">
                     <h1 style={{ color: 'white' }} >Projetos</h1>
-                    <input type="text" className="input" placeholder="Meu nome é Zé"></input>
+                    <input type="text" className="input" placeholder="Meu nome é Zé" onChange={handlechange}></input>
                     <div><AiOutlinePlusCircle style={{ color: '#fff' }} /></div>
                 </div>
             </div>
 
 
-            <div className="d-flex">
+           
 
-                <div className="col-9 d-flex justify-content-around  align-items-cente" style={{ height: "800px" }}>
+                <div >
 
 
-                    <div className="col-3 d-flex flex-column align-items-center " style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2 ">
-                            Em planejamento
-                        </h4>
+                    <div id="lucas">
                         {
-                            planejamento.map((post, key) => {
+                            post.map((post, key) => {
                                 return (
 
-                                    <div class="dropzone" id="card-projeto-planejamento">
-                                        <Card style={{ background: '#21222D' }} class="card" id="testeplan" draggable="true" >
+                                    <div class="dropzone" id="cubanas">
+                                        <Card style={{ background: '#21222D' }} class="card" draggable="true" >
                                             <Card.Body>
                                                 <Card.Title id="status" key={key}>
                                                     {post.status}
@@ -205,65 +196,16 @@ function Projetos() {
                                             </Card.Body>
                                         </Card>
                                     </div>
-
-
                                 );
                             })
                         }
-                    </div>
-
-
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }}  >
-                        <h4 className="text-center mt-2">
-                            Em desenvolvimento
-                        </h4>
-                        {
-                            desenvolvimento.map((post, key) => {
-                                return (
-
-                                    <div class="dropzone" id="card-projeto-desenvolvimento">
-                                        <Card style={{ background: '#21222D' }} id="testedes" class="card" draggable="true">
-                                            <Card.Body>
-                                                <Card.Title id="status-desen" key={key}>
-                                                    {post.status}
-                                                </Card.Title>
-                                                <Card.Text >
-                                                    {post.nome_projeto}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-
-
-                    <div className="col-3 d-flex flex-column align-items-center" style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2">
-                            Concluídos
-                        </h4>
-                        {
-                            finalizado.map((post, key) => {
-                                return (
-                                    <div class="dropzone">
-                                        <Card style={{ width: '18rem' }} draggable="true">
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.nome_projeto}</Card.Title>
-                                                <Card.Text>{post.descricao_projeto}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
+                    
                     </div>
 
                 </div>
             </div>
 
-        </div>
+       
     )
 }
 export default Projetos;

@@ -20,34 +20,23 @@
     font-weight: 600;
     font-size: 0.8rem;
     color: #E9C46A;
-
 }
-
-#card-projeto-planejamento {
-
-    padding: 0.5rem;
+#lucas{
+    border: 1px solid blue;
+    display: flex;
+    width: 69%;
+    flex-wrap: wrap;
+    
 }
-
-#card-projeto-desenvolvimento {
-    padding: 0.5rem;
-}
-
-#testeplan {
-
-    height: 12rem;
+#cubanas{
+    border: 2px solid palevioletred;
     width: 20rem;
+    
 }
 
 #card-desen {
     padding: 0.5rem;
 }
-
-#testedes {
-    height: 12rem;
-    width: 20rem;
-}
-
-
 #filter-projeto {
     width: 40rem;
     border: 0;
