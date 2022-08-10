@@ -11,7 +11,7 @@ import axios from "axios";
 
 const validacaoPost = yup.object().shape({
     nome_projeto:  yup.string().required("O nome projeto é obrigatorio!"),
-    id_equipe: yup.string().required("A id equipe é obrigatoria"),
+    equipe_id: yup.string().required("A id equipe é obrigatoria"),
     descricao_projeto: yup.string().required("A descrição é obrigatoria")
 })
 
@@ -26,7 +26,7 @@ function AddProjeto() {
     const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/", data)
     .then(() => {
         console.log("foi")
-        navigate("/ProjetosCnc");
+        navigate("/ProjetosConcluidos");
     })
     .catch(() => {
         console.log("n foi")
@@ -57,9 +57,9 @@ function AddProjeto() {
                             </div>
 
                             <div className="fields">
-                                <label>Id</label>
-                                <input type="string" name="id_equipe" {...register("id_equipe")}/>
-                                <p className="error-message">{errors.id_equipe?.message} </p>
+                                <label>Id equipe</label>
+                                <input type="string" name="equipe_id" {...register("equipe_id")}/>
+                                <p className="error-message">{errors.equipe_id?.message} </p>
                             </div>
 
                             <div className="fields">
