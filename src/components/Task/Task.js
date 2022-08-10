@@ -20,11 +20,13 @@ function Task() {
     const dropzones = document.querySelectorAll('.dropzone')
 
     const [posts, setPosts] = useState([])
+    const [initialPosts, setInitialPosts] = useState([])
 
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
             .then((response) => {
                 setPosts(response.data)
+                setInitialPosts(response.data)
             })
             .catch(() => {
                 console.log("deu errado")
@@ -108,14 +110,23 @@ function Task() {
         // log('DROPZONE: dropped ')
         this.classList.remove('over')
     }
+/**função de filtro */
+    const handlechange = ({ target }) => {
+        if (!target.value) {
+            setPosts(initialPosts)
+            return;
+        }
+        const filter = posts.filter(({ descricao_task }) =>
+        descricao_task.toUpperCase().includes(target.value.toUpperCase()))
 
-    
+        setPosts(filter);
+}
 
     return (
         <div>
             <div className="cabecalho">
                 <h1 style={{ color: 'white' }} >Task</h1>
-                <input type="text" className="input" placeholder="Ex: hello"></input>
+                <input type="text" className="input" placeholder="Ex: hello" onChange={handlechange}></input>
             </div>
             
             <div className="d-flex ">
