@@ -78,7 +78,7 @@ function Projetos() {
 
             <div >
 
-                <div id="caixa-geral-de-projetos">
+                <div id="caixa-geral-de-projetos" style={{ height: "800px" }}>
                     {
                         post.map((post, key) => {
                             return (
