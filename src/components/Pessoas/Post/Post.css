@@ -90,6 +90,7 @@ textarea {
     color: rgb(240, 47, 47);
 }
 .btn-cancelar-post {
+    text-decoration: none;
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -119,4 +120,35 @@ textarea {
     cursor: pointer;
     height: 44px;
     margin-top: -0.1%;
+}
+#chat{
+    display: flex;
+    justify-content: space-between;
+    width: 24rem;
+    
+}
+.butao{
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 50px;
+    color: #fff;
+    background-color: #E9C46A;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+#butaoC{
+  
+    text-decoration: none;
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 45px;
+    color: #fff;
+    background-color: #A4A4A4;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
 }

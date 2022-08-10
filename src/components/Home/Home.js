@@ -21,6 +21,7 @@ function Home (){
                 <div id="cards" style={{background: '#21222D'}}>                  
                     <div id="cardum" style={{background: '#171821'}}>
                     <PeopleFill id="iconpeoplefill" color="beige" size={60}/>
+                    
                     <Link to="/Pessoas"><p id="sabermais">Saber mais</p></Link>
             
                     <p id="amarelo">Total de pessoas<br/>adicionadas ate hoje:</p>

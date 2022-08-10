@@ -31,7 +31,10 @@ function AddProjeto() {
     .catch(() => {
         console.log("n foi")
     })
-
+    
+    function voltar() {
+        window.history.back();
+    }
 
     return(
 <>
@@ -67,12 +70,12 @@ function AddProjeto() {
                                 <textarea type="text" name="descricao_projeto" {...register("descricao_projeto")}/>
                                 <p className="error-message">{errors.descricao_projeto?.message} </p>
                             </div>
-
-                         
-
-                            <div className="btn-post">
-                                <button type="submit">Cadastrar</button>
+                            
+                            <div id="chat">
+                                <Link id="butaoC" onClick={voltar}>Cancelar</Link>
+                                <button type="submit" className="butao">Cadastrar</button>
                             </div>
+                            
                         </form>
 
                     </div>

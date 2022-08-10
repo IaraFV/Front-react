@@ -106,12 +106,9 @@ function Post() {
                                 </Box>
                             </div>
 
-                            <div className="botoespost">
-
-                                <Link className="btn-cancelar-post" onClick={voltar}>Cancelar</Link>
-                            </div>
-                            <div className="botoespost">
-                                <button className="btn-post" type="submit">Cadastrar</button>
+                            <div id="chat">
+                                <Link id="butaoC" onClick={voltar}>Cancelar</Link>
+                                <button type="submit" className="butao">Cadastrar</button>
                             </div>
                     
                 </form>
