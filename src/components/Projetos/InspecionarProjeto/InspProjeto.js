@@ -19,9 +19,8 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 function InspProjeto() {
 
 
-    function log(message) {
-        console.log('> ' + message)
-    }
+    const [post, setPost] = useState([])
+    const { id_projeto } = useParams()
 
     const cards = document.querySelectorAll('.card')
     const dropzones = document.querySelectorAll('.dropzone')
@@ -30,10 +29,10 @@ function InspProjeto() {
     const [initialPosts, setInitialPosts] = useState([])
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
+        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projeto/${id_projeto}`)
             .then((response) => {
                 setPosts(response.data)
-                setInitialPosts(response.data)
+
             })
             .catch(() => {
                 console.log("deu errado")
@@ -47,183 +46,86 @@ function InspProjeto() {
         setPosts(posts.filter(post => post.id_task !== id_task))
     }
 
-    const arr = posts;
-    var stats = arr;
+    const nome = posts.nome_pessoa;
+    //<Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">{nome.charAt(0)}</Avatar>
 
-    var and = stats.filter(states => states.status === "A fazer");
 
-    var fi = stats.filter(states => states.status === 'Em desenvolvimento');
-
-    var Sta = stats.filter(states => states.status === 'Concluído');
-
-    /** our cards */
-    cards.forEach(card => {
-        card.addEventListener('dragstart', dragstart)
-        card.addEventListener('drag', drag)
-        card.addEventListener('dragend', dragend)
-    })
-
-    function dragstart() {
-        // log('CARD: Start dragging ')
-        dropzones.forEach(dropzone => dropzone.classList.add('highlight'))
-
-        // this = card
-        this.classList.add('is-dragging')
+    function deletePost(id_pessoa) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
     }
 
-    function drag() {
-        log('CARD: Is dragging ')
+    function stringAvatar(name) {
+        return {
+            sx: {
+                //bgcolor: stringToColor(name),
+                width: '14rem', height: '14rem', fontSize: '8rem'
+            },
+            children: `${name.split(' ')[0][0]}`,
+        };
     }
-
-    function dragend() {
-        // log('CARD: Stop drag! ')
-        dropzones.forEach(dropzone => dropzone.classList.remove('highlight'))
-
-        // this = card
-        this.classList.remove('is-dragging')
-    }
-
-    /** place where we will drop cards */
-    dropzones.forEach(dropzone => {
-        dropzone.addEventListener('dragenter', dragenter)
-        dropzone.addEventListener('dragover', dragover)
-        dropzone.addEventListener('dragleave', dragleave)
-        dropzone.addEventListener('drop', drop)
-    })
-
-    function dragenter() {
-        // log('DROPZONE: Enter in zone ')
-    }
-
-    function dragover() {
-        // this = dropzone
-        this.classList.add('over')
-
-        // get dragging card
-        const cardBeingDragged = document.querySelector('.is-dragging')
-
-        // this = dropzone
-        this.appendChild(cardBeingDragged)
-    }
-
-    function dragleave() {
-        // log('DROPZONE: Leave ')
-        // this = dropzone
-        this.classList.remove('over')
-
-    }
-
-    function drop() {
-        // log('DROPZONE: dropped ')
-        this.classList.remove('over')
-    }
-/**função de filtro */
-    const handlechange = ({ target }) => {
-        if (!target.value) {
-            setPosts(initialPosts)
-            return;
-        }
-        const filter = posts.filter(({ descricao_task }) =>
-        descricao_task.toUpperCase().includes(target.value.toUpperCase()))
-
-        setPosts(filter);
-}
-
+ 
     return (
-        <div>
-            <div className="cabecalho">
-                <h1 style={{ color: 'white' }} >Task</h1>
-                <input type="text" className="input" placeholder="Ex: hello" onChange={handlechange}></input>
-            </div>
-            
-            <div className="d-flex ">
-                <div className="col-3 " id="teste">
-                    <Card style={{ width: '20rem' }}>
-                        <Link to="/PostT">
-                            <AddCircleOutlineIcon/>
-                        </Link>
-                    </Card>
-                    <Card style={{ width: '26rem' }}>
-                        <h1 className="H_um" style={{color:'red'}}>Ultimas Atividades</h1>
-                        <CardHeader
-                            avatar={
-                                <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe">R</Avatar>}
-                            title="Shrimp and Chorizo Paella"
-                            subheader="September 14, 2016"
-                        />
-                    </Card>
+        <>
+
+
+            <div id="geral-card-inspecionar">
+                <div id="card-inspecionar">
+
+
+                    <Link to='/Pessoas'>
+                        <BsArrowLeft id="voltar-insp" />
+                    </Link>
+
+
+
+                    <div id="h1-insp">
+                        <h1>{post.nome_pessoa}</h1>
+                    </div>
+                    
+
+                    <div id="detalhes">
+                        <div id="cabecariodetalhes">
+                            <h4>Detalhes</h4>
+                            <div className="line-insp"></div>
+                        </div>
+                        <div style={{ color: '#fff' }}>
+                            <p>Username: {post.nome_projeto}</p>
+                          
+                            
+                        </div>
+                    </div>
+
+                    <div id="botoes-insp">
+                        <div className="btn-editar">
+                            <Link to={{ pathname: `/Edit/${post.id_projeto}` }}>
+                                <button type="submit">Editar</button>
+                            </Link>
+                        </div>
+                        <div className="btn-excluir">
+                            <button onClick={() => deletePost(posts.id_projeto)} aria-label="share" type="submit" to='/pessoas'>Deletar</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="col-9 d-flex justify-content-around" style={{ height: "800px" }}>
+                <div id="card-inspdois">
 
-
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2">
-                            A fazer
-                        </h4>
-
-
-                        {
-                            and.map((post, key) => {
-                                return (
-                                    <div className="dropzone" >
-                                        <Card style={{ width: '18rem' }} className="card" draggable="true">
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                <Card.Text>{post.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
+                    <div id="card-header-insp">
+                        <h2>Task's</h2>
+                        <div className="line-insp-dois"></div>
                     </div>
 
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage" style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2">
-                            Em desenvolvimento
-                        </h4>
-                        {
-                            fi.map((post, key) => {
-                                return (
-                                    <div className="dropzone" >
-                                        <Card style={{ width: '18rem' }} draggable="true">
-                                            <Card.Body className="dropzone">
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                <Card.Text>{post.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag" style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2">
-                            Concluídos
-                        </h4>
-                        {
-                            Sta.map((post, key) => {
-                                return (
-                                    <div className="dropzone">
-                                        <Card style={{ width: '18rem' }} draggable="true">
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                <Card.Text>{post.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
 
+                    <div id="cards-insp-tasks">
+                    </div>
+                    <div id="file" ><BsFillFileEarmarkFill /></div>
+
+                    <div id="cards-insp-tasks">
+                    </div>
+                    <div id="file" ><BsFillFileEarmarkFill /></div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
