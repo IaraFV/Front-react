@@ -94,42 +94,14 @@ function Projetos() {
                                                 <Card.Title id="nome-projeto-plan" key={key}>
                                                     {post.nome_projeto}
 
+                                                    <div>
+                                                        <Link to="/InspProjeto">
+                                                            <AiOutlineArrowsAlt id="more-button-planejamento" />
+                                                        </Link>
+                                                    </div>
+                                                    
                                                 </Card.Title>
-                                                <div id="more-button-planejamento">
-                                                    <Button
-                                                        id="demo-positioned-button"
-                                                        aria-controls={open ? 'demo-positioned-menu' : undefined}
-                                                        aria-haspopup="true"
-                                                        aria-expanded={open ? 'true' : undefined}
-                                                        onClick={handleClick}
-                                                    >
-                                                        <AiOutlineMore />
-                                                    </Button>
 
-
-                                                    <Menu
-                                                        id="demo-positioned-menu"
-                                                        aria-labelledby="demo-positioned-button"
-                                                        anchorEl={anchorEl}
-                                                        open={open}
-                                                        onClose={handleClose}
-                                                        anchorOrigin={{
-                                                            vertical: 'top',
-                                                            horizontal: 'left',
-                                                        }}
-                                                        transformOrigin={{
-                                                            vertical: 'top',
-                                                            horizontal: 'left',
-                                                        }}
-                                                    >
-                                                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                                        <MenuItem onClick={handleClose}>My account</MenuItem>
-
-                                                        <MenuItem
-                                                            onClick={() => deletePost(post.id_projeto)} aria-label="share" type="submit">Deletar
-                                                        </MenuItem>
-                                                    </Menu>
-                                                </div>
 
                                                 <Card.Text id="status">
                                                     {post.status}
@@ -150,7 +122,7 @@ function Projetos() {
                                                 <Card.Text>
                                                     <div id="titulo-descricao-projeto">Membros</div>
                                                     <div id="membros-projeto">
-                                                    <Avatar id="avatar-projeto-membro-eq"/>
+                                                        <Avatar id="avatar-projeto-membro-eq" />
                                                     </div>
                                                 </Card.Text>
 

@@ -17,6 +17,7 @@ import './App.css'
 import PostE from './components/Equipes/Add/add';
 import ProjetosConcluidos from './components/Projetos/Projetos';
 import PostT from './components/Task/PostT/postT'
+import InspProjeto from './components/Projetos/InspecionarProjeto/InspProjeto';
 function App() {
 
   return (
@@ -53,6 +54,7 @@ function App() {
       <Route path="/AddProjeto" element={<AddProjeto/>}></Route>
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>
       <Route path="/postT" element={<PostT/>}></Route>
+      <Route path='/InspProjeto' element={<InspProjeto/>}></Route>
       
     </Routes>
     </BrowserRouter>
