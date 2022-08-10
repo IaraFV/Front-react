@@ -52,8 +52,7 @@ function Inspecionar() {
             children: `${name.split(' ')[0][0]}`,
         };
     }
-
-
+ 
     return (
         <>
 
