@@ -20,7 +20,7 @@
 
 #caixa-geral-de-projetos {
     display: flex;
-    width: 66%;
+    width: 62%;
     flex-wrap: wrap;
     overflow: auto;
     justify-content: center;
@@ -138,9 +138,9 @@
 #red-projetos-adicionados {
     background: #21222D;
     border-radius: 50px;
-    width: 30%;
-    margin-right: 1%;
-    margin-top: 2%;
+    width: 27%;
+    margin-right: 5%;
+    margin-top: 1%;
 }
 #corpo-descricao-projeto{
     color: #fff;

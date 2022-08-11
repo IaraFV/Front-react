@@ -27,6 +27,7 @@ function Post() {
     const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", data)
         .then(() => {
             console.log("foi")
+            navigate("/Pessoas");
         })
         .catch(() => {
             console.log("n foi")

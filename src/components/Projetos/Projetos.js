@@ -3,10 +3,8 @@ import React, { useState, useEffect } from "react";
 import './Projetos.css';
 import Card from 'react-bootstrap/Card';
 import { BsFlagFill } from "react-icons/bs";
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { AiOutlineMore, AiOutlinePlusCircle, AiOutlineArrowsAlt } from "react-icons/ai";
+
+import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { AiOutlinePlus } from "react-icons/ai";
 import Avatar from '@mui/material/Avatar';
@@ -18,20 +16,6 @@ import Avatar from '@mui/material/Avatar';
 
 
 function Projetos() {
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-
-
-    const cards = document.querySelectorAll('.card')
-    const dropzones = document.querySelectorAll('.dropzone')
 
     const [initialPost, setInitialPost] = useState([])
 
@@ -47,10 +31,7 @@ function Projetos() {
             })
     }, [])
 
-    function deletePost(id_projeto) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
-        setpost(post.filter(posts => posts.id_projeto !== id_projeto))
-    }
+  
 
     //filter pesquisa
     const handlechange = ({ target }) => {
