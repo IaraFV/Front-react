@@ -58,8 +58,14 @@ function InspecionarEquipe() {
     /**manipulação do array de geral de equipe/ filtando o nome dos membros da equipe */
     const ArrGeral_pessoas = pessoa;
     /**nessa parte filtra as pessoas com base no id da equipe oriundo do "INTid_equipe" */
-    const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
-    console.log(filtrandoPessoas);
+    var filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
+    function getletra(){
+        var inicialLetra = filtrandoPessoas.map((letraini) => letraini.charAt(0));
+        console.log(inicialLetra    )
+    }
+    
+
+    
     
     
     return (
