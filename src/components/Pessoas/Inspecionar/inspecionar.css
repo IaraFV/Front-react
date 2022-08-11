@@ -208,22 +208,3 @@ h4 {
     font-size: 1.5rem;
     margin-left: -3%;
 }
-    #plus{
-    font-size: 2.5rem;
-    color: #2684FF;
-    width: 70px;
-    height: 72px;
-    border-radius: 5rem;
-    background: rgba(164, 164, 164, 0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 4.6%;
-    margin-top: -16%;
-}
-#cardf{
-    margin-top: 1rem;
-    width: 300px;
-    background-color: rgba(186, 186, 186, 0.5);
-    opacity: 0.1 
-}

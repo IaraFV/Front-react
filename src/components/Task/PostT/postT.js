@@ -110,10 +110,12 @@ function PostT() {
     const l = pessoa;
     const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
     
-    //const test = l.map(lucs => lucs.tasks.descricao_task);
-    //console.log(test);
-    
-    //console.log(filtro_statusProjet);
+
+
+    //console.log(luc);
+    //console.log(nomeEquipe);
+    console.log(filt);
+    console.log(filtro_statusProjet);
     
     return (
         <div>
