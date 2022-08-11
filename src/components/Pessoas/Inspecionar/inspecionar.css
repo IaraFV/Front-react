@@ -177,6 +177,7 @@ h4 {
 }
 
 #cards-insp-tasks {
+    border: 2px solid green;
     width: 17%;
     height: 23%;
     left: 5%;
@@ -207,4 +208,38 @@ h4 {
     justify-content: flex-start;
     font-size: 1.5rem;
     margin-left: -3%;
+}
+#btn-addTask-pessoaInsp{
+    display: flex;
+    justify-content: space-between;
+}
+.btn-adicionartesk{
+    color: #2684FF;
+}
+#lucas{
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+#try{
+    display: flex;
+    padding: 1rem;
+    
+}
+#cardtask{
+    background: rgba(186, 186, 186, 0.5);
+    opacity: 0.1;
+    color: #fff;
+}
+#test{
+    align-items: center;
+}
+#titulo{
+    color: blue;
+    border: 1px solid red;
+}
+#cor{
+    align-items: center;
+    display: flex;
+    color: #2684FF;
 }

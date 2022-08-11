@@ -29,12 +29,13 @@ function PostE() {
     .catch(() => {
         console.log("n foi")
     })
-
+    function voltar() {
+        window.history.back();
+    }
     return(
 <>
         <div>
-            <IconButton sx={{color: 'white'}}>
-                <Link to="/Equipes"/>
+            <IconButton sx={{color: 'white'}} onClick={voltar}>
                 <ArrowBackIcon/>
             </IconButton>
 

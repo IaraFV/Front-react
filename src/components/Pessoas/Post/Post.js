@@ -56,7 +56,7 @@ function Post() {
         window.history.back();
     }
 
-    console.log(voltar);
+    
     const [age, setAge] = React.useState('');
     const [equipe, setequipe] = useState([]);
     const handleChange = (event) => {
