@@ -26,7 +26,19 @@ function Home() {
     }, [])
 
     const recebeprojetos = post.filter(getstatus => getstatus.status === "Concluído");
-
+    
+/**função para implementar o mais breve pocivel
+ * NÃO APAGAR!!!!!!!!!!!!!!!!!!
+ * OBS: o codigo abaixo é apenas um esboso.
+ * 
+ * const carros = ["Civic", "Elantra", "Focus", "Jetta", "Cruze", "Corolla",'ferrari','lamborghini','bugatti','fusca'];
+ * 
+ * var lucas = [];
+ * for (var pos = 0; pos < 6; pos++) {
+         lucas.push(carros[pos])
+}
+         console.log(lucas)
+ */
     return (
         <>
             <div id="imginicio" ><img src={teste} alt=" " width={'10%'} /></div>
