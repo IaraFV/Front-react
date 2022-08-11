@@ -65,51 +65,18 @@ return(
 
                 <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
             </div>
-            <div id="geralpessoas">
+            <div id="geraleq">
          {
             posts.map((posts,key) => {
 
             return (
             <div className="cardequipe">
-            <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
-                <CardHeader className="titlecinco"
-                
-                action={
-                    <IconButton aria-label="settings">
-                        <Link to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}><SearchIcon sx={{color: '#E9C46A'}}/>
-                        </Link>
-                    </IconButton>
-                }
-                
-                />
-                <div className="equipeuser">
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">i</Avatar>
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">j</Avatar>
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">s</Avatar>
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">o</Avatar>
-                </div>
-              
-                <CardContent sx={{color: 'white' }}>
-                <Typography variant="body2" color="white">
-                {
-                posts.nome_equipe
-                }
-                {posts.funcao_pessoa}
-                </Typography>
-                </CardContent>
-                
-                <CardActions disableSpacing>
-                <IconButton> 
-                     <Link to={{ pathname: `/EditE/${posts.id_equipe}` }}>
-                        <ModeEditIcon sx={{color: '#E9C46A'}}/>
-                     </Link>
-                </IconButton>
+            
 
-                <IconButton onClick={() => deletePost(posts.id_equipe) } aria-label="share" sx={{color: '#E9C46A'}} >
-                    <DeleteIcon  />
-                </IconButton>
-                </CardActions>
-            </Card>
+
+            <div id="card-prin-eq">
+                jkunhiu
+            </div>
             </div>
                 )
               })
