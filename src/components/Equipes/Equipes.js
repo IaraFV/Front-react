@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './Equipe.css';
-import axios  from "axios";
+import axios from "axios";
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
@@ -16,11 +16,11 @@ import { FiSearch } from "react-icons/fi";
 
 function Equipe() {
 
-    const [ posts, setPosts ] = useState([])
+    const [posts, setPosts] = useState([])
     const [initialPosts, setInitialPosts] = useState([])
 
     useEffect(() => {
-            axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
             .then((response) => {
                 setPosts(response.data)
             })
@@ -41,83 +41,58 @@ function Equipe() {
         setPosts(filter);
     }
 
-    function deletePost (id_equipe) {
+    function deletePost(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setPosts(posts.filter(post => post.id_equipe !== id_equipe))
     }
 
 
-return(
-      <div >
-         <div> 
-            <div id="informativo">
-                <h1 id="titlepessoa" style={{color: '#fff', marginLeft: '5%', marginTop: '4%'}}>Equipes Cadastradas</h1>
-                
-                <div id="filtroebtnl">
-                    <Link to="/Add">
-                        <button className="btn-adicionarequipe">Adicionar Equipe</button>
-                    </Link>
-                    <div id="filtror">
-                         <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-                        <FiSearch style={{marginLeft: "196%", color: "#E9C46A", marginTop: "-27%"}}/>
-                    </div>
-                </div>
+    return (
+        <div >
+            <div>
+                <div id="informativo">
+                    <h1 id="titlepessoa" style={{ color: '#fff', marginLeft: '5%', marginTop: '4%' }}>Equipes Cadastradas</h1>
 
-                <p style={{color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%'}}></p>
-            </div>
-            <div id="geralpessoas">
-         {
-            posts.map((posts,key) => {
-
-            return (
-            <div className="cardequipe">
-            <Card container spacing={2}  sx={{ width: 345, bgcolor: '#21222D', color: 'white' }} key={key} >
-                <CardHeader className="titlecinco"
-                
-                action={
-                    <IconButton aria-label="settings">
-                        <Link to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}><SearchIcon sx={{color: '#E9C46A'}}/>
+                    <div id="filtroebtnl">
+                        <Link to="/Add">
+                            <button className="btn-adicionarequipe">Adicionar Equipe</button>
                         </Link>
-                    </IconButton>
-                }
-                
-                />
-                <div className="equipeuser">
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">i</Avatar>
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">j</Avatar>
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">s</Avatar>
-                    <Avatar sx={{ width: [25], height: [25] }} aria-label="recipe">o</Avatar>
-                </div>
-              
-                <CardContent sx={{color: 'white' }}>
-                <Typography variant="body2" color="white">
-                {
-                posts.nome_equipe
-                }
-                {posts.funcao_pessoa}
-                </Typography>
-                </CardContent>
-                
-                <CardActions disableSpacing>
-                <IconButton> 
-                     <Link to={{ pathname: `/EditE/${posts.id_equipe}` }}>
-                        <ModeEditIcon sx={{color: '#E9C46A'}}/>
-                     </Link>
-                </IconButton>
+                        <div id="filtror">
+                            <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
+                            <FiSearch style={{ marginLeft: "196%", color: "#E9C46A", marginTop: "-27%" }} />
+                        </div>
+                    </div>
 
-                <IconButton onClick={() => deletePost(posts.id_equipe) } aria-label="share" sx={{color: '#E9C46A'}} >
-                    <DeleteIcon  />
-                </IconButton>
-                </CardActions>
-            </Card>
+                    <p style={{ color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%' }}></p>
+                </div>
+
+                <div id="geraleq">
+                    {
+                        posts.map((posts, key) => {
+
+                            return (
+                                <div className="cardequipe">
+
+                                    <Link id="link-eq"to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
+                                   
+                                        <div id="card-prin-eq">
+                                            jkunhiu
+                                        </div>
+                                
+                                    </Link>
+                                    
+
+
+
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+
             </div>
-                )
-              })
-            }
-            </div>
-</div>
         </div>
-)
+    )
 }
 
 export default Equipe;

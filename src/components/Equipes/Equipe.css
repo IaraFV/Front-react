@@ -1,37 +1,10 @@
 .cardequipe{
-    border: 2.1px solid #21222D;
-    border-radius: 0.5rem;
     display: flex;
-    width: 17%;
-    align-items: center;
-    margin-left: 2%;
-    margin-top: 2%;
-
-}
-
-.btn-adicionarequipe{
-    width: 110%;
-    font-size: 1.3rem;
-    color: #fff;
-    background-color: #E9C46A;
-    border: 0;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: -173%;
-}
-
-#geralpessoas{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 3%;
-    margin-top: -2%;
-}
-.equipeuser{
-    display: flex;
-    justify-content: flex-start;
-    margin-top: -18%;
-    margin-left: 3%;
-    width: 12%;
+    width: 13%;
+    justify-content: center;
+    padding: 1%;
+    
+    
 }
 #filtror input{
     width: 90%;
@@ -46,3 +19,21 @@
      justify-content: space-around;
      margin-top: 5%;
  }
+ /*/*//*///////////////////////////////////////////////////////*/
+
+#card-prin-eq{
+    background: #21222D;
+    width: 12rem;
+    height: 13rem;
+    border-radius: 2rem;
+  
+}
+#geraleq {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 95%;
+}
+#link-eq{
+    text-decoration: none;
+}
