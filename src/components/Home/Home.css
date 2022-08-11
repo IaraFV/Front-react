@@ -1,4 +1,4 @@
-body{
+#body{
     background: #1D242E;
     height: 100vh;
 }
@@ -189,4 +189,68 @@ body{
     margin-top: -24%;
     color: #A0A0A0;
     font-size: 0.7rem;
+}
+#div-card-page-projetosH{
+    width: 26rem;
+    margin-top: 10%;
+    padding: 1%;
+}
+#div-card-projetoH{
+    background: #21222D;
+    height: 19rem;
+}
+#nome-projeto-planH{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 540;
+    font-size: 24px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
+#more-button-planejamentoH{
+    color: #fff;
+    font-weight: 540;
+    font-size: 24px
+}
+#statusH{
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 15px;
+    color: rgba(0, 219, 153, 0.9);
+    margin-top: 5%;
+}
+#bandeira-dataH{
+    color: #717986;
+    display: flex;
+    width: 46%;
+    justify-content: space-between;
+    font-family: 'Poppins';
+    margin-top: -2%;
+    font-size: 1rem;
+}
+#titulo-descricao-projetoH{
+    font-family: 'Poppins';
+    font-weight: 550;
+    font-size: 16px;
+    color: #717986;
+    margin-top: -2%;
+}
+#titulo-descricao-projetof{
+    font-family: 'Poppins';
+    font-weight: 550;
+    font-size: 16px;
+    color: #717986;
+    margin-top: -2%;
+}
+#corpo-descricao-projetoH{
+    color: #fff;
+}
+#membros-projetoH{
+    color: #fff;
+}
+#avatar-projeto-membro-eqH{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 1%;
 }

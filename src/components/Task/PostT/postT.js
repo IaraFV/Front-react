@@ -100,6 +100,7 @@ function PostT() {
     /**manipulaçao dos dados oriundos do arr de projetos(array geral)*/
     const proj = projeto;
     const filtro_statusProjet = proj.filter( statusPro => statusPro.status === "Em desenvolvimento");
+    console.log(filtro_statusProjet);
     const filt = filtro_statusProjet.filter(pro => pro.id_projeto === vofProjeto);
     const nomeEquipe = filt.map(p => p.equipe.id_equipe);
     
@@ -109,14 +110,7 @@ function PostT() {
     /**manioulaçao do dados oriundos do arr de pessoas(array geral)*/
     const l = pessoa;
     const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
-    
 
-
-    //console.log(luc);
-    //console.log(nomeEquipe);
-    console.log(filt);
-    console.log(filtro_statusProjet);
-    
     return (
         <div>
             <main>
