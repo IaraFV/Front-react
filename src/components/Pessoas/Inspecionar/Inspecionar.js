@@ -40,7 +40,9 @@ function Inspecionar() {
 
     function deletePost(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
+            
+                setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
+       
     }
 
     function stringAvatar(name) {
@@ -116,7 +118,7 @@ function Inspecionar() {
                             </Link>
                         </div>
                         <div className="btn-excluir">
-                            <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit" to='/pessoas'>Deletar</button>
+                            <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit" to='/Pessoas'>Deletar</button>
                         </div>
                     </div>
                 </div>
