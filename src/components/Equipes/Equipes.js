@@ -6,13 +6,10 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { FiSearch } from "react-icons/fi";
+import { BsPeople } from "react-icons/bs";
 
 function Equipe() {
 
@@ -55,7 +52,7 @@ function Equipe() {
 
                     <div id="filtroebtnl">
                         <Link to="/Add">
-                            <button className="btn-adicionarequipe">Adicionar Equipe</button>
+                            <button className="btn-adicionarequipe">Adicionar Equipe +</button>
                         </Link>
                         <div id="filtror">
                             <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
@@ -73,14 +70,18 @@ function Equipe() {
                             return (
                                 <div className="cardequipe">
 
-                                    <Link id="link-eq"to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
-                                   
+                                    <Link id="link-eq" to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
+
                                         <div id="card-prin-eq">
-                                            jkunhiu
+                                            <div id="icon-nomeequipe-pegeequipe">
+                                                <BsPeople id="icon-group-page-equipes" />
+                                                <div id="nome-equipe-pege-equioe">{posts.nome_equipe}</div>
+                                            </div>
+
                                         </div>
-                                
+
                                     </Link>
-                                    
+
 
 
 

@@ -26,7 +26,24 @@
     width: 12rem;
     height: 13rem;
     border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+   
+}
+#icon-nomeequipe-pegeequipe{
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   
+}
+
+#nome-equipe-pege-equioe{
+    width: 10rem;
+    margin-top: -28%;
+    text-align: center;
+    color: #fff;
 }
 #geraleq {
     display: flex;
@@ -36,4 +53,21 @@
 }
 #link-eq{
     text-decoration: none;
+}
+#icon-group-page-equipes{
+    color: #fff;
+    font-size: 6rem;
+    font-weight: 300;
+ 
+    
+}
+.btn-adicionarequipe{
+    border: none;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 60px;
+    width: 12rem;
+    height: 38px;
+    color: #fff;
+   
+    font-size: 1.1rem;
 }
