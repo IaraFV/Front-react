@@ -42,12 +42,13 @@ function Edite() {
             reset(response.data)
         })
     }, [])
-
+    function voltar() {
+        window.history.back();
+    }
 
     return(
         <div>
-            <IconButton sx={{color: 'white'}}>
-                <Link to="/equipes" />
+            <IconButton sx={{color: 'white'}} onClick={voltar}>
                 <ArrowBackIcon/>
             </IconButton>
 
