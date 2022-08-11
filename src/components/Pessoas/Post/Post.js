@@ -27,6 +27,7 @@ function Post() {
     const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", data)
         .then(() => {
             console.log("foi")
+            navigate("/Pessoas");
         })
         .catch(() => {
             console.log("n foi")
@@ -55,7 +56,7 @@ function Post() {
         window.history.back();
     }
 
-    console.log(voltar);
+    
     const [age, setAge] = React.useState('');
     const [equipe, setequipe] = useState([]);
     const handleChange = (event) => {

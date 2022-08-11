@@ -1,0 +1,54 @@
+#input-insp-projeto{
+    background: rgba(33, 34, 45, 0.5);
+    border: 1px solid #D9D9D9;
+    border-radius: 30px;
+    width: 20rem;
+    height: 2.2rem;
+}
+#iconvoltar-pesquisa{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+#icon-voltar-projetosconcluidos{
+    color: #BABABA;
+    font-size: 2rem;
+}
+#cabecario-geral-pagina-insp-projeto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 99%;
+    
+}
+#botoes-page-inp-projetos{
+    width: 14%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.btn-editar-pagina-projeto button {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 25px;
+    color: #fff;
+    background-color: #E9C46A;
+    border: 0;
+    border-radius: 7px;
+    
+}
+
+.btn-excluir-pagina-projeto button {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 20px;
+    color: #fff;
+    background-color: #EB5757;
+    border: 0;
+    border-radius: 7px;
+}
