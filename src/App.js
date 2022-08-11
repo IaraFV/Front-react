@@ -14,10 +14,10 @@ import {Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import teste from './components/Home/img/Logo.webp'
 import './App.css'
-import PostE from './components/Equipes/Add/add';
 import ProjetosConcluidos from './components/Projetos/Projetos';
 import PostT from './components/Task/PostT/postT'
 import InspProjeto from './components/Projetos/InspecionarProjeto/InspProjeto';
+import InspecionarEqui from './components/Equipes/inspecionar/InspecionarEqui';
 function App() {
 
   return (
@@ -55,6 +55,7 @@ function App() {
       <Route path="/EditE/:id_equipe" element={<EditE/>}></Route>
       <Route path="/postT" element={<PostT/>}></Route>
       <Route path='/InspProjeto/:id_projeto' element={<InspProjeto/>}></Route>
+      <Route path='/InspecionarEqui/:id_equipe' element={<InspecionarEqui/>}></Route>
       
     </Routes>
     </BrowserRouter>
@@ -62,5 +63,9 @@ function App() {
 
   );
 }
+/**<IconButton aria-label="settings">
+                        <Link to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}><SearchIcon sx={{color: '#E9C46A'}}/>
+                        </Link>
+                    </IconButton> */
 
 export default App;
