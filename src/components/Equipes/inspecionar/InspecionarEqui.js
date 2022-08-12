@@ -60,12 +60,12 @@ function InspecionarEquipe() {
     /**manipulação do array de geral de equipe/ filtando o nome dos membros da equipe */
     const ArrGeral_pessoas = pessoa;
     /**nessa parte filtra as pessoas com base no id da equipe oriundo do "INTid_equipe" */
-    var filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
-    function getletra() {
-        var inicialLetra = filtrandoPessoas.map((letraini) => letraini.charAt(0));
-        console.log(inicialLetra)
-    }
-
+    const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
+    const inicialLetra = filtrandoPessoas.map((letraini) => letraini.nome_pessoa);
+    const recebe = inicialLetra.map((l) => l.charAt(0));
+   /**este codigo vai pegar o total de membros (como um contador) */
+    const totalmember = inicialLetra.length;
+    
     function deleteEquipe(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
@@ -90,7 +90,7 @@ function InspecionarEquipe() {
                     <div>
                         <div id='tituloinsp'>
                             <h2>membros</h2>
-                            <h2>5</h2>
+                            <h2>{totalmember}</h2>
                         </div>
                         <div className='avatares_Equipe'>
                             <Avatar aria-label="recipe">
@@ -99,10 +99,10 @@ function InspecionarEquipe() {
                                 </Link>
                             </Avatar>
                             {
-                                filtrandoPessoas.map((nomepessoa) => {
+                                recebe.map((nomepessoa) => {
                                     return (
                                         <div>
-                                            <Avatar sx={{}} aria-label="recipe">{nomepessoa.nome_pessoa}</Avatar>
+                                            <Avatar sx={{}} aria-label="recipe">{nomepessoa}</Avatar>
                                         </div>
                                     )
                                 })
