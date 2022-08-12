@@ -18,15 +18,25 @@
     border-radius: 2rem;
     display: flex;
     justify-content: center;
+    transition: translateY(10px);
+    opacity: 1;
+    transition: 0.5s;
 
 }
 
-#icon-nomeequipe-pegeequipe {
+#card-prin-eq:hover {
+    transform: translateY(0px);
+    opacity: 120;
+}
 
+#icon-nomeequipe-pegeequipe {
+    transform-style: preserve-3d;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    transition: 0.5%;
+    z-index: 11;
 
 }
 
