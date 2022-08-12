@@ -11,10 +11,35 @@ import { BsArrowLeft } from "react-icons/bs";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+/**componentes seletor */
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import * as yup from 'yup'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
 
+/**função de verificação de dados par aefetuar o envio */
+const validacaoPostE = yup.object().shape({
+    id_pessoa:  yup.string().required("Campo é obrigatorio!")
+})
 function InspecionarEquipe() {
 
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(validacaoPostE)
+    })
+
+    /**funcao de POST */
+    const atualizaequipe = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`, data)
+        .then(() => {
+            console.log("foi")
+            
+        })
+        .catch(() => {
+            console.log("n foi")
+        })
+    /*FIM */
     const [equipe, setequipe] = useState([])
     const [pessoa, setpessoa] = useState([])
     const { id_equipe } = useParams()
@@ -41,6 +66,11 @@ function InspecionarEquipe() {
             })
     }, []
     )
+
+    function deleteEquipe(id_equipe) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
+        setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
+    }
 
     /**função de 'slice' que pega a inicial do nome */
     function stringAvatar(name) {
@@ -71,10 +101,18 @@ function InspecionarEquipe() {
     /**este codigo vai pegar o total de membros (como um contador) */
     const totalmember = inicialLetra.length;
 
-    function deleteEquipe(id_equipe) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
-        setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
-    }
+    /**variavesi do seletor */
+    const [valuPessoa, setvalue] = React.useState('');
+
+    /**funçoes de evento das variaves do seletor */
+    const handleChange = (event) => {
+        setvalue(event.target.value);
+    };
+    console.log(valuPessoa);
+    /**manipulação dos dados oriundos de pessoas 
+     * Percorre os dados de pessoa e retorna as que nao tem equipe */
+     const filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
+   
 
     /**nao apagar codigo do ADD novos membros a equipe
      * 
@@ -122,7 +160,7 @@ function InspecionarEquipe() {
                             <h2>{totalmember}</h2>
                         </div>
                         <div className='avatares_Equipe'>
-                            <Button onClick={handleOpen}>adicionar <br/> membros </Button>
+                            <Button onClick={handleOpen}><AiOutlinePlus id="corr"/></Button>
                             <Modal
                                 keepMounted
                                 open={open}
@@ -131,14 +169,24 @@ function InspecionarEquipe() {
                                 aria-describedby="keep-mounted-modal-description"
                             >
                                 <Box sx={style}>
-                                    <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-                                        Text in a modal
-                                    </Typography>
-                                    <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                                    </Typography>
+                                <FormControl fullWidth>
+                                        <InputLabel id_pessoa="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("id_pessoa")}
+                                            labelId="demo-simple-select-label"
+                                            id_pessoa="demo-simple-select"
+                                            value={valuPessoa}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChange}>
+                                            {filtrandoPesssoa.map((pessoas) =>
+                                                <MenuItem value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
+                                            )}
+                                        </Select>
+                                        <p className="error-message">{errors.nivel?.message} </p>
+                                    </FormControl>
                                     
-                                    <Button onClick={handleClose}>Close Child Modal</Button>
+                                    <Button  onClick={atualizaequipe}>Enviar dados</Button>
                                     
                                 </Box>
                             </Modal>

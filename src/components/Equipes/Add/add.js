@@ -65,9 +65,10 @@ function PostE() {
      const handleChange = (event) => {
         setvalue(event.target.value);
     };
-    /**manipulação dos dados oriundos de pessoas */
+    /**manipulação dos dados oriundos de pessoas 
+     * Percorre dados de pessoa e retorna as que nao tem equipe */
     const filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
-    console.log(filtrandoPesssoa);
+   
     return(
 <>
         <div>
