@@ -1,11 +1,9 @@
 #geral-card-inspecionar_equipe{
-    border: 1px solid red;
     display: flex;
     justify-content: center;
     margin-top: 1%;
 }
 #card-inspecionar_equipe{
-    border: 2px solid blue;
     background-color: #2F3644;
     padding: 30px 70px;
     border-radius: 15px;

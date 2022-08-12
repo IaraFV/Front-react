@@ -7,6 +7,11 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 /**icons */
 import { BsArrowLeft } from "react-icons/bs";
+/**componentes do modal */
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function InspecionarEquipe() {
 
@@ -63,16 +68,40 @@ function InspecionarEquipe() {
     const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
     const inicialLetra = filtrandoPessoas.map((letraini) => letraini.nome_pessoa);
     const recebe = inicialLetra.map((l) => l.charAt(0));
-   /**este codigo vai pegar o total de membros (como um contador) */
+    /**este codigo vai pegar o total de membros (como um contador) */
     const totalmember = inicialLetra.length;
-    
+
     function deleteEquipe(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
     }
 
+    /**nao apagar codigo do ADD novos membros a equipe
+     * 
+     * <Avatar aria-label="recipe">
+            <Link to="/PostT">
+                <AiOutlinePlus id="corr" />
+            /Link>
+        </Avatar>
+                                
+     */
+    /**variaveis do modal */
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-
+    /**formatação CSS do modal */
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
     return (
         <div>
             <div id="geral-card-inspecionar_equipe">
@@ -93,11 +122,26 @@ function InspecionarEquipe() {
                             <h2>{totalmember}</h2>
                         </div>
                         <div className='avatares_Equipe'>
-                            <Avatar aria-label="recipe">
-                                <Link to="/PostT">
-                                    <AiOutlinePlus id="corr" />
-                                </Link>
-                            </Avatar>
+                            <Button onClick={handleOpen}>adicionar <br/> membros </Button>
+                            <Modal
+                                keepMounted
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="keep-mounted-modal-title"
+                                aria-describedby="keep-mounted-modal-description"
+                            >
+                                <Box sx={style}>
+                                    <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+                                        Text in a modal
+                                    </Typography>
+                                    <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
+                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                    </Typography>
+                                    
+                                    <Button onClick={handleClose}>Close Child Modal</Button>
+                                    
+                                </Box>
+                            </Modal>
                             {
                                 recebe.map((nomepessoa) => {
                                     return (
