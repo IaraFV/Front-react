@@ -56,26 +56,29 @@ function InspecionarEquipe() {
     const nome = equipe.nome_equipe;
     const getId_equipe = equipe.id_equipe;
     var INTid_equipe = parseInt(getId_equipe);
-   
+
     /**manipulação do array de geral de equipe/ filtando o nome dos membros da equipe */
     const ArrGeral_pessoas = pessoa;
     /**nessa parte filtra as pessoas com base no id da equipe oriundo do "INTid_equipe" */
     var filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
-    function getletra(){
+    function getletra() {
         var inicialLetra = filtrandoPessoas.map((letraini) => letraini.charAt(0));
-        console.log(inicialLetra    )
+        console.log(inicialLetra)
     }
-    
 
-    
-    
-    
+    function deleteEquipe(id_equipe) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
+        setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
+    }
+
+
+
     return (
         <div>
             <div id="geral-card-inspecionar_equipe">
                 <div id="card-inspecionar_equipe">
                     <div>
-                    <BsArrowLeft onClick={voltar} id="seta"/>
+                        <BsArrowLeft onClick={voltar} id="seta" />
                     </div>
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
@@ -90,30 +93,28 @@ function InspecionarEquipe() {
                             <h2>5</h2>
                         </div>
                         <div className='avatares_Equipe'>
-                        <Avatar  aria-label="recipe">
-                            <Link to="/PostT">
-                                <AiOutlinePlus id="corr"/>
-                            </Link>
-                        </Avatar>
-                        {
-                            filtrandoPessoas.map((nomepessoa) => {
-                                return(
-                                    <div>
-                                        <Avatar sx={{ }} aria-label="recipe">{nomepessoa.nome_pessoa}</Avatar>
-                                    </div>
-                                )
-                            })
-                        }
+                            <Avatar aria-label="recipe">
+                                <Link to="/PostT">
+                                    <AiOutlinePlus id="corr" />
+                                </Link>
+                            </Avatar>
+                            {
+                                filtrandoPessoas.map((nomepessoa) => {
+                                    return (
+                                        <div>
+                                            <Avatar sx={{}} aria-label="recipe">{nomepessoa.nome_pessoa}</Avatar>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <div className="line-insp-doiss"></div>
-                        <div>
-                            <div>
-                                <button>
-                                    <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}`}}> Editar
-                                    </Link>
-                                </button>
-                                <button></button>
-                            </div>
+                        <div id='btn-opition'>
+                            <button id="btn-edit">
+                                <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
+                                </Link>
+                            </button>
+                            <button onClick={deleteEquipe} id="btn-excluir">Excluir</button>
                         </div>
                     </div>
                 </div>

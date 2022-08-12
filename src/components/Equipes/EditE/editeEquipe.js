@@ -24,7 +24,7 @@ function Edite() {
      const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`, data)
         .then(() => {
             console.log("foi")
-            navigate("/equipes");
+            
         })
         .catch(() => {
             console.log("n foi")

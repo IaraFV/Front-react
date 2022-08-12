@@ -36,3 +36,33 @@
 #seta{
     color: #fff;
 }
+#btn-opition{
+    display: flex;
+    margin-top: 3%;
+    justify-content: space-around;
+    margin: 1rem;
+    padding: 1rem;
+}
+#btn-excluir{
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 50px;
+    color: #fff;
+    background-color: #A4A4A4;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#btn-edit{
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 50px;
+    color: #fff;
+    background-color: #E9C46A;
+    text-decoration: none;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
