@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { FiSearch } from "react-icons/fi";
 import { BsPeople } from "react-icons/bs";
+import Tilt from 'react-vanilla-tilt';
+
 
 function Equipe() {
 
@@ -67,8 +69,10 @@ function Equipe() {
                         posts.map((posts, key) => {
 
                             return (
-                                <div className="cardequipe">
 
+                                
+                                <div  className="cardequipe">
+                                    <Tilt style={{ background: '#171821' }}>
                                     <Link id="link-eq" to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
 
                                         <div id="card-prin-eq">
@@ -80,11 +84,11 @@ function Equipe() {
                                         </div>
 
                                     </Link>
-
-
-
-
+                                    </Tilt>
+                                    
                                 </div>
+
+                    
                             )
                         })
                     }
@@ -93,6 +97,7 @@ function Equipe() {
         </div>
 
     )
+
 }
 
 export default Equipe;

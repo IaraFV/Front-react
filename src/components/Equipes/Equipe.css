@@ -49,7 +49,6 @@
 
     display: flex;
     flex-wrap: wrap;
-
     width: 100%;
     overflow: auto;
     height: 49rem;
