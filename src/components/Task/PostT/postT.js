@@ -1,17 +1,15 @@
 import React, { useEffect, useState, } from "react";
 import { useForm } from 'react-hook-form'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './postT.css'
-//import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
 
 function PostT() {
 

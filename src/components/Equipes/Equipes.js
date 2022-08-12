@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Equipe.css';
 import axios from "axios";
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
 import { FiSearch } from "react-icons/fi";
 import { BsPeople } from "react-icons/bs";
 
@@ -20,6 +14,7 @@ function Equipe() {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
             .then((response) => {
                 setPosts(response.data)
+                setInitialPosts(response.data)
             })
             .catch(() => {
                 console.log("deu errado")

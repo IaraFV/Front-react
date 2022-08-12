@@ -1,5 +1,4 @@
 import { Link } from "@mui/material";
-import React from "react";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import IconButton from '@mui/material/IconButton';
 import { useForm } from 'react-hook-form'
@@ -8,6 +7,7 @@ import * as yup from 'yup'
 import './add.css'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
+import React, { useEffect, useState, } from "react";
 
 const validacaoPostE = yup.object().shape({
     nome_equipe:  yup.string().required("O nome equipe é obrigatorio!")
@@ -29,9 +29,12 @@ function PostE() {
     .catch(() => {
         console.log("n foi")
     })
+    /**função de retorno */
     function voltar() {
         window.history.back();
     }
+
+    const [valuPessoa, setvalue] = React.useState('');
     return(
 <>
         <div>
