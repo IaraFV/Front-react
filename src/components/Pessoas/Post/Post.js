@@ -13,6 +13,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
+
 
 function Post() {
 
@@ -25,9 +29,9 @@ function Post() {
     let navigate = useNavigate()
 
     const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", data)
-        .then(() => {
-            console.log("foi")
+        .then((response) => {
             navigate("/Pessoas");
+            console.log("foi");
         })
         .catch(() => {
             console.log("n foi")

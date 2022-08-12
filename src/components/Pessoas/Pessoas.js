@@ -61,26 +61,26 @@ function Pessoas() {
 
 
                 <div id="div-geral-do-cab-pessoas">
-                <div id="cabecario-page-pessoas">
-                    <div id="titulo-pessoa-filtro">
-                        <div>
-                            <h1 id="titlepessoa">
-                                Cadastro de Pessoas
-                            </h1>
-                        </div>
-                        <div id="filtro">
-                            <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-                        </div>
+                    <div id="cabecario-page-pessoas">
+                        <div id="titulo-pessoa-filtro">
+                            <div>
+                                <h1 id="titlepessoa">
+                                    Cadastro de Pessoas
+                                </h1>
+                            </div>
+                            <div id="filtro">
+                                <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
+                            </div>
 
-                        <div id="btn-page-pessoa">
-                            <Link to="/Post">
-                                <AiOutlinePlus className="btn-adicionarpessoa"></AiOutlinePlus>
-                            </Link>
+                            <div id="btn-page-pessoa">
+                                <Link to="/Post">
+                                    <AiOutlinePlus className="btn-adicionarpessoa"></AiOutlinePlus>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-                
+
 
                 <div id="geralpessoas">
                     {
@@ -88,29 +88,38 @@ function Pessoas() {
 
                             return (
                                 <div className="cardpessoas">
-                                    <Card container spacing={2} sx={{ width: 400, bgcolor: '#21222D' }} key={key} >
-                                        <CardHeader className="titlecinco"
-                                            avatar={<Avatar {...stringAvatar(`${nome}`)} />}
+                                    <Link className="link-eq" to={{ pathname: `/Inspecionar/${posts.id_pessoa}` }}>
 
-                                            action={
-                                                <IconButton aria-label="settings" >
-                                                    <Link to={{ pathname: `/Inspecionar/${posts.id_pessoa}` }}><VisibilityIcon
-                                                        sx={{ color: '#FFFFFF', marginTop: '-108%' }} /></Link>
-                                                </IconButton>
-                                            }
-                                        />
-                                        <CardContent sx={{ color: 'white' }}>
-                                            <Typography id="title-nome-pessoa">
-                                                {
-                                                    posts.nome_pessoa
-                                                }
-                                            </Typography>
+                                        <Card container id="card-pessoa-page" spacing={2} sx={{ width: 360, bgcolor: '#21222D' }} key={key} >
 
-                                            <Typography id="sub-title-nome-pessoa" variant="body2" color="white">
-                                                {posts.funcao_pessoa}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
+                                            <CardContent sx={{ color: 'white' }}>
+                                                <Typography id="sub-title-nome-pessoa" color="white">
+                                                    {posts.funcao_pessoa}
+                                                </Typography>
+
+                                                <Typography>
+                                                    <div id="avatar-page-pessoa">
+                                                        <Avatar id="avatar-pessoa" {...stringAvatar(`${nome}`)} />
+                                                    </div>
+
+                                                </Typography>
+                                                <Typography id="title-nome-pessoa">
+                                                    {
+                                                        posts.nome_pessoa
+                                                    }
+                                                </Typography>
+
+                                                <Typography id="data-contratacao">
+                                                    {
+                                                        posts.data_contratacao
+                                                    }
+                                                </Typography>
+
+
+                                            </CardContent>
+
+                                        </Card>
+                                    </Link>
                                 </div>
                             )
                         })
@@ -118,6 +127,7 @@ function Pessoas() {
                 </div>
             </div>
         </div>
+
     )
 }
 

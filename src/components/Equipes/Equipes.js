@@ -73,7 +73,7 @@ function Equipe() {
                                 
                                 <div  className="cardequipe">
                                     <Tilt style={{ background: '#171821' }}>
-                                    <Link id="link-eq" to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
+                                    <Link className="link-eq" to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
 
                                         <div id="card-prin-eq">
                                             <div id="icon-nomeequipe-pegeequipe">
