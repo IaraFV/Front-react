@@ -22,6 +22,8 @@ function Equipe() {
     }, []
     )
 
+
+
     const handlechange = ({ target }) => {
         if (!target.value) {
             setPosts(initialPosts)
@@ -32,33 +34,35 @@ function Equipe() {
 
         setPosts(filter);
     }
-/*
+
     function deletePost(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setPosts(posts.filter(post => post.id_equipe !== id_equipe))
-    }*/
+    }
 
 
     return (
-        <div >
-            <div>
-                <div id="informativo">
-                    <h1 id="titlepessoa" style={{ color: '#fff', marginLeft: '5%', marginTop: '4%' }}>Equipes Cadastradas</h1>
 
-                    <div id="filtroebtnl">
-                        <Link to="/Add">
-                            <button className="btn-adicionarequipe">Adicionar Equipe +</button>
-                        </Link>
-                        <div id="filtror">
-                            <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-                            <FiSearch style={{ marginLeft: "196%", color: "#E9C46A", marginTop: "-27%" }} />
-                        </div>
+        <div>
+            <div id="cabecario-equipe">
+                <div id="filtroebtn-page-equipe">
+                    <h1 id="page-equipe-nome" style={{ color: '#fff' }}>Equipes Cadastradas</h1>
+
+                    <div>
+                        <input id="filtro-equipe" type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
+
                     </div>
-
-                    <p style={{ color: '#fff', display: 'flex', justifyContent: 'flex-end', marginTop: '-2%', marginRight: '1%' }}></p>
                 </div>
+            </div>
 
-                <div id="geraleq">
+            <div >
+                <Link to="/Add">
+                    <button className="btn-adicionarequipe">Adicionar Equipe +</button>
+                </Link>
+
+            </div>
+            <div id="just-equipes">
+                <div id="geraleq" >
                     {
                         posts.map((posts, key) => {
 
@@ -85,9 +89,9 @@ function Equipe() {
                         })
                     }
                 </div>
-
             </div>
         </div>
+
     )
 }
 
