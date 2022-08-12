@@ -8,9 +8,15 @@ import './add.css'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import React, { useEffect, useState, } from "react";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const validacaoPostE = yup.object().shape({
     nome_equipe:  yup.string().required("O nome equipe é obrigatorio!")
+    
 })
 
 function PostE() {
@@ -29,12 +35,38 @@ function PostE() {
     .catch(() => {
         console.log("n foi")
     })
+    /**requisição GET do Array Pessoas da api */
+    const [pessoa, setpessoa] = useState([]);
+
+    useEffect(() => {
+        const fetchequipe = async () => {
+            try {
+                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/');
+                const data = await response.json();
+                setpessoa(data);
+                console.log("deu certo Men")
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchequipe();
+    }, [])
+
     /**função de retorno */
     function voltar() {
         window.history.back();
     }
-
+    /**variavesi do seletor */
     const [valuPessoa, setvalue] = React.useState('');
+
+     /**funçoes de evento das variaves do seletor */
+     const handleChange = (event) => {
+        setvalue(event.target.value);
+    };
+    /**manipulação dos dados oriundos de pessoas */
+    const filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
+    console.log(filtrandoPesssoa);
     return(
 <>
         <div>
@@ -56,7 +88,27 @@ function PostE() {
                                 <input type="text" name="nome_equipe" {...register("nome_equipe")}/>
                                 <p className="error-message">{errors.nome_equipe?.message} </p>
                             </div>
-
+                            <div className="fields">
+                                <label>pessoas sem equipe</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("nivel")}
+                                            labelId="demo-simple-select-label"
+                                            projeto_id="demo-simple-select"
+                                            value={valuPessoa}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChange}>
+                                            {filtrandoPesssoa.map((pessoas) =>
+                                                <MenuItem value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
+                                            )}
+                                        </Select>
+                                        <p className="error-message">{errors.nivel?.message} </p>
+                                    </FormControl>
+                                </Box>
+                            </div>
                             <div className="btn-post-equipe">
                                 <button type="submit">Cadastrar</button>
                             </div>

@@ -6,6 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
+
 function InspecionarEquipe() {
 
     const [equipe, setequipe] = useState([])
@@ -69,38 +70,42 @@ function InspecionarEquipe() {
     
     
     return (
-        <div id="geral-card-inspecionar_equipe">
-            <div id="card-inspecionar_equipe">
-                <div id="card-header">
-                    <Avatar {...stringAvatar(`${nome}`)} />
-                </div>
-                <div id="h1-insp">
-                    <h1>{equipe.nome_equipe}</h1>
-                </div>
-                <div className="line-insp-doiss"></div>
-                <div>
-                    <div id='tituloinsp'>
-                        <h2>membros</h2>
-                        <h2>5</h2>
+        <div>
+            <div id="geral-card-inspecionar_equipe">
+                <div id="card-inspecionar_equipe">
+                    <div id="card-header">
+                        <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
-                    <div className='avatares_Equipe'>
-                    <Avatar  aria-label="recipe">
-                        <Link to="/PostT">
-                            <AiOutlinePlus id="corr"/>
-                        </Link>
-                    </Avatar>
-                    {
-                        filtrandoPessoas.map((nomepessoa) => {
-                            return(
-                                <div>
-                                    <Avatar sx={{ }} aria-label="recipe">{nomepessoa.nome_pessoa}</Avatar>
-                                </div>
-                            )
-                        })
-                    }
-
+                    <div id="h1-insp">
+                        <h1>{equipe.nome_equipe}</h1>
+                    </div>
+                    <div className="line-insp-doiss"></div>
+                    <div>
+                        <div id='tituloinsp'>
+                            <h2>membros</h2>
+                            <h2>5</h2>
+                        </div>
+                        <div className='avatares_Equipe'>
+                        <Avatar  aria-label="recipe">
+                            <Link to="/PostT">
+                                <AiOutlinePlus id="corr"/>
+                            </Link>
+                        </Avatar>
+                        {
+                            filtrandoPessoas.map((nomepessoa) => {
+                                return(
+                                    <div>
+                                        <Avatar sx={{ }} aria-label="recipe">{nomepessoa.nome_pessoa}</Avatar>
+                                    </div>
+                                )
+                            })
+                        }
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div id="geral-card-inspecionar_equipe">
+                
             </div>
         </div>
     )
