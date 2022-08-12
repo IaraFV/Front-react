@@ -52,6 +52,7 @@ function PostE() {
         };
         fetchequipe();
     }, [])
+    
 
     /**função de retorno */
     function voltar() {

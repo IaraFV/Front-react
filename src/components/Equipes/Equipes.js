@@ -32,11 +32,11 @@ function Equipe() {
 
         setPosts(filter);
     }
-
+/*
     function deletePost(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setPosts(posts.filter(post => post.id_equipe !== id_equipe))
-    }
+    }*/
 
 
     return (

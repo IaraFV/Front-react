@@ -18,6 +18,7 @@ import ProjetosConcluidos from './components/Projetos/Projetos';
 import PostT from './components/Task/PostT/postT'
 import InspProjeto from './components/Projetos/InspecionarProjeto/InspProjeto';
 import InspecionarEqui from './components/Equipes/inspecionar/InspecionarEqui';
+import EditarEquipe from './components/Equipes/EditE/editeEquipe'
 function App() {
 
   return (
@@ -56,7 +57,7 @@ function App() {
       <Route path="/postT" element={<PostT/>}></Route>
       <Route path='/InspProjeto/:id_projeto' element={<InspProjeto/>}></Route>
       <Route path='/InspecionarEqui/:id_equipe' element={<InspecionarEqui/>}></Route>
-      
+      <Route path='/EditarEquipe/:id_equipe' element={<EditarEquipe/>}></Route>
     </Routes>
     </BrowserRouter>
 </div>

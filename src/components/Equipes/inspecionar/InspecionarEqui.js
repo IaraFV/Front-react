@@ -5,7 +5,8 @@ import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-
+/**icons */
+import { BsArrowLeft } from "react-icons/bs";
 
 function InspecionarEquipe() {
 
@@ -73,6 +74,9 @@ function InspecionarEquipe() {
         <div>
             <div id="geral-card-inspecionar_equipe">
                 <div id="card-inspecionar_equipe">
+                    <div>
+                    <BsArrowLeft onClick={voltar} id="seta"/>
+                    </div>
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
@@ -101,11 +105,18 @@ function InspecionarEquipe() {
                             })
                         }
                         </div>
+                        <div className="line-insp-doiss"></div>
+                        <div>
+                            <div>
+                                <button>
+                                    <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}`}}> Editar
+                                    </Link>
+                                </button>
+                                <button></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="geral-card-inspecionar_equipe">
-                
             </div>
         </div>
     )
