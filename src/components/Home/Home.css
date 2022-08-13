@@ -1,256 +1,208 @@
-#body{
+#body {
     background: #1D242E;
     height: 100vh;
 }
 
-#container{
-    margin-left: 10%;
-    margin-top: -4%;
-}
-#imginicio{
-    display: flex;
-    margin-top: 1%;
-    
-}
-#geral{
+#geral {
     display: flex;
     justify-content: space-between;
     width: 92%;
 }
-#textogeral h1{
-    color: beige;
-    margin-top: 0.5%;
-    margin-left: 2.8%; 
-}
-#textogeral h5{
-    color: #A0A0A0;
-    margin-top: 0.5%;
-    margin-left: 2.8%; 
-}
-#cards{
+
+/* Parte do home lado esquerdo onde contem os 3 cards de contadador pessoas, contador
+projeto e contador task*/
+
+/*----------------------------------------------------------card geral de fundo-------------------------------------------------------*/
+#cards {
     width: 45%;
-    height: 300px;
+    height: 26rem;
     margin-left: 1%;
     border-radius: 1rem;
     margin-top: 2%;
 }
-#pritext h1{
-    color: #28AEF3;
-    margin-bottom: 2%;
-    margin-left: 35%;
+
+#geral-graficoum {
+    width: 68%;
+    height: 30rem;
+    padding: 1%;
+    margin-top: 1%;
+    background: #21222D;
+    margin-left: 1%;
+    border-radius: 0.5rem;
 }
-#pritext h5{
-    color: #A0A0A0;
-    margin-bottom: 2%;
-    margin-left: 35%;
+
+#graficoum-page-home {
+    margin-top: 5%;
+    border: 1px solid red;
 }
-#tabela{
-    width: 55%;
-    height: 300px;
-    margin-right: -6.5%;
-    border-radius: 1rem;
-    margin-top: 2%;
-}
-#tabela h1{
-    color: beige;
-    margin-top: 0.5%;
-    margin-left: 2.8%; 
-}
-#tabela h5{
-    color: #A0A0A0;
-    margin-top: 0.5%;
-    margin-left: 2.8%;
-}
-#cardum{
+
+/*------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+/*card pessoas*/
+#cardum {
     width: 28%;
-    height: 65%;
-    margin-top: 7%;
+    height: 23rem;
+    margin-top: 2.5%;
     margin-left: 3%;
     border-radius: 0.5rem;
 }
-#cardum h3{
-    color: beige;
-    margin-left: 8%;
-    margin-top: -2%;
-   
-}
-#carddois h3{
-    color: beige;
-    margin-left: 8%;
-    margin-top: -2%;
-    
-}
-#cardtres h3{
+
+#cardum h3 {
     color: beige;
     margin-left: 7%;
-    margin-top: 3%;
-}
-#amarelo{
-    color: #E9C46A;
-    margin-left: 8%;
-    margin-top: 23%;
-    text-align:start;
-}
-#verde{
-    color: #A9DFD8;
-    margin-left: 8%;
-    margin-top: 4%;
-}
-#rosa{
-    color: #F2C8ED;
-    margin-left: 8%;
-    margin-top: 4%;
-}
-#carddois{
-    width: 28%;
-    height: 65%;
-    margin-top: -25.6%;
-    border-radius: 0.5rem;
-    margin-left: 36%;
+    font-size: 2rem;
 }
 
-#cardtres{
-    width: 28%;
-    height: 65%;
-    border-radius: 0.5rem; 
-    margin-left: 68%;
-    margin-top: -25.6%;
-}
-#iconpeople{
-    margin-left: 8%;
-    margin-top: 5%;
-}
-#progress{
-    width: 60%;
-    height: 580px;
-    margin-left: 1%;
-    border-radius: 1rem;
-    margin-top: 2%; 
-}
-#concluidas{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3.5%;
-    width: 80%;
-    margin-left: 6%;
-    
-}
-#progress h1{
+#carddois h3 {
     color: beige;
-    margin-top: 0.5%;
-    margin-left: 2.8%;
-}
-#progress h5{
-    color: #A0A0A0;
-    margin-top: 0.5%;
-    margin-left: 2.8%;
-}
-#taskum{
-    width: 20%;
-}
-#taskdois{
-    width: 20%;
-}
-#tasktres{
-    width: 20%;
-}
-#pc{
-    width: 35%;
-    height: 580px;
-    border-radius: 1rem;
-    margin-top: 2%;
-    margin-right: 2%;
-}
-#pc h2{
-   color: beige;
-    margin-top: 2%;
-    margin-left: 2.8%;
-}
-#pc h5{
-    color: #A0A0A0;
-    margin-bottom: 2%;
-    margin-left: 2.8%;
-}
-#geraltwo{
-    display: flex;
-    justify-content: space-between;
+    margin-left: 8%;
+    font-size: 1.9rem;
+    margin-top: -2%;
 }
 
-#iconpeoplefill{
-    margin-left: 10%;
+#cardtres h3 {
+    color: beige;
+    margin-left: 9%;
     margin-top: 5%;
 }
-#iconprojeto{
-    margin-left: 5.5%;
-    margin-top: 7.7%;
+
+.amarelo {
+    color: #E9C46A;
+
 }
-#sabermais{
-    margin-left: 70%;
-    margin-top: -24%;
-    color: #A0A0A0;
-    font-size: 0.7rem;
-}
-#div-card-page-projetosH{
-    width: 26rem;
-    margin-top: 10%;
-    padding: 1%;
-}
-#div-card-projetoH{
-    background: #21222D;
-    height: 19rem;
-}
-#nome-projeto-planH{
+
+#totalp1 {
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 540;
-    font-size: 24px;
-    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 1.2rem;
     display: flex;
-    justify-content: space-between;
-}
-#more-button-planejamentoH{
-    color: #fff;
-    font-weight: 540;
-    font-size: 24px
-}
-#statusH{
-    font-family: 'Poppins';
-    font-weight: 500;
-    font-size: 15px;
-    color: rgba(0, 219, 153, 0.9);
+    text-align: start;
+    justify-content: center;
+    width: 70%;
     margin-top: 5%;
+    margin-left: 7%;
 }
-#bandeira-dataH{
-    color: #717986;
+
+#totalp2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
     display: flex;
-    width: 46%;
-    justify-content: space-between;
+    text-align: start;
+    justify-content: center;
+    width: 70%;
+    margin-top: 4%;
+    margin-left: 3%;
+}
+
+#totalp3 {
     font-family: 'Poppins';
-    margin-top: -2%;
-    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    display: flex;
+    text-align: start;
+    justify-content: center;
+    width: 70%;
+    margin-top: 6%;
+    margin-left: 8%;
 }
-#titulo-descricao-projetoH{
-    font-family: 'Poppins';
-    font-weight: 550;
-    font-size: 16px;
-    color: #717986;
-    margin-top: -2%;
+
+#carddois {
+    width: 28%;
+    border-radius: 0.5rem;
+    margin-left: 36%;
+    height: 23rem;
+    margin-top: -38.5%;
 }
-#titulo-descricao-projetof{
-    font-family: 'Poppins';
-    font-weight: 550;
-    font-size: 16px;
-    color: #717986;
-    margin-top: -2%;
+
+#cardtres {
+    width: 28%;
+    height: 23rem;
+    border-radius: 0.5rem;
+    margin-left: 68%;
+    margin-top: -38.5%;
 }
-#corpo-descricao-projetoH{
-    color: #fff;
+
+
+
+#iconpeoplefill {
+    width: 11rem;
+    height: 8.3rem;
+    font-weight: 20rem;
+    margin-top: 20%;
+
 }
-#membros-projetoH{
-    color: #fff;
+
+#icontask-pagehome {
+    width: 9rem;
+    height: 6.3rem;
+    font-weight: 20rem;
+    margin-top: 32%;
+    margin-left: 1%;
 }
-#avatar-projeto-membro-eqH{
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-top: 1%;
+
+#FiFile {
+    width: 5.3rem;
+    height: 9rem;
+    margin-left: 9%;
+    margin-top: 18%;
+
+}
+
+.sabermais {
+    display: flex;
+    justify-content: flex-end;
+    color: #A0A0A0;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-right: 3%;
+}
+
+@media (max-width: 2040px) {
+    #cards {
+        width: 45rem;
+        margin-left: 2%;
+        height: 20rem;
+        border: 1px solid red;
+
+    }
+
+    #cardum {
+        border: 1px solid red;
+        width: 11rem;
+        height: 17rem;
+
+    }
+
+    #iconpeoplefill {
+        width: 6rem;
+        margin-left: 7%;
+        margin-top: -1%;
+
+    }
+
+    #totalp1 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.1rem;
+        display: flex;
+        text-align: start;
+        justify-content: center;
+        width: 85%;
+        margin-top: 0.2%;
+        margin-left: 7%;
+    }
+
+    #cardum h3 {
+        color: beige;
+        margin-left: 7%;
+        font-size: 1.5rem;
+        margin-top: -7%;
+    }
 }

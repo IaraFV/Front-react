@@ -92,7 +92,7 @@ const data = [
 ];
 
 export class Graf extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/simple-area-chart-4ujxw';
+  
 
   render() {
     return (
