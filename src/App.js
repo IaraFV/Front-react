@@ -37,7 +37,7 @@ function App() {
 
       <Nav.Link id='caixapr' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}} as={Link} to="/ProjetosConcluidos"><AiOutlineFile/>Projetos</Nav.Link>
 
-      <Nav.Link id='caixas' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}} as={Link} to="/Sobre"><AiOutlineSetting/>Sobre</Nav.Link>
+     
 
     <div id='img'><img src={teste} alt=" " width={'80%'} style={{marginTop:'-53px'}}/></div>
     </Nav>
