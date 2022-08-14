@@ -95,12 +95,16 @@ function Home() {
 
                 <div id="just-card-projetos-page-home">
                     <div id="card-projeto-pagina-home">
-                        ssssssss
+                        {
+                            recebeprojetos.map((status, key) => {
+                                return (
+                                <div> {status.nome_projeto}</div>
+                                );
+                            })
+                        }
                     </div>
 
-                    <div id="card-projeto-pagina-home">
-                        ssssssss
-                    </div>
+
                 </div>
 
             </div>

@@ -47,6 +47,7 @@ projeto e contador task*/
     width: 100%;
     height: 5rem;
     margin-bottom: 1%;
+    border-left: 4px solid #00DB99;
 }
 
 #just-card-projetos-page-home {
