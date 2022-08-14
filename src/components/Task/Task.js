@@ -110,6 +110,7 @@ function Task() {
         // log('DROPZONE: dropped ')
         this.classList.remove('over')
     }
+
 /**função de filtro */
     const handlechange = ({ target }) => {
         if (!target.value) {
