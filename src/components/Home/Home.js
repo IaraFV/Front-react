@@ -101,7 +101,11 @@ function Home() {
                         {
                             recebeprojetos.map((status, key) => {
                                 return (
-                                    <div> {status.nome_projeto}</div>
+                                    <>
+                                        <div id="nome-projeto-pagina-homep"> {status.nome_projeto}</div>
+                                        <div id="data-projeto-pagehome">{status.data_inicio}</div>
+                                    </>
+
                                 );
                             })
                         }

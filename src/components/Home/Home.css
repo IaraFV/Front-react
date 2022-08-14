@@ -34,8 +34,9 @@ projeto e contador task*/
 #geral-graficoum h2 {
     color: #ffff;
 }
-#calendario-home{
-   border: 1px solid red;
+
+#calendario-home {
+    border: 1px solid red;
     background: #00DB99;
 }
 
@@ -43,6 +44,27 @@ projeto e contador task*/
     margin-top: 5%;
     border: 1px solid red;
 
+}
+
+#nome-projeto-pagina-homep {
+    color: #ffff;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin-left: 3%;
+
+}
+
+#data-projeto-pagehome {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 14px;
+    margin-top: 3%;
+    margin-left: 3%;
+    color: #7A7585;
 }
 
 #card-projeto-pagina-home {
@@ -55,7 +77,7 @@ projeto e contador task*/
 }
 
 #just-card-projetos-page-home {
-   
+
     width: 88%;
     height: 25rem;
     margin-left: 6%;
