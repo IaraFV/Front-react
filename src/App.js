@@ -19,6 +19,9 @@ import PostT from './components/Task/PostT/postT'
 import InspProjeto from './components/Projetos/InspecionarProjeto/InspProjeto';
 import InspecionarEqui from './components/Equipes/inspecionar/InspecionarEqui';
 import EditarEquipe from './components/Equipes/EditE/editeEquipe'
+import {BsColumnsGap} from "react-icons/bs";
+import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
+import { BsPeople, BsPerson } from "react-icons/bs";
 function App() {
 
   return (
@@ -26,17 +29,15 @@ function App() {
  <div className='App' >
     <BrowserRouter >
     <Nav variant='tabs' style={{background: '#171821', height: '80px', border:"none"}}>
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/">Home</Nav.Link>
+      <Nav.Link id='caixah' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}}  as={Link} to="/"><BsColumnsGap />Overview</Nav.Link>
 
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Pessoas" >Pessoas</Nav.Link>
+      <Nav.Link id='caixap' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.5rem'}} as={Link} to="/Pessoas" ><BsPerson/>Pessoas</Nav.Link>
 
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Equipes">Equipes</Nav.Link>
+      <Nav.Link id='caixae' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}} as={Link} to="/Equipes"><BsPeople />Equipes</Nav.Link>
 
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/ProjetosConcluidos">Projetos</Nav.Link>
+      <Nav.Link id='caixapr' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}} as={Link} to="/ProjetosConcluidos"><AiOutlineFile/>Projetos</Nav.Link>
 
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Task">Task</Nav.Link>
-
-      <Nav.Link style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.3rem'}} as={Link} to="/Sobre">Sobre</Nav.Link>
+      <Nav.Link id='caixas' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}} as={Link} to="/Sobre"><AiOutlineSetting/>Sobre</Nav.Link>
 
     <div id='img'><img src={teste} alt=" " width={'80%'} style={{marginTop:'-53px'}}/></div>
     </Nav>

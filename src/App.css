@@ -1,3 +1,38 @@
 #img{
     margin-left: 90%;
 }
+#caixah{
+   color: #87888C;
+    width: 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#caixap{
+    
+    width: 6.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#caixae{
+    
+    width: 6.2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#caixapr{
+    
+    width: 6.2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#caixas{
+    
+    width: 5.2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

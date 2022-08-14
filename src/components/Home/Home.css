@@ -34,6 +34,10 @@ projeto e contador task*/
 #geral-graficoum h2 {
     color: #ffff;
 }
+#calendario-home{
+   border: 1px solid red;
+    background: #00DB99;
+}
 
 #graficoum-page-home {
     margin-top: 5%;

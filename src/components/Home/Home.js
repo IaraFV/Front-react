@@ -13,8 +13,11 @@ import { BsFlagFill } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
 import { GoFile } from "react-icons/go";
 import { GoGraph } from "react-icons/go";
-
+import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 function Home() {
+
+    const [value, onChange] = useState(new Date());
 
     const [post, setpost] = useState([])
 
@@ -81,7 +84,7 @@ function Home() {
                 </div>
 
                 <div id="graf2">
-
+                    <Calendar onChange={onChange} value={value} id="calendario-home" />
                 </div>
             </div>
 
@@ -98,7 +101,7 @@ function Home() {
                         {
                             recebeprojetos.map((status, key) => {
                                 return (
-                                <div> {status.nome_projeto}</div>
+                                    <div> {status.nome_projeto}</div>
                                 );
                             })
                         }
