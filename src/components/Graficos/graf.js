@@ -1,48 +1,3 @@
-/*import React from "react";
-import { Chart } from "react-google-charts";
-
-export const data = [
-  [
-    { type: "number", label: "x" },
-    { type: "number", label: "values" },
-    { id: "i0", type: "number", role: "interval" },
-    { id: "i1", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-  ],
-  [1, 100, 90, 110, 85, 96, 104, 120],
-  [2, 120, 95, 130, 90, 113, 124, 140],
-  [3, 130, 105, 140, 100, 117, 133, 139],
-  [4, 90, 85, 95, 85, 88, 92, 95],
-  [5, 70, 74, 63, 67, 69, 70, 72],
-  [6, 30, 39, 22, 21, 28, 34, 40],
-  [7, 80, 77, 83, 70, 77, 85, 90],
-  [8, 100, 90, 110, 85, 95, 102, 110],
-];
-
-export const options = {
-  title: "",
-  curveType: "function",
-  series: [{ color: "#FEB95A" }],
-  intervals: { style: "area" },
-  legend: "none",
-  backgroundColor: "none"
-};
-
-export function Graf() {
-  return (
-    <Chart
-      chartType="LineChart"
-      width="109%"
-      height="38rem"
-      data={data}
-      options={options}
-    
-    />
-  );
-}*/
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -92,17 +47,15 @@ const data = [
 ];
 
 export class Graf extends PureComponent {
-  
-
   render() {
     return (
-      <ResponsiveContainer width="100%" height="80%">
+      <ResponsiveContainer width="100%" height="95%">
         <AreaChart
           width={500}
-          height={200}
+          height={800}
           data={data}
           margin={{
-            top: 80,
+            top: 40,
             right: 30,
             left: 0,
             bottom: 0,
@@ -112,7 +65,7 @@ export class Graf extends PureComponent {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#E9C46A" fill="#E9C46A" />
+          <Area type="monotone" dataKey="uv" stroke="#E9C46A" fill="#E9C46A" opacity= '0.8' />
         </AreaChart>
       </ResponsiveContainer>
     );

@@ -1,0 +1,46 @@
+.list {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    max-width: 400px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    padding: 0;
+}
+
+.list_item {
+    position: relative;
+    width: 100%;
+}
+
+.list_item.active::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    max-width: 38px;
+    background: green;
+    height: 100px;
+    top: -50px;
+    border-radius: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.list_item span {
+    text-align: center;
+    display: block;
+    position: relative;
+    z-index: 2;
+
+}
+
+.title-calendar {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sub-title-calendar {
+    text-align: center;
+    margin-bottom: 70px;
+}

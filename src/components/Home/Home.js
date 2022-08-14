@@ -45,44 +45,64 @@ function Home() {
     return (
         <>
 
+            <div id="graficoecards">
+                <div id="geral">
 
-            <div id="geral">
+                    <div id="cards" style={{ background: '#21222D' }}>
+                        <div id="cardum" style={{ background: '#171821' }}>
+                            <Link to="/Pessoas" className="sabermais">
+                                <p >Saber mais</p>
+                            </Link>
+                            <BsPeople id="iconpeoplefill" color="beige" size={60} />
 
-                <div id="cards" style={{ background: '#21222D' }}>
-                    <div id="cardum" style={{ background: '#171821' }}>
-                        <Link to="/Pessoas" className="sabermais">
-                            <p >Saber mais</p>
-                        </Link>
-                        <BsPeople id="iconpeoplefill" color="beige" size={60} />
+                            <p className="amarelo" id="totalp1">Total de pessoas adicionadas ate hoje:</p>
+                            <h3>300 +</h3>
+                        </div>
 
-                        <p className="amarelo" id="totalp1">Total de pessoas adicionadas ate hoje:</p>
-                        <h3>300 +</h3>
+                        <div id="carddois" style={{ background: '#171821' }}>
+                            <Link to="/Projetos" className="sabermais">
+                                <p>Saber mais</p>
+                            </Link>
+                            <GoFile id="FiFile" color="beige" size={52} />
+
+                            <p className="amarelo" id="totalp2">Total de projetos<br />adicionadas ate hoje:</p>
+                            <h3>300 +</h3>
+                        </div>
+                        <div id="cardtres" style={{ background: '#171821' }}>
+                            <Link to="/Task" className="sabermais"><p >Saber mais</p></Link>
+                            <GoGraph id="icontask-pagehome" color="beige" size={56} />
+
+                            <p className="amarelo" id="totalp3" >Total de Task's adicionadas ate hoje:</p>
+                            <h3>300 +</h3>
+                        </div>
                     </div>
 
-                    <div id="carddois" style={{ background: '#171821' }}>
-                        <Link to="/Projetos" className="sabermais">
-                            <p>Saber mais</p>
-                        </Link>
-                        <GoFile id="FiFile" color="beige" size={52} />
 
-                        <p className="amarelo" id="totalp2">Total de projetos<br />adicionadas ate hoje:</p>
-                        <h3>300 +</h3>
-                    </div>
-                    <div id="cardtres" style={{ background: '#171821' }}>
-                        <Link to="/Task" className="sabermais"><p >Saber mais</p></Link>
-                        <GoGraph id="icontask-pagehome" color="beige" size={56} />
-
-                        <p className="amarelo"  id="totalp3" >Total de Task's adicionadas ate hoje:</p>
-                        <h3>300 +</h3>
-                    </div>
                 </div>
 
+                <div id="graf2">
 
+                </div>
             </div>
 
             <div id="geral-graficoum">
-            
-            <Graf id="graficoum-page-home"/>
+                <h2>Projetos</h2>
+                <Graf id="graficoum-page-home" />
+            </div>
+
+            <div id="projetos-concluidos-page-home">
+                <h3>Projetos</h3>
+
+                <div id="just-card-projetos-page-home">
+                    <div id="card-projeto-pagina-home">
+                        ssssssss
+                    </div>
+
+                    <div id="card-projeto-pagina-home">
+                        ssssssss
+                    </div>
+                </div>
+
             </div>
 
 
