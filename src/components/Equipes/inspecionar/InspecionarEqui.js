@@ -7,8 +7,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 /**icons */
 import { BsArrowLeft } from "react-icons/bs";
-
-
+//import { Mensageok} from './components/Equipes/inspecionar/Mensageok'
 
 function InspecionarEquipe() {
 
@@ -43,6 +42,8 @@ function InspecionarEquipe() {
     function deleteEquipe(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
+
+        
     }
 
     /**função de 'slice' que pega a inicial do nome */
@@ -132,11 +133,14 @@ function InspecionarEquipe() {
                                 <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
                                 </Link>
                             </button>
-                            <button onClick={deleteEquipe} id="btn-excluir">Excluir</button>
+                            <button type="submit" onClick={() => deleteEquipe(equipe.id_equipe)} id="btn-excluir">Excluir
+                                
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     )
 }
