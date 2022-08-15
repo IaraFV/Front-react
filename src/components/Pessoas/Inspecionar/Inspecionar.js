@@ -15,16 +15,27 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
 
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const validacaoGet = yup.object().shape({
+    favoritar: yup.number(),
+
+})
+
 function Inspecionar() {
 
-    const [favoritar, setFavoritar] = useState()
+    //const [favoritar, setFavoritar] = useState()
 
     let navigate = useNavigate()
     const [posts, setPosts] = useState([])
     const [Task, setTask] = useState([])
     const { id_pessoa } = useParams()
 
-
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: yupResolver(validacaoGet)
+    })
 
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
@@ -37,6 +48,8 @@ function Inspecionar() {
             })
     }, []
     )
+
+
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/`)
             .then((response) => {
@@ -56,9 +69,9 @@ function Inspecionar() {
 
     function deletePost(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-            
-                setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
-       
+
+        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
+
     }
 
     function stringAvatar(name) {
@@ -73,8 +86,30 @@ function Inspecionar() {
     const ArrGeral_task = Task;
     const recebId_pessoa = posts.id_pessoa;
     const idPessoaINT = parseInt(recebId_pessoa);
-    const filtra_task = ArrGeral_task.filter(task => task.pessoa_id === idPessoaINT);
+    var filtra_task = ArrGeral_task.filter(task => task.pessoa_id === idPessoaINT);
+    /**pega o numero total de tesk */
+    const numero = filtra_task.length;
 
+
+
+
+    /*----------------------------------------------------------------------------------------------------------------------*/
+    var favoritar = parseInt(posts.favoritar);
+    console.log(favoritar);
+
+    function favoritarFuncao() {
+        favoritar++
+        if (favoritar === 1) {
+
+            axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+                .then(() => {
+                    console.log("foi")
+                })
+                .catch(() => {
+                    console.log("n foi")
+                })
+        }
+    }
 
     return (
         <>
@@ -93,19 +128,15 @@ function Inspecionar() {
                         <div id="estatisticaum">
                             <div className="doneicon"><CheckIcon /></div>
                             <div id="textoestatistica">
-                                <p style={{ color: "rgba(186, 186, 186, 0.87)", fontSize: "1.2rem" }}>10</p>
+                                <p style={{ color: "rgba(186, 186, 186, 0.87)", fontSize: "1.2rem" }}>{numero}</p>
                                 <p style={{ marginTop: '-20%', color: '#fff', width: '5rem' }}>Tasks feitas</p>
                             </div>
                         </div>
-                        <div id="estatisticadois">
+                        <div id="estatisticadois" >
 
-                            <button onClick={() => setFavoritar(!favoritar)} className="star">
+                            <button type="submit" onClick={favoritarFuncao} className="star">
                                 <AiOutlineStar />
                             </button>
-
-                            <p style={{ color: "rgba(186, 186, 186, 0.87)", fontSize: "1.2rem" }}>
-                                {favoritar ? 0 : 1}
-                            </p>
                         </div>
                     </div>
                     <div id="detalhes">
@@ -148,8 +179,8 @@ function Inspecionar() {
                                         <CardContent id="test">
                                             <CardHeader
                                                 avatar={
-                                                    <Avatar  aria-label="recipe">
-                                                        <BsFillFileEarmarkFill id="cor"/>
+                                                    <Avatar aria-label="recipe">
+                                                        <BsFillFileEarmarkFill id="cor" />
                                                     </Avatar>
                                                 }></CardHeader>
                                             <Typography variant="h5" id="titulo" component="div">
