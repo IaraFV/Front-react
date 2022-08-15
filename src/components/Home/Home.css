@@ -205,8 +205,6 @@ projeto e contador task*/
 
 #corpograf2 {
     border: 9px solid red;
-
-
 }
 
 
@@ -243,7 +241,7 @@ projeto e contador task*/
     margin-right: 3%;
 }
 
-@media (max-width: 2040px) {
+@media screen and (max-width: 1800px) {
     #cards {
         width: 45rem;
         margin-left: 2%;
@@ -251,7 +249,7 @@ projeto e contador task*/
         border: 1px solid red;
 
     }
-
+    /*card um*/
     #cardum {
         border: 1px solid red;
         width: 11rem;
@@ -285,4 +283,38 @@ projeto e contador task*/
         font-size: 1.5rem;
         margin-top: -7%;
     }
+
+    /*card dois*/
+    #carddois {
+        border: 1px solid red;
+        width: 11rem;
+        height: 17rem;
+        margin-top: -38.5%;
+    }
+
+    #FiFile {
+        width: 4rem;
+        margin-left: 7%;
+        margin-top: -2%;
+
+    }
+    #totalp2 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.1rem;
+        display: flex;
+        text-align: start;
+        justify-content: center;
+        width: 85%;
+        margin-top: -6.5%;
+        margin-left: 6%;
+    }
+    #carddois h3 {
+        color: beige;
+        margin-left: 7%;
+        font-size: 1.5rem;
+        margin-top: -7%;
+    }
+
 }
