@@ -13,7 +13,7 @@ import { BsFlagFill } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
 import { GoFile } from "react-icons/go";
 import { GoGraph } from "react-icons/go";
-import Calendar from "react-calendar";
+import {CalendarComponent} from "./Calendario/calendar";
 import 'react-calendar/dist/Calendar.css';
 function Home() {
 
@@ -84,7 +84,7 @@ function Home() {
                 </div>
 
                 <div id="graf2">
-                    <Calendar onChange={onChange} value={value} id="calendario-home" />
+                    <CalendarComponent/>
                 </div>
             </div>
 
