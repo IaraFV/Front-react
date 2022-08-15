@@ -14,7 +14,7 @@ import { BsPeople } from "react-icons/bs";
 import { GoFile } from "react-icons/go";
 import { GoGraph } from "react-icons/go";
 import {CalendarComponent} from "./Calendario/calendar";
-import 'react-calendar/dist/Calendar.css';
+
 function Home() {
 
     const [value, onChange] = useState(new Date());
