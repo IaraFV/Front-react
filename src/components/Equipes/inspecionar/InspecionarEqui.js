@@ -90,7 +90,9 @@ function InspecionarEquipe() {
                                 
      */
 
-
+    function alentsuccess (){
+        alert("Excluido com sucesso")
+    }
 
     return (
         <div>
@@ -133,7 +135,7 @@ function InspecionarEquipe() {
                                 <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
                                 </Link>
                             </button>
-                            <button type="submit" onClick={() => deleteEquipe(equipe.id_equipe)} id="btn-excluir">Excluir
+                            <button type="submit" onClick={() => {deleteEquipe(equipe.id_equipe); alentsuccess()}} id="btn-excluir">Excluir
                                 
                             </button>
                         </div>
