@@ -21,8 +21,7 @@ function Pessoas() {
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
             .then((response) => {
-                setPosts(response.data)
-                setInitialPosts(response.data);
+                console.log("foi")
 
             })
             .catch(() => {

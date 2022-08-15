@@ -83,13 +83,12 @@ function Home() {
 
                 </div>
 
-                <div id="graf2">
+                <div id="calendario">
                     <CalendarComponent/>
                 </div>
             </div>
 
             <div id="geral-graficoum">
-                <h2>Projetos</h2>
                 <Graf id="graficoum-page-home" />
             </div>
 

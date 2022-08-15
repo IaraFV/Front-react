@@ -23,7 +23,7 @@ projeto e contador task*/
 
 #geral-graficoum {
     width: 68%;
-    height: 30rem;
+    height: 27rem;
     padding: 1%;
     margin-top: 1%;
     background: #21222D;
@@ -127,21 +127,21 @@ projeto e contador task*/
 
 }
 
-#graf2 {
+#calendario {
     width: 38rem;
     background: #21222D;
     height: 26rem;
     align-items: center;
-    margin-top: 1.5%;
+    margin-top: 1%;
     border-radius: 1rem;
 }
 
 #projetos-concluidos-page-home {
     background: #21222D;
-    width: 38rem;
+    width: 30rem;
     margin-left: 71%;
-    margin-top: -39.6%;
-    height: 57rem;
+    margin-top: -47%;
+    height: 54.3rem;
     border-radius: 1rem;
 }
 
