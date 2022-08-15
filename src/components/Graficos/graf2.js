@@ -13,23 +13,55 @@ import {
 } from "recharts";
 
 
+export function Graf2() {
 
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  
-];
+  const [posts, setPosts] = useState([])
+  const [initialPosts, setInitialPosts] = useState([])
 
 
-export class Graf2 extends PureComponent {
+  useEffect(() => {
+    axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
+      .then((response) => {
+        console.log("foi")
 
+      })
+      .catch(() => {
+        console.log("deu errado")
+      })
+  }, []
+  )
 
-render() {
+  function Pessoasadd(props) {
+    if(this.props.selectValue === 1){
+      var datas = new Date();
+
+      const Ultimapessoa = [new Date(),];
+
+      for (let i = 0; i < 6; i++) {
+        Ultimapessoa.push(new Date(datas.setDate(datas.getDate() - 1)));
+        let PessoasAdicionadas = 0;
+      const UltimasConcluidas = [];
+      if (props.tarefas !== null) {
+        props.tarefas.map(t => {
+          if (t.status === "Concluido") {
+            PessoasAdicionadas++;
+            UltimasConcluidas.push(new Date(t.data_conclusao));
+          }
+        })
+      }
+    }
+  }
+  }
+
+  var PessoasAdicionadas = [0, 0, 0, 0, 0, 0, 0];
+
+  const data = [
+    {
+      id_pessoa: ""
+    },
+
+  ];
 
   return (
     <BarChart
@@ -44,13 +76,12 @@ render() {
       }}
       barSize={30}
     >
-      <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+      <XAxis dataKey="id" scale="point" padding={{ left: 10, right: 10 }} />
       <YAxis />
       <Tooltip />
       <Legend />
       <CartesianGrid strokeDasharray="3 3" />
-      <Bar dataKey="pv" fill="#8884d8" background={{ fill: "#eee" }} />
+      <Bar dataKey="id" fill="#8884d8" background={{ fill: "#eee" }} />
     </BarChart>
   );
-}
 }
