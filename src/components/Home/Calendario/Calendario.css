@@ -62,7 +62,7 @@
 
  .react-calendar__navigation button {
   color: #EEECF1;
-  min-width: 44px;
+  min-width: 46px;
   background:none;
   font-size: 16px;
   margin-top: 8px;
@@ -182,4 +182,11 @@
 }
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #EEECF1;
+}
+
+@media screen and (max-width: 2800px) {
+  .react-calendar{
+    width: 730px;
+    
+  }
 }
