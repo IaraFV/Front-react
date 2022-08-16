@@ -144,6 +144,13 @@ projeto e contador task*/
     height: 54.3rem;
     border-radius: 1rem;
 }
+#title-card-projeto-paginahome{
+    color: #FFFFFF;
+    margin-left: 6%;
+   font-size: 1.6rem;
+    position: relative;
+
+}
 
 #totalp1 {
     font-family: 'Poppins';
@@ -340,4 +347,5 @@ projeto e contador task*/
         margin-top: 5%;
     }
 
+   
 }

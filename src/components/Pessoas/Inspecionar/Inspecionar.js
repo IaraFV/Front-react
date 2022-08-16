@@ -83,6 +83,8 @@ function Inspecionar() {
             children: `${name.split(' ')[0][0]}`,
         };
     }
+
+    
     const ArrGeral_task = Task;
     const recebId_pessoa = posts.id_pessoa;
     const idPessoaINT = parseInt(recebId_pessoa);
