@@ -57,9 +57,7 @@ function Projetos() {
 
             <div id="corpo-button-projeto-add">
                 <Link to="/AddProjeto">
-                    <button className="botao-page-projeto">
-                        <AiOutlinePlus />New
-                    </button>
+                    <button className="botao-page-projeto">Criar Projeto</button>
                 </Link>
             </div>
 
