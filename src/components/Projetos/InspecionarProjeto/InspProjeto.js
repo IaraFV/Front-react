@@ -11,9 +11,9 @@ import Avatar from '@mui/material/Avatar';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function InspProjeto() {
-    const [post, setPost] = useState([])
+    const [projetos, setprojetos] = useState([])
     const { id_projeto } = useParams()
-    const [initialPost, setInitialPost] = useState([])
+    const [initialprojetos, setInitialprojetos] = useState([])
 
     function log(message) {
         console.log('> ' + message)
@@ -21,27 +21,27 @@ function InspProjeto() {
 
     const cards = document.querySelectorAll('.card')
     const dropzones = document.querySelectorAll('.dropzone')
-
-    const [posts, setPosts] = useState([])
-    const [initialPosts, setInitialPosts] = useState([])
+/*
+    const [tasks, settasks] = useState([])
+    const [initialtasks, setInitialtasks] = useState([])
 
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
             .then((response) => {
-                setPosts(response.data)
-                setInitialPosts(response.data)
+                settasks(response.data)
+                setInitialtasks(response.data)
             })
             .catch(() => {
                 console.log("deu errado")
             })
     }, []
-    )
+    )*/
 
 
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
             .then((response) => {
-                setPost(response.data)
+                setprojetos(response.data)
 
             })
             .catch(() => {
@@ -49,17 +49,17 @@ function InspProjeto() {
             })
     }, []
     )
+/*
 
-
-    function deletePost(id_task) {
+    function deleteprojetos(id_task) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasts/${id_task}`)
-        setPost(post.filter(post => post.id_task !== id_task))
+        setprojetos(projetos.filter(projetos => projetos.id_task !== id_task))
     }
+*/
 
-
-    function deletePost(id_pessoa) {
+    function deleteprojetos(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setPost(post.filter(post => post.id_pessoa !== id_pessoa))
+        setprojetos(projetos.filter(projetos => projetos.id_pessoa !== id_pessoa))
     }
 
     /** our cards */
@@ -124,31 +124,44 @@ function InspProjeto() {
         this.classList.remove('over')
     }
 
-    /**função de filtro */
+    /**função de filtro *//*
     const handlechange = ({ target }) => {
         if (!target.value) {
-            setPosts(initialPosts)
+            settasks(initialtasks)
             return;
         }
-        const filter = posts.filter(({ descricao_task }) =>
+        const filter = tasks.filter(({ descricao_task }) =>
             descricao_task.toUpperCase().includes(target.value.toUpperCase()))
 
-        setPosts(filter);
+        settasks(filter);
     }
-
-
-    const arr = posts;
+*/
+/*
+    const arr = tasks;
     var stats = arr;
-
     var and = stats.filter(states => states.status === "A fazer");
-
     var fi = stats.filter(states => states.status === 'Em desenvolvimento');
-
     var Sta = stats.filter(states => states.status === 'Concluído');
+*/
+    //const getIdProj = parseInt(projetos.id_projeto);
+    //const filtra =  projetos.map(filtra => filtra.tasks);
+    
+    //c/onsole.log(filtra)
+
+const g =  projetos;
+console.log(g);
+const j =  projetos.map(gh => gh.tasks);
+console.log(j);
+
+
 
     return (
         <>
-
+            <p style={{color:'red'}}>الاغ بزرگ</p>
+        </>
+    )
+}
+/**
             <div id="cabecario-geral-pagina-insp-projeto">
                 <div id="iconvoltar-pesquisa">
                     <div>
@@ -166,12 +179,12 @@ function InspProjeto() {
                 <div id="botoes-page-inp-projetos">
 
                     <div className="btn-editar-pagina-projeto">
-                        <Link to={{ pathname: `/Edit/${post.id_projeto}` }}>
+                        <Link to={{ pathname: `/Edit/${projetos.id_projeto}` }}>
                             <button type="submit">Editar</button>
                         </Link>
                     </div>
                     <div className="btn-excluir-pagina-projeto">
-                        <button onClick={() => deletePost(post.id_projeto)} aria-label="share" type="submit" to='/pessoas'>Deletar</button>
+                        <button onClick={() => deleteprojetos(projetos.id_projeto)} aria-label="share" type="submit" to='/pessoas'>Deletar</button>
                     </div>
                 </div>
 
@@ -183,7 +196,7 @@ function InspProjeto() {
             <div>
                 <div>
                     <div >
-                        <p style={{ color: '#fff' }}>Username:  {post.nome_projeto} </p>
+                        <p style={{ color: '#fff' }}>Username:  {projetos.nome_projeto} </p>
                     </div>
                 </div>
 
@@ -203,13 +216,13 @@ function InspProjeto() {
 
 
                             {
-                                and.map((post, key) => {
+                                and.map((projetos, key) => {
                                     return (
                                         <div className="dropzone" >
                                             <Card style={{ width: '18rem' }} className="card" draggable="true">
                                                 <Card.Body>
-                                                    <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                    <Card.Text>{post.status}
+                                                    <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                                    <Card.Text>{projetos.status}
                                                     </Card.Text>
                                                 </Card.Body>
                                             </Card>
@@ -224,13 +237,13 @@ function InspProjeto() {
                                 Em desenvolvimento
                             </h4>
                             {
-                                fi.map((post, key) => {
+                                fi.map((projetos, key) => {
                                     return (
                                         <div className="dropzone" >
                                             <Card style={{ width: '18rem' }} draggable="true">
                                                 <Card.Body className="dropzone">
-                                                    <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                    <Card.Text>{post.status}
+                                                    <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                                    <Card.Text>{projetos.status}
                                                     </Card.Text>
                                                 </Card.Body>
                                             </Card>
@@ -244,13 +257,13 @@ function InspProjeto() {
                                 Concluídos
                             </h4>
                             {
-                                Sta.map((post, key) => {
+                                Sta.map((projetos, key) => {
                                     return (
                                         <div className="dropzone">
                                             <Card style={{ width: '18rem' }} draggable="true">
                                                 <Card.Body>
-                                                    <Card.Title style={{ color: 'black' }} key={key}>{post.descricao_task}</Card.Title>
-                                                    <Card.Text>{post.status}
+                                                    <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                                    <Card.Text>{projetos.status}
                                                     </Card.Text>
                                                 </Card.Body>
                                             </Card>
@@ -265,9 +278,5 @@ function InspProjeto() {
             </div>
 
 
-
-        </>
-    )
-}
-
+ */
 export default InspProjeto;
