@@ -43,7 +43,7 @@ function InspecionarEquipe() {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
 
-        
+
     }
 
     /**função de 'slice' que pega a inicial do nome */
@@ -72,6 +72,8 @@ function InspecionarEquipe() {
     const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
     const inicialLetra = filtrandoPessoas.map((letraini) => letraini.nome_pessoa);
     const recebe = inicialLetra.map((l) => l.charAt(0));
+
+    
     /**este codigo vai pegar o total de membros (como um contador) */
     const totalmember = inicialLetra.length;
 
@@ -90,7 +92,7 @@ function InspecionarEquipe() {
                                 
      */
 
-    function alentsuccess (){
+    function alentsuccess() {
         alert("Excluido com sucesso")
     }
 
@@ -104,45 +106,57 @@ function InspecionarEquipe() {
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
-                    <div id="h1-insp" >
+
+                    <div className="h1-insp" >
                         <h1 >{equipe.nome_equipe}</h1>
                     </div>
-                    <div className="line-insp-doiss"></div>
+
                     <div>
+                        <div>
+                            <Link to="/Post">
+                                <AiOutlinePlus id="corr" />
+                            </Link>
+                        </div>
+
+
                         <div id='tituloinsp'>
-                            <h2>membros</h2>
+                            <h2>Membros</h2>
                             <h2>{totalmember}</h2>
                         </div>
+
                         <div className='avatares_Equipe'>
-                            <Avatar aria-label="recipe">
-                                <Link to="/Post">
-                                    <AiOutlinePlus id="corr" />
-                                </Link>
-                            </Avatar>
                             {
                                 recebe.map((nomepessoa) => {
                                     return (
-                                        <div>
-                                            <Avatar sx={{}} aria-label="recipe">{nomepessoa}</Avatar>
-                                        </div>
+                                        <>
+                                            <div>
+                                                <Avatar sx={{}} aria-label="recipe">{nomepessoa}</Avatar>
+                                                {nomepessoa.nome_pessoa}
+                                            </div>
+
+                                    
+                                        </>
+
                                     )
                                 })
                             }
                         </div>
+
+
                         <div className="line-insp-doiss"></div>
                         <div id='btn-opition'>
                             <button id="btn-edit">
                                 <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
                                 </Link>
                             </button>
-                            <button type="submit" onClick={() => {deleteEquipe(equipe.id_equipe); alentsuccess()}} id="btn-excluir">Excluir
-                                
+                            <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe); alentsuccess() }} id="btn-excluir">Excluir
+
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }

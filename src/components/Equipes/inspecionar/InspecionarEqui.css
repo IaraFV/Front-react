@@ -1,47 +1,62 @@
-#geral-card-inspecionar_equipe{
+#geral-card-inspecionar_equipe {
     display: flex;
     justify-content: center;
     margin-top: 1%;
 }
-#card-inspecionar_equipe{
+
+#card-inspecionar_equipe {
     background-color: #2F3644;
     padding: 30px 70px;
     border-radius: 15px;
     width: 30%;
     height: 50rem;
 }
-.line-insp-doiss{
+
+.line-insp-doiss {
     height: 2px;
     background-color: #3E445B;
     width: 100%;
     margin-top: 5%;
 }
-#tituloinsp{
-    margin-top: 3%;
+
+#tituloinsp {
+    margin-top: 12%;
     margin-bottom: 4%;
-    color: #fff;
     display: flex;
     justify-content: space-between;
+   
+    color: #FFFFFF;
 }
-#corr{
+#tituloinsp h2{
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+}
+
+#corr {
     color: white;
 }
-.avatares_Equipe{
+
+.avatares_Equipe {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-#seta{
+
+#seta {
     color: #fff;
 }
-#btn-opition{
+
+#btn-opition {
     display: flex;
     margin-top: 3%;
     justify-content: space-around;
     margin: 1rem;
     padding: 1rem;
 }
-#btn-excluir{
+
+#btn-excluir {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -52,7 +67,8 @@
     border-radius: 10px;
     cursor: pointer;
 }
-#btn-edit{
+
+#btn-edit {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -63,4 +79,10 @@
     border: 0;
     border-radius: 10px;
     cursor: pointer;
+}
+.h1-insp h1{
+    text-align: center;
+    margin-top: 5%;
+    color: #fff;
+    font-size: 2rem;
 }

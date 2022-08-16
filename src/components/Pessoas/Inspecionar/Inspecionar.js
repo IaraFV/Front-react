@@ -77,7 +77,6 @@ function Inspecionar() {
     function stringAvatar(name) {
         return {
             sx: {
-                //bgcolor: stringToColor(name),
                 width: '14rem', height: '14rem', fontSize: '8rem'
             },
             children: `${name.split(' ')[0][0]}`,
@@ -89,18 +88,19 @@ function Inspecionar() {
     const recebId_pessoa = posts.id_pessoa;
     const idPessoaINT = parseInt(recebId_pessoa);
     var filtra_task = ArrGeral_task.filter(task => task.pessoa_id === idPessoaINT);
+
+
     /**pega o numero total de tesk */
     const numero = filtra_task.length;
-
-
-
-
     /*----------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------favoritar pessoa-------------------------------------------------------------*/
     var favoritar = parseInt(posts.favoritar);
     console.log(favoritar);
 
     function favoritarFuncao() {
         favoritar++
+        
         if (favoritar === 1) {
 
             axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
@@ -112,7 +112,7 @@ function Inspecionar() {
                 })
         }
     }
-
+/*------------------------------------------------------------------------------------------------------------------------------------*/
     return (
         <>
             <div id="geral-card-inspecionar">
