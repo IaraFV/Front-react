@@ -6,18 +6,17 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import { AiOutlinePlus } from "react-icons/ai";
 
 function Pessoas() {
 
-    const [posts, setPosts] = useState([])
-    const [initialPosts, setInitialPosts] = useState([])
+    const [pessoas, setpessoas] = useState([])
+    const [initialpessoas, setInitialpessoas] = useState([])
 
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
             .then((response) => {
-                setPosts(response.data)
-                setInitialPosts(response.data)
+                setpessoas(response.data)
+                setInitialpessoas(response.data)
                 console.log("foi")
 
             })
@@ -26,21 +25,19 @@ function Pessoas() {
             })
     }, []
     )
-    console.log(posts);
     const handlechange = ({ target }) => {
         if (!target.value) {
-            setPosts(initialPosts)
+            setpessoas(initialpessoas)
             return;
         }
-        const filter = posts.filter(({ nome_pessoa }) =>
+        const filter = pessoas.filter(({ nome_pessoa }) =>
             nome_pessoa.toUpperCase().includes(target.value.toUpperCase()))
 
-        setPosts(filter);
+        setpessoas(filter);
     }
-    const nome = posts.map((nom) => nom.nome_pessoa);
+    const nome = pessoas.map((nom) => nom.nome_pessoa);
 
     function stringAvatar(nome) {
-        console.log(nome);
         return {
             sx: {
                 width: '4rem', height: '4rem', fontSize: '3rem'
@@ -48,24 +45,6 @@ function Pessoas() {
             children: `${nome.charAt(0)}`,
         };
     }
-/**<div id="div-geral-do-cab-pessoas">
-                <div id="cabecario-page-pessoas">
-                    <div id="titulo-pessoa-filtro">
-                        <div>
-                            <h1 id="titlepessoa">                       Cadastro de Pessoas
-                            </h1>
-                        </div>
-                        <div id="filtro">
-                            <input type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-                        </div>
-                        <div id="btn-page-pessoa">
-                            <Link to="/Post">
-                                <AiOutlinePlus className="btn-adicionarpessoa"></AiOutlinePlus>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div> */
     return (
         <div>
             <div id="cabecario-p">
@@ -76,47 +55,34 @@ function Pessoas() {
                     </div>
                 </div>
             </div>
-            <div >
-            <Link to="/Post">
-            <button className="btn-adicionarp">Adicionar pessoas +</button>
-            </Link>
+            <div>
+                <Link to="/Post">
+                    <button className="btn-adicionarp">Adicionar pessoas +</button>
+                </Link>
             </div>
             <div id="geralpessoas">
                 {
-                    posts.map((posts, key) => {
-
+                    pessoas.map((pessoas, key) => {
                         return (
                             <div className="cardpessoas">
-                                <Link className="link-eq" to={{ pathname: `/Inspecionar/${posts.id_pessoa}` }}>
-
+                                <Link className="link-eq" to={{ pathname: `/Inspecionar/${pessoas.id_pessoa}` }}>
                                     <Card container id="card-pessoa-page" spacing={2} sx={{ width: 360, bgcolor: '#21222D' }} key={key} >
-
                                         <CardContent sx={{ color: 'white' }}>
                                             <Typography id="sub-title-nome-pessoa" color="white">
-                                                {posts.funcao_pessoa}
+                                                {pessoas.funcao_pessoa}
                                             </Typography>
-
                                             <Typography>
                                                 <div id="avatar-page-pessoa">
                                                     <Avatar id="avatar-pessoa" {...stringAvatar(`${nome}`)} />
                                                 </div>
-
                                             </Typography>
                                             <Typography id="title-nome-pessoa">
-                                                {
-                                                    posts.nome_pessoa
-                                                }
+                                                {pessoas.nome_pessoa}
                                             </Typography>
-
                                             <Typography id="data-contratacao">
-                                                {
-                                                    posts.data_contratacao
-                                                }
+                                                {pessoas.data_contratacao}
                                             </Typography>
-
-
                                         </CardContent>
-
                                     </Card>
                                 </Link>
                             </div>
@@ -127,5 +93,4 @@ function Pessoas() {
         </div>
     )
 }
-
 export default Pessoas;
