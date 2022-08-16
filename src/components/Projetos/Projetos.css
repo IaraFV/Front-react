@@ -56,6 +56,7 @@
     width: 40rem;
     border: 0;
     height: 40px;
+   
     border-radius: 8rem;
 }
 
@@ -112,6 +113,7 @@
     border: 1px solid #D9D9D9;
     border-radius: 30px;
     width: 30%;
+    height: 2.5rem;
 }
 
 #geral-cabecario-projetos-sup {
@@ -123,7 +125,7 @@
     border: none;
     background: rgba(164, 164, 164, 0.12);
     border-radius: 60px;
-    width: 4%;
+    width: 7%;
     height: 38px;
     color: #fff;
     margin-top: 1%;
