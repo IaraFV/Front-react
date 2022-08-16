@@ -1,15 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
-import teste from './img/undraw_Code_typing_re_p8b9-removebg-preview.png'
-import { ClipboardCheckFill, FileEarmarkFill, PeopleFill, } from 'react-bootstrap-icons';
-import Card from 'react-bootstrap/Card'
 import { Graf } from "../Graficos/graf";
-import { Graf2 } from "../Graficos/graf2";
 import { Link } from 'react-router-dom';
-import { AiOutlineArrowsAlt } from "react-icons/ai";
-import Avatar from '@mui/material/Avatar';
-import { BsFlagFill } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
 import { GoFile } from "react-icons/go";
 import { GoGraph } from "react-icons/go";
@@ -17,9 +10,11 @@ import {CalendarComponent} from "./Calendario/calendar";
 
 function Home() {
 
-    const [value, onChange] = useState(new Date());
-
-    const [post, setpost] = useState([])
+    const [post, setpost] = useState([]);
+    const [tasks, setTasks] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [initialPosts, setInitialPosts] = useState([]);
+    const [setInitialTasks] = useState([])
 
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
@@ -31,8 +26,44 @@ function Home() {
             })
     }, [])
 
+    useEffect(() => {
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
+            .then((response) => {
+                setPosts(response.data)
+                setInitialPosts(response.data)
+                console.log("foi")
+
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+
+    useEffect(() => {
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
+            .then((response) => {
+                setTasks(response.data)
+                setInitialTasks(response.data)
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+
+
+
     const recebeprojetos = post.filter(getstatus => getstatus.status === "Concluído");
 
+    const contapessoa = posts;
+    const totalpessoas = contapessoa.length;
+  
+   const contaprojetos = post;
+   const totalprojetos = contaprojetos.length;
+
+   const contatask =tasks;
+   const totaltask = contatask.length;
     /**função para implementar o mais breve pocivel (lucas se escreve possível e não pocivel)
      * NÃO APAGAR!!!!!!!!!!!!!!!!!!
      * OBS: o codigo abaixo é apenas um esboso.
@@ -59,7 +90,7 @@ function Home() {
                             <BsPeople id="iconpeoplefill" color="beige" size={60} />
 
                             <p className="amarelo" id="totalp1">Total de pessoas adicionadas ate hoje:</p>
-                            <h3>300 +</h3>
+                            <h3>{totalpessoas}</h3>
                         </div>
 
                         <div id="carddois" style={{ background: '#171821' }}>
@@ -69,14 +100,14 @@ function Home() {
                             <GoFile id="FiFile" color="beige" size={52} />
 
                             <p className="amarelo" id="totalp2">Total de projetos<br />adicionadas ate hoje:</p>
-                            <h3>300 +</h3>
+                            <h3>{totalprojetos}</h3>
                         </div>
                         <div id="cardtres" style={{ background: '#171821' }}>
                             <Link to="/Task" className="sabermais"><p >Saber mais</p></Link>
                             <GoGraph id="icontask-pagehome" color="beige" size={56} />
 
                             <p className="amarelo" id="totalp3" >Total de Task's adicionadas ate hoje:</p>
-                            <h3>300 +</h3>
+                            <h3>{totaltask}</h3>
                         </div>
                     </div>
 
@@ -93,7 +124,7 @@ function Home() {
             </div>
 
             <div id="projetos-concluidos-page-home">
-                <h3>Projetos</h3>
+                <div id="title-card-projeto-paginahome">Projetos Concluidos</div>
 
                 <div id="just-card-projetos-page-home">
                     <div id="card-projeto-pagina-home">
