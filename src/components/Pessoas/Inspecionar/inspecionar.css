@@ -227,7 +227,7 @@ h4 {
     
 }
 #cardtask{
-    background: rgba(186, 186, 186, 0.5);
+    background: rgba(230, 227, 227, 0.5);
     opacity: 0.1;
     color: #fff;
 }
@@ -235,8 +235,7 @@ h4 {
     align-items: center;
 }
 #titulo{
-    color: blue;
-    border: 1px solid red;
+    color: white;
 }
 #cor{
     align-items: center;

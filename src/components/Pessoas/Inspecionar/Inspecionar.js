@@ -9,34 +9,27 @@ import CheckIcon from '@mui/icons-material/Check';
 import { AiOutlineStar } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
-/** */
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
-
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 
+
+
 const validacaoGet = yup.object().shape({
     favoritar: yup.number(),
-
 })
-
 function Inspecionar() {
-
-    //const [favoritar, setFavoritar] = useState()
-
     let navigate = useNavigate()
     const [posts, setPosts] = useState([])
     const [Task, setTask] = useState([])
     const { id_pessoa } = useParams()
-
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validacaoGet)
     })
-
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
             .then((response) => {
@@ -48,8 +41,6 @@ function Inspecionar() {
             })
     }, []
     )
-
-
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/`)
             .then((response) => {
@@ -62,18 +53,11 @@ function Inspecionar() {
             })
     }, []
     )
-
     const nome = posts.nome_pessoa;
-    //<Avatar  sx={{ width: '14rem', height: '14rem', fontSize: '8rem' }} aria-label="recipe">{nome.charAt(0)}</Avatar>
-
-
     function deletePost(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-
         setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
-
     }
-
     function stringAvatar(name) {
         return {
             sx: {
@@ -83,26 +67,26 @@ function Inspecionar() {
             children: `${name.split(' ')[0][0]}`,
         };
     }
-
-    
     const ArrGeral_task = Task;
     const recebId_pessoa = posts.id_pessoa;
     const idPessoaINT = parseInt(recebId_pessoa);
-    var filtra_task = ArrGeral_task.filter(task => task.pessoa_id === idPessoaINT);
+    const filtra_task = Task.filter(task => task.pessoa_id === idPessoaINT);
     /**pega o numero total de tesk */
     const numero = filtra_task.length;
-
-
-
-
+    /* console.log(filtra_task);
+     function teste(){
+         var newteste = filtra_task;
+         console.log(filtra_task);
+         if (newteste === ''){
+             alert('array vazio')
+            
+         }
+     }*/
     /*----------------------------------------------------------------------------------------------------------------------*/
     var favoritar = parseInt(posts.favoritar);
-    console.log(favoritar);
-
     function favoritarFuncao() {
         favoritar++
         if (favoritar === 1) {
-
             axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
                 .then(() => {
                     console.log("foi")
@@ -110,7 +94,44 @@ function Inspecionar() {
                 .catch(() => {
                     console.log("n foi")
                 })
+            console.log(favoritar);
+        } else if (favoritar != 1) {
+            favoritar--
+            alert("quero café")
         }
+    }
+
+    function RenderCards() {
+        if (filtra_task.length === 0) {
+            return (
+                <h2>Não há tarefas existentes! ;-;</h2>
+            )
+        } else {
+            return (
+                <>
+                    {filtra_task.map(t => {
+                        return (
+                            <div id="try">
+                                <Card id="cardtask">
+                                    <CardContent id="test">
+                                        <CardHeader
+                                            avatar={
+                                                <Avatar aria-label="recipe">
+                                                    <BsFillFileEarmarkFill id="cor" />
+                                                </Avatar>
+                                            }></CardHeader>
+                                        <Typography >
+                                            <h5 id="titulo">{t.descricao_task}</h5>
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        )
+                    })}
+                </>
+            )
+        }
+
     }
 
     return (
@@ -135,7 +156,6 @@ function Inspecionar() {
                             </div>
                         </div>
                         <div id="estatisticadois" >
-
                             <button type="submit" onClick={favoritarFuncao} className="star">
                                 <AiOutlineStar />
                             </button>
@@ -174,30 +194,11 @@ function Inspecionar() {
                         <div className="line-insp-dois"></div>
                     </div>
                     <div id="lucas">
-                        {filtra_task.map((tasks) => {
-                            return (
-                                <div id="try">
-                                    <Card sx={{ minWidth: 175 }} id="cardtask">
-                                        <CardContent id="test">
-                                            <CardHeader
-                                                avatar={
-                                                    <Avatar aria-label="recipe">
-                                                        <BsFillFileEarmarkFill id="cor" />
-                                                    </Avatar>
-                                                }></CardHeader>
-                                            <Typography variant="h5" id="titulo" component="div">
-                                                {tasks.descricao_task}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            )
-                        })}
+                        <RenderCards />
                     </div>
                 </div>
             </div>
         </>
     )
 }
-
 export default Inspecionar;

@@ -31,11 +31,11 @@ function Equipe() {
             setPosts(initialPosts)
             return;
         }
-        const filter = posts.filter(({ nome_pessoa }) =>
-            nome_pessoa.toUpperCase().includes(target.value.toUpperCase()))
+        const filter = posts.filter(({ nome_equipe }) =>
+        nome_equipe.toUpperCase().includes(target.value.toUpperCase()))
 
         setPosts(filter);
-    }
+    }   
 
     function deletePost(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
@@ -49,10 +49,8 @@ function Equipe() {
             <div id="cabecario-equipe">
                 <div id="filtroebtn-page-equipe">
                     <h1 id="page-equipe-nome" style={{ color: '#fff' }}>Equipes Cadastradas</h1>
-
                     <div>
                         <input id="filtro-equipe" type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-
                     </div>
                 </div>
             </div>
