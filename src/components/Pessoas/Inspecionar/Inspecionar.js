@@ -161,6 +161,7 @@ function Inspecionar() {
                             </button>
                         </div>
                     </div>
+                    
                     <div id="detalhes">
                         <div id="cabecariodetalhes">
                             <h4>Detalhes</h4>
