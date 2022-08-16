@@ -57,7 +57,7 @@ function Pessoas() {
             </div>
             <div>
                 <Link to="/Post">
-                    <button className="btn-adicionarp">Adicionar pessoas +</button>
+                    <button className="btn-adicionarp">Criar Cadastro</button>
                 </Link>
             </div>
             <div id="geralpessoas">

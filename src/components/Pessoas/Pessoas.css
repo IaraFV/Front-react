@@ -6,6 +6,7 @@
     align-items: center;
     margin-left: 2%;
     margin-top: 2%;
+    margin-right: 5%;
 }
 
 #card-pessoa-page {
@@ -32,11 +33,20 @@
 #geralpessoas {
     display: flex;
     flex-wrap: wrap;
-    padding: 3%;
-    margin-top: -2%;
+    margin-top: 1%;
     overflow: auto;
+    height: 41rem;
+    margin-top: -0.5%;
+}
+#geralpessoas::-webkit-scrollbar {
+    background: #171821;
+    width: 8px;
 }
 
+#geralpessoas::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+}
 #filtro input {
     width: 30rem;
 
@@ -143,6 +153,6 @@
     color: #fff;
     font-size: 1.1rem;
     border: none;
-    margin-bottom: 1%;
+    margin-left: 3%;
+    margin-top: 2%;
 }
-@media (max-width: 600px) {}
