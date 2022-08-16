@@ -47,10 +47,6 @@
     background-color: #D9D9D9;
     border-radius: 20px;
 }
-#filtro input {
-    width: 30rem;
-
-}
 
 #avatar-page-pessoa {
 
@@ -134,16 +130,19 @@
 #filtroebtn-page-p{
     height: 7rem;
     display: flex;
-    width: 98%;
+    width: 95%;
     justify-content: space-between;
     align-items: center;
     margin-top: 1%;
+   
 }
 #filtro-p{
     background: rgba(33, 34, 45, 0.5);
     border: 1px solid #D9D9D9;
     border-radius: 30px;
-    width: 30rem;
+    width: 25rem;
+    height: 2.4rem;
+    align-items: center;
 }
 .btn-adicionarp{
     background: rgba(164, 164, 164, 0.12);
