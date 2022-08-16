@@ -16,8 +16,7 @@ import CardHeader from '@mui/material/CardHeader';
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
-
-
+import imagemerro from './img/Group 1000004632.png';
 
 const validacaoGet = yup.object().shape({
     favoritar: yup.number(),
@@ -73,15 +72,7 @@ function Inspecionar() {
     const filtra_task = Task.filter(task => task.pessoa_id === idPessoaINT);
     /**pega o numero total de tesk */
     const numero = filtra_task.length;
-    /* console.log(filtra_task);
-     function teste(){
-         var newteste = filtra_task;
-         console.log(filtra_task);
-         if (newteste === ''){
-             alert('array vazio')
-            
-         }
-     }*/
+  
     /*----------------------------------------------------------------------------------------------------------------------*/
     var favoritar = parseInt(posts.favoritar);
     function favoritarFuncao() {
@@ -104,7 +95,7 @@ function Inspecionar() {
     function RenderCards() {
         if (filtra_task.length === 0) {
             return (
-                <h2>Não há tarefas existentes! ;-;</h2>
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{marginLeft:'78%'}}  /></h2>
             )
         } else {
             return (
