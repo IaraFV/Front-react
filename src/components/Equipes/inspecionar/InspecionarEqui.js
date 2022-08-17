@@ -11,7 +11,7 @@ import { BsArrowLeft } from "react-icons/bs";
 
 function InspecionarEquipe() {
 
-
+    const [projetos, setpro] = useState([])
     const [equipe, setequipe] = useState([])
     const [pessoa, setpessoa] = useState([])
     const { id_equipe } = useParams()
@@ -27,6 +27,20 @@ function InspecionarEquipe() {
             })
     }, []
     )
+
+    useEffect(() => {
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/'+id_equipe+'/'+projetos)
+            .then((response) => {
+                setpro(response.data)
+                console.log('deu certo Men pro')
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+
+console.log(setpro);
     useEffect(() => {
         axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
             .then((response) => {
@@ -43,7 +57,7 @@ function InspecionarEquipe() {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
 
-        
+
     }
 
     /**função de 'slice' que pega a inicial do nome */
@@ -60,6 +74,7 @@ function InspecionarEquipe() {
     function voltar() {
         window.history.back();
     }
+
 
     /**manipulação do array de geral de equipe */
     const nome = equipe.nome_equipe;
@@ -90,7 +105,7 @@ function InspecionarEquipe() {
                                 
      */
 
-    function alentsuccess (){
+    function alentsuccess() {
         alert("Excluido com sucesso")
     }
 
@@ -104,8 +119,10 @@ function InspecionarEquipe() {
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
+                    <h1 style={{ color: 'red' }}>{projetos.nome_projeto}</h1>
                     <div id="h1-insp" >
                         <h1 >{equipe.nome_equipe}</h1>
+
                     </div>
                     <div className="line-insp-doiss"></div>
                     <div>
@@ -135,14 +152,14 @@ function InspecionarEquipe() {
                                 <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
                                 </Link>
                             </button>
-                            <button type="submit" onClick={() => {deleteEquipe(equipe.id_equipe); alentsuccess()}} id="btn-excluir">Excluir
-                                
+                            <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe); alentsuccess() }} id="btn-excluir">Excluir
+
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }
