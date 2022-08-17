@@ -34,6 +34,7 @@
     "react-update": "^0.4.4",
     "react-vanilla-tilt": "^1.0.0",
     "recharts": "^2.1.12",
+    "rsuite": "^5.16.5",
     "styled-components": "^5.3.5",
     "vanilla-tilt": "^1.7.2",
     "web-vitals": "^2.1.4",

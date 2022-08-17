@@ -7,7 +7,9 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 /**icons */
 import { BsArrowLeft } from "react-icons/bs";
+import { Progress } from 'rsuite';
 //import { Mensageok} from './components/Equipes/inspecionar/Mensageok'
+import "rsuite/dist/rsuite.css";
 
 function InspecionarEquipe() {
 
@@ -16,6 +18,8 @@ function InspecionarEquipe() {
     const [pessoa, setpessoa] = useState([])
     const [projeto, setprojeto] = useState([])
     const { id_equipe } = useParams()
+    const [percent, setPercent] = React.useState(50);
+    const status = percent === 100 ? 'success' : null;
 
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
@@ -92,7 +96,7 @@ function InspecionarEquipe() {
     }
 
     return (
-        <div>
+        <div id='just-cards-geral-inspequipe'>
             <div id="geral-card-inspecionar_equipe">
                 <div id="card-inspecionar_equipe">
                     <div>
@@ -101,41 +105,63 @@ function InspecionarEquipe() {
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
-                    <div id="h1-insp" >
-                        <h1 >{equipe.nome_equipe}</h1>
+                    <div id="h1-inspeq" >
+                        <div>{equipe.nome_equipe}</div>
                     </div>
-                    <div className="line-insp-doiss"></div>
+
+
                     <div>
+                        <div id='icon-plus-inspequi'>
+                            <Link to="/Post">
+                                <AiOutlinePlus id="corr" />
+                            </Link>
+                        </div>
+
+
                         <div id='tituloinsp'>
-                            <h2>membros</h2>
-                            <h2>{totalmember}</h2>
+                            <div>Membros</div>
+                            <div>{totalmember}</div>
                         </div>
                         <div className='avatares_Equipe'>
-                            <Avatar aria-label="recipe">
-                                <Link to="/Post">
-                                    <AiOutlinePlus id="corr" />
-                                </Link>
-                            </Avatar>
+
                             {
                                 recebe.map((nomepessoa) => {
                                     return (
                                         <div>
                                             <Avatar sx={{}} aria-label="recipe">{nomepessoa}</Avatar>
+                                            <div className="line-insp-doiss"></div>
                                         </div>
                                     )
                                 })
                             }
                         </div>
-                        <div className="line-insp-doiss"></div>
-                        <div id='btn-opition'>
-                            <button id="btn-edit">
-                                <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
-                                </Link>
-                            </button>
-                            <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe); alentsuccess() }} id="btn-excluir">Excluir
 
-                            </button>
+
+
+                        <div id='btn-opition'>
+                            <div>
+                                <Link className="link-inspequi" to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}>
+                                    <button id="btn-edit-inspequi" to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}>
+                                        Editar
+                                    </button>
+                                </Link>
+
+                            </div>
+                            <div>
+                                <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe); alentsuccess() }} id="btn-excluir">Excluir</button>
+                            </div>
+
                         </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div id='insp-card-dois-pagina-inspequipe'>
+                    <div style={{ width: 120, marginTop: 10 }}>
+                        <Progress.Circle percent={percent} strokeColor={'#00DB99'} status={status} />
                     </div>
                 </div>
             </div>
