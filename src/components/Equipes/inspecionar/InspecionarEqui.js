@@ -29,7 +29,7 @@ function InspecionarEquipe() {
     )
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/'+id_equipe+'/'+projetos)
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/'+id_equipe+'/projetos')
             .then((response) => {
                 setpro(response.data)
                 console.log('deu certo Men pro')
@@ -40,7 +40,7 @@ function InspecionarEquipe() {
     }, []
     )
 
-console.log(setpro);
+console.log(projetos);
     useEffect(() => {
         axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
             .then((response) => {
