@@ -134,9 +134,7 @@ function InspProjeto() {
     const l = k?.filter((get) => get.status === "A fazer");
     const f = k?.filter((get) => get.status === "Em desenvolvimento");
     const g = k?.filter((get) => get.status === "Concluído");
-    console.log(l);
-    console.log(f);
-    console.log(g);
+    
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
@@ -174,7 +172,7 @@ function InspProjeto() {
                             A fazer
                         </h4>
                         {
-                            l.map((projetos, key) => {
+                            l?.map((projetos, key) => {
                                 return (
                                     <div className="dropzone" >
                                         <Card style={{ width: '18rem' }} className="card" draggable="true">
@@ -195,7 +193,7 @@ function InspProjeto() {
                             Em desenvolvimento
                         </h4>
                         {
-                            f.map((projetos, key) => {
+                            f?.map((projetos, key) => {
                                 return (
                                     <div className="dropzone" >
                                         <Card style={{ width: '18rem' }} draggable="true">
@@ -215,7 +213,7 @@ function InspProjeto() {
                             Concluídos
                         </h4>
                         {
-                            g.map((projetos, key) => {
+                            g?.map((projetos, key) => {
                                 return (
                                     <div className="dropzone">
                                         <Card style={{ width: '18rem' }} draggable="true">
