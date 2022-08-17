@@ -78,33 +78,26 @@ function Projetos() {
                                                             <AiOutlineArrowsAlt id="more-button-planejamento" />
                                                         </Link>
                                                     </div>
-
                                                 </Card.Title>
-
-
                                                 <Card.Text id="status">
                                                     {post.status}
                                                 </Card.Text>
-
                                                 <Card.Text id="bandeira-data">
                                                     <div><BsFlagFill /></div>
                                                     <div>{post.data_inicio}</div>
                                                 </Card.Text>
-
                                                 <Card.Text>
                                                     <div id="titulo-descricao-projeto">Descrição</div>
                                                     <div id="corpo-descricao-projeto">
                                                         {post.descricao_projeto}
                                                     </div>
                                                 </Card.Text>
-
                                                 <Card.Text>
                                                     <div id="titulo-descricao-projeto">Membros</div>
                                                     <div id="membros-projeto">
                                                         <Avatar id="avatar-projeto-membro-eq" />
                                                     </div>
                                                 </Card.Text>
-
                                             </Card.Body>
                                         </Card>
                                     </div>
