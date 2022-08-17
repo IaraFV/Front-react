@@ -37,10 +37,6 @@ projeto e contador task*/
     color: #ffff;
 }
 
-#calendario-home {
-    border: 1px solid red;
-    background: #00DB99;
-}
 
 #graficoum-page-home {
     margin-top: 5%;
@@ -130,12 +126,13 @@ projeto e contador task*/
 }
 
 #calendario {
-    width: 27rem;
+    width: 30em;
     background: #21222D;
-    height: 26rem;
+    height: 20.5rem;
     align-items: center;
     margin-top: 1.3%;
     border-radius: 1rem;
+    margin-left: -30%;
 }
 
 #projetos-concluidos-page-home {
@@ -293,7 +290,7 @@ projeto e contador task*/
     #carddois {
         width: 12rem;
         height: 17rem;
-        margin-top: -37.5%;
+        margin-top: -37.7%;
     }
 
     #FiFile {
@@ -326,7 +323,7 @@ projeto e contador task*/
     #cardtres {
         width: 12rem;
         height: 17rem;
-        margin-top: -38%;
+        margin-top: -38.1%;
     }
 
     #icontask-pagehome {
@@ -364,4 +361,8 @@ projeto e contador task*/
 
     }
 
+    #calendario{
+        width: 34%;
+        margin-left: -2%;
+    }
 }
