@@ -19,7 +19,7 @@ projeto e contador task*/
     margin-left: 2%;
     border-radius: 1rem;
     margin-top: 2%;
-    border: 1px solid red;
+    
 
 }
 
@@ -93,7 +93,7 @@ projeto e contador task*/
 /*card pessoas*/
 #cardum {
     width: 30%;
-    height: 23rem;
+    height: 24rem;
     margin-top: 3%;
     margin-left: 3%;
     border-radius: 0.5rem;
@@ -248,18 +248,18 @@ projeto e contador task*/
     margin-right: 3%;
 }
 
-@media screen and (max-width: 2000px) {
+@media (max-width: 2000px) {
     #cards {
         width: 45rem;
         margin-left: 2%;
-        height: 21rem;
-        border: 1px solid red;
+        height: 20rem;
+       
     }
 
     /*card um*/
     #cardum {
         width: 12rem;
-        height: 15rem;
+        height: 17rem;
 
     }
 
@@ -292,8 +292,8 @@ projeto e contador task*/
     /*card dois*/
     #carddois {
         width: 12rem;
-        height: 15rem;
-        margin-top: -34%;
+        height: 17rem;
+        margin-top: -37.5%;
     }
 
     #FiFile {
@@ -325,8 +325,8 @@ projeto e contador task*/
 
     #cardtres {
         width: 12rem;
-        height: 15rem;
-        margin-top: -34%;
+        height: 17rem;
+        margin-top: -38%;
     }
 
     #icontask-pagehome {
