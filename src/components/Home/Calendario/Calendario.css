@@ -184,11 +184,12 @@
   background-color: #EEECF1;
 }
 
-@media screen and (max-width: 2800px) {
+@media (max-width: 1800px) {
   .react-calendar{
+    border: 1px solid red;
     width: 290px;
-    margin-left: 1%;
-    height: 21rem;
-    margin-top: -1.5%;
+    margin-left: 4%;
+    height: 20rem;
+    margin-top: -1.7%;
   }
 }

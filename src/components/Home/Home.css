@@ -19,7 +19,7 @@ projeto e contador task*/
     margin-left: 2%;
     border-radius: 1rem;
     margin-top: 2%;
-    
+
 
 }
 
@@ -250,7 +250,7 @@ projeto e contador task*/
         width: 45rem;
         margin-left: 2%;
         height: 20rem;
-       
+
     }
 
     /*card um*/
@@ -353,15 +353,16 @@ projeto e contador task*/
     }
 
     #projetos-concluidos-page-home {
-        width: 36rem;
+        width: 30rem;
         margin-left: 71%;
-        margin-top: -37.8%;
-        height: 54.5rem;
+        margin-top: -42.3%;
+        height: 49rem;
         border-radius: 1rem;
+     
 
     }
 
-    #calendario{
+    #calendario {
         width: 34%;
         margin-left: -2%;
     }
