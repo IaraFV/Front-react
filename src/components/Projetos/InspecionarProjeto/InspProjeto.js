@@ -21,7 +21,7 @@ function InspProjeto() {
 
     const cards = document.querySelectorAll('.card')
     const dropzones = document.querySelectorAll('.dropzone')
-/*
+
     const [tasks, settasks] = useState([])
     const [initialtasks, setInitialtasks] = useState([])
 
@@ -35,7 +35,7 @@ function InspProjeto() {
                 console.log("deu errado")
             })
     }, []
-    )*/
+    )
 
 
     useEffect(() => {
@@ -56,11 +56,11 @@ function InspProjeto() {
         setprojetos(projetos.filter(projetos => projetos.id_task !== id_task))
     }
 */
-
+/*
     function deleteprojetos(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
         setprojetos(projetos.filter(projetos => projetos.id_pessoa !== id_pessoa))
-    }
+    }*/
 
     /** our cards */
     cards.forEach(card => {
@@ -146,14 +146,9 @@ function InspProjeto() {
     //const getIdProj = parseInt(projetos.id_projeto);
     //const filtra =  projetos.map(filtra => filtra.tasks);
     
-    //c/onsole.log(filtra)
-
-const g =  projetos;
-console.log(g);
-const j =  projetos.map(gh => gh.tasks);
-console.log(j);
-
-
+    const k =  projetos.tasks
+    k?.map((get) => get.descricao_task);
+    console.log(k);
 
     return (
         <>

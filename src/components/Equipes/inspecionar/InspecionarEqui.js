@@ -11,9 +11,10 @@ import { BsArrowLeft } from "react-icons/bs";
 
 function InspecionarEquipe() {
 
-    const [projetos, setpro] = useState([])
+
     const [equipe, setequipe] = useState([])
     const [pessoa, setpessoa] = useState([])
+    const [projeto,setprojeto] = useState([])
     const { id_equipe } = useParams()
 
     useEffect(() => {
@@ -27,20 +28,17 @@ function InspecionarEquipe() {
             })
     }, []
     )
-
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/' + id_equipe + '/projetos')
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes'+id_equipe+'/projetos')
             .then((response) => {
-                setpro(response.data)
-                console.log('deu certo Men pro')
+                setprojeto(response.data)
+                console.log('deu certo Men')
             })
             .catch(() => {
                 console.log("deu errado")
             })
     }, []
     )
-
-    console.log(projetos);
     useEffect(() => {
         axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
             .then((response) => {
@@ -57,7 +55,7 @@ function InspecionarEquipe() {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
 
-
+        
     }
 
     /**função de 'slice' que pega a inicial do nome */
@@ -75,7 +73,6 @@ function InspecionarEquipe() {
         window.history.back();
     }
 
-
     /**manipulação do array de geral de equipe */
     const nome = equipe.nome_equipe;
     const getId_equipe = equipe.id_equipe;
@@ -83,7 +80,6 @@ function InspecionarEquipe() {
 
     /**manipulação do array de geral de equipe/ filtando o nome dos membros da equipe */
     const ArrGeral_pessoas = pessoa;
-
     /**nessa parte filtra as pessoas com base no id da equipe oriundo do "INTid_equipe" */
     const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
     const inicialLetra = filtrandoPessoas.map((letraini) => letraini.nome_pessoa);
@@ -91,29 +87,9 @@ function InspecionarEquipe() {
     /**este codigo vai pegar o total de membros (como um contador) */
     const totalmember = inicialLetra.length;
 
-    /**manipulação dos dados oriundos de pessoas 
-     * Percorre os dados de pessoa e retorna as que nao tem equipe */
-    //const filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
-    //console.log(valuPessoa);
-
-    /**nao apagar codigo do ADD novos membros a equipe
-     * 
-     * <Avatar aria-label="recipe">
-            <Link to="/Post">
-                <AiOutlinePlus id="corr" />
-            /Link>
-        </Avatar>
-                                
-     */
-
-    const pegarNome = filtrandoPessoas.map((pega) => pega.nome_pessoa)
-
-    function alentsuccess() {
+    function alentsuccess (){
         alert("Excluido com sucesso")
     }
-    console.log(pegarNome);
-
-
 
     return (
         <div>
@@ -125,15 +101,13 @@ function InspecionarEquipe() {
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
-                    <h1 style={{ color: 'red' }}>{projetos.nome_projeto}</h1>
                     <div id="h1-insp" >
                         <h1 >{equipe.nome_equipe}</h1>
-
                     </div>
                     <div className="line-insp-doiss"></div>
                     <div>
                         <div id='tituloinsp'>
-                            <h2>Membros</h2>
+                            <h2>membros</h2>
                             <h2>{totalmember}</h2>
                         </div>
                         <div className='avatares_Equipe'>
@@ -142,17 +116,13 @@ function InspecionarEquipe() {
                                     <AiOutlinePlus id="corr" />
                                 </Link>
                             </Avatar>
-
                             {
                                 recebe.map((nomepessoa) => {
                                     return (
-                                        <div id='recebe-membros-equipe'>
+                                        <div>
                                             <Avatar sx={{}} aria-label="recipe">{nomepessoa}</Avatar>
-                                            
                                         </div>
-                                        
                                     )
-                                    
                                 })
                             }
                         </div>
@@ -162,26 +132,16 @@ function InspecionarEquipe() {
                                 <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
                                 </Link>
                             </button>
-                            <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe); alentsuccess() }} id="btn-excluir">Excluir
-
+                            <button type="submit" onClick={() => {deleteEquipe(equipe.id_equipe); alentsuccess()}} id="btn-excluir">Excluir
+                                
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-
+            
         </div>
     )
 }
 /**<Avatar sx={{ }} aria-label="recipe"></Avatar> */
 export default InspecionarEquipe;
-/*
-
-{
-    pegarNome.map((pega)=>{
-        return(
-            <div>{pega}</div>
-        )
-    })
-}
-*/
