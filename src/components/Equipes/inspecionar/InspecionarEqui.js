@@ -14,7 +14,7 @@ function InspecionarEquipe() {
 
     const [equipe, setequipe] = useState([])
     const [pessoa, setpessoa] = useState([])
-    const [projeto,setprojeto] = useState([])
+    const [projeto, setprojeto] = useState([])
     const { id_equipe } = useParams()
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function InspecionarEquipe() {
     }, []
     )
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes'+id_equipe+'/projetos')
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes' + id_equipe + '/projetos')
             .then((response) => {
                 setprojeto(response.data)
                 console.log('deu certo Men')
@@ -55,7 +55,7 @@ function InspecionarEquipe() {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
 
-        
+
     }
 
     /**função de 'slice' que pega a inicial do nome */
@@ -87,7 +87,7 @@ function InspecionarEquipe() {
     /**este codigo vai pegar o total de membros (como um contador) */
     const totalmember = inicialLetra.length;
 
-    function alentsuccess (){
+    function alentsuccess() {
         alert("Excluido com sucesso")
     }
 
@@ -132,14 +132,14 @@ function InspecionarEquipe() {
                                 <Link to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}> Editar
                                 </Link>
                             </button>
-                            <button type="submit" onClick={() => {deleteEquipe(equipe.id_equipe); alentsuccess()}} id="btn-excluir">Excluir
-                                
+                            <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe); alentsuccess() }} id="btn-excluir">Excluir
+
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     )
 }
