@@ -19,7 +19,9 @@ function InspProjeto() {
         console.log('> ' + message)
     }
 
-    const cards = document.querySelectorAll('.card')
+    const Afazer = document.querySelectorAll('#A fazer');
+    const desenvovimento = document.querySelectorAll('#Em desenvovimento');
+    const Concluido = document.querySelectorAll('#Concluído');
     const dropzones = document.querySelectorAll('.dropzone')
 
     const [tasks, settasks] = useState([])
@@ -62,10 +64,22 @@ function InspProjeto() {
     }
 
     /** our cards */
-    cards.forEach(card => {
-        card.addEventListener('dragstart', dragstart)
-        card.addEventListener('drag', drag)
-        card.addEventListener('dragend', dragend)
+    Afazer.forEach(Afazer => {
+        Afazer.addEventListener('dragstart', dragstart)
+        Afazer.addEventListener('drag', drag)
+        Afazer.addEventListener('dragend', dragend)
+    })
+
+    desenvovimento.forEach(desenvovimento => {
+        desenvovimento.addEventListener('dragstart', dragstart)
+        desenvovimento.addEventListener('drag', drag)
+        desenvovimento.addEventListener('dragend', dragend)
+    })
+
+    Concluido.forEach(concluido => {
+        concluido.addEventListener('dragstart', dragstart)
+        concluido.addEventListener('drag', drag)
+        concluido.addEventListener('dragend', dragend)
     })
 
     function dragstart() {
@@ -80,7 +94,7 @@ function InspProjeto() {
     }
 
     function dragend() {
-        // log('CARD: Stop drag! ')
+        log('CARD: Stop drag! ')
         dropzones.forEach(dropzone => dropzone.classList.remove('highlight'))
         // this = card
         this.classList.remove('is-dragging')
@@ -95,7 +109,7 @@ function InspProjeto() {
     })
 
     function dragenter() {
-        // log('DROPZONE: Enter in zone ')
+        log('DROPZONE: Enter in zone ')
     }
 
     function dragover() {
@@ -108,13 +122,13 @@ function InspProjeto() {
     }
 
     function dragleave() {
-        // log('DROPZONE: Leave ')
+         log('DROPZONE: Leave ')
         // this = dropzone
         this.classList.remove('over')
     }
 
     function drop() {
-        // log('DROPZONE: dropped ')
+         log('DROPZONE: dropped ')
         this.classList.remove('over')
     }
 
@@ -134,7 +148,7 @@ function InspProjeto() {
     const l = k?.filter((get) => get.status === "A fazer");
     const f = k?.filter((get) => get.status === "Em desenvolvimento");
     const g = k?.filter((get) => get.status === "Concluído");
-    
+  
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
@@ -175,7 +189,7 @@ function InspProjeto() {
                             l?.map((projetos, key) => {
                                 return (
                                     <div className="dropzone" >
-                                        <Card style={{ width: '18rem' }} className="card" draggable="true">
+                                        <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
                                             <Card.Body>
                                                 <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
                                                 <Card.Text>{projetos.status}
@@ -196,7 +210,7 @@ function InspProjeto() {
                             f?.map((projetos, key) => {
                                 return (
                                     <div className="dropzone" >
-                                        <Card style={{ width: '18rem' }} draggable="true">
+                                        <Card style={{ width: '18rem' }} id="Em desenvolvimento" draggable="true">
                                             <Card.Body className="dropzone">
                                                 <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
                                                 <Card.Text>{projetos.status}
@@ -216,7 +230,7 @@ function InspProjeto() {
                             g?.map((projetos, key) => {
                                 return (
                                     <div className="dropzone">
-                                        <Card style={{ width: '18rem' }} draggable="true">
+                                        <Card style={{ width: '18rem' }} id="Concluído" draggable="true">
                                             <Card.Body>
                                                 <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
                                                 <Card.Text>{projetos.status}
@@ -233,4 +247,5 @@ function InspProjeto() {
         </div>
     )
 }
+
 export default InspProjeto;
