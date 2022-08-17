@@ -15,10 +15,11 @@ projeto e contador task*/
 /*----------------------------------------------------------card geral de fundo-------------------------------------------------------*/
 #cards {
     width: 94%;
-    height: 26rem;
+    height: 50rem;
     margin-left: 2%;
     border-radius: 1rem;
     margin-top: 2%;
+    border: 1px solid red;
 
 }
 
@@ -247,11 +248,12 @@ projeto e contador task*/
     margin-right: 3%;
 }
 
-@media screen and (max-width: 2980px) {
+@media screen and (max-width: 2000px) {
     #cards {
         width: 45rem;
         margin-left: 2%;
-        height: 18rem;
+        height: 21rem;
+        border: 1px solid red;
     }
 
     /*card um*/
