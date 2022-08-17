@@ -10,6 +10,9 @@
     width: 30%;
     height: 50rem;
 }
+#recebe-membros-equipe{
+    border: 1px solid red;
+}
 .line-insp-doiss{
     height: 2px;
     background-color: #3E445B;
@@ -28,8 +31,10 @@
 }
 .avatares_Equipe{
     display: flex;
-    justify-content: space-around;
+    width: 18%;
     flex-wrap: wrap;
+    padding: 1%;
+    border: 1px solid red;
 }
 #seta{
     color: #fff;

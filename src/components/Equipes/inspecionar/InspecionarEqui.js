@@ -29,7 +29,7 @@ function InspecionarEquipe() {
     )
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/'+id_equipe+'/projetos')
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/' + id_equipe + '/projetos')
             .then((response) => {
                 setpro(response.data)
                 console.log('deu certo Men pro')
@@ -40,7 +40,7 @@ function InspecionarEquipe() {
     }, []
     )
 
-console.log(projetos);
+    console.log(projetos);
     useEffect(() => {
         axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
             .then((response) => {
@@ -83,6 +83,7 @@ console.log(projetos);
 
     /**manipulação do array de geral de equipe/ filtando o nome dos membros da equipe */
     const ArrGeral_pessoas = pessoa;
+
     /**nessa parte filtra as pessoas com base no id da equipe oriundo do "INTid_equipe" */
     const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
     const inicialLetra = filtrandoPessoas.map((letraini) => letraini.nome_pessoa);
@@ -105,9 +106,14 @@ console.log(projetos);
                                 
      */
 
+    const pegarNome = filtrandoPessoas.map((pega) => pega.nome_pessoa)
+
     function alentsuccess() {
         alert("Excluido com sucesso")
     }
+    console.log(pegarNome);
+
+
 
     return (
         <div>
@@ -127,7 +133,7 @@ console.log(projetos);
                     <div className="line-insp-doiss"></div>
                     <div>
                         <div id='tituloinsp'>
-                            <h2>membros</h2>
+                            <h2>Membros</h2>
                             <h2>{totalmember}</h2>
                         </div>
                         <div className='avatares_Equipe'>
@@ -136,13 +142,17 @@ console.log(projetos);
                                     <AiOutlinePlus id="corr" />
                                 </Link>
                             </Avatar>
+
                             {
                                 recebe.map((nomepessoa) => {
                                     return (
-                                        <div>
+                                        <div id='recebe-membros-equipe'>
                                             <Avatar sx={{}} aria-label="recipe">{nomepessoa}</Avatar>
+                                            
                                         </div>
+                                        
                                     )
+                                    
                                 })
                             }
                         </div>
@@ -165,3 +175,13 @@ console.log(projetos);
 }
 /**<Avatar sx={{ }} aria-label="recipe"></Avatar> */
 export default InspecionarEquipe;
+/*
+
+{
+    pegarNome.map((pega)=>{
+        return(
+            <div>{pega}</div>
+        )
+    })
+}
+*/

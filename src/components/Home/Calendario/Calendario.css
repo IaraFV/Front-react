@@ -186,7 +186,6 @@
 
 @media (max-width: 1800px) {
   .react-calendar{
-    border: 1px solid red;
     width: 290px;
     margin-left: 4%;
     height: 20rem;
