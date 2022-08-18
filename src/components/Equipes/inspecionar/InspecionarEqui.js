@@ -1,18 +1,15 @@
 import './InspecionarEqui.css'
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-/**icons */
 import { BsArrowLeft } from "react-icons/bs";
 import { Progress } from 'rsuite';
-//import { Mensageok} from './components/Equipes/inspecionar/Mensageok'
 import "rsuite/dist/rsuite.css";
 
 function InspecionarEquipe() {
-
 
     const [equipe, setequipe] = useState([])
     const [pessoa, setpessoa] = useState([])
@@ -21,6 +18,8 @@ function InspecionarEquipe() {
     const [percent, setPercent] = React.useState(50);
     const status = percent === 100 ? 'success' : null;
 
+
+    /*------------------------------------------------------------------------------GET EQUIPE--------------------------------------------------------------------*/
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
             .then((response) => {
@@ -32,6 +31,10 @@ function InspecionarEquipe() {
             })
     }, []
     )
+
+
+    /*-------------------------------------------------------------GET NO PROJETO ESPECÍFICO DA EQUIPE------------------------------------------------------------*/
+
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes' + id_equipe + '/projetos')
             .then((response) => {
@@ -43,6 +46,10 @@ function InspecionarEquipe() {
             })
     }, []
     )
+
+
+    /*------------------------------------------------------------------GET NOS MEMBROS DA EQUIPE----------------------------------------------------------------*/
+
     useEffect(() => {
         axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
             .then((response) => {
@@ -55,18 +62,17 @@ function InspecionarEquipe() {
     }, []
     )
 
+
+    /*-------------------------------------------------------------FUNCAO PARA DELETAR A EQUIPE ESPECIFICA------------------------------------------------------------*/
     function deleteEquipe(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
-
-
     }
 
-    /**função de 'slice' que pega a inicial do nome */
+    /*-------------------------------------------------------------FUNCAO DE 'SLICE' PARA PEGAR A PRIMEIRA LETRA DO NOME DA EQUIPE------------------------------------------------------------*/
     function stringAvatar(name) {
         return {
             sx: {
-                //bgcolor: stringToColor(name),
                 width: '14rem', height: '14rem', fontSize: '8rem'
             },
             children: `${name.split(' ')[0][0]}`,
@@ -77,18 +83,20 @@ function InspecionarEquipe() {
         window.history.back();
     }
 
-    /**manipulação do array de geral de equipe */
+    /*---------------------------------------------------------------------------------MANIPULAÇÃO DO ARRAY DE EQUIPE--------------------------------------------------------------------------*/
     const nome = equipe.nome_equipe;
     const getId_equipe = equipe.id_equipe;
     var INTid_equipe = parseInt(getId_equipe);
-
-    /**manipulação do array de geral de equipe/ filtando o nome dos membros da equipe */
+    
+    /*----------------------------------------------COM A MANIPULAÇÃO DO ARRAY DE EQUIPE AGORA É FILTRADO OS NOMES DOS MEMBROS------------------------------------------------------------------*/
     const ArrGeral_pessoas = pessoa;
-    /**nessa parte filtra as pessoas com base no id da equipe oriundo do "INTid_equipe" */
+
+    /*-------------------------------------------------------NESSA PARTE É FILTRADO AS PESSOAS COM BASE NO ID DA EQUIPE ORIUNDO DO INTID_EQUIPE-------------------------------------------------*/
     const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
     const inicialLetra = filtrandoPessoas.map((letraini) => letraini.nome_pessoa);
     const recebe = inicialLetra.map((l) => l.charAt(0));
-    /**este codigo vai pegar o total de membros (como um contador) */
+
+    /*----------------------------------------------------------------------------------AQUI É CALCULADO O TOTAL DE MEMBROS---------------------------------------------------------------------*/
     const totalmember = inicialLetra.length;
 
     function alentsuccess() {
@@ -128,7 +136,7 @@ function InspecionarEquipe() {
                                 recebe.map((nomepessoa) => {
                                     return (
                                         <div>
-                                            <Avatar sx={{}} aria-label="recipe">{nomepessoa}</Avatar>
+                                            <Avatar aria-label="recipe">{nomepessoa}</Avatar>
                                             <div className="line-insp-doiss"></div>
                                         </div>
                                     )
@@ -155,10 +163,6 @@ function InspecionarEquipe() {
                     </div>
                 </div>
 
-
-
-
-
                 <div id='insp-card-dois-pagina-inspequipe'>
                     <div style={{ width: 120, marginTop: 10 }}>
                         <Progress.Circle percent={percent} strokeColor={'#00DB99'} status={status} />
@@ -169,5 +173,5 @@ function InspecionarEquipe() {
         </div>
     )
 }
-/**<Avatar sx={{ }} aria-label="recipe"></Avatar> */
+
 export default InspecionarEquipe;
