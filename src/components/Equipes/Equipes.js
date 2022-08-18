@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react";
 import './Equipe.css';
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import { FiSearch } from "react-icons/fi";
 import { BsPeople } from "react-icons/bs";
 import Tilt from 'react-vanilla-tilt';
-
 
 function Equipe() {
 
     const [posts, setPosts] = useState([])
     const [initialPosts, setInitialPosts] = useState([])
 
+    /*---------------------------------------GET EQUIPE-------------------------------------------------*/
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
             .then((response) => {
@@ -24,24 +23,17 @@ function Equipe() {
     }, []
     )
 
-
-
+    /*----------------------------------------FILTRO----------------------------------------------------*/
     const handlechange = ({ target }) => {
         if (!target.value) {
             setPosts(initialPosts)
             return;
         }
         const filter = posts.filter(({ nome_equipe }) =>
-        nome_equipe.toUpperCase().includes(target.value.toUpperCase()))
+            nome_equipe.toUpperCase().includes(target.value.toUpperCase()))
 
         setPosts(filter);
-    }   
-
-    function deletePost(id_equipe) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
-        setPosts(posts.filter(post => post.id_equipe !== id_equipe))
     }
-
 
     return (
 
@@ -65,37 +57,26 @@ function Equipe() {
                 <div id="geraleq" >
                     {
                         posts.map((posts, key) => {
-
                             return (
-
-                                
-                                <div  className="cardequipe">
+                                <div className="cardequipe">
                                     <Tilt style={{ background: '#171821' }}>
-                                    <Link className="link-eq" to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
-
-                                        <div id="card-prin-eq">
-                                            <div id="icon-nomeequipe-pegeequipe">
-                                                <BsPeople id="icon-group-page-equipes" />
-                                                <div id="nome-equipe-pege-equioe">{posts.nome_equipe}</div>
+                                        <Link id="link-pagina-prin-equipe" to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
+                                            <div id="card-prin-eq">
+                                                <div id="icon-nomeequipe-pegeequipe">
+                                                    <BsPeople id="icon-group-page-equipes" />
+                                                    <div id="nome-equipe-pege-equioe">{posts.nome_equipe}</div>
+                                                </div>
                                             </div>
-
-                                        </div>
-
-                                    </Link>
+                                        </Link>
                                     </Tilt>
-                                    
                                 </div>
-
-                    
                             )
                         })
                     }
                 </div>
             </div>
         </div>
-
     )
-
 }
 
 export default Equipe;

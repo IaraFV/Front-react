@@ -6,11 +6,6 @@
 
 }
 
-
-
-/*/*/
-/*///////////////////////////////////////////////////////*/
-
 #card-prin-eq {
     background: #21222D;
     width: 12rem;
@@ -103,16 +98,14 @@
     width: 8px;
 }
 
-.link-eq {
+#link-pagina-prin-equipe {
     text-decoration: none;
 }
 
 #icon-group-page-equipes {
     color: #fff;
     font-size: 6rem;
-    font-weight: 300;
-
-
+    font-weight: 300
 }
 
 .btn-adicionarequipe {
