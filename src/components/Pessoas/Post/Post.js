@@ -13,9 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
+
 
 
 function Post() {
@@ -92,8 +90,8 @@ function Post() {
 
                             <div className="fields">
                                 <label>Equipe</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
+                                <Box sx={{ minWidth: 120 }} >
+                                    <FormControl fullWidth >
                                         <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
                                         <Select
                                             {...register("equipe_id")}
@@ -102,9 +100,11 @@ function Post() {
                                             value={age}
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                            onChange={handleChange}>
+                                            onChange={handleChange}
+                                            
+                                            >
                                             {equipe.map((equipe) =>
-                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                                <MenuItem  id="menuEquipe-pagepessoa" value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
                                             )}
                                         </Select>
                                     </FormControl>
