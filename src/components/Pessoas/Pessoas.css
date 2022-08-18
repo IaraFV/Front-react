@@ -70,7 +70,9 @@
     align-items: center;
 }
 
-
+#link-pessoa-page-pessoa{
+    text-decoration: none;
+}
 
 #title-nome-pessoa {
     font-family: 'Rubik';

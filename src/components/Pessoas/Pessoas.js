@@ -68,7 +68,7 @@ function Pessoas() {
                     pessoas.map((pessoas, key) => {
                         return (
                             <div className="cardpessoas">
-                                <Link className="link-eq" to={{ pathname: `/Inspecionar/${pessoas.id_pessoa}` }}>
+                                <Link id="link-pessoa-page-pessoa" to={{ pathname: `/Inspecionar/${pessoas.id_pessoa}` }}>
                                     <Card container id="card-pessoa-page" spacing={2} sx={{ width: 360, bgcolor: '#21222D' }} key={key} >
                                         <CardContent sx={{ color: 'white' }}>
                                             <Typography id="sub-title-nome-pessoa" color="white">

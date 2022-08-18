@@ -61,7 +61,10 @@ function Edit() {
         setAge(event.target.value);
       };
       function voltar() {
-        window.history.back();
+        window.history.back()
+        .then((response) => {
+            reset(response.data)
+        })
     }
 
     return(
@@ -110,7 +113,7 @@ function Edit() {
 
                             <div className="botoes-edit-pessoa">
                             <button className="btn-cancelar" onClick={voltar} >Cancelar</button>
-                            <button className="btn-edit" type="submit">Cadastrar</button>
+                            <button className="btn-edit" onClick={voltar} type="submit">Cadastrar</button>
                                 
                             </div>
                         </form>
