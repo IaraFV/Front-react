@@ -113,7 +113,7 @@ function Post() {
 
                             <div id="chat">
                                 <Link id="butaoC" onClick={voltar}>Cancelar</Link>
-                                <button type="submit" className="butao">Cadastrar</button>
+                                <button type="submit" onClick={voltar} className="butao" >Cadastrar</button>
                             </div>
                     
                 </form>

@@ -1,30 +1,23 @@
 import React, { useEffect } from "react";
-import { Link } from "@mui/material";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import IconButton from '@mui/material/IconButton';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './editeEquipe.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from "axios";
 
 const validacaoGet = yup.object().shape({
-    nome_equipe: yup.string().required("O nome é obrigatorio!"),
-
+    nome_equipe: yup.string().required("O nome é obrigatorio!")
 })
-
 
 function Edite() {
 
     const { id_equipe } = useParams()
 
-    let navigate = useNavigate()
-
     const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`, data)
         .then(() => {
             console.log("foi")
-
+           
         })
         .catch(() => {
             console.log("n foi")
@@ -42,6 +35,7 @@ function Edite() {
                 reset(response.data)
             })
     }, [])
+    
     function voltar() {
         window.history.back();
     }
@@ -65,7 +59,7 @@ function Edite() {
 
                             <div className="btn-postt">
                                 <button type="submit" onClick={voltar} id="btn-cancelar">cancelar</button>
-                                <button type="submit" id="btn-cadastrar">Cadastrar</button>
+                                <button type="submit" onClick={voltar} id="btn-cadastrar">Cadastrar</button>
                             </div>
                         </form>
 

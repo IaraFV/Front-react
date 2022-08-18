@@ -135,15 +135,15 @@ function Inspecionar() {
                     <div id="card-header">
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
-                    <div id="h1-insp">
-                        <h1>{posts.nome_pessoa}</h1>
+                    <div>
+                        <div  id="h1-insp-pagina-pessoa-insp">{posts.nome_pessoa}</div>
                     </div>
                     <div id="geralestatistica">
                         <div id="estatisticaum">
                             <div className="doneicon"><CheckIcon /></div>
                             <div id="textoestatistica">
-                                <p style={{ color: "rgba(186, 186, 186, 0.87)", fontSize: "1.2rem" }}>{numero}</p>
-                                <p style={{ marginTop: '-20%', color: '#fff', width: '5rem' }}>Tasks feitas</p>
+                                <p id="total-taskfeitas-pagepessoas">{numero}</p>
+                                <p id="tasks-feitas-pagepessoa">Total Tasks</p>
                             </div>
                         </div>
                         <div id="estatisticadois" >

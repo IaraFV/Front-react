@@ -90,3 +90,22 @@ textarea {
 .error-message {
     color: rgb(240, 47, 47);
 }
+
+#menuEquipe-pageequipe{
+    background: #2F3644;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    height: 36px;
+    border: none;
+}
+#menuEquipe-pageequipe::-webkit-scrollbar {
+    background: #171821;
+    width: 7px;
+}
+
+#menuEquipe-pageequipe::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+}

@@ -103,7 +103,7 @@ function PostE() {
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChange}>
                                             {filtrandoPesssoa.map((pessoas) =>
-                                                <MenuItem value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
+                                                <MenuItem id="menuEquipe-pageequipe" value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
                                             )}
                                         </Select>
                                         <p className="error-message">{errors.nivel?.message} </p>
@@ -111,7 +111,7 @@ function PostE() {
                                 </Box>
                             </div>
                             <div className="btn-post-equipe">
-                                <button type="submit">Cadastrar</button>
+                                <button type="submit" >Cadastrar</button>
                             </div>
                         </form>
 

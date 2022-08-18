@@ -1,6 +1,6 @@
 import './InspecionarEqui.css'
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import { AiOutlinePlus } from "react-icons/ai";
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { BsArrowLeft } from "react-icons/bs";
 import { Progress } from 'rsuite';
 import "rsuite/dist/rsuite.css";
+
 
 function InspecionarEquipe() {
 
@@ -17,7 +18,7 @@ function InspecionarEquipe() {
     const { id_equipe } = useParams()
     const [percent, setPercent] = React.useState(50);
     const status = percent === 100 ? 'success' : null;
-
+    let navigate = useNavigate()
 
     /*------------------------------------------------------------------------------GET EQUIPE--------------------------------------------------------------------*/
     useEffect(() => {
@@ -67,6 +68,11 @@ function InspecionarEquipe() {
     function deleteEquipe(id_equipe) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
+
+        
+        setTimeout(() => 
+            navigate('/Equipes'), 1000)
+        
     }
 
     /*-------------------------------------------------------------FUNCAO DE 'SLICE' PARA PEGAR A PRIMEIRA LETRA DO NOME DA EQUIPE------------------------------------------------------------*/
@@ -102,6 +108,9 @@ function InspecionarEquipe() {
     function alentsuccess() {
         alert("Excluido com sucesso")
     }
+
+    
+
 
     return (
         <div id='just-cards-geral-inspequipe'>
@@ -156,7 +165,7 @@ function InspecionarEquipe() {
 
                             </div>
                             <div>
-                                <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe); alentsuccess() }} id="btn-excluir">Excluir</button>
+                                <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe)}}   id="btn-excluir">Excluir</button>
                             </div>
 
                         </div>
