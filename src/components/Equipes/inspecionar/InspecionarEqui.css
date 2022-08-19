@@ -61,7 +61,10 @@
     margin-top: 15%;
     margin-left: -2%;
 }
-
+.avatares_Equipert{
+    display: flex;
+    
+}
 .avatares_Equipe {
     display: flex;
     width: 18%;
@@ -131,4 +134,26 @@
 
     width: 100%;
     margin-top: 2%;
+}
+#div-card-page-projetosd{
+    width: 24rem;
+    margin-top: 10%;
+    padding: 1%;
+    
+}
+#div-card-projetod{
+    background: #21222D;
+    height: 10rem;
+}
+.teste{
+    overflow: auto;
+    height: 20%;
+}
+.caixa-geral-de-projetos{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow: auto;
+    justify-content: center;
+    overflow: auto;
 }
