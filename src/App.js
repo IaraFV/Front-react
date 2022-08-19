@@ -22,7 +22,7 @@ import EditarEquipe from './components/Equipes/EditE/editeEquipe'
 import {BsColumnsGap} from "react-icons/bs";
 import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
-//import { Mensageok} from './components/Equipes/inspecionar/Mensageok'
+import Idetiprojeto from './components/Projetos/editeprojeto/idetiprojeto';
 function App() {
 
   return (
@@ -60,7 +60,7 @@ function App() {
       <Route path='/InspProjeto/:id_projeto' element={<InspProjeto/>}></Route>
       <Route path='/InspecionarEqui/:id_equipe' element={<InspecionarEqui/>}></Route>
       <Route path='/EditarEquipe/:id_equipe' element={<EditarEquipe/>}></Route>
-      
+      <Route path='/Idetiprojeto/:id_projeto' element={<Idetiprojeto/>}></Route>
     </Routes>
     </BrowserRouter>
 </div>
