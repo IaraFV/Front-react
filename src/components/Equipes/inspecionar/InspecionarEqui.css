@@ -61,7 +61,10 @@
     margin-top: 15%;
     margin-left: -2%;
 }
-
+.avatares_Equipert{
+    display: flex;
+    
+}
 .avatares_Equipe {
     display: flex;
     width: 18%;

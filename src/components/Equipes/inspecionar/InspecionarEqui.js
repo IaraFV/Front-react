@@ -139,13 +139,13 @@ function InspecionarEquipe() {
                             <div>Membros</div>
                             <div>{totalmember}</div>
                         </div>
-                        <div className='avatares_Equipe'>
+                        <div className='avatares_Equipert'>
                             {
                                 recebe.map((nomepessoa) => {
                                     return (
                                         <div>
                                             <Avatar aria-label="recipe">{nomepessoa}</Avatar>
-                                            <div className="line-insp-doiss"></div>
+                                            
                                         </div>
                                     )
                                 })
