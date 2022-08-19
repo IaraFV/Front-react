@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { BsPeople } from "react-icons/bs";
 import { GoFile } from "react-icons/go";
 import { GoGraph } from "react-icons/go";
-import {CalendarComponent} from "./Calendario/calendar";
+import { CalendarComponent } from "./Calendario/calendar";
+import { FaCircle } from "react-icons/fa";
 
 function Home() {
 
@@ -58,12 +59,12 @@ function Home() {
 
     const contapessoa = posts;
     const totalpessoas = contapessoa.length;
-  
-   const contaprojetos = post;
-   const totalprojetos = contaprojetos.length;
 
-   const contatask =tasks;
-   const totaltask = contatask.length;
+    const contaprojetos = post;
+    const totalprojetos = contaprojetos.length;
+
+    const contatask = tasks;
+    const totaltask = contatask.length;
     /**função para implementar o mais breve pocivel (lucas se escreve possível e não pocivel)
      * NÃO APAGAR!!!!!!!!!!!!!!!!!!
      * OBS: o codigo abaixo é apenas um esboso.
@@ -79,13 +80,31 @@ function Home() {
     return (
         <>
 
-            
+            <div class="container" style={{ border: '1px solid blue' }} id="Card-container-pagina-home">
+                <div class="row align-items-start" >
+                    <div class="col-6 col-md-4" id="card-projeto-pagina-home">
+                        {
+                            recebeprojetos.map((status, key) => {
+                                return (
+                                    <>
+                                        <div><FaCircle/></div>
+                                        <div id="nome-projeto-pagina-homep"> {status.nome_projeto}</div>
+                                        <div id="data-projeto-pagehome">{status.data_inicio}</div>
+                                    </>
 
-            <div id="geral-graficoum">
-                <Graf id="graficoum-page-home" />
+                                );
+                            })
+                        }
+                    </div>
+
+
+
+                </div>
             </div>
 
-            
+
+
+
 
 
 
@@ -148,5 +167,11 @@ export default Home;
 
                 </div>
 
+            </div>
+
+
+
+<div id="geral-graficoum">
+                <Graf id="graficoum-page-home" />
             </div>
 */

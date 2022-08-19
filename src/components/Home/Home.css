@@ -33,24 +33,19 @@ projeto e contador task*/
     border-radius: 0.5rem;
 }
 
-#geral-graficoum h2 {
-    color: #ffff;
-}
 
 
-#graficoum-page-home {
-    margin-top: 5%;
-    border: 1px solid red;
 
-}
+
 
 #nome-projeto-pagina-homep {
     color: #ffff;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.1rem;
     line-height: 30px;
     color: #FFFFFF;
-    margin-left: 3%;
+    margin-top: 5%;
+    
 
 }
 
@@ -58,24 +53,29 @@ projeto e contador task*/
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     line-height: 14px;
     margin-top: 3%;
-    margin-left: 3%;
     color: #7A7585;
 }
 
 #card-projeto-pagina-home {
     background: #171821;
     border-radius: 8px;
-    width: 100%;
-    height: 5rem;
-    margin-bottom: 1%;
-    border-left: 4px solid #00DB99;
+    height: 6rem;
+    
+}
+
+#Card-container-pagina-home {
+    position: absolute;
+    width: 35rem;
+    height: 16rem;
+    margin-left: 2%;
+    background: #21222D;
+    border-radius: 10px;
 }
 
 #just-card-projetos-page-home {
-
     width: 88%;
     height: 25rem;
     margin-left: 6%;
