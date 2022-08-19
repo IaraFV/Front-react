@@ -84,7 +84,6 @@ function InspecionarEquipe() {
             children: `${name.split(' ')[0][0]}`,
         };
     }
-
     function voltar() {
         window.history.back();
     }

@@ -9,15 +9,52 @@ import { Link } from 'react-router-dom';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup'
+
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 function InspProjeto() {
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    
+
+
     const [projetos, setprojetos] = useState([])
     const { id_projeto } = useParams()
+    const { id_task } = useParams()
+    
     const [initialprojetos, setInitialprojetos] = useState([])
-
+    const [ settask] = useState([])
     function log(message) {
         console.log('> ' + message)
     }
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver()
+    })
 
     const Afazer = document.querySelectorAll('#A fazer');
     const desenvovimento = document.querySelectorAll('#Em desenvovimento');
@@ -39,6 +76,8 @@ function InspProjeto() {
         }, []
         )
     */
+
+        console.log(settasks)
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
             .then((response) => {
@@ -50,7 +89,6 @@ function InspProjeto() {
             })
     }, []
     )
-    console.log(projetos);
     /*
         function deleteprojetos(id_task) {
             axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasts/${id_task}`)
@@ -58,78 +96,25 @@ function InspProjeto() {
         }
     */
 
+    function pegarstatus() {
+        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/${id_task}`)
+        
+            .then(() => {
+                console.log('foi task');
+            })
+            .catch(() => {
+                console.log('deu errado pegar task')
+            })
+    }
+
+
+    function mudarstatus(id_task) {
+        axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/${id_task}`)
+    }
+
     function deleteprojetos(id_pessoa) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
         setprojetos(projetos.filter(projetos => projetos.id_pessoa !== id_pessoa))
-    }
-
-    /** our cards */
-    Afazer.forEach(Afazer => {
-        Afazer.addEventListener('dragstart', dragstart)
-        Afazer.addEventListener('drag', drag)
-        Afazer.addEventListener('dragend', dragend)
-    })
-
-    desenvovimento.forEach(desenvovimento => {
-        desenvovimento.addEventListener('dragstart', dragstart)
-        desenvovimento.addEventListener('drag', drag)
-        desenvovimento.addEventListener('dragend', dragend)
-    })
-
-    Concluido.forEach(concluido => {
-        concluido.addEventListener('dragstart', dragstart)
-        concluido.addEventListener('drag', drag)
-        concluido.addEventListener('dragend', dragend)
-    })
-
-    function dragstart() {
-        // log('CARD: Start dragging ')
-        dropzones.forEach(dropzone => dropzone.classList.add('highlight'))
-        // this = card
-        this.classList.add('is-dragging')
-    }
-
-    function drag() {
-        log('CARD: Is dragging ')
-    }
-
-    function dragend() {
-        log('CARD: Stop drag! ')
-        dropzones.forEach(dropzone => dropzone.classList.remove('highlight'))
-        // this = card
-        this.classList.remove('is-dragging')
-    }
-
-    /** place where we will drop cards */
-    dropzones.forEach(dropzone => {
-        dropzone.addEventListener('dragenter', dragenter)
-        dropzone.addEventListener('dragover', dragover)
-        dropzone.addEventListener('dragleave', dragleave)
-        dropzone.addEventListener('drop', drop)
-    })
-
-    function dragenter() {
-        log('DROPZONE: Enter in zone ')
-    }
-
-    function dragover() {
-        // this = dropzone
-        this.classList.add('over')
-        // get dragging card
-        const cardBeingDragged = document.querySelector('.is-dragging')
-        // this = dropzone
-        this.appendChild(cardBeingDragged)
-    }
-
-    function dragleave() {
-         log('DROPZONE: Leave ')
-        // this = dropzone
-        this.classList.remove('over')
-    }
-
-    function drop() {
-         log('DROPZONE: dropped ')
-        this.classList.remove('over')
     }
 
     /**função de filtro */
@@ -148,7 +133,17 @@ function InspProjeto() {
     const l = k?.filter((get) => get.status === "A fazer");
     const f = k?.filter((get) => get.status === "Em desenvolvimento");
     const g = k?.filter((get) => get.status === "Concluído");
-  
+    console.log(f);
+    /**variavesi do seletor */
+    const [valuPessoa, setvalue] = React.useState('');
+    console.log(valuPessoa);
+    /**funçoes de evento das variaves do seletor */
+    const handleChange = (event) => {
+        setvalue(event.target.value);
+    };
+    function putego() {
+
+    }
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
@@ -211,8 +206,21 @@ function InspProjeto() {
                                 return (
                                     <div className="dropzone" >
                                         <Card style={{ width: '18rem' }} id="Em desenvolvimento" draggable="true">
-                                            <Card.Body className="dropzone">
-                                                <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Body>
+                                                <Card.Title style={{ color: 'black' }} value={projetos.id_task} key={key}>
+                                                    {projetos.descricao_task}
+                                                    <Button onClick={() => {pegarstatus(tasks.id_task)}} >Open modal</Button>
+                                                    <Modal
+                                                        open={open}
+                                                        onClose={handleClose}
+                                                        aria-labelledby="modal-modal-title"
+                                                        aria-describedby="modal-modal-description"
+                                                    >
+                                                        <Box sx={style}>
+                                                            <Button onClick={putego}>concluido</Button>
+                                                        </Box>
+                                                    </Modal>
+                                                </Card.Title>
                                                 <Card.Text>{projetos.status}
                                                 </Card.Text>
                                             </Card.Body>
