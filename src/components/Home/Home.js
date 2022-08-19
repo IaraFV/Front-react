@@ -79,10 +79,23 @@ function Home() {
     return (
         <>
 
-            <div id="graficoecards">
-                <div id="geral">
+            
 
-                    <div id="cards" style={{ background: '#21222D' }}>
+            <div id="geral-graficoum">
+                <Graf id="graficoum-page-home" />
+            </div>
+
+            
+
+
+
+        </>
+
+    );
+}
+export default Home;
+
+/*<div id="cards" style={{ background: '#21222D' }}>
                         <div id="cardum" style={{ background: '#171821' }}>
                             <Link to="/Pessoas" className="sabermais">
                                 <p >Saber mais</p>
@@ -109,21 +122,12 @@ function Home() {
                             <p className="amarelo" id="totalp3" >Total de Task's adicionadas ate hoje:</p>
                             <h3>{totaltask}</h3>
                         </div>
-                    </div>
+                    </div> 
 
 
-                </div>
 
-                <div id="calendario">
-                    <CalendarComponent/>
-                </div>
-            </div>
 
-            <div id="geral-graficoum">
-                <Graf id="graficoum-page-home" />
-            </div>
-
-            <div id="projetos-concluidos-page-home">
+<div id="projetos-concluidos-page-home">
                 <div id="title-card-projeto-paginahome">Projetos Concluidos</div>
 
                 <div id="just-card-projetos-page-home">
@@ -145,11 +149,4 @@ function Home() {
                 </div>
 
             </div>
-
-
-
-        </>
-
-    );
-}
-export default Home;
+*/
