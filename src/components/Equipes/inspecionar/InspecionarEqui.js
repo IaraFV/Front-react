@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 import { BsArrowLeft } from "react-icons/bs";
 import { Progress } from 'rsuite';
 import "rsuite/dist/rsuite.css";
-
-
+import Card from 'react-bootstrap/Card';
+import { AiOutlineArrowsAlt } from "react-icons/ai";
+import { BsFlagFill } from "react-icons/bs";
 function InspecionarEquipe() {
 
     const [equipe, setequipe] = useState([])
@@ -33,11 +34,11 @@ function InspecionarEquipe() {
     }, []
     )
 
-
+    //https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/32/projetos
     /*-------------------------------------------------------------GET NO PROJETO ESPECÍFICO DA EQUIPE------------------------------------------------------------*/
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes' + id_equipe + '/projetos')
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/' + id_equipe + '/projetos')
             .then((response) => {
                 setprojeto(response.data)
                 console.log('deu certo Men')
@@ -69,10 +70,10 @@ function InspecionarEquipe() {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
 
-        
-        setTimeout(() => 
+
+        setTimeout(() =>
             navigate('/Equipes'), 1000)
-        
+
     }
 
     /*-------------------------------------------------------------FUNCAO DE 'SLICE' PARA PEGAR A PRIMEIRA LETRA DO NOME DA EQUIPE------------------------------------------------------------*/
@@ -92,7 +93,7 @@ function InspecionarEquipe() {
     const nome = equipe.nome_equipe;
     const getId_equipe = equipe.id_equipe;
     var INTid_equipe = parseInt(getId_equipe);
-    
+
     /*----------------------------------------------COM A MANIPULAÇÃO DO ARRAY DE EQUIPE AGORA É FILTRADO OS NOMES DOS MEMBROS------------------------------------------------------------------*/
     const ArrGeral_pessoas = pessoa;
 
@@ -108,7 +109,7 @@ function InspecionarEquipe() {
         alert("Excluido com sucesso")
     }
 
-    
+    console.log(projeto);
 
 
     return (
@@ -139,7 +140,6 @@ function InspecionarEquipe() {
                             <div>{totalmember}</div>
                         </div>
                         <div className='avatares_Equipe'>
-
                             {
                                 recebe.map((nomepessoa) => {
                                     return (
@@ -151,9 +151,6 @@ function InspecionarEquipe() {
                                 })
                             }
                         </div>
-
-
-
                         <div id='btn-opition'>
                             <div>
                                 <Link className="link-inspequi" to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}>
@@ -164,17 +161,59 @@ function InspecionarEquipe() {
 
                             </div>
                             <div>
-                                <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe)}}   id="btn-excluir">Excluir</button>
+                                <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe) }} id="btn-excluir">Excluir</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
                 <div id='insp-card-dois-pagina-inspequipe'>
+                    <div>
+                        <h2>projeto</h2>
+                    </div>
+                    <div>
+                        <div className="caixa-geral-de-projetos" style={{ height: "500px" }}>
+                            {
+                                projeto.map((projeto, key) => {
+                                    return (
+                                        <div >
+                                            <div id="div-card-page-projetosd">
+                                                <Card id="div-card-projetod">
+                                                    <Card.Body>
+                                                        <Card.Title id="nome-projeto-plan" key={key}>
+                                                            {projeto.nome_projeto}
+
+                                                            <div>
+                                                                <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }}>
+                                                                    <AiOutlineArrowsAlt id="more-button-planejamento" />
+                                                                </Link>
+                                                            </div>
+                                                        </Card.Title>
+                                                        <Card.Text id="status">
+                                                            {projeto.status}
+                                                        </Card.Text>
+                                                        <Card.Text id="bandeira-data">
+                                                            <div><BsFlagFill /></div>
+                                                            <div>{projeto.data_inicio}</div>
+                                                        </Card.Text>
+                                                        <Card.Text>
+                                                            <div id="titulo-descricao-projeto">Descrição</div>
+                                                            <div id="corpo-descricao-projeto">
+                                                                {projeto.descricao_projeto}
+                                                            </div>
+                                                        </Card.Text>
+                                                    </Card.Body>
+                                                </Card>
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
+                    </div>
                     <div style={{ width: 120, marginTop: 10 }}>
                         <Progress.Circle percent={percent} strokeColor={'#00DB99'} status={status} />
                     </div>
+
                 </div>
             </div>
 
