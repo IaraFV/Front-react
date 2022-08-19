@@ -45,8 +45,11 @@ projeto e contador task*/
     line-height: 30px;
     color: #FFFFFF;
     margin-top: 5%;
-    
+}
 
+#icon-status {
+    color: #26A69A;
+    font-size: 0.7rem;
 }
 
 #data-projeto-pagehome {
@@ -62,13 +65,27 @@ projeto e contador task*/
 #card-projeto-pagina-home {
     background: #171821;
     border-radius: 8px;
-    height: 6rem;
-    
+    height: 5.5rem;
+    width: 13rem;
+    margin-left: 1%;
+
+}
+
+#header-card-projeto-pagina-home {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin-left: 1%;
+   padding: 1%;
+    letter-spacing: 0.01em;
+
+    color: #FFFFFF;
 }
 
 #Card-container-pagina-home {
     position: absolute;
-    width: 35rem;
+    width: 40rem;
     height: 16rem;
     margin-left: 2%;
     background: #21222D;
