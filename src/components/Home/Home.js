@@ -79,48 +79,38 @@ function Home() {
      */
     return (
         <>
-
-
-
-            <div class="row justify-content-between" style={{ border: '1px solid red' }} id="container-geral">
-                <div class="col-2" style={{ border: '1px solid red' }} id="container-geralum">
-
-                    <div class="row align-items-start" >
-                        <div id="header-card-projeto-pagina-home">Projetos Concluidos</div>
-                        <div class="col-4 " id="card-projeto-pagina-home">
-                            {
-                                recebeprojetos.map((status, key) => {
-                                    return (
-                                        <>
-                                            <div id="icon-status"><FaCircle /></div>
-                                            <div id="nome-projeto-pagina-homep"> {status.nome_projeto}</div>
-                                            <div id="data-projeto-pagehome">{status.data_inicio}</div>
-                                        </>
-
-                                    );
-                                })
-                            }
-                        </div>
+            <div class="row justify-content-between" id="caixa-geral-home" style={{ border: '1px solid blue' }}>
+                <div class="col-4">
+                    <div class="col align-self-start">
+                        One of three columns
+                    </div>
+            </div>
+            <div class="col-9" id="container-geral-dois-home" style={{ border: '1px solid blue' }}>
+                <div class="container" style={{ border: '1px solid blue' }}>
+                    <div class="row" id="col1-quant">
+                        <div class="col-6 col-sm-4" id="card-quant-pessoa" style={{ border: '1px solid blue' }}>.col-sm-5 .col-md-6</div>
+                        <div class="col-6 col-sm-4" id="card-quant-projetos" style={{ border: '1px solid blue' }}>.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
                     </div>
 
-
-                </div>
-
-                <div class="col-4"  id="container-geral-dois-home">
-                    <div class="container" style={{ border: '1px solid blue' }}>
-                        <div class="row" id="col1-quant">
-                            <div class="col-sm-5 col-md-6" id="card-quant-pessoa" style={{ border: '1px solid blue' }}>.col-sm-5 .col-md-6</div>
-                            <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0" id="card-quant-projetos" style={{ border: '1px solid blue' }}>.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
-                        </div>
-
-                        <div class="row" id="col2-quant">
-                            <div class="col-sm-6 col-md-5 col-lg-6" id="card-quant-equipes">.col-sm-6 .col-md-5 .col-lg-6</div>
-                            <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0" id="card-quant-task">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
-                        </div>
+                    <div class="row" id="col2-quant">
+                        <div class="col-6 col-sm-4" id="card-quant-equipes">.col-sm-6 .col-md-5 .col-lg-6</div>
+                        <div class="col-6 col-sm-4" id="card-quant-task">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
                     </div>
                 </div>
+
+
+                <div class="row">
+                    <div class="col-4">.col-sm-6 .col-md-5 .col-lg-6</div>
+
+                </div>
+            </div>
+
+
 
             </div>
+
+
+
 
 
 
@@ -190,4 +180,59 @@ export default Home;
 <div id="geral-graficoum">
                 <Graf id="graficoum-page-home" />
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-2" style={{ border: '1px solid red' }} id="container-geralum">
+
+                    <div class="row align-items-start" >
+                        <div id="header-card-projeto-pagina-home">Projetos Concluidos</div>
+                        <div class="col-4 " id="card-projeto-pagina-home">
+                            {
+                                recebeprojetos.map((status, key) => {
+                                    return (
+                                        <>
+                                            <div id="icon-status"><FaCircle /></div>
+                                            <div id="nome-projeto-pagina-homep"> {status.nome_projeto}</div>
+                                            <div id="data-projeto-pagehome">{status.data_inicio}</div>
+                                        </>
+
+                                    );
+                                })
+                            }
+                        </div>
+                    </div>
+
+
+                </div>
+
 */
