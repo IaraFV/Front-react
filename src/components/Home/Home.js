@@ -79,31 +79,52 @@ function Home() {
      */
     return (
         <>
-            <div class="row justify-content-between" id="caixa-geral-home" style={{ border: '1px solid blue' }}>
-                <div class="col-4">
-                    <div class="col align-self-start">
-                        One of three columns
-                    </div>
-            </div>
-            <div class="col-9" id="container-geral-dois-home" style={{ border: '1px solid blue' }}>
-                <div class="container" style={{ border: '1px solid blue' }}>
-                    <div class="row" id="col1-quant">
-                        <div class="col-6 col-sm-4" id="card-quant-pessoa" style={{ border: '1px solid blue' }}>.col-sm-5 .col-md-6</div>
-                        <div class="col-6 col-sm-4" id="card-quant-projetos" style={{ border: '1px solid blue' }}>.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
-                    </div>
+            <div class="row justify-content-between" id="caixa-geral-home">
+                <div class="col-4" id="caixa-geral-projetos-home">
+                    <div class="row" >
+                        <div class="card" id="render-projetos-conc-home">
+                            <div class="card-body">
+                                <div id="header-card-projeto-pagina-home" class="card-title">Projetos Concluidos</div>
+                                <p class="card-text"></p>
+                            </div>
+                            <ul class="list-group list-group-flush" >
+                                <li class="list-group-item" id="ul-card">
+                                        {
+                                            recebeprojetos.map((status, key) => {
+                                                return (
+                                                    <>
+                                                        {status.nome_projeto}
+                                                        
+                                                    </>
 
-                    <div class="row" id="col2-quant">
-                        <div class="col-6 col-sm-4" id="card-quant-equipes">.col-sm-6 .col-md-5 .col-lg-6</div>
-                        <div class="col-6 col-sm-4" id="card-quant-task">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+                                                );
+                                            })
+                                        }
+                                    <button id="btn-ver-mais-projeto">Ver mais</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <div class="col-9" id="container-geral-dois-home" style={{ border: '1px solid blue' }}>
+                    <div class="container" style={{ border: '1px solid blue' }}>
+                        <div class="row" id="col1-quant">
+                            <div class="col-6 col-sm-4" id="card-quant-pessoa" style={{ border: '1px solid blue' }}>.col-sm-5 .col-md-6</div>
+                            <div class="col-6 col-sm-4" id="card-quant-projetos" style={{ border: '1px solid blue' }}>.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+                        </div>
+
+                        <div class="row" id="col2-quant">
+                            <div class="col-6 col-sm-4" id="card-quant-equipes">.col-sm-6 .col-md-5 .col-lg-6</div>
+                            <div class="col-6 col-sm-4" id="card-quant-task">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+                        </div>
+                    </div>
 
 
-                <div class="row">
-                    <div class="col-4">.col-sm-6 .col-md-5 .col-lg-6</div>
+                    <div class="row">
+                        <div class="col-4">.col-sm-6 .col-md-5 .col-lg-6</div>
 
+                    </div>
                 </div>
-            </div>
 
 
 
