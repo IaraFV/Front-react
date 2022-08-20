@@ -80,28 +80,40 @@ function Home() {
     return (
         <>
 
-            <div class="container" id="Card-container-pagina-home">
-                <div class="row align-items-start" >
-                    <div id="header-card-projeto-pagina-home">Projetos Concluidos</div>
-                        <div class="col-6 col-md-4" id="card-projeto-pagina-home">
-                            {
-                                recebeprojetos.map((status, key) => {
-                                    return (
-                                        <>
-                                            <div id="icon-status"><FaCircle /></div>
-                                            <div id="nome-projeto-pagina-homep"> {status.nome_projeto}</div>
-                                            <div id="data-projeto-pagehome">{status.data_inicio}</div>
-                                        </>
 
-                                    );
-                                })
-                            }
+
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <div class="container" id="Card-container-pagina-home">
+                        <div class="row align-items-start" >
+                            <div id="header-card-projeto-pagina-home">Projetos Concluidos</div>
+                            <div class="col-4 " id="card-projeto-pagina-home">
+                                {
+                                    recebeprojetos.map((status, key) => {
+                                        return (
+                                            <>
+                                                <div id="icon-status"><FaCircle /></div>
+                                                <div id="nome-projeto-pagina-homep"> {status.nome_projeto}</div>
+                                                <div id="data-projeto-pagehome">{status.data_inicio}</div>
+                                            </>
+
+                                        );
+                                    })
+                                }
+                            </div>
+
+
+
                         </div>
 
-
-
+                    </div>
+                </div>
+                <div class="col-4">
+                    One of two columns
                 </div>
             </div>
+
+
 
         </>
 
