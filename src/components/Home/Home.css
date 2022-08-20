@@ -70,6 +70,42 @@ projeto e contador task*/
     margin-left: 1%;
 
 }
+#col1-quant{
+    display: flex;
+    justify-content: space-around;
+}
+#col2-quant{
+    display: flex;
+    justify-content: space-around;
+}
+#card-quant-pessoa {
+    background: #21222D;
+    border-radius: 10px;
+    width: 248px;
+    height: 9rem;
+    margin-bottom: 1.5%;
+}
+
+#card-quant-projetos {
+    background: #21222D;
+    border-radius: 10px;
+    width: 248px;
+    height: 9rem;
+}
+#card-quant-equipes {
+    background: #21222D;
+    border-radius: 10px;
+    width: 248px;
+    height: 9rem;
+}
+
+#card-quant-task {
+    background: #21222D;
+    border-radius: 10px;
+    width: 248px;
+    height: 9rem;
+}
+
 
 #header-card-projeto-pagina-home {
     font-family: 'Inter';
@@ -77,18 +113,27 @@ projeto e contador task*/
     font-weight: 500;
     font-size: 1.4rem;
     margin-left: 1%;
-   padding: 1%;
+    padding: 1%;
     letter-spacing: 0.01em;
 
     color: #FFFFFF;
 }
-#container-geral{
+
+#container-geral {
     width: 100%;
+    margin-left: 0.1px;
+    height: 19rem;
 }
-#container-geralum{
+
+#container-geral-dois-home {
+    width: 50%;
+}
+
+#container-geralum {
     width: 45%;
-background: #21222D;
+    background: #21222D;
     border-radius: 10px;
+
 }
 
 
