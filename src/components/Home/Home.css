@@ -24,12 +24,11 @@ projeto e contador task*/
 }
 
 #geral-graficoum {
-    width: 68%;
-    height: 27rem;
+    width: 47rem;
+    height: 19rem;
     padding: 1%;
     margin-top: 1%;
     background: #21222D;
-    margin-left: 1%;
     border-radius: 0.5rem;
 }
 
@@ -130,7 +129,7 @@ projeto e contador task*/
 
 #container-geral-dois-home {
     width: 50%;
-    height: 86vh;
+    height: 88vh;
 }
 
 #render-projetos-conc-home {
@@ -149,7 +148,7 @@ projeto e contador task*/
     font-weight: 100;
     font-size: 20px;
     line-height: 150%;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.9);
     border-radius: 0;
     border-bottom: 2px solid rgba(164, 164, 164, 0.12);
     display: flex;

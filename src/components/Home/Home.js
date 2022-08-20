@@ -1,13 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
-import { Graf } from "../Graficos/graf";
+import  Grafico2  from "../Graficos/Grafico2" 
 import { Link } from 'react-router-dom';
-import { BsPeople } from "react-icons/bs";
-import { GoFile } from "react-icons/go";
-import { GoGraph } from "react-icons/go";
-import { CalendarComponent } from "./Calendario/calendar";
-import { FaCircle } from "react-icons/fa";
 
 function Home() {
 
@@ -106,11 +101,11 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div class="col-9" id="container-geral-dois-home" style={{ border: '1px solid blue' }}>
-                    <div class="container" style={{ border: '1px solid blue' }}>
+                <div class="col-9" id="container-geral-dois-home">
+                    <div class="container">
                         <div class="row" id="col1-quant">
-                            <div class="col-6 col-sm-4" id="card-quant-pessoa" style={{ border: '1px solid blue' }}>.col-sm-5 .col-md-6</div>
-                            <div class="col-6 col-sm-4" id="card-quant-projetos" style={{ border: '1px solid blue' }}>.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+                            <div class="col-6 col-sm-4" id="card-quant-pessoa">.col-sm-5 .col-md-6</div>
+                            <div class="col-6 col-sm-4" id="card-quant-projetos">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
                         </div>
 
                         <div class="row" id="col2-quant">
@@ -120,8 +115,10 @@ function Home() {
                     </div>
 
 
-                    <div class="row">
-                        <div class="col-4">.col-sm-6 .col-md-5 .col-lg-6</div>
+                    <div class="container" id="geral-graficoum">
+                        <div class="col-9">
+                            <Grafico2/>
+                        </div>
 
                     </div>
                 </div>
