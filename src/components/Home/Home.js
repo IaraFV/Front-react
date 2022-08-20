@@ -74,12 +74,12 @@ function Home() {
      */
     return (
         <>
-            <div class="row justify-content-between" id="caixa-geral-home">
-                <div class="col-4" id="caixa-geral-projetos-home">
+            <div class="row justify-content-between" id="caixa-geral-home" style={{ border: '1px solid'}}>
+                <div class="col-4" id="caixa-geral-projetos-home"  style={{ border: '1px solid'}}>
                     <div class="row" >
                         <div class="card" id="render-projetos-conc-home">
                             <div class="card-body">
-                                <div id="header-card-projeto-pagina-home" class="card-title">Projetos Concluidos</div>
+                                <div id="header-card-projeto-pagina-home" class="card-title">Atividades recentes</div>
                                 <p class="card-text"></p>
                             </div>
                             <ul class="list-group list-group-flush" >

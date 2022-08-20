@@ -173,11 +173,12 @@ projeto e contador task*/
     border-radius: 10px;
     width: 43%;
     margin-left: 2%;
+    height: 85vh;
 }
 
 #caixa-geral-home {
     width: 100%;
-    height: 100%;
+    height: 86vh;
 }
 
 #container-geralum {
