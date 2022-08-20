@@ -82,15 +82,15 @@ projeto e contador task*/
 
     color: #FFFFFF;
 }
-
-#Card-container-pagina-home {
-   
-    width: 40rem;
-    height: 16rem;
-    margin-left: 2%;
-    background: #21222D;
+#container-geral{
+    width: 100%;
+}
+#container-geralum{
+    width: 45%;
+background: #21222D;
     border-radius: 10px;
 }
+
 
 #just-card-projetos-page-home {
     width: 88%;

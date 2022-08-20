@@ -82,9 +82,9 @@ function Home() {
 
 
 
-            <div class="row justify-content-between">
-                <div class="col-4">
-                    <div class="container" id="Card-container-pagina-home">
+            <div class="row justify-content-between" style={{border:'1px solid red'}} id="container-geral">
+                <div class="col-2" style={{border:'1px solid red'}} id="container-geralum">
+                    
                         <div class="row align-items-start" >
                             <div id="header-card-projeto-pagina-home">Projetos Concluidos</div>
                             <div class="col-4 " id="card-projeto-pagina-home">
@@ -101,14 +101,11 @@ function Home() {
                                     })
                                 }
                             </div>
-
-
-
                         </div>
 
-                    </div>
+                    
                 </div>
-                <div class="col-4">
+                <div class="col-4" style={{border:'1px solid red'}}>
                     One of two columns
                 </div>
             </div>
