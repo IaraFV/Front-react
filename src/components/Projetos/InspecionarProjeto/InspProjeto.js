@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './InspProjeto.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import {useParams } from 'react-router-dom'
 import axios from "axios";
-import { string } from "yup";
 import { BsArrowLeft } from "react-icons/bs";
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import CardHeader from '@mui/material/CardHeader';
-import Avatar from '@mui/material/Avatar';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -31,7 +27,6 @@ const style = {
 function InspProjeto() {
     const [projetos, setprojetos] = useState([])
     const { id_projeto } = useParams()
-    const [initialprojetos, setInitialprojetos] = useState([])
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -48,19 +43,7 @@ function InspProjeto() {
 
     const [tasks, settasks] = useState([])
     const [initialtasks, setInitialtasks] = useState([])
-    /*
-        useEffect(() => {
-            axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
-                .then((response) => {
-                    settasks(response.data)
-                    setInitialtasks(response.data)
-                })
-                .catch(() => {
-                    console.log("deu errado")
-                })
-        }, []
-        )
-    */
+   
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
             .then((response) => {
@@ -73,16 +56,9 @@ function InspProjeto() {
     }, []
     )
     
-    /*
-        function deleteprojetos(id_task) {
-            axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasts/${id_task}`)
-            setprojetos(projetos.filter(projetos => projetos.id_task !== id_task))
-        }
-    */
-
-    function deleteprojetos(id_pessoa) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setprojetos(projetos.filter(projetos => projetos.id_pessoa !== id_pessoa))
+    function deleteprojetos(id_projeto) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
+        setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 
     /** our cards */
@@ -155,15 +131,18 @@ function InspProjeto() {
     }
 
     /**função de filtro */
+    const filtro = projetos.tasks
+    const setfiltro = projetos.tasks
+    //console.log(setfiltro);
     const handlechange = ({ target }) => {
         if (!target.value) {
-            settasks(initialtasks)
+            filtro(setfiltro)
             return;
         }
-        const filter = tasks.filter(({ descricao_task }) =>
+        const filter = setfiltro?.filter(({ descricao_task }) =>
             descricao_task.toUpperCase().includes(target.value.toUpperCase()))
 
-        settasks(filter);
+            filtro(filter);
     }
 
     const k = projetos.tasks
