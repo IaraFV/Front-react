@@ -16,7 +16,7 @@ import CardHeader from '@mui/material/CardHeader';
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
-import imagemerro from './img/Group 1000004632.png';
+import imagemerro from './img/falta_de_dados (cópia).png';
 
 const validacaoGet = yup.object().shape({
     favoritar: yup.number(),
@@ -78,7 +78,7 @@ function Inspecionar() {
     function favoritarFuncao() {
         favoritar++
         if (favoritar === 1) {
-            axios.patch(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+            axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
                 .then(() => {
                     console.log("foi")
                 })
@@ -93,7 +93,7 @@ function Inspecionar() {
     }
 
     function RenderCards() {
-        if (filtra_task.length === 0) {
+        if (numero === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{marginLeft:'78%'}}  /></h2>
             )

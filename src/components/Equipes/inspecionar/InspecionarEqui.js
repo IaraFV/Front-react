@@ -11,6 +11,7 @@ import "rsuite/dist/rsuite.css";
 import Card from 'react-bootstrap/Card';
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsFlagFill } from "react-icons/bs";
+import imagemerro from './img/falta_de_dados.png';
 function InspecionarEquipe() {
 
     const [equipe, setequipe] = useState([])
@@ -108,9 +109,58 @@ function InspecionarEquipe() {
     function alentsuccess() {
         alert("Excluido com sucesso")
     }
+    
+    function RenderCards() {
+        if (projeto === null) {
+            return (
+                <h2>
+                    <img src={imagemerro} alt=" deu bom" width={'53%'} style={{ marginLeft: '18%' }} />
+                </h2>
+            )
+        } else {
+            return (
+                <div className="caixa-geral-de-projetos" style={{ height: "500px" }}>
+                    {
+                        projeto?.map((projeto, key) => {
+                            return (
+                                <div >
+                                    <div id="div-card-page-projetosd">
+                                        <Card id="div-card-projetod">
+                                            <Card.Body>
+                                                <Card.Title id="nome-projeto-plan" key={key}>
+                                                    {projeto.nome_projeto}
 
-    console.log(projeto);
+                                                    <div>
+                                                        <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }}>
+                                                            <AiOutlineArrowsAlt id="more-button-planejamento" />
+                                                        </Link>
+                                                    </div>
+                                                </Card.Title>
+                                                <Card.Text id="status">
+                                                    {projeto.status}
+                                                </Card.Text>
+                                                <Card.Text id="bandeira-data">
+                                                    <div><BsFlagFill /></div>
+                                                    <div>{projeto.data_inicio}</div>
+                                                </Card.Text>
+                                                <Card.Text>
+                                                    <div id="titulo-descricao-projeto">Descrição</div>
+                                                    <div id="corpo-descricao-projeto">
+                                                        {projeto.descricao_projeto}
+                                                    </div>
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }
+                </div>
+            )
 
+        }
+    }
 
     return (
         <div id='just-cards-geral-inspequipe'>
@@ -145,7 +195,7 @@ function InspecionarEquipe() {
                                     return (
                                         <div>
                                             <Avatar aria-label="recipe">{nomepessoa}</Avatar>
-                                            
+
                                         </div>
                                     )
                                 })
@@ -171,49 +221,12 @@ function InspecionarEquipe() {
                         <h2>projeto</h2>
                     </div>
                     <div>
-                        <div className="caixa-geral-de-projetos" style={{ height: "500px" }}>
-                            {
-                                projeto.map((projeto, key) => {
-                                    return (
-                                        <div >
-                                            <div id="div-card-page-projetosd">
-                                                <Card id="div-card-projetod">
-                                                    <Card.Body>
-                                                        <Card.Title id="nome-projeto-plan" key={key}>
-                                                            {projeto.nome_projeto}
-
-                                                            <div>
-                                                                <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }}>
-                                                                    <AiOutlineArrowsAlt id="more-button-planejamento" />
-                                                                </Link>
-                                                            </div>
-                                                        </Card.Title>
-                                                        <Card.Text id="status">
-                                                            {projeto.status}
-                                                        </Card.Text>
-                                                        <Card.Text id="bandeira-data">
-                                                            <div><BsFlagFill /></div>
-                                                            <div>{projeto.data_inicio}</div>
-                                                        </Card.Text>
-                                                        <Card.Text>
-                                                            <div id="titulo-descricao-projeto">Descrição</div>
-                                                            <div id="corpo-descricao-projeto">
-                                                                {projeto.descricao_projeto}
-                                                            </div>
-                                                        </Card.Text>
-                                                    </Card.Body>
-                                                </Card>
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
+                    <RenderCards/>
                     </div>
                     <div style={{ width: 120, marginTop: 10 }}>
                         <Progress.Circle percent={percent} strokeColor={'#00DB99'} status={status} />
                     </div>
-
+                    
                 </div>
             </div>
 
