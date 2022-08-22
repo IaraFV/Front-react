@@ -56,9 +56,9 @@ function InspProjeto() {
     }, []
     )
     
-    function deleteprojetos(id_pessoa) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
-        setprojetos(projetos.filter(projetos => projetos.id_pessoa !== id_pessoa))
+    function deleteprojetos(id_projeto) {
+        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
+        setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 
     /** our cards */
@@ -131,15 +131,18 @@ function InspProjeto() {
     }
 
     /**função de filtro */
+    const filtro = projetos.tasks
+    const setfiltro = projetos.tasks
+    //console.log(setfiltro);
     const handlechange = ({ target }) => {
         if (!target.value) {
-            settasks(initialtasks)
+            filtro(setfiltro)
             return;
         }
-        const filter = tasks.filter(({ descricao_task }) =>
+        const filter = setfiltro?.filter(({ descricao_task }) =>
             descricao_task.toUpperCase().includes(target.value.toUpperCase()))
 
-        settasks(filter);
+            filtro(filter);
     }
 
     const k = projetos.tasks

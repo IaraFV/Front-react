@@ -25,7 +25,7 @@ function PostT() {
     const addpostT = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/", data)
         .then(() => {
             console.log("foi")
-            navigate("/task");
+            navigate("/Inspecionar");
         })
         .catch(() => {
             console.log("n foi")
