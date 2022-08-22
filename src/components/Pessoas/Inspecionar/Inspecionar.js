@@ -78,7 +78,7 @@ function Inspecionar() {
     function favoritarFuncao() {
         favoritar++
         if (favoritar === 1) {
-            axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+            axios.patch(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
                 .then(() => {
                     console.log("foi")
                 })
