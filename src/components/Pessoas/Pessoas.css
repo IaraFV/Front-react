@@ -157,3 +157,9 @@
     margin-left: 3%;
     margin-top: 2%;
 }
+.img_formatacao{
+    width:53% ;
+    margin-left: 78%;
+    display: flex;
+    align-items: center;
+}

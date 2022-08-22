@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import imagemerro from './img/itensNaoencontrados.png';
 
 function Pessoas() {
 
@@ -45,26 +46,17 @@ function Pessoas() {
             children: `${nome.charAt(0)}`,
         };
     }
-    return (
-        <div>
-            <div id="cabecario-p">
-                <div id="filtroebtn-page-p">
-                    <h1 id="page-nomep" style={{ color: '#fff' }}>Cadastro de Pessoas</h1>
-                    <div>
-                        <input id="filtro-p" type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
-                    </div>
-                </div>
-            </div>
-
-
-            
-            <div>
-                <Link to="/Post">
-                    <button className="btn-adicionarp">Criar Cadastro</button>
-                </Link>
-            </div>
-            <div id="geralpessoas">
-                {
+    const pessoasnum = parseInt(pessoas.length);
+    
+    function TratamentoError(){
+        if (pessoasnum === 0) {
+            return (
+                <h2><img src={imagemerro} alt=" " className="img_formatacao" /></h2>
+            )
+        }else {
+            return (
+                <>
+                    {
                     pessoas.map((pessoas, key) => {
                         return (
                             <div className="cardpessoas">
@@ -92,6 +84,29 @@ function Pessoas() {
                         )
                     })
                 }
+                </>
+            )
+        }
+
+    }
+
+    return (
+        <div>
+            <div id="cabecario-p">
+                <div id="filtroebtn-page-p">
+                    <h1 id="page-nomep" style={{ color: '#fff' }}>Cadastro de Pessoas</h1>
+                    <div>
+                        <input id="filtro-p" type={"text"} placeholder="Exemplo: Seu Ze..." onChange={handlechange}></input>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <Link to="/Post">
+                    <button className="btn-adicionarp">Criar Cadastro</button>
+                </Link>
+            </div>
+            <div id="geralpessoas">
+                <TratamentoError/>
             </div>
         </div>
     )
