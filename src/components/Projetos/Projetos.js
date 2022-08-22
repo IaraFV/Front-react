@@ -3,50 +3,98 @@ import React, { useState, useEffect } from "react";
 import './Projetos.css';
 import Card from 'react-bootstrap/Card';
 import { BsFlagFill } from "react-icons/bs";
-
+import imagemerro from './img/itensNaoencontrados.png';
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import { AiOutlinePlus } from "react-icons/ai";
 import Avatar from '@mui/material/Avatar';
-
-//onDrag: Acionado quando um elemento ou seleção de texto está sendo arrastado.
-//onDragEnd: Acionado quando uma operação de arrastar está terminando
-// (por eexmplo, ao soltar o botão do mouse ou pressionar a tecla esc).
-// ondragstart: Acionado quando o usuário começa a arrastar um elemento válido ou seleção de texto. 
-
 
 function Projetos() {
 
-    const [initialPost, setInitialPost] = useState([])
+    const [initialprojeto, setInitialprojeto] = useState([])
 
     //get projetos
-    const [post, setpost] = useState([])
+    const [projeto, setprojeto] = useState([])
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
             .then((response) => {
-                setpost(response.data)
-                setInitialPost(response.data)
+                setprojeto(response.data)
+                setInitialprojeto(response.data)
+                console.log("Deu BOM Men")
             }).catch(() => {
                 console.log("Deu BO Men")
             })
     }, [])
 
-  
-
     //filter pesquisa
     const handlechange = ({ target }) => {
         if (!target.value) {
-            setpost(initialPost)
+            setprojeto(initialprojeto)
             return;
         }
-        const filter = post.filter(({ nome_projeto }) =>
+        const filter = projeto.filter(({ nome_projeto }) =>
             nome_projeto.toUpperCase().includes(target.value.toUpperCase()))
 
-        setpost(filter);
+        setprojeto(filter);
     }
+    const porjnum = parseInt(projeto.length);
+    
+    function TratamentoError(){
+        if (porjnum === 0) {
+            return (
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{marginLeft:'78%'}}  /></h2>
+            )
+        }else {
+            return (
+                <>
+                    {
+                        projeto.map((projeto, key) => {
+                            return (
+                                    <div id="div-card-page-projetos">
+                                        <Card id="div-card-projeto">
+                                            <Card.Body>
+                                                <Card.Title id="nome-projeto-plan" key={key}>
+                                                    {projeto.nome_projeto}
+
+                                                    <div>
+                                                    <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }}>
+                                                            <AiOutlineArrowsAlt id="more-button-planejamento" />
+                                                        </Link>
+                                                    </div>
+                                                </Card.Title>
+                                                <Card.Text id="status">
+                                                    {projeto.status}
+                                                </Card.Text>
+                                                <Card.Text id="bandeira-data">
+                                                    <div><BsFlagFill /></div>
+                                                    <div>{projeto.data_inicio}</div>
+                                                </Card.Text>
+                                                <Card.Text>
+                                                    <div id="titulo-descricao-projeto">Descrição</div>
+                                                    <div id="corpo-descricao-projeto">
+                                                        {projeto.descricao_projeto}
+                                                    </div>
+                                                </Card.Text>
+                                                <Card.Text>
+                                                    <div id="titulo-descricao-projeto">Membros</div>
+                                                    <div id="membros-projeto">
+                                                        <Avatar id="avatar-projeto-membro-eq" />
+                                                    </div>
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </div>
+                            );
+                        })
+                    }
+                </>
+            )
+        }
+
+    }
+    
 
     return (
-        <div>
+        <>
 
             <div id="geral-cabecario-projetos-sup">
                 <div className="cabecario-projetos-sup">
@@ -63,53 +111,10 @@ function Projetos() {
 
             <div id="geral-cards-page-projetos-jus">
                 <div id="caixa-geral-de-projetos" style={{ height: "650px" }}>
-                    {
-                        post.map((post, key) => {
-                            return (
-                                <div>
-                                    <div id="div-card-page-projetos">
-                                        <Card id="div-card-projeto">
-                                            <Card.Body>
-                                                <Card.Title id="nome-projeto-plan" key={key}>
-                                                    {post.nome_projeto}
-
-                                                    <div>
-                                                    <Link to={{ pathname: `/InspProjeto/${post.id_projeto}` }}>
-                                                            <AiOutlineArrowsAlt id="more-button-planejamento" />
-                                                        </Link>
-                                                    </div>
-                                                </Card.Title>
-                                                <Card.Text id="status">
-                                                    {post.status}
-                                                </Card.Text>
-                                                <Card.Text id="bandeira-data">
-                                                    <div><BsFlagFill /></div>
-                                                    <div>{post.data_inicio}</div>
-                                                </Card.Text>
-                                                <Card.Text>
-                                                    <div id="titulo-descricao-projeto">Descrição</div>
-                                                    <div id="corpo-descricao-projeto">
-                                                        {post.descricao_projeto}
-                                                    </div>
-                                                </Card.Text>
-                                                <Card.Text>
-                                                    <div id="titulo-descricao-projeto">Membros</div>
-                                                    <div id="membros-projeto">
-                                                        <Avatar id="avatar-projeto-membro-eq" />
-                                                    </div>
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                </div>
-                            );
-                        })
-                    }
-
+                    <TratamentoError/>
                 </div>
-
             </div>
-        </div>
+        </>
 
 
     )
