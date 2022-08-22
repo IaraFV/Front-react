@@ -82,6 +82,8 @@ projeto e contador task*/
     width: 248px;
     height: 9rem;
     margin-bottom: 1.5%;
+    display: flex;
+    justify-content: center;
 }
 
 #card-quant-projetos {
@@ -127,6 +129,13 @@ projeto e contador task*/
     width: 50%;
     height: 88vh;
 }
+#titulo-card-usuario-home{
+    color: #fff;
+    margin-left: 2.7%;
+   
+    display: flex;
+    justify-content: space-between;
+}
 
 #render-projetos-conc-home {
     width: 55rem;
@@ -137,10 +146,33 @@ projeto e contador task*/
     color: #FFFFFF;
 }
 #render-pessoas-home{
-    border: 1px solid;
     background: #21222D;
-    
+    height: 23.8rem;
 
+
+}
+#ul-pessoa{
+    overflow: auto;
+    height: 19rem;
+    
+}
+#li-pessoa{
+    background: #21222D;
+    color: #fff;
+    border: 0;
+    margin-top: 6.5%;
+    border-bottom: 1px solid rgba(164, 164, 164, 0.12);
+}
+#ul-pessoa::-webkit-scrollbar {
+    background: #21222D;
+    width: 8px;
+   
+}
+
+#ul-pessoa::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    
 }
 
 #ul-card {
@@ -169,7 +201,17 @@ projeto e contador task*/
     line-height: 20px;
     color: #2684FF;
 }
-
+#btn-ver-usuario-projeto {
+    width: 5rem;
+    height: 1.5rem;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #2684FF;
+}
 #caixa-geral-projetos-home {
     background: #21222D;
     border-radius: 10px;
