@@ -59,11 +59,11 @@ function Grafico2() {
     <div>
       <AreaChart
         width={750}
-        height={300}
+        height={200}
         data={data}
         syncId="anyId"
         margin={{
-          top: 10,
+          top: 24,
           right: 70,
           left: -5,
           bottom: 0

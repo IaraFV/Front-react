@@ -25,17 +25,12 @@ projeto e contador task*/
 
 #geral-graficoum {
     width: 47rem;
-    height: 19rem;
+    height: 16rem;
     padding: 1%;
-    margin-top: 1%;
+    margin-top: 10%;
     background: #21222D;
     border-radius: 0.5rem;
 }
-
-
-
-
-
 
 #nome-projeto-pagina-homep {
     color: #ffff;
@@ -133,7 +128,7 @@ projeto e contador task*/
 }
 
 #render-projetos-conc-home {
-    width: 40rem;
+    width: 35rem;
     display: flex;
     justify-content: center;
     border: none;
@@ -171,14 +166,25 @@ projeto e contador task*/
 #caixa-geral-projetos-home {
     background: #21222D;
     border-radius: 10px;
-    width: 43%;
-    margin-left: 2%;
-    height: 85vh;
+    width: 48%;
+    height: 42vh;
 }
 
 #caixa-geral-home {
-    width: 100%;
-    height: 86vh;
+    width: 90rem;
+    height: 42vh;
+    margin-left: -8%;
+}
+#caixa-dois-home{
+    width: 90rem;
+    height: 18rem;
+    margin-left: -8.2%;
+    
+}
+#sla{
+    width: 30rem;
+    height: 40vh;
+    margin-left: -25rem;
 }
 
 #container-geralum {
@@ -215,11 +221,7 @@ projeto e contador task*/
     font-size: 2rem;
 }
 
-#graficoecards {
 
-    display: flex;
-    width: 69%;
-}
 
 #carddois h3 {
     color: beige;
@@ -357,125 +359,4 @@ projeto e contador task*/
     font-size: 0.9rem;
     text-decoration: none;
     margin-right: 3%;
-}
-
-@media (max-width: 2000px) {
-    #cards {
-        width: 45rem;
-        margin-left: 2%;
-        height: 20rem;
-
-    }
-
-    /*card um*/
-    #cardum {
-        width: 12rem;
-        height: 17rem;
-
-    }
-
-    #iconpeoplefill {
-        width: 5.5rem;
-        margin-left: 7%;
-        margin-top: -5%;
-    }
-
-    #totalp1 {
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1rem;
-        display: flex;
-        text-align: start;
-        justify-content: center;
-        width: 85%;
-        margin-top: -8%;
-        margin-left: 7%;
-    }
-
-    #cardum h3 {
-        color: beige;
-        margin-left: 7%;
-        font-size: 1.3rem;
-        margin-top: -5%;
-    }
-
-    /*card dois*/
-    #carddois {
-        width: 12rem;
-        height: 17rem;
-        margin-top: -37.7%;
-    }
-
-    #FiFile {
-        width: 3.8rem;
-        margin-left: 7%;
-        margin-top: -8%;
-
-    }
-
-    #totalp2 {
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1rem;
-        display: flex;
-        text-align: start;
-        justify-content: center;
-        width: 85%;
-        margin-top: -10%;
-        margin-left: -1.4%;
-    }
-
-    #carddois h3 {
-        color: beige;
-        margin-left: 7%;
-        font-size: 1.3rem;
-        margin-top: -5%;
-    }
-
-    #cardtres {
-        width: 12rem;
-        height: 17rem;
-        margin-top: -38.1%;
-    }
-
-    #icontask-pagehome {
-        width: 4.6rem;
-        margin-left: 7%;
-        margin-top: 7%;
-    }
-
-    #totalp3 {
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 1rem;
-        display: flex;
-        text-align: start;
-        justify-content: center;
-        width: 85%;
-        margin-top: -3%;
-        margin-left: 6%;
-    }
-
-    #cardtres h3 {
-        color: beige;
-        margin-left: 7%;
-        font-size: 1.3rem;
-        margin-top: -3.5%;
-    }
-
-    #projetos-concluidos-page-home {
-        width: 30rem;
-        margin-left: 71%;
-        margin-top: -42.3%;
-        height: 49rem;
-        border-radius: 1rem;
-    }
-
-    #calendario {
-        width: 34%;
-        margin-left: -2%;
-    }
 }

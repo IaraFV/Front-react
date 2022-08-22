@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
-import  Grafico2  from "../Graficos/Grafico2" 
+import Grafico2 from "../Graficos/Grafico2"
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -74,58 +74,102 @@ function Home() {
      */
     return (
         <>
-            <div class="row justify-content-between" id="caixa-geral-home" style={{ border: '1px solid'}}>
-                <div class="col-4" id="caixa-geral-projetos-home"  style={{ border: '1px solid'}}>
-                    <div class="row" >
-                        <div class="card" id="render-projetos-conc-home">
-                            <div class="card-body">
-                                <div id="header-card-projeto-pagina-home" class="card-title">Atividades recentes</div>
-                                <p class="card-text"></p>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12">
+
+                        <div class="row justify-content-between" id="caixa-geral-home" style={{ border: '1px solid' }}>
+                            <div class="container" id="caixa-geral-projetos-home" style={{ border: '1px solid' }}>
+                                <div class="row" >
+                                    <div class="card" id="render-projetos-conc-home">
+                                        <div class="card-body">
+                                            <div id="header-card-projeto-pagina-home" class="card-title">Atividades recentes</div>
+                                            <p class="card-text"></p>
+                                        </div>
+                                        <ul class="list-group list-group-flush" >
+                                            <li class="list-group-item" id="ul-card">
+                                                {
+                                                    recebeprojetos.map((status, key) => {
+                                                        return (
+                                                            <>
+                                                                {status.nome_projeto}
+
+                                                            </>
+
+                                                        );
+                                                    })
+                                                }
+                                                <button id="btn-ver-mais-projeto">Ver mais</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
                             </div>
-                            <ul class="list-group list-group-flush" >
-                                <li class="list-group-item" id="ul-card">
-                                        {
-                                            recebeprojetos.map((status, key) => {
-                                                return (
-                                                    <>
-                                                        {status.nome_projeto}
-                                                        
-                                                    </>
 
-                                                );
-                                            })
-                                        }
-                                    <button id="btn-ver-mais-projeto">Ver mais</button>
-                                </li>
-                            </ul>
+
+                            <div class="col-9" id="container-geral-dois-home">
+                                <div class="container">
+                                    <div class="row" id="col1-quant">
+                                        <div class="col-6 col-sm-4" id="card-quant-pessoa">.col-sm-5 .col-md-6</div>
+                                        <div class="col-6 col-sm-4" id="card-quant-projetos">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+                                    </div>
+
+                                    <div class="row" id="col2-quant">
+                                        <div class="col-6 col-sm-4" id="card-quant-equipes">.col-sm-6 .col-md-5 .col-lg-6</div>
+                                        <div class="col-6 col-sm-4" id="card-quant-task">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="w-100 d-none d-md-block"></div>
+                    <div class="row">
+                    <div class="col-12 col-sm-12">
+                    <div class="row justify-content-between" id="caixa-dois-home" style={{ border: '1px solid' }}>
+                        <div class="col-2">
+                            <div class="col-6 col-sm-4">
+                                <div class="row" id="geral-graficoum">
+                                    <div class="col-6 col-sm-4">
+                                        <Grafico2 />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+
+                            <div class="col-6 col-sm-4" id="sla" style={{border: '1px solid'}}>
+                                <div class="card" style={{ width: "28rem" }}>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-9" id="container-geral-dois-home">
-                    <div class="container">
-                        <div class="row" id="col1-quant">
-                            <div class="col-6 col-sm-4" id="card-quant-pessoa">.col-sm-5 .col-md-6</div>
-                            <div class="col-6 col-sm-4" id="card-quant-projetos">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
-                        </div>
-
-                        <div class="row" id="col2-quant">
-                            <div class="col-6 col-sm-4" id="card-quant-equipes">.col-sm-6 .col-md-5 .col-lg-6</div>
-                            <div class="col-6 col-sm-4" id="card-quant-task">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
-                        </div>
-                    </div>
-
-
-                    <div class="container" id="geral-graficoum">
-                        <div class="col-9">
-                            <Grafico2/>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
             </div>
+                </div>
+            </div>
+
 
 
 
