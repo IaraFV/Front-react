@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import './Home.css'
 import Grafico2 from "../Graficos/Grafico2"
 import { Link, useParams } from 'react-router-dom';
+import { AiOutlineUser } from "react-icons/ai";
 
 function Home() {
 
@@ -100,7 +101,15 @@ function Home() {
                             <div class="col-9" id="container-geral-dois-home">
                                 <div class="container">
                                     <div class="row" id="col1-quant">
-                                        <div class="col-6 col-sm-4" id="card-quant-pessoa">.col-sm-5 .col-md-6</div>
+                                        <div class="col-6 col-sm-4" id="card-quant-pessoa">
+                                            <div id="cont-quant-pessoa">
+                                                <div>
+                                                    <AiOutlineUser />
+                                                </div>
+                                                <div>{totalpessoas}</div>
+                                                <div>Total de pessoas adiconadas</div>
+                                            </div>
+                                        </div>
                                         <div class="col-6 col-sm-4" id="card-quant-projetos">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
                                     </div>
 
@@ -126,7 +135,7 @@ function Home() {
                     <div class="w-100 d-none d-md-block"></div>
                     <div class="row">
                         <div class="col-12 col-sm-12">
-                            <div class="row justify-content-between" id="caixa-dois-home" style={{ border: '1px solid' }}>
+                            <div class="row justify-content-between" id="caixa-dois-home" >
                                 <div class="col-2">
                                     <div class="col-6 col-sm-4">
                                         <div class="row" id="geral-graficoum">
@@ -140,17 +149,20 @@ function Home() {
 
                                 <div class="col-2">
 
-                                    <div class="col-6 col-sm-4" id="sla" style={{ border: '1px solid' }}>
+                                    <div class="col-6 col-sm-4" id="sla">
                                         <div class="card" id="render-pessoas-home">
                                             <div class="card-body">
-                                                <h5 class="card-title">Usuarios</h5>
+                                                <h5 class="card-title" id="titulo-card-usuario-home">
+                                                    Usuarios
+                                                    <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
+                                                </h5>
                                                 <h6 class="card-subtitle mb-2 text-muted"></h6>
-                                                <ul class="list-group list-group-flush" >
+                                                <ul class="list-group list-group-flush" id="ul-pessoa">
                                                     {
                                                         nome.map((nome) => {
                                                             return (
                                                                 <>
-                                                                    <li class="list-group-item">{nome}</li>
+                                                                    <li class="list-group-item" id="li-pessoa">{nome}</li>
                                                                 </>
                                                             );
                                                         })
