@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
 import Grafico2 from "../Graficos/Grafico2"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Home() {
 
@@ -11,6 +11,7 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const [initialPosts, setInitialPosts] = useState([]);
     const [setInitialTasks] = useState([])
+    
 
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
@@ -36,18 +37,17 @@ function Home() {
     }, []
     )
 
-    useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
-            .then((response) => {
-                setTasks(response.data)
-                setInitialTasks(response.data)
-            })
-            .catch(() => {
-                console.log("deu errado")
-            })
-    }, []
-    )
 
+
+
+    const recebetodaspessoas = posts;
+    var receber = [];
+    for (var person = 0; person < 8; person++) {
+        receber.push(recebetodaspessoas[person])
+    }
+
+    
+    console.log(receber)
 
 
     const recebeprojetos = post.filter(getstatus => getstatus.status === "Concluído");
@@ -60,18 +60,7 @@ function Home() {
 
     const contatask = tasks;
     const totaltask = contatask.length;
-    /**função para implementar o mais breve pocivel (lucas se escreve possível e não pocivel)
-     * NÃO APAGAR!!!!!!!!!!!!!!!!!!
-     * OBS: o codigo abaixo é apenas um esboso.
-     * 
-     * const carros = ["Civic", "Elantra", "Focus", "Jetta", "Cruze", "Corolla",'ferrari','lamborghini','bugatti','fusca'];
-     * 
-     * var lucas = [];
-     * for (var pos = 0; pos < 6; pos++) {
-             lucas.push(carros[pos])
-    }
-             console.log(lucas)
-     */
+
     return (
         <>
 
@@ -79,10 +68,10 @@ function Home() {
                 <div class="row">
                     <div class="col-12 col-sm-12">
 
-                        <div class="row justify-content-between" id="caixa-geral-home" style={{ border: '1px solid' }}>
+                        <div class="row justify-content-evelyn" id="caixa-geral-home" style={{ border: '1px solid' }}>
                             <div class="container" id="caixa-geral-projetos-home" style={{ border: '1px solid' }}>
                                 <div class="row" >
-                                    <div class="card" id="render-projetos-conc-home">
+                                    <div class="card" id="render-projetos-conc-home" >
                                         <div class="card-body">
                                             <div id="header-card-projeto-pagina-home" class="card-title">Atividades recentes</div>
                                             <p class="card-text"></p>
@@ -138,35 +127,53 @@ function Home() {
 
                     <div class="w-100 d-none d-md-block"></div>
                     <div class="row">
-                    <div class="col-12 col-sm-12">
-                    <div class="row justify-content-between" id="caixa-dois-home" style={{ border: '1px solid' }}>
-                        <div class="col-2">
-                            <div class="col-6 col-sm-4">
-                                <div class="row" id="geral-graficoum">
+                        <div class="col-12 col-sm-12">
+                            <div class="row justify-content-between" id="caixa-dois-home" style={{ border: '1px solid' }}>
+                                <div class="col-2">
                                     <div class="col-6 col-sm-4">
-                                        <Grafico2 />
+                                        <div class="row" id="geral-graficoum">
+                                            <div class="col-6 col-sm-4">
+                                                <Grafico2 />
+                                            </div>
+
+                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="col-2">
+                                <div class="col-2">
 
-                            <div class="col-6 col-sm-4" id="sla" style={{border: '1px solid'}}>
-                                <div class="card" style={{ width: "28rem" }}>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="col-6 col-sm-4" id="sla" style={{ border: '1px solid' }}>
+                                        <div class="card" id="render-pessoas-home">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Usuarios</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                                <p class="card-text">
+                                                    <ul class="list-group list-group-flush" >
+                                                        <li class="list-group-item" >
+                                                            {
+                                                                receber.map((receber, key) => {
+                                                                    return (
+                                                                        <>
+                                                                            {receber}
 
+                                                                        </>
+
+                                                                    );
+                                                                })
+                                                            }
+                                                            <button id="btn-ver-mais-projeto">Ver mais</button>
+                                                        </li>
+                                                    </ul>
+                                                
+                                                </p>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
                 </div>
             </div>
 
