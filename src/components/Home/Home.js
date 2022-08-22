@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import './Home.css'
 import Grafico2 from "../Graficos/Grafico2"
 import { Link, useParams } from 'react-router-dom';
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
 
 function Home() {
 
@@ -67,8 +67,8 @@ function Home() {
                 <div class="row">
                     <div class="col-12 col-sm-12">
 
-                        <div class="row justify-content-evelyn" id="caixa-geral-home" style={{ border: '1px solid' }}>
-                            <div class="container" id="caixa-geral-projetos-home" style={{ border: '1px solid' }}>
+                        <div class="row justify-content-evelyn" id="caixa-geral-home" >
+                            <div class="container" id="caixa-geral-projetos-home" >
                                 <div class="row" >
                                     <div class="card" id="render-projetos-conc-home" >
                                         <div class="card-body">
@@ -103,19 +103,46 @@ function Home() {
                                     <div class="row" id="col1-quant">
                                         <div class="col-6 col-sm-4" id="card-quant-pessoa">
                                             <div id="cont-quant-pessoa">
-                                                <div>
-                                                    <AiOutlineUser />
+                                                <div >
+                                                    <AiOutlineUser id="icon-quant-pessoa-home" />
                                                 </div>
-                                                <div>{totalpessoas}</div>
+                                                <div id="total-pessoas-page-home">{totalpessoas}</div>
                                                 <div>Total de pessoas adiconadas</div>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-sm-4" id="card-quant-projetos">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+
+                                        <div class="col-6 col-sm-4" id="card-quant-projetos">
+                                            <div id="cont-quant-projetos">
+                                                <div >
+                                                    <AiOutlineSolution id="icon-quant-projetos-home" />
+                                                </div>
+                                                <div id="total-projetos-page-home">{totalprojetos}</div>
+                                                <div>Total de projetos adiconadas</div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="row" id="col2-quant">
-                                        <div class="col-6 col-sm-4" id="card-quant-equipes">.col-sm-6 .col-md-5 .col-lg-6</div>
-                                        <div class="col-6 col-sm-4" id="card-quant-task">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+                                        <div class="col-6 col-sm-4" id="card-quant-equipes">
+                                            <div id="cont-quant-equipes">
+                                                <div >
+                                                    <AiOutlineTeam id="icon-quant-equipes-home" />
+                                                </div>
+                                                <div id="total-equipes-page-home">{totalpessoas}</div>
+                                                <div>Total de equipes adiconadas</div>
+                                            </div>
+
+                                        </div>
+                                        
+                                        <div class="col-6 col-sm-4" id="card-quant-task">
+                                            <div id="cont-quant-task">
+                                                <div >
+                                                    <AiOutlineFile id="icon-quant-task-home" />
+                                                </div>
+                                                <div id="total-task-page-home">{totalpessoas}</div>
+                                                <div>Total de tarefas adiconadas</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

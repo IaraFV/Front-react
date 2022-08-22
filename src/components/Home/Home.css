@@ -42,10 +42,7 @@ projeto e contador task*/
     margin-top: 5%;
 }
 
-#icon-status {
-    color: #26A69A;
-    font-size: 0.7rem;
-}
+
 
 #data-projeto-pagehome {
     font-family: 'Poppins';
@@ -80,31 +77,162 @@ projeto e contador task*/
     background: #21222D;
     border-radius: 10px;
     width: 248px;
-    height: 9rem;
-    margin-bottom: 1.5%;
+    height: 12.3rem;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5%;
+
 }
 
+#cont-quant-pessoa {
+    border: 1px solid;
+    display: flex;
+    width: 98%;
+    height: 95%;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+#cont-quant-projetos {
+    border: 1px solid;
+    display: flex;
+    width: 98%;
+    height: 95%;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+#cont-quant-equipes {
+    border: 1px solid;
+    display: flex;
+    width: 98%;
+    height: 95%;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+#cont-quant-task {
+    border: 1px solid;
+    display: flex;
+    width: 98%;
+    height: 95%;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+
+
+
+
+#total-pessoas-page-home {
+    color: #D9D9D9;
+    font-size: 2.3rem;
+    margin-left: -18%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24%;
+}
+
+#total-projetos-page-home {
+    color: #D9D9D9;
+    font-size: 2.3rem;
+    margin-left: -18%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24%;
+}
+#total-equipes-page-home {
+    color: #D9D9D9;
+    font-size: 2.3rem;
+    margin-left: -18%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24%;
+}
+#total-task-page-home {
+    color: #D9D9D9;
+    font-size: 2.3rem;
+    margin-left: -18%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24%;
+}
+
+#icon-quant-pessoa-home {
+    color: #2684FF;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    margin-top: 80%;
+}
+#icon-quant-projetos-home {
+    color: #2684FF;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    margin-top: 80%;
+}
+#icon-quant-equipes-home {
+    color: #2684FF;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    margin-top: 80%;
+}
+#icon-quant-task-home {
+    color: #2684FF;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8rem;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    margin-top: 80%;
+}
 #card-quant-projetos {
     background: #21222D;
     border-radius: 10px;
     width: 248px;
-    height: 9rem;
+    height: 12.3rem;
 }
 
 #card-quant-equipes {
     background: #21222D;
     border-radius: 10px;
     width: 248px;
-    height: 9rem;
+    height: 12.3rem;
 }
 
 #card-quant-task {
     background: #21222D;
     border-radius: 10px;
     width: 248px;
-    height: 9rem;
+    height: 12.3rem;
 }
 
 
@@ -116,7 +244,7 @@ projeto e contador task*/
     font-style: normal;
     font-size: 1.8rem;
     color: #fff;
-   
+
 }
 
 #container-geral {
@@ -129,10 +257,11 @@ projeto e contador task*/
     width: 50%;
     height: 88vh;
 }
-#titulo-card-usuario-home{
+
+#titulo-card-usuario-home {
     color: #fff;
     margin-left: 2.7%;
-   
+
     display: flex;
     justify-content: space-between;
 }
@@ -145,34 +274,38 @@ projeto e contador task*/
     background: #21222D;
     color: #FFFFFF;
 }
-#render-pessoas-home{
+
+#render-pessoas-home {
     background: #21222D;
     height: 23.8rem;
 
 
 }
-#ul-pessoa{
+
+#ul-pessoa {
     overflow: auto;
     height: 19rem;
-    
+
 }
-#li-pessoa{
+
+#li-pessoa {
     background: #21222D;
     color: #fff;
     border: 0;
     margin-top: 6.5%;
     border-bottom: 1px solid rgba(164, 164, 164, 0.12);
 }
+
 #ul-pessoa::-webkit-scrollbar {
     background: #21222D;
     width: 8px;
-   
+
 }
 
 #ul-pessoa::-webkit-scrollbar-thumb {
     background-color: #D9D9D9;
     border-radius: 20px;
-    
+
 }
 
 #ul-card {
@@ -201,6 +334,7 @@ projeto e contador task*/
     line-height: 20px;
     color: #2684FF;
 }
+
 #btn-ver-usuario-projeto {
     width: 5rem;
     height: 1.5rem;
@@ -212,6 +346,7 @@ projeto e contador task*/
     line-height: 20px;
     color: #2684FF;
 }
+
 #caixa-geral-projetos-home {
     background: #21222D;
     border-radius: 10px;
@@ -224,13 +359,15 @@ projeto e contador task*/
     height: 42vh;
     margin-left: -16%;
 }
-#caixa-dois-home{
+
+#caixa-dois-home {
     width: 100rem;
     height: 25rem;
     margin-left: -16.3%;
-    
+
 }
-#sla{
+
+#sla {
     width: 30rem;
     height: 40vh;
     margin-left: -20rem;
@@ -385,21 +522,7 @@ projeto e contador task*/
     margin-left: 5%;
 }
 
-#icontask-pagehome {
-    width: 9rem;
-    height: 6.3rem;
-    font-weight: 20rem;
-    margin-top: 32%;
-    margin-left: 1%;
-}
 
-#FiFile {
-    width: 5.1rem;
-    height: 9rem;
-    margin-left: 9%;
-    margin-top: 18%;
-
-}
 
 .sabermais {
     display: flex;
