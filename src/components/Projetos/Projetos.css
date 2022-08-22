@@ -20,10 +20,10 @@
 
 #caixa-geral-de-projetos {
     display: flex;
-    width: 62%;
+    width: 100%;
     flex-wrap: wrap;
     overflow: auto;
-    justify-content: center;
+    justify-content: space-around;
 
 }
 
@@ -134,7 +134,7 @@
 
 #geral-cards-page-projetos-jus {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #red-projetos-adicionados {

@@ -108,10 +108,6 @@ function Projetos() {
 
                 </div>
 
-                <div id="red-projetos-adicionados">
-                    dgfrefvgrvf
-                </div>
-
             </div>
         </div>
 
