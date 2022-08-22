@@ -11,7 +11,7 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const [initialPosts, setInitialPosts] = useState([]);
     const [setInitialTasks] = useState([])
-    
+
 
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
@@ -40,15 +40,13 @@ function Home() {
 
 
 
-    const recebetodaspessoas = posts;
+    //const recebetodaspessoas = posts;
     var receber = [];
     for (var person = 0; person < 8; person++) {
-        receber.push(recebetodaspessoas[person])
+        receber.push(posts[person])
     }
 
-    
-    console.log(receber)
-
+    const nome = receber.map((luc) => luc?.nome_pessoa);
 
     const recebeprojetos = post.filter(getstatus => getstatus.status === "Concluído");
 
@@ -147,26 +145,17 @@ function Home() {
                                             <div class="card-body">
                                                 <h5 class="card-title">Usuarios</h5>
                                                 <h6 class="card-subtitle mb-2 text-muted"></h6>
-                                                <p class="card-text">
-                                                    <ul class="list-group list-group-flush" >
-                                                        <li class="list-group-item" >
-                                                            {
-                                                                receber.map((receber, key) => {
-                                                                    return (
-                                                                        <>
-                                                                            {receber}
-
-                                                                        </>
-
-                                                                    );
-                                                                })
-                                                            }
-                                                            <button id="btn-ver-mais-projeto">Ver mais</button>
-                                                        </li>
-                                                    </ul>
-                                                
-                                                </p>
-
+                                                <ul class="list-group list-group-flush" >
+                                                    {
+                                                        nome.map((nome) => {
+                                                            return (
+                                                                <>
+                                                                    <li class="list-group-item">{nome}</li>
+                                                                </>
+                                                            );
+                                                        })
+                                                    }
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -176,13 +165,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
         </>
 
     );
@@ -249,36 +231,6 @@ export default Home;
 <div id="geral-graficoum">
                 <Graf id="graficoum-page-home" />
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="col-2" style={{ border: '1px solid red' }} id="container-geralum">
