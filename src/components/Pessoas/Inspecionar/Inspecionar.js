@@ -26,9 +26,12 @@ function Inspecionar() {
     const [posts, setPosts] = useState([])
     const [Task, setTask] = useState([])
     const { id_pessoa } = useParams()
+   
+   
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validacaoGet)
     })
+    
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
             .then((response) => {
@@ -74,24 +77,30 @@ function Inspecionar() {
     const numero = filtra_task.length;
   
     /*----------------------------------------------------------------------------------------------------------------------*/
+
+
     var favoritar = parseInt(posts.favoritar);
+
+    console.log(favoritar);
+   
+
     function favoritarFuncao() {
         favoritar++
         if (favoritar === 1) {
-            axios.put('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/' + id_pessoa + '/favoritar/')
+             axios.put('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/' + id_pessoa + '/favoritar')
                 .then(() => {
-                    console.log("foi")
+                    console.log("favoritou")
                 })
                 .catch(() => {
-                    console.log("n foi")
+                    console.log("n favoritou")
                 })
-            console.log(favoritar);
+               
         } 
         
     }
 
 
-    console.log(favoritar);
+    
     function RenderCards() {
         if (numero === 0) {
             return (
@@ -147,13 +156,14 @@ function Inspecionar() {
                             </div>
                         </div>
                         <div id="estatisticadois" >
-                            <button type="submit" onClick={favoritarFuncao} className="star">
+                            <button type="submit"  onClick={favoritarFuncao}  className="star">
                                 <AiOutlineStar />
                             </button>
                         </div>
                     </div>
                     
                     <div id="detalhes">
+
                         <div id="cabecariodetalhes">
                             <h4>Detalhes</h4>
                             <div className="line-insp"></div>
