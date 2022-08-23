@@ -15,8 +15,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 const validacaoPostE = yup.object().shape({
-    nome_equipe:  yup.string().required("O nome equipe é obrigatorio!")
-    
+    nome_equipe: yup.string().required("Campo obrigatorio!"),
+    nome_pessoa: yup.string().required("Campo obrigatorio!")
 })
 
 function PostE() {
@@ -24,17 +24,17 @@ function PostE() {
     let navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(validacaoPostE)
-})
+        resolver: yupResolver(validacaoPostE)
+    })
 
     const addPostE = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/", data)
-    .then(() => {
-        console.log("foi")
-        navigate("/Equipes");
-    })
-    .catch(() => {
-        console.log("n foi")
-    })
+        .then(() => {
+            console.log("foi")
+            navigate("/Equipes");
+        })
+        .catch(() => {
+            console.log("n foi")
+        })
     /**requisição GET do Array Pessoas da api */
     const [pessoa, setpessoa] = useState([]);
 
@@ -52,7 +52,6 @@ function PostE() {
         };
         fetchequipe();
     }, [])
-    
 
     /**função de retorno */
     function voltar() {
@@ -61,20 +60,45 @@ function PostE() {
     /**variavesi do seletor */
     const [valuPessoa, setvalue] = React.useState('');
 
-     /**funçoes de evento das variaves do seletor */
-     const handleChange = (event) => {
+    /**funçoes de evento das variaves do seletor */
+    const handleChange = (event) => {
         setvalue(event.target.value);
     };
     /**manipulação dos dados oriundos de pessoas */
-    const filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
-    console.log(filtrandoPesssoa);
-    return(
-<>
-        <div>
-            <IconButton sx={{color: 'white'}} onClick={voltar}>
-                <ArrowBackIcon/>
-            </IconButton>
+    var filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
 
+     /** tratamento de erro para uma usuario que esta ou nao dentro de uma equipe/grupo*/
+    function Verificapessoas() {
+        if (filtrandoPesssoa.length === 0) {
+            console.log('Não tem pessoas Sem equipe')
+        } else {
+            return (
+                <>
+                    <label>pessoas sem equipe</label>
+                    <Box sx={{ minWidth: 120 }}>
+                        <FormControl fullWidth>
+                            <InputLabel pessoa_id="demo-simple-select-label"></InputLabel>
+                            <Select
+                                {...register("nome_pessoa")}
+                                labelId="demo-simple-select-label"
+                                pessoa_id="demo-simple-select"
+                                value={valuPessoa}
+                                label="Age"
+                                sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                onChange={handleChange}>
+                                {filtrandoPesssoa.map((pessoas) =>
+                                    <MenuItem id="menuEquipe-pageequipe" value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
+                                )}
+                            </Select>
+                            <p className="error-message">{errors.nivel?.message} </p>
+                        </FormControl>
+                    </Box>
+                </>
+            );
+        }
+    }
+    return (
+        <div>
             <main>
                 <div className="card-post-equipe">
                     <h1>Criar Cadastro</h1>
@@ -86,31 +110,14 @@ function PostE() {
 
                             <div className="fieldsequipe">
                                 <label>Nome</label>
-                                <input type="text" name="nome_equipe" {...register("nome_equipe")}/>
+                                <input type="text" name="nome_equipe" {...register("nome_equipe")} />
                                 <p className="error-message">{errors.nome_equipe?.message} </p>
                             </div>
                             <div className="fields">
-                                <label>pessoas sem equipe</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
-                                        <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
-                                        <Select
-                                            {...register("nivel")}
-                                            labelId="demo-simple-select-label"
-                                            projeto_id="demo-simple-select"
-                                            value={valuPessoa}
-                                            label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                            onChange={handleChange}>
-                                            {filtrandoPesssoa.map((pessoas) =>
-                                                <MenuItem id="menuEquipe-pageequipe" value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
-                                            )}
-                                        </Select>
-                                        <p className="error-message">{errors.nivel?.message} </p>
-                                    </FormControl>
-                                </Box>
+                                <Verificapessoas/>
                             </div>
                             <div className="btn-post-equipe">
+                                <button onClick={voltar}  id="btn-cancelarE" type='text' >Cancelar</button>
                                 <button type="submit" >Cadastrar</button>
                             </div>
                         </form>
@@ -120,9 +127,7 @@ function PostE() {
             </main>
 
         </div>
-</>
     )
-
 }
 
 export default PostE;
