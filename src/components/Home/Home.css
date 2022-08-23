@@ -85,7 +85,7 @@ projeto e contador task*/
 }
 
 #cont-quant-pessoa {
-    border: 1px solid;
+  
     display: flex;
     width: 98%;
     height: 95%;
@@ -95,7 +95,7 @@ projeto e contador task*/
 
 }
 #cont-quant-projetos {
-    border: 1px solid;
+   
     display: flex;
     width: 98%;
     height: 95%;
@@ -105,7 +105,7 @@ projeto e contador task*/
 
 }
 #cont-quant-equipes {
-    border: 1px solid;
+   
     display: flex;
     width: 98%;
     height: 95%;
@@ -114,8 +114,8 @@ projeto e contador task*/
     
 
 }
-#cont-quant-task {
-    border: 1px solid;
+#container-quantidade-task {
+    border: 1px solid #21222D;
     display: flex;
     width: 98%;
     height: 95%;
@@ -124,7 +124,6 @@ projeto e contador task*/
     
 
 }
-
 
 
 
@@ -159,10 +158,10 @@ projeto e contador task*/
     justify-content: center;
     margin-top: 24%;
 }
-#total-task-page-home {
+#total-de-tasks-pagina-home-h {
     color: #D9D9D9;
     font-size: 2.3rem;
-    margin-left: -18%;
+    margin-left: -17%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -192,6 +191,9 @@ projeto e contador task*/
     border-radius: 6px;
     margin-top: 80%;
 }
+.colorfff{
+    color: #fff;
+}
 #icon-quant-equipes-home {
     color: #2684FF;
     width: 2.5rem;
@@ -203,17 +205,20 @@ projeto e contador task*/
     border-radius: 6px;
     margin-top: 80%;
 }
-#icon-quant-task-home {
+#icon-quant-task-page-home {
     color: #2684FF;
     width: 2.5rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 1.8rem;
+    align-items: center;
+    height: 1.9rem;
     background: rgba(164, 164, 164, 0.12);
     border-radius: 6px;
     margin-top: 80%;
+    margin-left: 8%;
+    font-size: 0.4rem;
 }
+
 #card-quant-projetos {
     background: #21222D;
     border-radius: 10px;
@@ -227,13 +232,13 @@ projeto e contador task*/
     width: 248px;
     height: 12.3rem;
 }
-
-#card-quant-task {
+#card-quant-de-tasks {
     background: #21222D;
     border-radius: 10px;
     width: 248px;
     height: 12.3rem;
 }
+
 
 
 #header-card-projeto-pagina-home {
@@ -248,13 +253,13 @@ projeto e contador task*/
 }
 
 #container-geral {
-    width: 50%;
+    width: 60%;
     margin-left: 0.1px;
     height: 80vh;
 }
 
 #container-geral-dois-home {
-    width: 50%;
+    width: 38%;
     height: 88vh;
 }
 
@@ -368,9 +373,10 @@ projeto e contador task*/
 }
 
 #sla {
-    width: 30rem;
+    width: 34rem;
     height: 40vh;
     margin-left: -20rem;
+    margin-top: 10%;
 }
 
 #container-geralum {

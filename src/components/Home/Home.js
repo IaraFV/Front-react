@@ -4,16 +4,16 @@ import './Home.css'
 import Grafico2 from "../Graficos/Grafico2"
 import { Link, useParams } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
-
+import { BsBarChartLine } from "react-icons/bs";
 function Home() {
 
     const [post, setpost] = useState([]);
-    const [tasks, setTasks] = useState([]);
-    const [posts, setPosts] = useState([]);
-    const [initialPosts, setInitialPosts] = useState([]);
-    const [setInitialTasks] = useState([])
+    const [tasks, setTask] = useState([]);
+    const [pessoas, setPessoas] = useState([]);
+    const [equipes, setEquipes] = useState([]);
+    const [setInitialPessoas] = useState([]);
 
-
+    console.log(equipes);
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
             .then((response) => {
@@ -27,8 +27,7 @@ function Home() {
     useEffect(() => {
         axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
             .then((response) => {
-                setPosts(response.data)
-                setInitialPosts(response.data)
+                setPessoas(response.data)
                 console.log("foi")
 
             })
@@ -38,27 +37,52 @@ function Home() {
     }, []
     )
 
+    useEffect(() => {
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
+            .then((response) => {
+                setEquipes(response.data)
+                console.log("pegou eq")
+            })
+            .catch(() => {
+                console.log("deu errado eq")
+            })
+    }, []
+    )
+
+    useEffect(() => {
+        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
+            .then((response) => {
+                setTask(response.data)
+            })
+            .catch(() => {
+                console.log("deu errado task")
+            })
+    }, []
+    )
 
 
 
     //const recebetodaspessoas = posts;
     var receber = [];
     for (var person = 0; person < 8; person++) {
-        receber.push(posts[person])
+        receber.push(pessoas[person])
     }
 
     const nome = receber.map((luc) => luc?.nome_pessoa);
 
     const recebeprojetos = post.filter(getstatus => getstatus.status === "Concluído");
 
-    const contapessoa = posts;
+    const contapessoa = pessoas;
     const totalpessoas = contapessoa.length;
 
     const contaprojetos = post;
     const totalprojetos = contaprojetos.length;
 
-    const contatask = tasks;
-    const totaltask = contatask.length;
+
+    const totaltask = tasks.length;
+    console.log(tasks);
+    const totalequipes = equipes.length;
+
 
     return (
         <>
@@ -98,16 +122,16 @@ function Home() {
                             </div>
 
 
-                            <div class="col-9" id="container-geral-dois-home">
+                            <div class="col-9" id="container-geral-dois-home" style={{ border: "1px solid" }}>
                                 <div class="container">
-                                    <div class="row" id="col1-quant">
+                                    <div class="row" id="col1-quant" style={{ border: "1px solid" }}>
                                         <div class="col-6 col-sm-4" id="card-quant-pessoa">
                                             <div id="cont-quant-pessoa">
                                                 <div >
                                                     <AiOutlineUser id="icon-quant-pessoa-home" />
                                                 </div>
                                                 <div id="total-pessoas-page-home">{totalpessoas}</div>
-                                                <div>Total de pessoas adiconadas</div>
+                                                <div className="colorfff">Total de pessoas adiconadas</div>
                                             </div>
                                         </div>
 
@@ -117,32 +141,35 @@ function Home() {
                                                     <AiOutlineSolution id="icon-quant-projetos-home" />
                                                 </div>
                                                 <div id="total-projetos-page-home">{totalprojetos}</div>
-                                                <div>Total de projetos adiconadas</div>
+                                                <div className="colorfff">Total de projetos adiconadas</div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row" id="col2-quant">
+                                    <div class="row" id="col2-quant" style={{ border: "1px solid" }}>
                                         <div class="col-6 col-sm-4" id="card-quant-equipes">
                                             <div id="cont-quant-equipes">
                                                 <div >
                                                     <AiOutlineTeam id="icon-quant-equipes-home" />
                                                 </div>
-                                                <div id="total-equipes-page-home">{totalpessoas}</div>
-                                                <div>Total de equipes adiconadas</div>
+                                                <div id="total-equipes-page-home">{totalequipes}</div>
+                                                <div className="colorfff">Total de equipes adiconadas</div>
                                             </div>
 
                                         </div>
-                                        
-                                        <div class="col-6 col-sm-4" id="card-quant-task">
-                                            <div id="cont-quant-task">
+
+                                        <div class="col-6 col-sm-4" id="card-quant-de-tasks">
+                                            <div id="container-quantidade-task">
                                                 <div >
-                                                    <AiOutlineFile id="icon-quant-task-home" />
+                                                    <BsBarChartLine id="icon-quant-task-page-home" />
                                                 </div>
-                                                <div id="total-task-page-home">{totalpessoas}</div>
-                                                <div>Total de tarefas adiconadas</div>
+                                                <div id="total-de-tasks-pagina-home-h">{totaltask}</div>
+                                                <div className="colorfff">Total de tarefas adiconadas</div>
                                             </div>
+
                                         </div>
+
+
                                     </div>
                                 </div>
 
@@ -175,9 +202,8 @@ function Home() {
                                 </div>
 
                                 <div class="col-2">
-
-                                    <div class="col-6 col-sm-4" id="sla">
-                                        <div class="card" id="render-pessoas-home">
+                                    <div class="col-6 col-sm-4" id="sla" style={{ border: "1px solid" }}>
+                                        <div class="card" id="render-pessoas-home" >
                                             <div class="card-body">
                                                 <h5 class="card-title" id="titulo-card-usuario-home">
                                                     Usuarios
@@ -199,6 +225,7 @@ function Home() {
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
