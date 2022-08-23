@@ -6,32 +6,59 @@ import { BsArrowLeft } from "react-icons/bs";
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import imagemerro from './img/itensNaoencontrados.png';
+import PropTypes from 'prop-types';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+    '& .MuiDialogContent-root': {
+        padding: theme.spacing(2),
+    },
+    '& .MuiDialogActions-root': {
+        padding: theme.spacing(1),
+    },
+}));
+
+const BootstrapDialogTitle = (props) => {
+    const { children, onClose, ...other } = props;
+
+    return (
+        <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+            {children}
+            {onClose ? (
+                <IconButton
+                    aria-label="close"
+                    onClick={onClose}
+                    sx={{
+                        position: 'absolute',
+                        right: 8,
+                        top: 8,
+                        color: (theme) => theme.palette.grey[500],
+                    }}
+                >
+                    <CloseIcon />
+                </IconButton>
+            ) : null}
+        </DialogTitle>
+    );
+};
+
+BootstrapDialogTitle.propTypes = {
+    children: PropTypes.node,
+    onClose: PropTypes.func.isRequired,
 };
 
 
 function InspProjeto() {
-    
-    //variavel da manipulação do modal
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     //variaves das requisições GET
     const [projetos, setprojetos] = useState([])
@@ -89,58 +116,96 @@ function InspProjeto() {
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
+
+    //variavel da manipulação do modal 1
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    //variavel da manipulação do modal 2
+    const [openh, setOpenh] = React.useState(false);
+
+    const handleClickOpenh = () => {
+        setOpenh(true);
+    };
+    const handleCloseh = () => {
+        setOpenh(false);
+    };
+
+
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
-     * de "nenhum item encontrado".
-    */
+     * de "nenhum item encontrado".*/
     function VerificaAfazer() {
         if (filtFazer.length === 0) {
             return (
-                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
         } else {
             return (
                 <>
                     {
-                       filtFazer.map((projetos, key) => {
+                        filtFazer.map((projetos, key) => {
                             return (
                                 <div className="dropzone" >
-                                    <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
-                                        <Card.Body>
-                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}
-                                                <Button onClick={handleOpen}>Open modal</Button>
-                                                <Modal
-                                                    open={open}
-                                                    onClose={handleClose}
-                                                    aria-labelledby="modal-modal-title"
-                                                    aria-describedby="modal-modal-description"
-                                                >
-                                                    <Box sx={style}>
-                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-                                                        </Typography>
-
-                                                    </Box>
-                                                </Modal>
-                                            </Card.Title>
-                                            <Card.Text>{projetos.status}
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
+                                    <Button variant="outlined" onClick={handleClickOpen}>
+                                        <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
+                                            <Card.Body>
+                                                <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}
+                                                </Card.Title>
+                                                <Card.Text>{projetos.status}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </Button>
                                 </div>
                             );
                         })
                     }
+                    <BootstrapDialog
+                        onClose={handleClose}
+                        aria-labelledby="customized-dialog-title"
+                        open={open}>
+                        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+                            Modal title
+                        </BootstrapDialogTitle>
+                        <DialogContent dividers>
+                            <Typography gutterBottom>
+                                <FormControlLabel
+                                    value="Em desenvolvimento"
+                                    control={<Checkbox />}
+                                    label="Em desenvolvimento"
+                                    labelPlacement="Em desenvolvimento"
+                                />
+                                <FormControlLabel
+                                    value="Concluído"
+                                    control={<Checkbox />}
+                                    label="Concluído"
+                                    labelPlacement="Concluído"
+                                />
+                            </Typography>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button autoFocus onClick={handleClose}>
+                                Save changes
+                            </Button>
+                        </DialogActions>
+                    </BootstrapDialog>
                 </>
             )
         }
     }
+
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
      * de "nenhum item encontrado".
     */
     function VerificaDesenvolvimento() {
         if (filtFazendo.length === 0) {
             return (
-                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
         } else {
             return (
@@ -149,6 +214,7 @@ function InspProjeto() {
                         filtFazendo.map((projetos, key) => {
                             return (
                                 <div className="dropzone" >
+                                    <Button variant="outlined" onClick={handleClickOpenh}>
                                     <Card style={{ width: '18rem' }} id="Em desenvolvimento" draggable="true">
                                         <Card.Body className="dropzone">
                                             <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
@@ -156,10 +222,40 @@ function InspProjeto() {
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
+                                    </Button>
                                 </div>
                             );
                         })
                     }
+                    <BootstrapDialog
+                        onClose={handleCloseh}
+                        aria-labelledby="customized-dialog-title"
+                        open={openh}>
+                        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleCloseh}>
+                            Modal title
+                        </BootstrapDialogTitle>
+                        <DialogContent dividers>
+                            <Typography gutterBottom>
+                                <FormControlLabel
+                                    value="A fazer"
+                                    control={<Checkbox />}
+                                    label="A fazer"
+                                    labelPlacement="A fazer"
+                                />
+                                <FormControlLabel
+                                    value="Concluído"
+                                    control={<Checkbox />}
+                                    label="Concluído"
+                                    labelPlacement="Concluído"
+                                />
+                            </Typography>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button autoFocus onClick={handleCloseh}>
+                                Save changes
+                            </Button>
+                        </DialogActions>
+                    </BootstrapDialog>
                 </>
             )
         }
@@ -170,7 +266,7 @@ function InspProjeto() {
     function VerificaConcluído() {
         if (filtFeito.length === 0) {
             return (
-                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
         } else {
             return (
@@ -231,20 +327,20 @@ function InspProjeto() {
                         <h4 className="text-center mt-2">
                             A fazer
                         </h4>
-                        <VerificaAfazer/>
+                        <VerificaAfazer />
                     </div>
 
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             Em desenvolvimento
                         </h4>
-                        <VerificaDesenvolvimento/>
+                        <VerificaDesenvolvimento />
                     </div>
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             Concluídos
                         </h4>
-                        <VerificaConcluído/>
+                        <VerificaConcluído />
                     </div>
                 </div>
             </div>
