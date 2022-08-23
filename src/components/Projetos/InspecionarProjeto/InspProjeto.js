@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './InspProjeto.css'
-import {useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from "axios";
 import { BsArrowLeft } from "react-icons/bs";
 import Card from 'react-bootstrap/Card';
@@ -11,6 +11,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import imagemerro from './img/itensNaoencontrados.png';
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -36,14 +38,9 @@ function InspProjeto() {
         console.log('> ' + message)
     }
 
-    const Afazer = document.querySelectorAll('#A fazer');
-    const desenvovimento = document.querySelectorAll('#Em desenvovimento');
-    const Concluido = document.querySelectorAll('#Concluído');
-    const dropzones = document.querySelectorAll('.dropzone')
-
     const [tasks, settasks] = useState([])
     const [initialtasks, setInitialtasks] = useState([])
-   
+
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
             .then((response) => {
@@ -55,101 +52,137 @@ function InspProjeto() {
             })
     }, []
     )
-    
+
+    useEffect(() => {
+        axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/")
+            .then((response) => {
+                settasks(response.data)
+                setInitialtasks(response.data)
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+
     function deleteprojetos(id_projeto) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 
-    /** our cards */
-    Afazer.forEach(Afazer => {
-        Afazer.addEventListener('dragstart', dragstart)
-        Afazer.addEventListener('drag', drag)
-        Afazer.addEventListener('dragend', dragend)
-    })
-
-    desenvovimento.forEach(desenvovimento => {
-        desenvovimento.addEventListener('dragstart', dragstart)
-        desenvovimento.addEventListener('drag', drag)
-        desenvovimento.addEventListener('dragend', dragend)
-    })
-
-    Concluido.forEach(concluido => {
-        concluido.addEventListener('dragstart', dragstart)
-        concluido.addEventListener('drag', drag)
-        concluido.addEventListener('dragend', dragend)
-    })
-
-    function dragstart() {
-        // log('CARD: Start dragging ')
-        dropzones.forEach(dropzone => dropzone.classList.add('highlight'))
-        // this = card
-        this.classList.add('is-dragging')
-    }
-
-    function drag() {
-        log('CARD: Is dragging ')
-    }
-
-    function dragend() {
-        log('CARD: Stop drag! ')
-        dropzones.forEach(dropzone => dropzone.classList.remove('highlight'))
-        // this = card
-        this.classList.remove('is-dragging')
-    }
-
-    /** place where we will drop cards */
-    dropzones.forEach(dropzone => {
-        dropzone.addEventListener('dragenter', dragenter)
-        dropzone.addEventListener('dragover', dragover)
-        dropzone.addEventListener('dragleave', dragleave)
-        dropzone.addEventListener('drop', drop)
-    })
-
-    function dragenter() {
-        log('DROPZONE: Enter in zone ')
-    }
-
-    function dragover() {
-        // this = dropzone
-        this.classList.add('over')
-        // get dragging card
-        const cardBeingDragged = document.querySelector('.is-dragging')
-        // this = dropzone
-        this.appendChild(cardBeingDragged)
-    }
-
-    function dragleave() {
-        log('DROPZONE: Leave ')
-        // this = dropzone
-        this.classList.remove('over')
-    }
-
-    function drop() {
-        log('DROPZONE: dropped ')
-        this.classList.remove('over')
-    }
-
-    /**função de filtro */
-    const filtro = projetos.tasks
-    const setfiltro = projetos.tasks
-    //console.log(setfiltro);
+    //filter pesquisa
     const handlechange = ({ target }) => {
         if (!target.value) {
-            filtro(setfiltro)
+            setInitialtasks(initialtasks)
             return;
         }
-        const filter = setfiltro?.filter(({ descricao_task }) =>
+        const filter = tasks.filter(({ descricao_task }) =>
             descricao_task.toUpperCase().includes(target.value.toUpperCase()))
 
-            filtro(filter);
+        setInitialtasks(filter);
     }
+    const pegaid = parseInt(id_projeto);
+    const gettask = tasks.filter((get) => get.projeto_id === pegaid);
+    const l = gettask.filter((get) => get.status === "A fazer");
+    const f = gettask.filter((get) => get.status === "Em desenvolvimento");
+    const g = gettask.filter((get) => get.status === "Concluído");
 
-    const k = projetos.tasks
-    const l = k?.filter((get) => get.status === "A fazer");
-    const f = k?.filter((get) => get.status === "Em desenvolvimento");
-    const g = k?.filter((get) => get.status === "Concluído");
+    function VerificaAfazer() {
+        if (l.length === 0) {
+            return (
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
+            )
+        } else {
+            return (
+                <>
+                    {
+                        l?.map((projetos, key) => {
+                            return (
+                                <div className="dropzone" >
+                                    <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
+                                        <Card.Body>
+                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}
+                                                <Button onClick={handleOpen}>Open modal</Button>
+                                                <Modal
+                                                    open={open}
+                                                    onClose={handleClose}
+                                                    aria-labelledby="modal-modal-title"
+                                                    aria-describedby="modal-modal-description"
+                                                >
+                                                    <Box sx={style}>
+                                                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                            <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+                                                        </Typography>
 
+                                                    </Box>
+                                                </Modal>
+                                            </Card.Title>
+                                            <Card.Text>{projetos.status}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </div>
+                            );
+                        })
+                    }
+                </>
+            )
+        }
+    }
+    function VerificaDesenvolvimento() {
+        if (f.length === 0) {
+            return (
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
+            )
+        } else {
+            return (
+                <>
+                    {
+                        f.map((projetos, key) => {
+                            return (
+                                <div className="dropzone" >
+                                    <Card style={{ width: '18rem' }} id="Em desenvolvimento" draggable="true">
+                                        <Card.Body className="dropzone">
+                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Text>{projetos.status}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </div>
+                            );
+                        })
+                    }
+                </>
+            )
+        }
+    }
+    function VerificaConcluído() {
+        if (g.length === 0) {
+            return (
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
+            )
+        } else {
+            return (
+                <>
+                    {
+                        g.map((projetos, key) => {
+                            return (
+                                <div className="dropzone">
+                                    <Card style={{ width: '18rem' }} id="Concluído" draggable="true">
+                                        <Card.Body>
+                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Text>{projetos.status}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </div>
+                            );
+                        })
+                    }
+                </>
+            )
+        }
+    }
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
@@ -186,77 +219,20 @@ function InspProjeto() {
                         <h4 className="text-center mt-2">
                             A fazer
                         </h4>
-                        {
-                            l?.map((projetos, key) => {
-                                return (
-                                    <div className="dropzone" >
-                                        <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}
-                                                    <Button onClick={handleOpen}>Open modal</Button>
-                                                    <Modal
-                                                        open={open}
-                                                        onClose={handleClose}
-                                                        aria-labelledby="modal-modal-title"
-                                                        aria-describedby="modal-modal-description"
-                                                    >
-                                                        <Box sx={style}>
-                                                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                                                            <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
-                                                            </Typography>
-                                                           
-                                                        </Box>
-                                                    </Modal>
-                                                </Card.Title>
-                                                <Card.Text>{projetos.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
+                        <VerificaAfazer/>
                     </div>
 
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             Em desenvolvimento
                         </h4>
-                        {
-                            f?.map((projetos, key) => {
-                                return (
-                                    <div className="dropzone" >
-                                        <Card style={{ width: '18rem' }} id="Em desenvolvimento" draggable="true">
-                                            <Card.Body className="dropzone">
-                                                <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
-                                                <Card.Text>{projetos.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
+                        <VerificaDesenvolvimento/>
                     </div>
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag" style={{ height: "745px" }} >
                         <h4 className="text-center mt-2">
                             Concluídos
                         </h4>
-                        {
-                            g?.map((projetos, key) => {
-                                return (
-                                    <div className="dropzone">
-                                        <Card style={{ width: '18rem' }} id="Concluído" draggable="true">
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
-                                                <Card.Text>{projetos.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                );
-                            })
-                        }
+                        <VerificaConcluído/>
                     </div>
                 </div>
             </div>
