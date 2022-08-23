@@ -27,20 +27,19 @@ const style = {
 
 
 function InspProjeto() {
-    const [projetos, setprojetos] = useState([])
-    const { id_projeto } = useParams()
-
+    
+    //variavel da manipulação do modal
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    function log(message) {
-        console.log('> ' + message)
-    }
-
+    //variaves das requisições GET
+    const [projetos, setprojetos] = useState([])
+    const { id_projeto } = useParams()
     const [tasks, settasks] = useState([])
     const [initialtasks, setInitialtasks] = useState([])
 
+    //get do array geral de projetos, sendo passado um parametro para busca com base no id passado
     useEffect(() => {
         axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
             .then((response) => {
@@ -52,7 +51,7 @@ function InspProjeto() {
             })
     }, []
     )
-
+    //get do array geral de tasks
     useEffect(() => {
         axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/")
             .then((response) => {
@@ -64,7 +63,7 @@ function InspProjeto() {
             })
     }, []
     )
-
+    //função de delete
     function deleteprojetos(id_projeto) {
         axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
@@ -81,14 +80,20 @@ function InspProjeto() {
 
         setInitialtasks(filter);
     }
+    /**pega o id do projeto selecionado e converte para inteiro*/
     const pegaid = parseInt(id_projeto);
+    /**filtra as taks com basa no id do projeto */
     const gettask = tasks.filter((get) => get.projeto_id === pegaid);
-    const l = gettask.filter((get) => get.status === "A fazer");
-    const f = gettask.filter((get) => get.status === "Em desenvolvimento");
-    const g = gettask.filter((get) => get.status === "Concluído");
+    /**divide as taks vindas da pimeira filtragem e as filtra novamento com base no status */
+    const filtFazer = gettask.filter((get) => get.status === "A fazer");
+    const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
+    const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
+    /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
+     * de "nenhum item encontrado".
+    */
     function VerificaAfazer() {
-        if (l.length === 0) {
+        if (filtFazer.length === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
             )
@@ -96,7 +101,7 @@ function InspProjeto() {
             return (
                 <>
                     {
-                        l?.map((projetos, key) => {
+                       filtFazer.map((projetos, key) => {
                             return (
                                 <div className="dropzone" >
                                     <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
@@ -129,8 +134,11 @@ function InspProjeto() {
             )
         }
     }
+    /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
+     * de "nenhum item encontrado".
+    */
     function VerificaDesenvolvimento() {
-        if (f.length === 0) {
+        if (filtFazendo.length === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
             )
@@ -138,7 +146,7 @@ function InspProjeto() {
             return (
                 <>
                     {
-                        f.map((projetos, key) => {
+                        filtFazendo.map((projetos, key) => {
                             return (
                                 <div className="dropzone" >
                                     <Card style={{ width: '18rem' }} id="Em desenvolvimento" draggable="true">
@@ -156,8 +164,11 @@ function InspProjeto() {
             )
         }
     }
+    /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
+     * de "nenhum item encontrado".
+    */
     function VerificaConcluído() {
-        if (g.length === 0) {
+        if (filtFeito.length === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%' , marginTop:'50%' }} /></h2>
             )
@@ -165,7 +176,7 @@ function InspProjeto() {
             return (
                 <>
                     {
-                        g.map((projetos, key) => {
+                        filtFeito.map((projetos, key) => {
                             return (
                                 <div className="dropzone">
                                     <Card style={{ width: '18rem' }} id="Concluído" draggable="true">
@@ -183,6 +194,7 @@ function InspProjeto() {
             )
         }
     }
+
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
