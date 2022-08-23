@@ -6,7 +6,6 @@ import { BsFlagFill } from "react-icons/bs";
 import imagemerro from './img/itensNaoencontrados.png';
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
 
 function Projetos() {
 
