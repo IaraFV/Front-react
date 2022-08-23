@@ -73,12 +73,6 @@ function Projetos() {
                                                     {projeto.descricao_projeto}
                                                 </div>
                                             </Card.Text>
-                                            <Card.Text>
-                                                <div className="titulo-descricao-projeto">Membros</div>
-                                                <div id="membros-projeto">
-                                                    <Avatar id="avatar-projeto-membro-eq" />
-                                                </div>
-                                            </Card.Text>
                                         </Card.Body>
                                     </Card>
                                 </div>

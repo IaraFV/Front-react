@@ -1,12 +1,12 @@
 #div-card-page-projetos {
-    width: 26rem;
-    margin-top: 10%;
+    width: 24rem;
+    margin-top: 3%;
     padding: 1%;
 }
 
 #div-card-projeto {
     background: #21222D;
-    height: 19rem;
+    height: 15rem;
 }
 
 #nome-projeto-plan {
@@ -65,16 +65,6 @@
 
 #corpo-descricao-projeto{
     color: #fff;
-}
-
-#membros-projeto{
-    color: #fff;
-}
-
-#avatar-projeto-membro-eq{
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-top: 1%;
 }
 
 #geral-cabecario-projetos-sup {
