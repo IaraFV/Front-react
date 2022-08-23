@@ -6,7 +6,7 @@ import { BsPeople } from "react-icons/bs";
 import Tilt from 'react-vanilla-tilt';
 
 function Equipe() {
-
+    /*---------------------------------------VARIAVEIS DOS GETs-------------------------------------------------*/
     const [posts, setPosts] = useState([])
     const [initialPosts, setInitialPosts] = useState([])
 
@@ -35,9 +35,7 @@ function Equipe() {
         setPosts(filter);
     }
 
-    
     return (
-
         <div>
             <div id="cabecario-equipe">
                 <div id="filtroebtn-page-equipe">
@@ -47,19 +45,17 @@ function Equipe() {
                     </div>
                 </div>
             </div>
-
             <div >
                 <Link to="/Add">
                     <button className="btn-adicionarequipe">Criar Equipe</button>
                 </Link>
-
             </div>
             <div id="just-equipes">
                 <div id="geraleq" >
                     {
                         posts.map((posts, key) => {
                             return (
-                                <div className="cardequipe">
+                                <div className="cardequipe" key={key.id_equipe}>
                                     <Tilt style={{ background: '#171821' }}>
                                         <Link id="link-pagina-prin-equipe" to={{ pathname: `/InspecionarEqui/${posts.id_equipe}` }}>
                                             <div id="card-prin-eq">

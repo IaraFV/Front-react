@@ -1,9 +1,54 @@
+#div-card-page-projetos {
+    width: 26rem;
+    margin-top: 10%;
+    padding: 1%;
+}
+
+#div-card-projeto {
+    background: #21222D;
+    height: 19rem;
+}
+
+#nome-projeto-plan {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 540;
+    font-size: 24px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
+
+#more-button-planejamento {
+    color: #fff;
+    font-weight: 540;
+    font-size: 24px
+}
+
 #status {
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 15px;
     color: rgba(0, 219, 153, 0.9);
     margin-top: 5%;
+}
+
+#bandeira-data {
+    color: #717986;
+    display: flex;
+    width: 46%;
+    justify-content: space-between;
+    font-family: 'Poppins';
+    margin-top: -2%;
+    font-size: 1rem;
+}
+
+.titulo-descricao-projeto {
+    font-family: 'Poppins';
+    font-weight: 550;
+    font-size: 16px;
+    color: #717986;
+    margin-top: -2%;
 }
 
 #status-desen {
@@ -16,6 +61,49 @@
     font-weight: 600;
     font-size: 0.8rem;
     color: #E9C46A;
+}
+
+#corpo-descricao-projeto{
+    color: #fff;
+}
+
+#membros-projeto{
+    color: #fff;
+}
+
+#avatar-projeto-membro-eq{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 1%;
+}
+
+#geral-cabecario-projetos-sup {
+    display: flex;
+    justify-content: center;
+}
+
+.cabecario-projetos-sup {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.botao-page-projeto {
+    border: none;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 60px;
+    width: 7%;
+    height: 38px;
+    color: #fff;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+#geral-cards-page-projetos-jus {
+    display: flex;
+    justify-content: space-around;
 }
 
 #caixa-geral-de-projetos {
@@ -37,122 +125,10 @@
     border-radius: 20px;
 }
 
-#div-card-page-projetos {
-    width: 26rem;
-    margin-top: 10%;
-    padding: 1%;
-}
-
-#div-card-projeto {
-    background: #21222D;
-    height: 19rem;
-}
-
-#card-desen {
-    padding: 0.5rem;
-}
-
-#filter-projeto {
-    width: 40rem;
-    border: 0;
-    height: 40px;
-   
-    border-radius: 8rem;
-}
-
-#filtro-Projeto {
-    display: flex;
-    align-items: center;
-
-}
-
-#nome-projeto-plan {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 540;
-    font-size: 24px;
-    color: #FFFFFF;
-    display: flex;
-    justify-content: space-between;
-}
-
-#bandeira-data {
-    color: #717986;
-    display: flex;
-    width: 46%;
-    justify-content: space-between;
-    font-family: 'Poppins';
-    margin-top: -2%;
-    font-size: 1rem;
-}
-
-#more-button-planejamento {
-    color: #fff;
-    font-weight: 540;
-    font-size: 24px
-}
-
-.cabecario-projetos-sup {
-    width: 98%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2%;
-}
-
-#titulo-descricao-projeto {
-    font-family: 'Poppins';
-    font-weight: 550;
-    font-size: 16px;
-    color: #717986;
-    margin-top: -2%;
-}
-
 #input {
     background: rgba(33, 34, 45, 0.5);
     border: 1px solid #D9D9D9;
     border-radius: 30px;
     width: 30%;
     height: 2.5rem;
-}
-
-#geral-cabecario-projetos-sup {
-    display: flex;
-    justify-content: center;
-}
-
-.botao-page-projeto {
-    border: none;
-    background: rgba(164, 164, 164, 0.12);
-    border-radius: 60px;
-    width: 7%;
-    height: 38px;
-    color: #fff;
-    margin-top: 1%;
-    margin-left: 1%;
-}
-
-#geral-cards-page-projetos-jus {
-    display: flex;
-    justify-content: space-around;
-}
-
-#red-projetos-adicionados {
-    background: #21222D;
-    border-radius: 50px;
-    width: 27%;
-    margin-right: 5%;
-    margin-top: 1%;
-}
-#corpo-descricao-projeto{
-    color: #fff;
-}
-
-#membros-projeto{
-    color: #fff;
-}
-#avatar-projeto-membro-eq{
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-top: 1%;
 }

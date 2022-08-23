@@ -109,3 +109,14 @@ textarea {
     background-color: #D9D9D9;
     border-radius: 20px;
 }
+#btn-cancelarE{
+    font-family: Heebo;
+    font-weight: 800;
+    font-size: 1.3rem;
+    padding: 5px 50px;
+    color: #fff;
+    background-color: #A4A4A4;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
