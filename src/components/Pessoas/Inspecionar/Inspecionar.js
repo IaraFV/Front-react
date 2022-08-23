@@ -78,7 +78,7 @@ function Inspecionar() {
     function favoritarFuncao() {
         favoritar++
         if (favoritar === 1) {
-            axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+            axios.put('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/' + id_pessoa + '/favoritar/')
                 .then(() => {
                     console.log("foi")
                 })
@@ -86,12 +86,12 @@ function Inspecionar() {
                     console.log("n foi")
                 })
             console.log(favoritar);
-        } else if (favoritar != 1) {
-            favoritar--
-            alert("quero café")
-        }
+        } 
+        
     }
 
+
+    console.log(favoritar);
     function RenderCards() {
         if (numero === 0) {
             return (

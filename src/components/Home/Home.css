@@ -25,7 +25,7 @@ projeto e contador task*/
 
 #geral-graficoum {
     width: 60rem;
-    height: 22rem;
+    height: 23.8rem;
     padding: 1%;
     margin-top: 34%;
     background: #21222D;
@@ -272,7 +272,7 @@ projeto e contador task*/
 }
 
 #render-projetos-conc-home {
-    width: 55rem;
+    width: 61rem;
     display: flex;
     justify-content: center;
     border: none;
@@ -355,8 +355,9 @@ projeto e contador task*/
 #caixa-geral-projetos-home {
     background: #21222D;
     border-radius: 10px;
-    width: 50%;
+    width: 60.5%;
     height: 42vh;
+    margin-left: -0.1%;
 }
 
 #caixa-geral-home {
@@ -367,7 +368,7 @@ projeto e contador task*/
 
 #caixa-dois-home {
     width: 100rem;
-    height: 25rem;
+    height: 28rem;
     margin-left: -16.3%;
 
 }
