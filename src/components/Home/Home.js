@@ -112,7 +112,8 @@ function Home() {
                                                         );
                                                     })
                                                 }
-                                                <button id="btn-ver-mais-projeto">Ver mais</button>
+                                            
+                                                <button id="btn-ver-mais-projeto" navigate="/ProjetosConcluidos" >Ver mais</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -194,7 +195,7 @@ function Home() {
                                     <div class="col-6 col-sm-4">
                                         <div class="row" id="geral-graficoum">
                                             <div class="col-6 col-sm-4">
-                                                <Grafico2 />
+                                                <Grafico2  pessoas={pessoas}/>
                                             </div>
 
                                         </div>
