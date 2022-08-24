@@ -5,72 +5,11 @@ import axios from "axios";
 import { BsArrowLeft } from "react-icons/bs";
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import Checkbox from '@mui/material/Checkbox';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import imagemerro from './img/itensNaoencontrados.png';
-import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup'
-
-const validacaoPost = yup.object().shape({
-    status:yup.string().required("O campo é obrigatorio!"),
-    
-})
-
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
-        padding: theme.spacing(2),
-    },
-    '& .MuiDialogActions-root': {
-        padding: theme.spacing(1),
-    },
-}));
-
-const BootstrapDialogTitle = (props) => {
-    const { children, onClose, ...other } = props;
-
-    return (
-        <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-            {children}
-            {onClose ? (
-                <IconButton
-                    aria-label="close"
-                    onClick={onClose}
-                    sx={{
-                        position: 'absolute',
-                        right: 8,
-                        top: 8,
-                        color: (theme) => theme.palette.grey[500],
-                    }}
-                >
-                    <CloseIcon />
-                </IconButton>
-            ) : null}
-        </DialogTitle>
-    );
-};
-
-BootstrapDialogTitle.propTypes = {
-    children: PropTypes.node,
-    onClose: PropTypes.func.isRequired,
-};
-
 
 function InspProjeto() {
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver(validacaoPost)
-        })
+
 
     //variaves das requisições GET
     const [projetos, setprojetos] = useState([])
@@ -91,13 +30,13 @@ function InspProjeto() {
     }, []
     )
     const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/", data)
-    .then(() => {
-        console.log("foi")
-       
-    })
-    .catch(() => {
-        console.log("n foi")
-    })
+        .then(() => {
+            console.log("foi")
+
+        })
+        .catch(() => {
+            console.log("n foi")
+        })
 
     //get do array geral de tasks
     useEffect(() => {
@@ -138,26 +77,6 @@ function InspProjeto() {
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
 
-    //variavel da manipulação do modal 1
-    const [open, setOpen] = React.useState(false);
-    const [getid, Setteste] = React.useState();
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
-    //variavel da manipulação do modal 2
-    const [openh, setOpenh] = React.useState(false);
-
-    const handleClickOpenh = () => {
-        setOpenh(true);
-    };
-    const handleCloseh = () => {
-        setOpenh(false);
-    };
-
-
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
      * de "nenhum item encontrado".*/
     function VerificaAfazer() {
@@ -172,51 +91,21 @@ function InspProjeto() {
                         filtFazer.map((projetos, key) => {
                             return (
                                 <div className="dropzone" >
-                                    <Button variant="outlined" onClick={handleClickOpen}>
-                                        <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
-                                            <Card.Body>
-                                                <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}
-                                                </Card.Title>
-                                                <Card.Text>{projetos.status}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Button>
+                                    <Link to={{ pathname: `/MudaSta/${projetos.id_task}` }}>
+                                        <button>status</button>
+                                    </Link>
+                                    <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
+                                        <Card.Body>
+                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}
+                                            </Card.Title>
+                                            <Card.Text>{projetos.status}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
                                 </div>
                             );
                         })
                     }
-                    <BootstrapDialog onSubmit={handleSubmit(addPost)}
-                        onClose={handleClose}
-                        aria-labelledby="customized-dialog-title"
-                        open={open}>
-                        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                            Modal title
-                        </BootstrapDialogTitle>
-                        <DialogContent dividers>
-                            <Typography gutterBottom>
-                                <FormControlLabel
-                                    {...register("status")}
-                                    value="Em desenvolvimento"
-                                    control={<Checkbox />}
-                                    label="Em desenvolvimento"
-                                    labelPlacement="Em desenvolvimento"
-                                />
-                                <FormControlLabel
-                                    {...register("status")}
-                                    value="Concluído"
-                                    control={<Checkbox />}
-                                    label="Concluído"
-                                    labelPlacement="Concluído"
-                                />
-                            </Typography>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button autoFocus onClick={handleClose}>
-                                Save changes
-                            </Button>
-                        </DialogActions>
-                    </BootstrapDialog>
                 </>
             )
         }
@@ -237,7 +126,6 @@ function InspProjeto() {
                         filtFazendo.map((projetos, key) => {
                             return (
                                 <div className="dropzone" >
-                                    <Button variant="outlined" onClick={handleClickOpenh}>
                                     <Card style={{ width: '18rem' }} id="Em desenvolvimento" draggable="true">
                                         <Card.Body className="dropzone">
                                             <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
@@ -245,42 +133,10 @@ function InspProjeto() {
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
-                                    </Button>
                                 </div>
                             );
                         })
                     }
-                    <BootstrapDialog onSubmit={handleSubmit(addPost)}
-                        onClose={handleCloseh}
-                        aria-labelledby="customized-dialog-title"
-                        open={openh}>
-                        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleCloseh}>
-                            Modal title
-                        </BootstrapDialogTitle>
-                        <DialogContent dividers>
-                            <Typography gutterBottom>
-                                <FormControlLabel
-                                    {...register("status")}
-                                    value="A fazer"
-                                    control={<Checkbox />}
-                                    label="A fazer"
-                                    labelPlacement="A fazer"
-                                />
-                                <FormControlLabel
-                                    {...register("status")}
-                                    value="Concluído"
-                                    control={<Checkbox />}
-                                    label="Concluído"
-                                    labelPlacement="Concluído"
-                                />
-                            </Typography>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button autoFocus onClick={handleCloseh}>
-                                Save changes
-                            </Button>
-                        </DialogActions>
-                    </BootstrapDialog>
                 </>
             )
         }
