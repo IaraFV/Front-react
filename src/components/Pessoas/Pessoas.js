@@ -24,11 +24,11 @@ function Pessoas() {
             })
             .catch((err) => {
                 if (err.response.status == 401) {
-                    alert('Não foi parceiro')
-                    window.location.href = '/';
-                } else alert("erro inesperado")
-                console.log("deu errado")
-            })
+                    alert('Não foi parceiro');
+                    console.log('nao foi')
+                } else alert(err.message)
+                
+            });
     }, []
     )
     const handlechange = ({ target }) => {

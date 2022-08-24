@@ -3,6 +3,7 @@
 ## Iniciar
 * npm install
 * npm start
+* Necessário email e senha :)
 
 ## Disponível em: 
 
