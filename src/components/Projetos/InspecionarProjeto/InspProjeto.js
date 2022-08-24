@@ -18,6 +18,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup'
+
+const validacaoPost = yup.object().shape({
+    status:yup.string().required("O campo é obrigatorio!"),
+    
+})
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -60,6 +68,10 @@ BootstrapDialogTitle.propTypes = {
 
 function InspProjeto() {
 
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(validacaoPost)
+        })
+
     //variaves das requisições GET
     const [projetos, setprojetos] = useState([])
     const { id_projeto } = useParams()
@@ -78,6 +90,15 @@ function InspProjeto() {
             })
     }, []
     )
+    const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/", data)
+    .then(() => {
+        console.log("foi")
+       
+    })
+    .catch(() => {
+        console.log("n foi")
+    })
+
     //get do array geral de tasks
     useEffect(() => {
         axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/")
@@ -119,7 +140,7 @@ function InspProjeto() {
 
     //variavel da manipulação do modal 1
     const [open, setOpen] = React.useState(false);
-
+    const [getid, Setteste] = React.useState();
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -165,7 +186,7 @@ function InspProjeto() {
                             );
                         })
                     }
-                    <BootstrapDialog
+                    <BootstrapDialog onSubmit={handleSubmit(addPost)}
                         onClose={handleClose}
                         aria-labelledby="customized-dialog-title"
                         open={open}>
@@ -175,12 +196,14 @@ function InspProjeto() {
                         <DialogContent dividers>
                             <Typography gutterBottom>
                                 <FormControlLabel
+                                    {...register("status")}
                                     value="Em desenvolvimento"
                                     control={<Checkbox />}
                                     label="Em desenvolvimento"
                                     labelPlacement="Em desenvolvimento"
                                 />
                                 <FormControlLabel
+                                    {...register("status")}
                                     value="Concluído"
                                     control={<Checkbox />}
                                     label="Concluído"
@@ -227,7 +250,7 @@ function InspProjeto() {
                             );
                         })
                     }
-                    <BootstrapDialog
+                    <BootstrapDialog onSubmit={handleSubmit(addPost)}
                         onClose={handleCloseh}
                         aria-labelledby="customized-dialog-title"
                         open={openh}>
@@ -237,12 +260,14 @@ function InspProjeto() {
                         <DialogContent dividers>
                             <Typography gutterBottom>
                                 <FormControlLabel
+                                    {...register("status")}
                                     value="A fazer"
                                     control={<Checkbox />}
                                     label="A fazer"
                                     labelPlacement="A fazer"
                                 />
                                 <FormControlLabel
+                                    {...register("status")}
                                     value="Concluído"
                                     control={<Checkbox />}
                                     label="Concluído"

@@ -23,6 +23,7 @@ import {BsColumnsGap} from "react-icons/bs";
 import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
 import Idetiprojeto from './components/Projetos/editeprojeto/idetiprojeto';
+import Login from './components/Login/Login'
 function App() {
 
   return (
@@ -30,7 +31,7 @@ function App() {
  <div className='App' >
     <BrowserRouter >
     <Nav variant='tabs' style={{background: '#171821', height: '80px', border:"none"}}>
-      <Nav.Link id='caixah' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}}  as={Link} to="/"><BsColumnsGap />Overview</Nav.Link>
+      <Nav.Link id='caixah' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.4rem'}}  as={Link} to="/Home"><BsColumnsGap />Overview</Nav.Link>
 
       <Nav.Link id='caixap' style={{background: '#171821', color: '#87888C', marginLeft:'2%', fontSize:'1.5rem'}} as={Link} to="/Pessoas" ><BsPerson/>Pessoas</Nav.Link>
 
@@ -44,7 +45,8 @@ function App() {
     </Nav>
 
     <Routes>
-      <Route path="/" element={<Home/>}></Route>
+      <Route path="/" element={<Login/>}></Route>
+      <Route path="/Home" element={<Home/>}></Route>
       <Route path="/Pessoas" element={<Pessoas/>}></Route>
       <Route path="/Equipes" element={<Equipes/>}></Route>
       <Route path="/ProjetosConcluidos" element={<ProjetosConcluidos/>}></Route>
@@ -62,6 +64,8 @@ function App() {
       <Route path='/EditarEquipe/:id_equipe' element={<EditarEquipe/>}></Route>
       <Route path='/Idetiprojeto/:id_projeto' element={<Idetiprojeto/>}></Route>
     </Routes>
+
+
     </BrowserRouter>
 </div>
 
