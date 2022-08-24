@@ -51,6 +51,7 @@
     background: rgba(33, 34, 45, 0.5);
     border: 1px solid #D9D9D9;
     border-radius: 6px;
+    color: #fff;
 }
 
 #input-senha-login {
