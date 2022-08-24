@@ -44,48 +44,34 @@ function Grafico2(props) {
 
   const datac = [
     {
-      name: "Segunda",
-      uv: 4000,
-      id: 2400,
-      amt: 2400
-    },
-    {
-      name: "Terca",
-      uv: 3000,
-      id: 1398,
-      amt: 2210
-    },
-    {
-      name: "Quarta",
-      uv: 2000,
-      id: 9800,
-      amt: 2290
-    },
-    {
-      name: "Quinta",
-      uv: 2780,
-      id: 3908,
-      amt: 2000
-    },
-    {
-      name: "Sexta",
-      uv: 1890,
-      id: 4800,
-      amt: 2181
-    },
-    {
-      name: "Sabado",
-      uv: 2390,
-      id: 3800,
-      amt: 2500
-    },
-    {
-      name: "Domingo",
-      uv: 3490,
-      id: 4300,
-      amt: 2100
+      "id": "Pessoasaddd",
+      "datac": 2400
     }
+   
   ];
+
+  for (let i = 0; i<7; i++) {
+    const Dias = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+    let DiaUnico = datau[i].getDay();
+    let DiadaSemana;
+    if (DiaUnico === 0) {
+      DiadaSemana = Dias[0];
+    } else if (DiaUnico === 1) {
+      DiadaSemana = Dias[1];
+    } else if (DiaUnico === 2) {
+      DiadaSemana = Dias[2];
+    } else if (DiaUnico === 3) {
+      DiadaSemana = Dias[3];
+    } else if (DiaUnico === 4) {
+      DiadaSemana = Dias[4];
+    } else if (DiaUnico === 5) {
+      DiadaSemana = Dias[5];
+    } else if (DiaUnico === 6) {
+      DiadaSemana = Dias[6];
+    }
+  
+
+  }
 
   return (
     <div>
