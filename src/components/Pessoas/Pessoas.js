@@ -7,6 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import imagemerro from './img/itensNaoencontrados.png';
+import Alert from 'react-bootstrap/Alert';
 
 function Pessoas() {
 
@@ -21,7 +22,11 @@ function Pessoas() {
                 console.log("foi")
 
             })
-            .catch(() => {
+            .catch((err) => {
+                if (err.response.status == 401) {
+                    alert('Não foi parceiro')
+                    window.location.href = '/';
+                } else alert("erro inesperado")
                 console.log("deu errado")
             })
     }, []
@@ -47,43 +52,43 @@ function Pessoas() {
         };
     }
     const pessoasnum = parseInt(pessoas.length);
-    
-    function TratamentoError(){
+
+    function TratamentoError() {
         if (pessoasnum === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " className="img_formatacao" /></h2>
             )
-        }else {
+        } else {
             return (
                 <>
                     {
-                    pessoas.map((pessoas, key) => {
-                        return (
-                            <div className="cardpessoas">
-                                <Link id="link-pessoa-page-pessoa" to={{ pathname: `/Inspecionar/${pessoas.id_pessoa}` }}>
-                                    <Card container id="card-pessoa-page" spacing={2} sx={{ width: 360, bgcolor: '#21222D' }} key={key} >
-                                        <CardContent sx={{ color: 'white' }}>
-                                            <Typography id="sub-title-nome-pessoa" color="white">
-                                                {pessoas.funcao_pessoa}
-                                            </Typography>
-                                            <Typography>
-                                                <div id="avatar-page-pessoa">
-                                                    <Avatar id="avatar-pessoa" {...stringAvatar(`${nome}`)} />
-                                                </div>
-                                            </Typography>
-                                            <Typography id="title-nome-pessoa">
-                                                {pessoas.nome_pessoa}
-                                            </Typography>
-                                            <Typography id="data-contratacao">
-                                                {pessoas.data_contratacao}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                </Link>
-                            </div>
-                        )
-                    })
-                }
+                        pessoas.map((pessoas, key) => {
+                            return (
+                                <div className="cardpessoas">
+                                    <Link id="link-pessoa-page-pessoa" to={{ pathname: `/Inspecionar/${pessoas.id_pessoa}` }}>
+                                        <Card container id="card-pessoa-page" spacing={2} sx={{ width: 360, bgcolor: '#21222D' }} key={key} >
+                                            <CardContent sx={{ color: 'white' }}>
+                                                <Typography id="sub-title-nome-pessoa" color="white">
+                                                    {pessoas.funcao_pessoa}
+                                                </Typography>
+                                                <Typography>
+                                                    <div id="avatar-page-pessoa">
+                                                        <Avatar id="avatar-pessoa" {...stringAvatar(`${nome}`)} />
+                                                    </div>
+                                                </Typography>
+                                                <Typography id="title-nome-pessoa">
+                                                    {pessoas.nome_pessoa}
+                                                </Typography>
+                                                <Typography id="data-contratacao">
+                                                    {pessoas.data_contratacao}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
+                                    </Link>
+                                </div>
+                            )
+                        })
+                    }
                 </>
             )
         }
@@ -106,7 +111,7 @@ function Pessoas() {
                 </Link>
             </div>
             <div id="geralpessoas">
-                <TratamentoError/>
+                <TratamentoError />
             </div>
         </div>
     )

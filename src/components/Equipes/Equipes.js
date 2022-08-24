@@ -17,7 +17,11 @@ function Equipe() {
                 setPosts(response.data)
                 setInitialPosts(response.data)
             })
-            .catch(() => {
+            .catch((err) => {
+                if (err.response.status == 401) {
+                    alert("É preciso login parceiro")
+                    window.location.href = '/';
+                } else alert("erro inesperado")
                 console.log("deu errado")
             })
     }, []
