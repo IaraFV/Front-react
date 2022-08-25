@@ -62,8 +62,6 @@ function Home() {
     }, []
     )
 
-
-
     //const recebetodaspessoas = posts;
     var receber = [];
     for (var person = 0; person < 8; person++) {
@@ -183,9 +181,6 @@ function Home() {
 
 
                         </div>
-
-
-
                     </div>
 
 
