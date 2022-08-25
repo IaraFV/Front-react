@@ -24,7 +24,7 @@ function Projetos() {
                 console.log("Deu BO Men")
             })
     }, [])
-
+    console.log(projeto);
     //filter pesquisa
     const handlechange = ({ target }) => {
         if (!target.value) {
