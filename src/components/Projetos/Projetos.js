@@ -6,6 +6,7 @@ import { BsFlagFill } from "react-icons/bs";
 import imagemerro from './img/itensNaoencontrados.png';
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import api from '../Login/services/api';
 
 function Projetos() {
 
@@ -14,7 +15,7 @@ function Projetos() {
     //get projetos
     const [projeto, setprojeto] = useState([])
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
+        api.get('/projetos/')
             .then((response) => {
                 setprojeto(response.data)
                 setInitialprojeto(response.data)
