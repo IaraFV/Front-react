@@ -4,32 +4,26 @@ import "./login.css"
 import api from "./services/api"
 
 
-function Login() {
+export default function Login() {
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
 
-    function PostEmail(e) {
+    const PostEmail = (e) => {
         e.preventDefault()
         api.post('/login/', {
-          email: email,
-          senha: senha
-        })
+            email: email,
+            senha: senha
+          })
           .then(res => {
-            console.log(res)
-            console.log(e)
-            window.location.pathname = '/Home';
-            
-          })
-          .catch(e => {
-    
-            if (e.response.status == 400) {
-              console.log('Funciona n ');
-              setSenha('');
-              setEmail('');
-            }
-          })
+            localStorage.setItem('token', JSON.stringify(res.data.token))
+            api.defaults.headers.Authorization = `Bearer ${res.data.token}`
+            window.location.href = '/Home'
+        })
+        .catch(err => alert(err))
       }
+      
+
     return (
         <>
 
@@ -68,4 +62,3 @@ function Login() {
         </>
     )
 }
-export default Login;

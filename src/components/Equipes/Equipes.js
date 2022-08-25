@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { BsPeople } from "react-icons/bs";
 import Tilt from 'react-vanilla-tilt';
+import api from '../Login/services/api';
 
 function Equipe() {
     /*---------------------------------------VARIAVEIS DOS GETs-------------------------------------------------*/
@@ -12,7 +13,7 @@ function Equipe() {
 
     /*---------------------------------------GET EQUIPE-------------------------------------------------*/
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
+        api.get('/equipes/')
             .then((response) => {
                 setPosts(response.data)
                 setInitialPosts(response.data)

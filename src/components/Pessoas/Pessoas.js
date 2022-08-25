@@ -8,14 +8,17 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import imagemerro from './img/itensNaoencontrados.png';
 import Alert from 'react-bootstrap/Alert';
+import api from '../Login/services/api';
+import { get } from "react-hook-form";
 
 function Pessoas() {
 
     const [pessoas, setpessoas] = useState([])
     const [initialpessoas, setInitialpessoas] = useState([])
+    console.log(localStorage.getItem('token'))
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
+        api.get('/pessoas/')
             .then((response) => {
                 setpessoas(response.data)
                 setInitialpessoas(response.data)
@@ -27,10 +30,11 @@ function Pessoas() {
                     alert('Não foi parceiro');
                     console.log('nao foi')
                 } else alert(err.message)
-                
+
             });
     }, []
     )
+
     const handlechange = ({ target }) => {
         if (!target.value) {
             setpessoas(initialpessoas)
