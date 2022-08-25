@@ -25,6 +25,12 @@ import { BsPeople, BsPerson } from "react-icons/bs";
 import Idetiprojeto from './components/Projetos/editeprojeto/idetiprojeto';
 import Login from './components/Login/Login'
 import Rotas from './routes';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 function App() {
 
   return (
@@ -33,6 +39,46 @@ function App() {
 
       <BrowserRouter >
 
+      {[false, ].map((expand) => (
+        <Navbar key={expand} style={{ background: '#171821', height: '60px', border: "1px solid red" }} expand={expand} className="mb-3">
+          <Container fluid>
+            <Navbar.Brand><div id='img'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '-53px' }} /></div></Navbar.Brand>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+              style={{backgroundColor: '#171821'}}
+            >
+              <Offcanvas.Header closeButton style={{color: '#fff'}}>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                  Menu
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home" ><BsColumnsGap />Overview</Nav.Link>
+                  <Nav.Link href="#action2">Link</Nav.Link>
+                  <NavDropdown
+                    title="Dropdown"
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">
+                      Another action
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action5">
+                      Something else here
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </Nav>
+                
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+      ))}
         <Nav variant='tabs' style={{ background: '#171821', height: '80px', border: "none" }}>
           <Nav.Link id='caixah' style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home"><BsColumnsGap />Overview</Nav.Link>
 
@@ -42,7 +88,7 @@ function App() {
 
           <Nav.Link id='caixapr' style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile />Projetos</Nav.Link>
 
-          <div id='img'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '-53px' }} /></div>
+          
         </Nav>
 
         <Routes>
