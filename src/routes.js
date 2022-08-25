@@ -24,12 +24,12 @@ import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
 import Idetiprojeto from './components/Projetos/editeprojeto/idetiprojeto';
 import Login from './components/Login/Login'
-import Rotas from './routes';
-function App() {
+import App from './App';
+function Rotas() {
 
   return (
 
-    <div className='App' >
+    <div className='rotas' >
 
       <BrowserRouter >
 
@@ -68,8 +68,7 @@ function App() {
 
     </div>
 
-
   );
 }
 
-export default App;
+export default Rotas;

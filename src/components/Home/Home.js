@@ -5,6 +5,8 @@ import Grafico2 from "../Graficos/Grafico2"
 import { Link, useParams } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
 import { BsBarChartLine } from "react-icons/bs";
+import api from '../Login/services/api';
+
 function Home() {
 
     const [post, setpost] = useState([]);
@@ -15,7 +17,7 @@ function Home() {
 
     console.log(equipes);
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/')
+        api.get('/projetos/')
             .then((response) => {
                 setpost(response.data)
                 console.log("Deu certo men")
@@ -25,7 +27,7 @@ function Home() {
     }, [])
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/')
+        api.get('/pessoas/')
             .then((response) => {
                 setPessoas(response.data)
                 console.log("foi")
@@ -38,7 +40,7 @@ function Home() {
     )
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
+        api.get('/equipes/')
             .then((response) => {
                 setEquipes(response.data)
                 console.log("pegou eq")
@@ -50,7 +52,7 @@ function Home() {
     )
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/')
+        api.get('/tasks/')
             .then((response) => {
                 setTask(response.data)
             })
