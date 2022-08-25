@@ -91,9 +91,6 @@ function InspProjeto() {
                         filtFazer.map((projetos, key) => {
                             return (
                                 <div className="dropzone" >
-                                    <Link to={{ pathname: `/MudaSta/${projetos.id_task}` }}>
-                                        <button>status</button>
-                                    </Link>
                                     <Card style={{ width: '18rem' }} id='A fazer' draggable="true">
                                         <Card.Body>
                                             <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}
