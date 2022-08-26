@@ -39,36 +39,40 @@ function App() {
 
       <BrowserRouter >
 
-      {[false, ].map((expand) => (
-        <Navbar key={expand} style={{ background: '#171821', height: '60px', border: "1px solid red" }} expand={expand} className="mb-3">
-          <Container fluid>
-            <Navbar.Brand><div id='img'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '-53px' }} /></div></Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-              style={{backgroundColor: '#171821'}}
-            >
-              <Offcanvas.Header closeButton style={{color: '#fff'}}>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Menu
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home" ><BsColumnsGap />Overview</Nav.Link>
-                  <Nav.Link  style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.5rem' }} as={Link} to="/Pessoas"><BsPerson />Pessoas</Nav.Link>
-                  <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Equipes"><BsPeople />Equipes</Nav.Link>
-                  <Nav.Link  style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile />Projetos</Nav.Link>
-                  
-                </Nav>
-                
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      ))}
+        {[false,].map((expand) => (
+          <Navbar key={expand} id="nav-bar-home-menu" expand={expand} className="mb-3" class="navbar navbar-dark ">
+            <Container fluid >
+              <Navbar.Brand >
+                <div id='img-brisa-home'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '-53px' }} />
+                </div>
+              </Navbar.Brand>
+              
+              <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+              <Navbar.Offcanvas
+                id={`offcanvasNavbar-expand-${expand}`}
+                aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+                placement="end"
+                style={{ backgroundColor: '#171821' }}
+              >
+                <Offcanvas.Header closeButton >
+                  <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}  style={{ color: '#FFF' }}>
+                    Menu
+                  </Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body style={{ color: '#FFF' }}>
+                  <Nav className="justify-content-end flex-grow-1 pe-3" style={{ color: '#fff' }}>
+                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home" ><BsColumnsGap />Overview</Nav.Link>
+                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.5rem' }} as={Link} to="/Pessoas"><BsPerson />Pessoas</Nav.Link>
+                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Equipes"><BsPeople />Equipes</Nav.Link>
+                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile />Projetos</Nav.Link>
+
+                  </Nav>
+
+                </Offcanvas.Body>
+              </Navbar.Offcanvas>
+            </Container>
+          </Navbar>
+        ))}
 
 
         <Routes>

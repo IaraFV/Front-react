@@ -5,7 +5,7 @@ import * as yup from 'yup'
 import './editeEquipe.css'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
-
+import api from '../../Login/services/api'
 const validacaoGet = yup.object().shape({
     nome_equipe: yup.string().required("O nome é obrigatorio!")
 })
@@ -14,7 +14,7 @@ function Edite() {
 
     const { id_equipe } = useParams()
 
-    const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`, data)
+    const addPost = data => api.put(`/equipes/${id_equipe}`, data)
         .then(() => {
             console.log("foi")
            
@@ -30,7 +30,7 @@ function Edite() {
 
 
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
+        api.get(`/equipes/${id_equipe}`)
             .then((response) => {
                 reset(response.data)
             })

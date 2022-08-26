@@ -11,6 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import api from '../../Login/services/api'
 
 function Post() {
 
@@ -22,7 +23,7 @@ function Post() {
 
     let navigate = useNavigate()
 
-    const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/", data)
+    const addPost = data => api.post("/pessoas/", data)
         .then((response) => {
             navigate("/Pessoas");
             console.log("foi");

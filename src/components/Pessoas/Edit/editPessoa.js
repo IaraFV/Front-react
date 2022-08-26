@@ -10,6 +10,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import api from '../../Login/services/api';
 
 function Edit() {
     
@@ -22,7 +23,7 @@ function Edit() {
     
     let navigate = useNavigate()
 
-     const editPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`, data)
+     const editPost = data => api.put(`/pessoas/${id_pessoa}`, data)
         .then(() => {
             console.log("foi");
         })
@@ -37,7 +38,7 @@ function Edit() {
    
 
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+        api.get(`/pessoas/${id_pessoa}`)
         .then((response) => {
             reset(response.data)
         })

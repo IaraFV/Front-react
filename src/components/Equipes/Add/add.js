@@ -13,6 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import api from '../../Login/services/api'
 
 const validacaoPostE = yup.object().shape({
     nome_equipe: yup.string().required("Campo obrigatorio!"),
@@ -27,7 +28,7 @@ function PostE() {
         resolver: yupResolver(validacaoPostE)
     })
 
-    const addPostE = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/", data)
+    const addPostE = data => api.post("/equipes/", data)
         .then(() => {
             console.log("foi")
             navigate("/Equipes");

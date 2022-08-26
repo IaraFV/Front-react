@@ -17,6 +17,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import imagemerro from './img/falta_de_dados (cópia).png';
+import api from '../../Login/services/api'
 
 const validacaoGet = yup.object().shape({
     favoritar: yup.number(),
@@ -33,7 +34,7 @@ function Inspecionar() {
     })
     
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+        api.get(`/pessoas/${id_pessoa}`)
             .then((response) => {
                 setPosts(response.data)
 
@@ -44,7 +45,7 @@ function Inspecionar() {
     }, []
     )
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/`)
+        api.get(`/tasks/`)
             .then((response) => {
                 setTask(response.data)
                 console.log("deu certo boy")
@@ -57,7 +58,7 @@ function Inspecionar() {
     )
     const nome = posts.nome_pessoa;
     function deletePost(id_pessoa) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/${id_pessoa}`)
+        api.delete(`/pessoas/${id_pessoa}`)
         setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
     }
     function stringAvatar(name) {
@@ -87,7 +88,7 @@ function Inspecionar() {
     function favoritarFuncao() {
         favoritar++
         if (favoritar === 1) {
-             axios.put('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/' + id_pessoa + '/favoritar')
+             api.put('/pessoas/' + id_pessoa + '/favoritar')
                 .then(() => {
                     console.log("favoritou")
                 })

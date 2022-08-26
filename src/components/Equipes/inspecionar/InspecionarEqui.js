@@ -12,6 +12,8 @@ import Card from 'react-bootstrap/Card';
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from './img/falta_de_dados.png';
+import api from '../../Login/services/api';
+
 function InspecionarEquipe() {
 
     const [equipe, setequipe] = useState([])
@@ -24,7 +26,7 @@ function InspecionarEquipe() {
 
     /*------------------------------------------------------------------------------GET EQUIPE--------------------------------------------------------------------*/
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
+        api.get(`/equipes/${id_equipe}`)
             .then((response) => {
                 setequipe(response.data)
                 console.log('deu certo Men')
@@ -35,11 +37,10 @@ function InspecionarEquipe() {
     }, []
     )
 
-    //https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/32/projetos
     /*-------------------------------------------------------------GET NO PROJETO ESPECÍFICO DA EQUIPE------------------------------------------------------------*/
 
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/' + id_equipe + '/projetos')
+        api.get('/equipes/' + id_equipe + '/projetos')
             .then((response) => {
                 setprojeto(response.data)
                 console.log('deu certo Men')
@@ -54,7 +55,7 @@ function InspecionarEquipe() {
     /*------------------------------------------------------------------GET NOS MEMBROS DA EQUIPE----------------------------------------------------------------*/
 
     useEffect(() => {
-        axios.get("https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/")
+        api.get("/pessoas/")
             .then((response) => {
                 setpessoa(response.data)
                 console.log('deu certo Men')
@@ -68,9 +69,8 @@ function InspecionarEquipe() {
 
     /*-------------------------------------------------------------FUNCAO PARA DELETAR A EQUIPE ESPECIFICA------------------------------------------------------------*/
     function deleteEquipe(id_equipe) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/${id_equipe}`)
+        api.delete(`/equipes/${id_equipe}`)
         setequipe(equipe.filter(post => post.id_equipe !== id_equipe))
-
 
         setTimeout(() =>
             navigate('/Equipes'), 1000)
