@@ -12,21 +12,18 @@ import {
 
 function Grafico2(props) {
 
-  var dataatual = new Date('07-29-2022');
+  var dataatual = new Date();
 
 
-  const datau = [new Date('07-29-2022'),];
+  const datau = [new Date(),];
 
   for (let i = 0; i < 6; i++) {
     datau.push(new Date(dataatual.setDate(dataatual.getDate() - 1)));
   }
-
-  console.log(datau)
-  let pessoascontratadas = 0;
-
-  const ultimaspessoascont = [];
+ 
 
   var Pessoasaddd = [0,0,0,0,0,0,0]
+  datau.reverse();
 
   if(props.pessoas !== null){
     props.pessoas.map ( p => {
@@ -42,13 +39,7 @@ function Grafico2(props) {
 
   console.log(Pessoasaddd)
 
-  const datac = [
-    {
-      "id": "Pessoasaddd",
-      "datac": 2400
-    }
-   
-  ];
+  const datac = [];
 
   for (let i = 0; i<7; i++) {
     const Dias = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
@@ -69,7 +60,12 @@ function Grafico2(props) {
     } else if (DiaUnico === 6) {
       DiadaSemana = Dias[6];
     }
+   
   
+    let dataFormatada = `${DiadaSemana} ${datau[i].getDate()}`;
+    const obj = {"name": dataFormatada, "y": Pessoasaddd[i]};
+    datac.push(obj);
+
 
   }
 
@@ -91,7 +87,7 @@ function Grafico2(props) {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="id" stroke=" rgba(233, 196, 106, 0.5)" fill="rgba(233, 196, 106, 0.5)" opacity="0.4" border="none" />
+        <Area type="monotone" dataKey="y" stroke=" rgba(233, 196, 106, 0.5)" fill="rgba(233, 196, 106, 0.5)" opacity="0.4" border="none" />
       </AreaChart>
     </div>
   );
