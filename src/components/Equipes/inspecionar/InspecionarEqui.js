@@ -110,6 +110,7 @@ function InspecionarEquipe() {
         alert("Excluido com sucesso")
     }
 
+    console.log(projeto);
     function RenderCards() {
         if (projeto === null) {
             return (
@@ -126,9 +127,9 @@ function InspecionarEquipe() {
                                 <div >
                                     <div id="div-card-page-inpequipe">
 
-                                        <Card id="div-card-projetod">
+                                        <Card id="div-card-projeto-equipe">
                                             <Card.Body>
-                                                <Card.Title id="nome-projeto-plan" key={key}>
+                                                <Card.Title id="header-projeto-inspequipe" key={key}>
                                                     {projeto.nome_projeto}
 
                                                     <div>
@@ -137,13 +138,10 @@ function InspecionarEquipe() {
                                                         </Link>
                                                     </div>
                                                 </Card.Title>
-                                                <Card.Text id="status">
+                                                <Card.Text id="status-projeto-isnpequipe">
                                                     {projeto.status}
                                                 </Card.Text>
-                                                <Card.Text id="bandeira-data">
-                                                    <div><BsFlagFill /></div>
-                                                    <div>{projeto.data_inicio}</div>
-                                                </Card.Text>
+                                               
                                                 <Card.Text>
                                                     <div id="titulo-descricao-projeto">Descrição</div>
                                                     <div id="corpo-descricao-projeto">

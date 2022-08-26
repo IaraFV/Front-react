@@ -194,9 +194,17 @@
 }
 
 
-#div-card-projetod {
+#div-card-projeto-equipe {
     background: #171821;
     height: 10rem;
     border: 1px dashed #171821;
     border-radius: 50px;
+}
+#header-projeto-inspequipe{
+    color: #FFFFFF;
+    font-family: 'Inter';
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+
 }
