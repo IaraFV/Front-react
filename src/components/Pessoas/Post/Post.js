@@ -36,20 +36,20 @@ function Post() {
         resolver: yupResolver(validacaoPost)
     })
 
+  
+
     useEffect(() => {
+        api.get('/equipes/')
+            .then((response) => {
+                setequipe(response.data)
+                console.log("pegou eq")
+            })
+            .catch(() => {
+                console.log("deu errado eq")
+            })
+    }, []
+    )
 
-        const fetchequipe = async () => {
-            try {
-                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/');
-                const data = await response.json();
-                setequipe(data);
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchequipe();
-    }, [])
     
     function voltar() {
         window.history.back();
@@ -61,7 +61,7 @@ function Post() {
     const handleChange = (event) => {
         setAge(event.target.value);
     };
-
+console.log(setequipe)
     return (
         <div>
             <main>

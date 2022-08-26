@@ -109,7 +109,8 @@ function InspecionarEquipe() {
     function alentsuccess() {
         alert("Excluido com sucesso")
     }
-    
+
+    console.log(projeto);
     function RenderCards() {
         if (projeto === null) {
             return (
@@ -119,15 +120,16 @@ function InspecionarEquipe() {
             )
         } else {
             return (
-                <div className="caixa-geral-de-projetos" style={{ height: "500px" }}>
+                <div id="caixa-geral-de-projetos-inspequipe">
                     {
                         projeto?.map((projeto, key) => {
                             return (
                                 <div >
-                                    <div id="div-card-page-projetosd">
-                                        <Card id="div-card-projetod">
+                                    <div id="div-card-page-inpequipe">
+
+                                        <Card id="div-card-projeto-equipe">
                                             <Card.Body>
-                                                <Card.Title id="nome-projeto-plan" key={key}>
+                                                <Card.Title id="header-projeto-inspequipe" key={key}>
                                                     {projeto.nome_projeto}
 
                                                     <div>
@@ -136,13 +138,10 @@ function InspecionarEquipe() {
                                                         </Link>
                                                     </div>
                                                 </Card.Title>
-                                                <Card.Text id="status">
+                                                <Card.Text id="status-projeto-isnpequipe">
                                                     {projeto.status}
                                                 </Card.Text>
-                                                <Card.Text id="bandeira-data">
-                                                    <div><BsFlagFill /></div>
-                                                    <div>{projeto.data_inicio}</div>
-                                                </Card.Text>
+                                               
                                                 <Card.Text>
                                                     <div id="titulo-descricao-projeto">Descrição</div>
                                                     <div id="corpo-descricao-projeto">
@@ -151,6 +150,7 @@ function InspecionarEquipe() {
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
+
                                     </div>
                                 </div>
                             );
@@ -202,6 +202,7 @@ function InspecionarEquipe() {
                             }
                         </div>
                         <div id='btn-opition'>
+
                             <div>
                                 <Link className="link-inspequi" to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}>
                                     <button id="btn-edit-inspequi" to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}>
@@ -216,17 +217,20 @@ function InspecionarEquipe() {
                         </div>
                     </div>
                 </div>
+
                 <div id='insp-card-dois-pagina-inspequipe'>
                     <div>
-                        <h2>projeto</h2>
+                        <div id='header-projetos-concluidos-insp-equipe'>Projetos</div>
+                    </div>
+
+                    <div id='linha-progresso-eq'>
+                        <Progress.Line percent={percent} strokeColor={'#00DB99'} status={status} />
                     </div>
                     <div>
-                    <RenderCards/>
+                        <RenderCards />
                     </div>
-                    <div style={{ width: 120, marginTop: 10 }}>
-                        <Progress.Circle percent={percent} strokeColor={'#00DB99'} status={status} />
-                    </div>
-                    
+
+
                 </div>
             </div>
 

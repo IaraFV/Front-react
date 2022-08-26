@@ -54,10 +54,11 @@ function App() {
                 placement="end"
                 style={{ backgroundColor: '#171821' }}
               >
-                <Offcanvas.Header closeButton >
-                  <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}  style={{ color: '#FFF' }}>
+                <Offcanvas.Header >
+                  <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} >
                     Menu
                   </Offcanvas.Title>
+                  <button type="button" class="btn-close btn-close-white"  aria-label="Close"></button>
                 </Offcanvas.Header>
                 <Offcanvas.Body style={{ color: '#FFF' }}>
                   <Nav className="justify-content-end flex-grow-1 pe-3" style={{ color: '#fff' }}>
