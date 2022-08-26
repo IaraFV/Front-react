@@ -109,7 +109,7 @@ function InspecionarEquipe() {
     function alentsuccess() {
         alert("Excluido com sucesso")
     }
-    
+
     function RenderCards() {
         if (projeto === null) {
             return (
@@ -119,12 +119,13 @@ function InspecionarEquipe() {
             )
         } else {
             return (
-                <div className="caixa-geral-de-projetos" style={{ height: "500px" }}>
+                <div id="caixa-geral-de-projetos-inspequipe">
                     {
                         projeto?.map((projeto, key) => {
                             return (
                                 <div >
-                                    <div id="div-card-page-projetosd">
+                                    <div id="div-card-page-inpequipe">
+
                                         <Card id="div-card-projetod">
                                             <Card.Body>
                                                 <Card.Title id="nome-projeto-plan" key={key}>
@@ -151,6 +152,7 @@ function InspecionarEquipe() {
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
+
                                     </div>
                                 </div>
                             );
@@ -202,6 +204,7 @@ function InspecionarEquipe() {
                             }
                         </div>
                         <div id='btn-opition'>
+
                             <div>
                                 <Link className="link-inspequi" to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}>
                                     <button id="btn-edit-inspequi" to={{ pathname: `/EditarEquipe/${equipe.id_equipe}` }}>
@@ -216,17 +219,20 @@ function InspecionarEquipe() {
                         </div>
                     </div>
                 </div>
+
                 <div id='insp-card-dois-pagina-inspequipe'>
                     <div>
-                        <h2>projeto</h2>
+                        <div id='header-projetos-concluidos-insp-equipe'>Projetos</div>
+                    </div>
+
+                    <div id='linha-progresso-eq'>
+                        <Progress.Line percent={percent} strokeColor={'#00DB99'} status={status} />
                     </div>
                     <div>
-                    <RenderCards/>
+                        <RenderCards />
                     </div>
-                    <div style={{ width: 120, marginTop: 10 }}>
-                        <Progress.Circle percent={percent} strokeColor={'#00DB99'} status={status} />
-                    </div>
-                    
+
+
                 </div>
             </div>
 
