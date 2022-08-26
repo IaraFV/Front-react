@@ -18,7 +18,7 @@ const validacaoGet = yup.object().shape({
 function Muda() {
     let navigate = useNavigate()
     const { id_task } = useParams()
-    
+    /*
     const addPost = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/${id_task}/status`, data)
     .then(() => {
         console.log("foi");
@@ -67,7 +67,6 @@ const handleChange = (event) => {
                     <div className="body-post">
 
                         <form onSubmit={handleSubmit(addPost)}>
-
                             <Select
                                 {...register("status")}
                                 labelId="demo-simple-select-label"
@@ -80,13 +79,11 @@ const handleChange = (event) => {
                                     <MenuItem id="menuEquipe-pageequipes" value={'Em desenvolvimento'} key={'Em desenvolvimento'}>Em desenvolvimento</MenuItem>
                                     <MenuItem id="menuEquipe-pageequipes" value={'Concluído'} key={'Concluído'}>Concluído</MenuItem>
                             </Select>
-
                             <div className="btn-postt">
                                 <Link id="btn-cancelar" onClick={voltar}>Cancelar</Link>
                                 <button type="submit"  id="btn-cadastrar">Cadastrar</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </main>

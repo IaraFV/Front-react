@@ -56,3 +56,26 @@
     display: flex;
     flex-wrap: wrap;
 }
+.btn-muda-status{
+    background: #BABABA;
+    opacity: 0.1;
+    width: 30px;
+    border-radius: 10%;
+    height: 30px;
+}
+.card-color{
+    background: #21222D;
+border-radius: 20px;
+}
+
+.menu-dos-filtros-statusTask{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px;
+    padding: 2px;
+}
+.cor-menu-pontos{
+    color: blue;
+    font-size: 20px;
+}
