@@ -9,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import api from '../../Login/services/api'
 function Editprojeto() {
     
     const { id_projeto } = useParams()
@@ -21,7 +21,7 @@ function Editprojeto() {
     
     let navigate = useNavigate()
 
-     const editProje = data => axios.put(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`, data)
+     const editProje = data => api.put(`/projetos/${id_projeto}`, data)
         .then(() => {
             console.log("foi");
             alert('cadastro realizado');
@@ -37,14 +37,14 @@ function Editprojeto() {
    
 
     useEffect(() => {
-        axios.get(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
+        api.get(`/projetos/${id_projeto}`)
         .then((response) => {
             reset(response.data)
             setprojeto(response.data)
         })
     }, [])
     useEffect(() => {
-        axios.get('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/')
+        api.get('/equipes/')
         .then((response) => {
             setequipe(response.data)
         })

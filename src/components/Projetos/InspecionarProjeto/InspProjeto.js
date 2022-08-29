@@ -51,7 +51,7 @@ function InspProjeto() {
     )
     //função de delete
     function deleteprojetos(id_projeto) {
-        axios.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
+        api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 
@@ -308,7 +308,7 @@ function InspProjeto() {
                 <div id="botoes-page-inp-projetos">
 
                     <div className="btn-editar-pagina-projeto">
-                        <Link to={{ pathname: `/Edit/${projetos.id_projeto}` }}>
+                        <Link to={{ pathname: `/Idetiprojeto/${projetos.id_projeto}` }}>
                             <button type="submit">Editar</button>
                         </Link>
                     </div>
@@ -342,7 +342,8 @@ function InspProjeto() {
                         <VerificaDesenvolvimento />
                     </div>
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag">
-                        <div className="text-center mt-2">
+                        <div id="header-status-con">
+                        <IoEllipseSharp id="icon-redondo-status-con" />
                             Concluídos
                         </div>
                         <VerificaConcluído />
