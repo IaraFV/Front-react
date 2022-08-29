@@ -7,15 +7,12 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import imagemerro from './img/itensNaoencontrados.png';
-import Alert from 'react-bootstrap/Alert';
 import api from '../Login/services/api';
-import { get } from "react-hook-form";
 
 function Pessoas() {
 
     const [pessoas, setpessoas] = useState([])
     const [initialpessoas, setInitialpessoas] = useState([])
-    console.log(localStorage.getItem('token'))
 
     useEffect(() => {
         api.get('/pessoas/')
@@ -27,8 +24,8 @@ function Pessoas() {
             })
             .catch((err) => {
                 if (err.response.status == 401) {
-                    alert('Não foi parceiro');
-                    console.log('nao foi')
+                    alert("É preciso fazer login")
+                    window.location.href = '/';
                 } else alert(err.message)
 
             });
@@ -56,6 +53,12 @@ function Pessoas() {
         };
     }
     const pessoasnum = parseInt(pessoas.length);
+    const lucas = pessoas.filter((luc) => luc.data_contratacao ===  '2022-08-22T00:00:00Z');
+    /*const tets = lucas.map((luc) => luc.data_contratacao);
+    //console.log(lucas); 
+    let data = new Date();
+    let dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
+    console.log(dataFormatada);*/
 
     function TratamentoError() {
         if (pessoasnum === 0) {
@@ -68,6 +71,7 @@ function Pessoas() {
                     {
                         pessoas.map((pessoas, key) => {
                             return (
+                                <>
                                 <div className="cardpessoas">
                                     <Link id="link-pessoa-page-pessoa" to={{ pathname: `/Inspecionar/${pessoas.id_pessoa}` }}>
                                         <Card container id="card-pessoa-page" spacing={2} sx={{ width: 360, bgcolor: '#21222D' }} key={key} >
@@ -90,6 +94,7 @@ function Pessoas() {
                                         </Card>
                                     </Link>
                                 </div>
+                                </>
                             )
                         })
                     }
@@ -100,7 +105,7 @@ function Pessoas() {
     }
 
     return (
-        <div>
+        <>
             <div id="cabecario-p">
                 <div id="filtroebtn-page-p">
                     <h1 id="page-nomep" style={{ color: '#fff' }}>Cadastro de Pessoas</h1>
@@ -117,7 +122,7 @@ function Pessoas() {
             <div id="geralpessoas">
                 <TratamentoError />
             </div>
-        </div>
+        </>
     )
 }
 export default Pessoas;
