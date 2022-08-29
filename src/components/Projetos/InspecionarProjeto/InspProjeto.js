@@ -14,7 +14,8 @@ import Typography from '@mui/material/Typography';
 import NativeSelect from '@mui/material/NativeSelect';
 import FormControl from '@mui/material/FormControl';
 import { AiOutlineMore } from "react-icons/ai";
-
+import { IoEllipseSharp } from "react-icons/io5";
+import { FiPlus } from "react-icons/fi";
 function InspProjeto() {
 
     //variaves das requisições GET
@@ -192,14 +193,14 @@ function InspProjeto() {
                     {
                         filtFazer.map((projetos, key) => {
                             return (
-                                <div className="dropzone" style={{ border: '1px solid red' }} >
-                                    <Card  className='card-color' id="card-afazer">
+                                <div className="dropzone">
+                                    <Card className='card-color' id="card-afazer" >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
                                                 <Card.Text>{projetos.status}</Card.Text>
                                             </div>
-                                             
+
                                         </div>
                                         <Card.Body>
                                             <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
@@ -230,7 +231,7 @@ function InspProjeto() {
                     {
                         filtFazendo.map((projetos, key) => {
                             return (
-                                <div style={{ border: '1px solid red' }} >
+                                <div className="dropzone">
                                     <Card id="card-desenvolvimento" className='card-color'>
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
@@ -323,24 +324,27 @@ function InspProjeto() {
             </div>
 
             <div className="d-flex ">
-                <div className="col-12 d-flex justify-content-around" style={{ height: "720px", border: '1px solid red' }}>
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem"  >
-                        <div id="header-status-afazer">
+                <div className="col-12 d-flex justify-content-around" style={{ height: "720px" }}>
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" >
+                        <div id="header-status-afazer" >
+                            <IoEllipseSharp id="icon-redondo-status-afazer" />
                             A fazer
+                            <FiPlus id="icon-add-task" />
                         </div>
                         <VerificaAfazer />
                     </div>
 
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage" style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2">
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage"  >
+                        <div id="header-status-desenv">
+                        <IoEllipseSharp id="icon-redondo-status-desenv" />
                             Em desenvolvimento
-                        </h4>
+                        </div>
                         <VerificaDesenvolvimento />
                     </div>
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag" style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2">
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag">
+                        <div className="text-center mt-2">
                             Concluídos
-                        </h4>
+                        </div>
                         <VerificaConcluído />
                     </div>
                 </div>

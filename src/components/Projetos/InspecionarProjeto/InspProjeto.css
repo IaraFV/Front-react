@@ -90,10 +90,9 @@
 
 
 #BarraRolagem {
-    height: 745px;
-
+    height: 710px;
     background: #21222D;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: auto;
 
 }
@@ -110,10 +109,9 @@
 }
 
 #BarraRolage {
-    height: 745px;
-
+    height: 710px;
     background: #21222D;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: auto;
 }
 
@@ -129,10 +127,9 @@
 }
 
 #BarraRolag {
-    height: 745px;
-
+    height: 710px;
     background: #21222D;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: auto;
 }
 
@@ -148,7 +145,7 @@
 }
 
 #card-afazer {
-
+  padding: 1%;
     background: #171821;
     border-radius: 8px;
     width: 18rem;
@@ -177,5 +174,32 @@
     line-height: 19px;
     color: #9E9E9E;
     border-bottom: 3px solid rgba(235, 87, 87, 0.9);
-
+    display: flex;
+    align-items: center;
+    padding: 0.8%;
 }
+#icon-add-task {
+    color: #EB5757;
+    background: rgba(235, 87, 87, 0.2);
+    margin-left: 80%;
+}
+#icon-redondo-status-afazer{
+    color: #EB5757;
+}
+#header-status-desenv {
+    width: 95%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #9E9E9E;
+    border-bottom: 3px solid rgba(233, 196, 106, 0.9);
+    display: flex;
+    align-items: center;
+    padding: 0.8%;
+}
+#icon-redondo-status-desenv{
+    color: #E9C46A;
+}
+
