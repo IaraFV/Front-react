@@ -24,7 +24,7 @@ function Post() {
     let navigate = useNavigate()
 
     const addPost = data => api.post("/pessoas/", data)
-        .then((response) => {
+        .then(() => {
             navigate("/Pessoas");
             console.log("foi");
         })
