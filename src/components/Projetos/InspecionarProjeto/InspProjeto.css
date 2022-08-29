@@ -90,10 +90,9 @@
 
 
 #BarraRolagem {
-    height: 745px;
-
+    height: 710px;
     background: #21222D;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: auto;
 
 }
@@ -110,10 +109,9 @@
 }
 
 #BarraRolage {
-    height: 745px;
-
+    height: 710px;
     background: #21222D;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: auto;
 }
 
@@ -129,10 +127,9 @@
 }
 
 #BarraRolag {
-    height: 745px;
-
+    height: 710px;
     background: #21222D;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: auto;
 }
 
@@ -148,7 +145,7 @@
 }
 
 #card-afazer {
-
+  padding: 1%;
     background: #171821;
     border-radius: 8px;
     width: 18rem;
@@ -197,12 +194,12 @@
     font-size: 16px;
     line-height: 19px;
     color: #9E9E9E;
-    border-bottom: 3px solid rgba(235, 87, 87, 0.9);
+    border-bottom: 3px solid rgba(233, 196, 106, 0.9);
     display: flex;
     align-items: center;
     padding: 0.8%;
 }
 #icon-redondo-status-desenv{
-    color: #EB5757;
+    color: #E9C46A;
 }
 

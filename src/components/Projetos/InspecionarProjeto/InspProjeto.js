@@ -193,8 +193,8 @@ function InspProjeto() {
                     {
                         filtFazer.map((projetos, key) => {
                             return (
-                                <div className="dropzone" style={{ border: '1px solid red' }} >
-                                    <Card className='card-color' id="card-afazer">
+                                <div className="dropzone">
+                                    <Card className='card-color' id="card-afazer" >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
@@ -231,7 +231,7 @@ function InspProjeto() {
                     {
                         filtFazendo.map((projetos, key) => {
                             return (
-                                <div style={{ border: '1px solid red' }} >
+                                <div className="dropzone">
                                     <Card id="card-desenvolvimento" className='card-color'>
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
@@ -324,9 +324,9 @@ function InspProjeto() {
             </div>
 
             <div className="d-flex ">
-                <div className="col-12 d-flex justify-content-around" style={{ height: "720px", border: '1px solid red' }}>
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem"  >
-                        <div id="header-status-afazer">
+                <div className="col-12 d-flex justify-content-around" style={{ height: "720px" }}>
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" >
+                        <div id="header-status-afazer" >
                             <IoEllipseSharp id="icon-redondo-status-afazer" />
                             A fazer
                             <FiPlus id="icon-add-task" />
@@ -334,14 +334,14 @@ function InspProjeto() {
                         <VerificaAfazer />
                     </div>
 
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage" style={{ height: "745px" }} >
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage"  >
                         <div id="header-status-desenv">
                         <IoEllipseSharp id="icon-redondo-status-desenv" />
                             Em desenvolvimento
                         </div>
                         <VerificaDesenvolvimento />
                     </div>
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag" style={{ height: "745px" }} >
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag">
                         <div className="text-center mt-2">
                             Concluídos
                         </div>
