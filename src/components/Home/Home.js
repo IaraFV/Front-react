@@ -89,9 +89,9 @@ function Home() {
 
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-sm-12">
+                    <div class="col-12 col-sm-12" style={{ border: '1px solid red'}}>
 
-                        <div class="row justify-content-evelyn" id="caixa-geral-home">
+                        <div class="row justify-content-evelyn" id="caixa-geral-home" style={{ border: '1px solid blue'}}>
                             <div class="container" id="caixa-geral-projetos-home">
                                 <div class="row" >
                                     <div class="card" id="render-projetos-conc-home">

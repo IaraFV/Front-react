@@ -192,8 +192,8 @@ function InspProjeto() {
                     {
                         filtFazer.map((projetos, key) => {
                             return (
-                                <div className="dropzone" >
-                                    <Card style={{ width: '18rem' }} className='card-color'>
+                                <div className="dropzone" style={{ border: '1px solid red' }} >
+                                    <Card  className='card-color' id="card-afazer">
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
@@ -230,8 +230,8 @@ function InspProjeto() {
                     {
                         filtFazendo.map((projetos, key) => {
                             return (
-                                <div className="dropzone" >
-                                    <Card style={{ width: '18rem' }} className='card-color'>
+                                <div style={{ border: '1px solid red' }} >
+                                    <Card id="card-desenvolvimento" className='card-color'>
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
@@ -268,7 +268,7 @@ function InspProjeto() {
                         filtFeito.map((projetos, key) => {
                             return (
                                 <div className="dropzone">
-                                    <Card style={{ width: '18rem' }} className='card-color'>
+                                    <Card id="card-concl" className='card-color' >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
@@ -321,12 +321,13 @@ function InspProjeto() {
                     <p style={{ color: '#fff' }}>Username:  {projetos.nome_projeto} </p>
                 </div>
             </div>
+
             <div className="d-flex ">
-                <div className="col-9 d-flex justify-content-around" style={{ height: "800px" }}>
-                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" style={{ height: "745px" }} >
-                        <h4 className="text-center mt-2">
+                <div className="col-12 d-flex justify-content-around" style={{ height: "720px", border: '1px solid red' }}>
+                    <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem"  >
+                        <div id="header-status-afazer">
                             A fazer
-                        </h4>
+                        </div>
                         <VerificaAfazer />
                     </div>
 
