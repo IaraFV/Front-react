@@ -20,7 +20,7 @@ function Equipe() {
             })
             .catch((err) => {
                 if (err.response.status == 401) {
-                    alert("É preciso login parceiro")
+                    alert("É preciso fazer login")
                     window.location.href = '/';
                 } else alert("erro inesperado")
                 console.log("deu errado")
