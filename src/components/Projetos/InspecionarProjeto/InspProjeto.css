@@ -57,6 +57,17 @@
     border-radius: 7px;
 }
 
+.header-task-mudastatus {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 1rem;
+    color: #9E9E9E;
+    margin-left: 7%;
+    width: 10rem;
+    
+}
+
 .flexwrap {
     display: flex;
     flex-wrap: wrap;
@@ -65,9 +76,9 @@
 .btn-muda-status {
     background: #BABABA;
     opacity: 0.1;
-    width: 30px;
+    width: 1.2rem;
     border-radius: 10%;
-    height: 30px;
+    height: 1.2rem;
 }
 
 .card-color {
@@ -145,17 +156,18 @@
 }
 
 #card-afazer {
-  padding: 1%;
+    padding: 1%;
     background: #171821;
     border-radius: 8px;
-    width: 18rem;
+    width: 20rem;
+
 }
 
 #card-desenvolvimento {
-
+    padding: 1%;
     background: #171821;
     border-radius: 8px;
-    width: 18rem;
+    width: 20rem;
 }
 
 #card-concl {
@@ -178,14 +190,17 @@
     align-items: center;
     padding: 0.8%;
 }
+
 #icon-add-task {
     color: #EB5757;
     background: rgba(235, 87, 87, 0.2);
     margin-left: 80%;
 }
-#icon-redondo-status-afazer{
+
+#icon-redondo-status-afazer {
     color: #EB5757;
 }
+
 #header-status-desenv {
     width: 95%;
     font-family: 'Inter';
@@ -199,9 +214,11 @@
     align-items: center;
     padding: 0.8%;
 }
-#icon-redondo-status-desenv{
+
+#icon-redondo-status-desenv {
     color: #E9C46A;
 }
+
 #header-status-con {
     width: 95%;
     font-family: 'Inter';
@@ -215,6 +232,7 @@
     align-items: center;
     padding: 0.8%;
 }
-#icon-redondo-status-con{
+
+#icon-redondo-status-con {
     color: #C8D9CF;
 }

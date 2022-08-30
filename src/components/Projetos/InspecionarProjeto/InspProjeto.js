@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './InspProjeto.css'
 import { useParams } from 'react-router-dom'
-import axios from "axios";
 import { BsArrowLeft } from "react-icons/bs";
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
@@ -87,6 +86,12 @@ function InspProjeto() {
         p: 4,
     };
 
+    const cardAfazer = {
+        padding: '1%',
+        background: '#171821',
+        borderRadius: '8px',
+        width: '18rem',
+    }
     function handleOpen(id_task) {
         if (id_task !== 0) {
             setOpen(true)
@@ -194,11 +199,11 @@ function InspProjeto() {
                         filtFazer.map((projetos, key) => {
                             return (
                                 <div className="dropzone">
-                                    <Card className='card-color' id="card-afazer" >
+                                    <Card className='card-color' id="card-afazer" style={{ border: '1px solid red' }}>
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
-                                                <Card.Text>{projetos.status}</Card.Text>
+                                                <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
 
                                         </div>
@@ -232,11 +237,11 @@ function InspProjeto() {
                         filtFazendo.map((projetos, key) => {
                             return (
                                 <div className="dropzone">
-                                    <Card id="card-desenvolvimento" className='card-color'>
+                                    <Card id="card-desenvolvimento" className='card-color' style={{ border: '1px solid red' }}>
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
-                                                <Card.Text>{projetos.status}</Card.Text>
+                                                <Card.Text  className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
                                             <button onClick={ModaldoMenu} className='btn-muda-status'> <AiOutlineMore className="cor-menu-pontos" /></button>
                                         </div>
@@ -273,7 +278,7 @@ function InspProjeto() {
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
-                                                <Card.Text>{projetos.status}</Card.Text>
+                                                <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
                                             <button onClick={ModaldoMenu} className='btn-muda-status'> <AiOutlineMore className="cor-menu-pontos" /></button>
                                         </div>
@@ -336,14 +341,14 @@ function InspProjeto() {
 
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage"  >
                         <div id="header-status-desenv">
-                        <IoEllipseSharp id="icon-redondo-status-desenv" />
+                            <IoEllipseSharp id="icon-redondo-status-desenv" />
                             Em desenvolvimento
                         </div>
                         <VerificaDesenvolvimento />
                     </div>
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolag">
                         <div id="header-status-con">
-                        <IoEllipseSharp id="icon-redondo-status-con" />
+                            <IoEllipseSharp id="icon-redondo-status-con" />
                             Concluídos
                         </div>
                         <VerificaConcluído />
