@@ -1,6 +1,20 @@
 //GAMBIARA SUPREMA NÃO APAGUE E NEM DESCOMENTE
 //SE DESCOMPRIR AS ORIENTAÇÕES ACIMA A RESPONSABILIDADE É SUA!!!
 /*
+/*
+
+function mudaStatus(){
+        var stur = 'Concluído';
+        api.put(`/projetos/${id_projeto}/status`,
+                { status: stur })
+                alert('mudou o status');
+    }
+    return (
+        <div>
+            {/*<button onClick={mudaStatus}>lucas teste(nao click)</button>}
+/*
+
+
 import React, { useEffect , useState } from "react";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';

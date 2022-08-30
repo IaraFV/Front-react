@@ -243,7 +243,6 @@ projeto e contador task*/
 
 #header-card-projeto-pagina-home {
     width: 15rem;
-    height: 5rem;
     margin-left: -2%;
     font-family: 'Inter';
     font-style: normal;
@@ -292,12 +291,36 @@ projeto e contador task*/
     height: 19rem;
 
 }
+#ul-projeto{
+    overflow: auto;
+    height: 19rem;
+}
+#ul-projeto::-webkit-scrollbar {
+    background: #21222D;
+    width: 8px;
+
+}
+
+#ul-projeto::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+
+}
 
 #li-pessoa {
     background: #21222D;
     color: #fff;
     border: 0;
     margin-top: 6.5%;
+    border-bottom: 1px solid rgba(164, 164, 164, 0.12);
+}
+#li-projeto{
+    display: flex;
+    justify-content: space-between;
+    background: #21222D;
+    color: #fff;
+    border: 0;
+    margin-top: 4%;
     border-bottom: 1px solid rgba(164, 164, 164, 0.12);
 }
 

@@ -2,14 +2,14 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
 import Grafico2 from "../Graficos/Grafico2"
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
 import { BsBarChartLine } from "react-icons/bs";
 import api from '../Login/services/api';
 
 function Home() {
-
-    const [post, setpost] = useState([]);
+    let navigate = useNavigate();
+    const [projeto, setprojeto] = useState([]);
     const [tasks, setTask] = useState([]);
     const [pessoas, setPessoas] = useState([]);
     const [equipes, setEquipes] = useState([]);
@@ -19,7 +19,7 @@ function Home() {
     useEffect(() => {
         api.get('/projetos/')
             .then((response) => {
-                setpost(response.data)
+                setprojeto(response.data)
                 console.log("Deu certo men")
             }).catch(() => {
                 console.log("Deu BO Men")
@@ -62,66 +62,69 @@ function Home() {
     }, []
     )
 
-    //const recebetodaspessoas = posts;
+    //const recebetodaspessoas = projetos;
     var receber = [];
     for (var person = 0; person < 8; person++) {
         receber.push(pessoas[person])
     }
+    //pega 8 projetos concluidos os mais resentes
+    const recebeprojetos = projeto.filter(getstatus => getstatus.status === "Concluído");
 
+    var receberProj = [];
+    for (var pega = 0; pega < 8; pega++) {
+        receberProj.push(recebeprojetos[pega]);
+    }
+    console.log(receberProj);
+    console.log(recebeprojetos);
+    /* for (var persone = 0; persone < 8; person++) {
+         recebere.push(projeto[persone])
+     }*/
     const nome = receber.map((luc) => luc?.nome_pessoa);
 
-    const recebeprojetos = post.filter(getstatus => getstatus.status === "Concluído");
 
-    const contapessoa = pessoas;
-    const totalpessoas = contapessoa.length;
 
-    const contaprojetos = post;
-    const totalprojetos = contaprojetos.length;
+    const totalpessoas = pessoas.length;
 
+    const totalprojetos = projeto.length;
 
     const totaltask = tasks.length;
-    console.log(tasks);
     const totalequipes = equipes.length;
 
 
     return (
         <>
-
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-sm-12" style={{ border: '1px solid red'}}>
-
-                        <div class="row justify-content-evelyn" id="caixa-geral-home" style={{ border: '1px solid blue'}}>
+                    <div class="col-12 col-sm-12" style={{ border: '1px solid red' }}>
+                        <div class="row justify-content-evelyn" id="caixa-geral-home" style={{ border: '1px solid blue' }}>
                             <div class="container" id="caixa-geral-projetos-home">
                                 <div class="row" >
                                     <div class="card" id="render-projetos-conc-home">
                                         <div class="card-body">
-                                            <div id="header-card-projeto-pagina-home" class="card-title">Atividades recentes</div>
+                                            <h5 id="header-card-projeto-pagina-home" class="card-title">Atividades recentes</h5>
                                             <p class="card-text"></p>
                                         </div>
-                                        <ul class="list-group list-group-flush" >
-                                            <li class="list-group-item" id="ul-card">
-                                                {
-                                                    recebeprojetos.map((status, key) => {
-                                                        return (
-                                                            <>
-                                                                {status.nome_projeto}
+                                        <ul class="list-group list-group-flush" id="ul-projeto">
+                                            {
+                                                recebeprojetos.map((status) => {
+                                                    return (
+                                                        <>
+                                                            <li class="list-group-item" id='li-projeto'>{status.nome_projeto}
+                                                                <Link id="link-pessoa-page-pessoa" to={"/ProjetosConcluidos"}>
+                                                                    <button id="btn-ver-mais-projeto" >Ver mais</button>
+                                                                </Link>
+                                                            </li>
+                                                        </>
+                                                    );
+                                                })
+                                            }
 
-                                                            </>
 
-                                                        );
-                                                    })
-                                                }
-                                            
-                                                <button id="btn-ver-mais-projeto" navigate="/ProjetosConcluidos" >Ver mais</button>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
 
-
                             </div>
-
 
                             <div class="col-9" id="container-geral-dois-home">
                                 <div class="container">
@@ -169,20 +172,11 @@ function Home() {
                                             </div>
 
                                         </div>
-
-
                                     </div>
                                 </div>
-
-
-
                             </div>
-
-
-
                         </div>
                     </div>
-
 
                     <div class="w-100 d-none d-md-block"></div>
                     <div class="row">
@@ -192,7 +186,7 @@ function Home() {
                                     <div class="col-6 col-sm-4">
                                         <div class="row" id="geral-graficoum">
                                             <div class="col-6 col-sm-4">
-                                                <Grafico2  pessoas={pessoas}/>
+                                                <Grafico2 pessoas={pessoas} />
                                             </div>
 
                                         </div>
@@ -205,7 +199,9 @@ function Home() {
                                             <div class="card-body">
                                                 <h5 class="card-title" id="titulo-card-usuario-home">
                                                     Usuarios
-                                                    <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
+                                                    <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
+                                                        <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
+                                                    </Link>
                                                 </h5>
                                                 <h6 class="card-subtitle mb-2 text-muted"></h6>
                                                 <ul class="list-group list-group-flush" id="ul-pessoa">
@@ -223,7 +219,6 @@ function Home() {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

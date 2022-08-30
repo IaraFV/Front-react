@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './AddProjeto.css'
 import { useNavigate } from 'react-router-dom'
-import axios from "axios";
+import api from '../../Login/services/api'
 
 const validacaoPost = yup.object().shape({
     nome_projeto:  yup.string().required("O nome projeto é obrigatorio!"),
@@ -23,7 +23,7 @@ function AddProjeto() {
     resolver: yupResolver(validacaoPost)
 })
 
-    const addPost = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/", data)
+    const addPost = data => api.post("/projetos/", data)
     .then(() => {
         console.log("foi")
         navigate("/ProjetosConcluidos");

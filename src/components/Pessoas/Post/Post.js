@@ -61,7 +61,7 @@ function Post() {
     const handleChange = (event) => {
         setAge(event.target.value);
     };
-console.log(setequipe)
+
     return (
         <div>
             <main>
