@@ -19,13 +19,10 @@ import PostT from './components/Task/PostT/postT'
 import InspProjeto from './components/Projetos/InspecionarProjeto/InspProjeto';
 import InspecionarEqui from './components/Equipes/inspecionar/InspecionarEqui';
 import EditarEquipe from './components/Equipes/EditE/editeEquipe'
-import { BsColumnsGap } from "react-icons/bs";
-import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
-import { BsPeople, BsPerson } from "react-icons/bs";
 import Idetiprojeto from './components/Projetos/editeprojeto/idetiprojeto';
 import Login from './components/Login/Login'
 import NavbarHome from './components/Nav/Navbar';
-
+import PostTasks from './components/Task/PostT/postT'
 
 
 const Rout = () => {
@@ -35,10 +32,11 @@ const Rout = () => {
     <BrowserRouter >
       <NavbarHome />
       <Routes>
-      
+
         <Route path="/" element={<Login />}></Route>
         <Route path="/Home" element={<Home />}></Route>
         <Route path="/Pessoas" element={<Pessoas />}></Route>
+        <Route path="/PostTasks" element={<PostTasks/>}></Route>
         <Route path="/Equipes" element={<Equipes />}></Route>
         <Route path="/ProjetosConcluidos" element={<ProjetosConcluidos />}></Route>
         <Route path="/Task" element={<Task />}></Route>

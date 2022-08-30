@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from "react";
+/*import React, { useEffect, useState, } from "react";
 import { useForm } from 'react-hook-form'
 import { useNavigate} from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,8 +10,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import api from "../../Login/services/api"
 
-function PostT() {
+function PostTasks() {
 
     const validacaoPostT = yup.object().shape({
         descricao_task: yup.string().required("A descrição é obrigatoria!"),
@@ -22,7 +23,7 @@ function PostT() {
 
     let navigate = useNavigate()
 
-    const addpostT = data => axios.post("https://sistema-aprendizes-brisanet-go.herokuapp.com/tasks/", data)
+    const addpostT = data => api.post("/tasks/", data)
         .then(() => {
             console.log("foi")
             navigate("/Inspecionar");
@@ -34,8 +35,30 @@ function PostT() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
+    const [ projeto , setprojeto ] = useState([])
+    useEffect(() => {
+        api.get(`/projetos`)
+            .then((response) => {
+                setprojeto(response.data)
 
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+    const [pessoa, setpessoa] = useState([])
+    useEffect(() => {
+        api.get(`/pessoas`)
+            .then((response) => {
+                setpessoa(response.data)
 
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
     useEffect(() => {
         const fetchequipe = async () => {
             try {
@@ -69,17 +92,17 @@ function PostT() {
     function voltar() {
         window.history.back();
     }
-        /**variavesi do seletor */
+        //variavesi do seletor 
     const [vofNivel, setAge] = React.useState('');
     const [vofProjeto, setAgea] = React.useState('');
     const [vofPessoa, setVofPessoa] = React.useState('');
     
-    /**variaveis dos arr de pessoa e projeto */
+    //variaveis dos arr de pessoa e projeto 
     const [projeto, setprojeto] = useState([]);
     const [pessoa, setpessoa] = useState([]);
 
     
-    /**funçoes de evento das variaves do seletor */
+    //funçoes de evento das variaves do seletor 
     const handleChangea = (event) => {
         setAgea(event.target.value);
     };
@@ -95,17 +118,17 @@ function PostT() {
     };
 
 
-    /**manipulaçao dos dados oriundos do arr de projetos(array geral)*/
+    //manipulaçao dos dados oriundos do arr de projetos(array geral)
     const proj = projeto;
     const filtro_statusProjet = proj.filter( statusPro => statusPro.status === "Em desenvolvimento");
     console.log(filtro_statusProjet);
     const filt = filtro_statusProjet.filter(pro => pro.id_projeto === vofProjeto);
     const nomeEquipe = filt.map(p => p.equipe.id_equipe);
     
-    /**pega a a variavel (nomeEquipe que vem como string e muda para intero)*/
+    //pega a a variavel (nomeEquipe que vem como string e muda para intero)
     var idEquipe = parseInt(nomeEquipe);
     
-    /**manioulaçao do dados oriundos do arr de pessoas(array geral)*/
+    //manioulaçao do dados oriundos do arr de pessoas(array geral)
     const l = pessoa;
     const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
 
@@ -214,4 +237,4 @@ function PostT() {
 
 }
 
-export default PostT;
+export default PostTasks;*/

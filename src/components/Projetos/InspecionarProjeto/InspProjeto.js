@@ -52,7 +52,7 @@ function InspProjeto() {
 
     //função de delete
     function deleteprojetos(id_projeto) {
-        api.delete(`/projetos/${id_projeto}`)
+        api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 
@@ -71,13 +71,15 @@ function InspProjeto() {
     const pegaid = parseInt(id_projeto);
     /**filtra as taks com basa no id do projeto */
     const gettask = tasks.filter((get) => get.projeto_id === pegaid);
-    console.log(gettask)
 
     /**divide as taks vindas da pimeira filtragem e as filtra novamento com base no status */
     const filtFazer = gettask.filter((get) => get.status === "A fazer");
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
+    var totalTaskAfazer = filtFazer.length;
+    var totalTaskEmdesenvolvimento = filtFazendo.length;
+    var totalTaskConcluído = filtFeito.length;
     const style = {
         position: 'absolute',
         top: '50%',
@@ -90,12 +92,6 @@ function InspProjeto() {
         p: 4,
     };
 
-    const cardAfazer = {
-        padding: '1%',
-        background: '#171821',
-        borderRadius: '8px',
-        width: '18rem',
-    }
     function handleOpen(id_task) {
         if (id_task !== 0) {
             setOpen(true)
@@ -191,12 +187,17 @@ function InspProjeto() {
             </>
         );
     }
+
     function VerificaAfazer() {
-        if (filtFazer.length === 0) {
+        if (totalTaskAfazer === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
         } else {
+            var stats = 'Em desenvolvimento';
+            api.put(`/projetos/${id_projeto}/status`,
+            {status: stats})
+            console.log('up de status OK')
             return (
                 <>
                     {
@@ -234,11 +235,17 @@ function InspProjeto() {
      * de "nenhum item encontrado".
     */
     function VerificaDesenvolvimento() {
-        if (filtFazendo.length === 0) {
+        if (totalTaskEmdesenvolvimento === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else {
+        } else if(totalTaskEmdesenvolvimento === 0 && totalTaskAfazer === 0){
+            var statss = 'Concluído';
+            api.put(`/projetos/${id_projeto}/status`,
+            {status: statss})
+            console.log('up de status OK')
+
+        }else if(totalTaskEmdesenvolvimento != 0) {
             return (
                 <>
                     {
@@ -275,7 +282,7 @@ function InspProjeto() {
      * de "nenhum item encontrado".
     */
     function VerificaConcluído() {
-        if (filtFeito.length === 0) {
+        if (totalTaskConcluído === 0) {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
@@ -350,7 +357,9 @@ function InspProjeto() {
                         <div id="header-status-afazer" >
                             <IoEllipseSharp id="icon-redondo-status-afazer" />
                             A fazer
-                            <FiPlus id="icon-add-task" />
+                            <Link to='/PostTasks'>
+                               <FiPlus id="icon-add-task" />
+                            </Link>
                         </div>
                         <VerificaAfazer />
                     </div>
