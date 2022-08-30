@@ -294,7 +294,7 @@ function InspProjeto() {
                                             <button onClick={ModaldoMenu} className='btn-muda-status'> <AiOutlineMore className="cor-menu-pontos" /></button>
                                         </div>
                                         <Card.Body>
-                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
                                                 <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
