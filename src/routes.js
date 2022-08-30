@@ -24,51 +24,40 @@ import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
 import Idetiprojeto from './components/Projetos/editeprojeto/idetiprojeto';
 import Login from './components/Login/Login'
-import App from './App';
-function Rotas() {
+import NavbarHome from './components/Nav/Navbar';
+
+
+
+const Rout = () => {
 
   return (
 
-    <div className='rotas' >
+    <BrowserRouter >
+      <NavbarHome />
+      <Routes>
+      
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/Home" element={<Home />}></Route>
+        <Route path="/Pessoas" element={<Pessoas />}></Route>
+        <Route path="/Equipes" element={<Equipes />}></Route>
+        <Route path="/ProjetosConcluidos" element={<ProjetosConcluidos />}></Route>
+        <Route path="/Task" element={<Task />}></Route>
+        <Route path="/Post" element={<Post />}></Route>
+        <Route path="/Edit/:id_pessoa" element={<Edit />}></Route>
+        <Route path="/Inspecionar/:id_pessoa" element={<Inspecionar />}></Route>
+        <Route path="/Add" element={<Add />}></Route>
+        <Route path="/AddProjeto" element={<AddProjeto />}></Route>
+        <Route path="/EditE/:id_equipe" element={<EditE />}></Route>
+        <Route path="/postT" element={<PostT />}></Route>
+        <Route path='/InspProjeto/:id_projeto' element={<InspProjeto />}></Route>
+        <Route path='/InspecionarEqui/:id_equipe' element={<InspecionarEqui />}></Route>
+        <Route path='/EditarEquipe/:id_equipe' element={<EditarEquipe />}></Route>
+        <Route path='/Idetiprojeto/:id_projeto' element={<Idetiprojeto />}></Route>
 
-      <BrowserRouter >
-
-        <Nav variant='tabs' style={{ background: '#171821', height: '80px', border: "none" }}>
-          <Nav.Link id='caixah' style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home"><BsColumnsGap />Overview</Nav.Link>
-
-          <Nav.Link id='caixap' style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.5rem' }} as={Link} to="/Pessoas" ><BsPerson />Pessoas</Nav.Link>
-
-          <Nav.Link id='caixae' style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Equipes"><BsPeople />Equipes</Nav.Link>
-
-          <Nav.Link id='caixapr' style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile />Projetos</Nav.Link>
-
-          <div id='img'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '-53px' }} /></div>
-        </Nav>
-
-        <Routes>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="/Home" element={<Home />}></Route>
-          <Route path="/Pessoas" element={<Pessoas />}></Route>
-          <Route path="/Equipes" element={<Equipes />}></Route>
-          <Route path="/ProjetosConcluidos" element={<ProjetosConcluidos />}></Route>
-          <Route path="/Task" element={<Task />}></Route>
-          <Route path="/Post" element={<Post />}></Route>
-          <Route path="/Edit/:id_pessoa" element={<Edit />}></Route>
-          <Route path="/Inspecionar/:id_pessoa" element={<Inspecionar />}></Route>
-          <Route path="/Add" element={<Add />}></Route>
-          <Route path="/AddProjeto" element={<AddProjeto />}></Route>
-          <Route path="/EditE/:id_equipe" element={<EditE />}></Route>
-          <Route path="/postT" element={<PostT />}></Route>
-          <Route path='/InspProjeto/:id_projeto' element={<InspProjeto />}></Route>
-          <Route path='/InspecionarEqui/:id_equipe' element={<InspecionarEqui />}></Route>
-          <Route path='/EditarEquipe/:id_equipe' element={<EditarEquipe />}></Route>
-          <Route path='/Idetiprojeto/:id_projeto' element={<Idetiprojeto />}></Route>
-        </Routes>
-      </BrowserRouter>
-
-    </div>
+      </Routes>
+    </BrowserRouter>
 
   );
 }
 
-export default Rotas;
+export default Rout;

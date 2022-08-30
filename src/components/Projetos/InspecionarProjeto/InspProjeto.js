@@ -71,6 +71,7 @@ function InspProjeto() {
     const pegaid = parseInt(id_projeto);
     /**filtra as taks com basa no id do projeto */
     const gettask = tasks.filter((get) => get.projeto_id === pegaid);
+    console.log(gettask)
 
     /**divide as taks vindas da pimeira filtragem e as filtra novamento com base no status */
     const filtFazer = gettask.filter((get) => get.status === "A fazer");
