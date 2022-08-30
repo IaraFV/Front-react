@@ -65,7 +65,37 @@
     color: #9E9E9E;
     margin-left: 7%;
     width: 10rem;
-    
+
+}
+
+.render-footer-card-task {
+    margin-left: -2%;
+    width: 7.1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.people-task {
+    color: #717986;
+    font-size: 1rem;
+}
+
+.header-nome-pessoa {
+
+    font-family: 'Inter';
+    font-size: 0.9rem;
+    color: #717986;
+}
+
+.name-task-inpprojeto {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin-left: -2%;
+
 }
 
 .flexwrap {
@@ -171,10 +201,10 @@
 }
 
 #card-concl {
-
+    padding: 1%;
     background: #171821;
     border-radius: 8px;
-    width: 18rem;
+    width: 20rem;
 }
 
 #header-status-afazer {

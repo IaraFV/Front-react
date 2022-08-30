@@ -15,6 +15,7 @@ import FormControl from '@mui/material/FormControl';
 import { AiOutlineMore } from "react-icons/ai";
 import { IoEllipseSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
+import { FaUser } from "react-icons/fa";
 function InspProjeto() {
 
     //variaves das requisições GET
@@ -48,6 +49,7 @@ function InspProjeto() {
             })
     }, []
     )
+
     //função de delete
     function deleteprojetos(id_projeto) {
         api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
@@ -69,6 +71,7 @@ function InspProjeto() {
     const pegaid = parseInt(id_projeto);
     /**filtra as taks com basa no id do projeto */
     const gettask = tasks.filter((get) => get.projeto_id === pegaid);
+
     /**divide as taks vindas da pimeira filtragem e as filtra novamento com base no status */
     const filtFazer = gettask.filter((get) => get.status === "A fazer");
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
@@ -199,7 +202,7 @@ function InspProjeto() {
                         filtFazer.map((projetos, key) => {
                             return (
                                 <div className="dropzone">
-                                    <Card className='card-color' id="card-afazer" style={{ border: '1px solid red' }}>
+                                    <Card className='card-color' id="card-afazer">
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
@@ -208,7 +211,11 @@ function InspProjeto() {
 
                                         </div>
                                         <Card.Body>
-                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="render-footer-card-task">
+                                                <FaUser className="people-task" />
+                                                <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
+                                            </Card.Title>
                                         </Card.Body>
                                     </Card>
 
@@ -237,16 +244,20 @@ function InspProjeto() {
                         filtFazendo.map((projetos, key) => {
                             return (
                                 <div className="dropzone">
-                                    <Card id="card-desenvolvimento" className='card-color' style={{ border: '1px solid red' }}>
+                                    <Card id="card-desenvolvimento" className='card-color' >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
-                                                <Card.Text  className="header-task-mudastatus">{projetos.status}</Card.Text>
+                                                <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
                                             <button onClick={ModaldoMenu} className='btn-muda-status'> <AiOutlineMore className="cor-menu-pontos" /></button>
                                         </div>
                                         <Card.Body>
-                                            <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="render-footer-card-task">
+                                                <FaUser className="people-task" />
+                                                <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
+                                            </Card.Title>
                                         </Card.Body>
                                     </Card>
                                 </div>
@@ -284,6 +295,10 @@ function InspProjeto() {
                                         </div>
                                         <Card.Body>
                                             <Card.Title style={{ color: 'black' }} key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="render-footer-card-task">
+                                                <FaUser className="people-task" />
+                                                <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
+                                            </Card.Title>
                                         </Card.Body>
                                     </Card>
                                 </div>
