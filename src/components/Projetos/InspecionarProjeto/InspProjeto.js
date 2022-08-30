@@ -52,7 +52,7 @@ function InspProjeto() {
 
     //função de delete
     function deleteprojetos(id_projeto) {
-        api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
+        api.delete(`/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 

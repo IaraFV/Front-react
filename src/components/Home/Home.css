@@ -383,10 +383,11 @@ projeto e contador task*/
     margin-left: -0.1%;
 }
 
-#caixa-geral-home {
+#caixa-geral-home-um {
     width: 100rem;
     height: 42vh;
     margin-left: -16%;
+    border: none;
 }
 
 #caixa-dois-home {
