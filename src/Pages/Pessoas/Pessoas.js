@@ -82,7 +82,7 @@ function Pessoas() {
    
 
    
-    // const data_cont = Moment().format('DD-MM-YYYY')
+     const data_cont = Moment().format('DD-MM-YYYY')
 
 
     function TratamentoError() {

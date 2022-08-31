@@ -18,15 +18,18 @@ function Post() {
     const validacaoPost = yup.object().shape({
         nome_pessoa: yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
-        equipe_id: yup.number()
+        equipe_id: yup.number(),
+        //data_contratacao: new Date().toISOString().replace('T', '').replace('Z', '')
     })
 
+    console.log(new Date().toISOString().replace('T', '').replace('Z', ''));
     let navigate = useNavigate()
 
     const addPost = data => api.post("/pessoas/", data)
         .then(() => {
-            navigate("/Pessoas");
-            console.log("foi");
+            console.log(addPost);
+            alert('Cadastrado com sucesso')
+            window.location.href = '/Pessoas';
         })
         .catch(() => {
             console.log("n foi")
@@ -110,7 +113,7 @@ function Post() {
 
                             <div id="chat">
                                 <Link id="butaoC" onClick={voltar}>Cancelar</Link>
-                                <button type="submit" onClick={voltar} className="butao" >Cadastrar</button>
+                                <button type="submit"  className="butao" >Cadastrar</button>
                             </div>
                     
                 </form>

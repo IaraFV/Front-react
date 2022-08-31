@@ -135,6 +135,11 @@ function Inspecionar() {
 
     }
 
+     
+    function voltar() {
+        window.history.back();
+    }
+    
     return (
         <>
             <div id="geral-card-inspecionar">
@@ -182,7 +187,9 @@ function Inspecionar() {
                             </Link>
                         </div>
                         <div className="btn-excluir">
-                            <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit" to='/Pessoas'>Deletar</button>
+                            <Link to='/Pessoas'>
+                            <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit" >Deletar</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
