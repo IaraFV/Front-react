@@ -1,28 +1,28 @@
-import Home from './components/Home/Home'
-import Pessoas from './components/Pessoas/Pessoas'
-import Equipes from './components/Equipes/Equipes'
-import Task from './components/Task/Task';
-import Sobre from './components/Sobre/Sobre';
-import Post from './components/Pessoas/Post/Post';
-import Edit from './components/Pessoas/Edit/editPessoa';
-import Inspecionar from './components/Pessoas/Inspecionar/Inspecionar'
-import Add from './components/Equipes/Add/add'
-import AddProjeto from './components/Projetos/AddProjeto/AddProjeto'
-import EditE from './components/Equipes/EditE/editeEquipe'
+import Home from './Pages/Home/Home'
+import Pessoas from './Pages/Pessoas/Pessoas'
+import Equipes from './Pages/Equipes/Equipes'
+import Task from './Pages/Task/Task';
+import Sobre from './Pages/Sobre/Sobre';
+import Post from './Pages/Pessoas/Post/Post';
+import Edit from './Pages/Pessoas/Edit/editPessoa';
+import Inspecionar from './Pages/Pessoas/Inspecionar/Inspecionar'
+import Add from './Pages/Equipes/Add/add'
+import AddProjeto from './Pages/Projetos/AddProjeto/AddProjeto'
+import EditE from './Pages/Equipes/EditE/editeEquipe'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import teste from './components/Home/img/Logo.webp'
+import teste from './Pages/Home/img/Logo.webp'
 import './App.css'
-import ProjetosConcluidos from './components/Projetos/Projetos';
-import PostT from './components/Task/PostT/postT'
-import InspProjeto from './components/Projetos/InspecionarProjeto/InspProjeto';
-import InspecionarEqui from './components/Equipes/inspecionar/InspecionarEqui';
-import EditarEquipe from './components/Equipes/EditE/editeEquipe'
-import Idetiprojeto from './components/Projetos/editeprojeto/idetiprojeto';
-import Login from './components/Login/Login'
-import NavbarHome from './components/Nav/Navbar';
-import PostTasks from './components/Task/PostT/postT'
+import ProjetosConcluidos from './Pages/Projetos/Projetos';
+import PostT from './Pages/Task/PostT/postT'
+import InspProjeto from './Pages/Projetos/InspecionarProjeto/InspProjeto';
+import InspecionarEqui from './Pages/Equipes/inspecionar/InspecionarEqui';
+import EditarEquipe from './Pages/Equipes/EditE/editeEquipe'
+import Idetiprojeto from './Pages/Projetos/editeprojeto/idetiprojeto';
+import Login from './Pages/Login/Login'
+import NavbarHome from './Pages/Nav/Navbar';
+import PostTasks from './Pages/Task/PostT/postT'
 
 
 const Rout = () => {

@@ -10,12 +10,17 @@ import { Link } from 'react-router-dom';
 import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
 import { BsColumnsGap } from "react-icons/bs";
-
+import { FiLogOut } from "react-icons/fi";
 function NavbarHome() {
 
     let path = window.location.pathname;
     if (path === '/' | localStorage.getItem('token') === null) {
         return;
+    }
+
+    function logout() {
+        localStorage.clear();
+        window.location.href = '/';
     }
 
     return (
@@ -50,7 +55,7 @@ function NavbarHome() {
                                     <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.5rem' }} as={Link} to="/Pessoas"><BsPerson />Pessoas</Nav.Link>
                                     <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Equipes"><BsPeople />Equipes</Nav.Link>
                                     <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile />Projetos</Nav.Link>
-
+                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} onClick={logout}><FiLogOut/>Sair</Nav.Link>
                                 </Nav>
 
                             </Offcanvas.Body>

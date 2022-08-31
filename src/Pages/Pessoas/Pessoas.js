@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import imagemerro from './img/itensNaoencontrados.png';
 import api from '../Login/services/api';
 import { LampFill } from "react-bootstrap-icons";
-
+import Moment from 'moment';
+import moment from "moment";
 function Pessoas() {
 
     const [pessoas, setpessoas] = useState([])
@@ -74,6 +75,15 @@ function Pessoas() {
       }
      
      */
+     
+    
+    const recebe_data = pessoas.map((dat) => dat.data_contratacao)
+   
+   
+
+   
+    // const data_cont = Moment().format('DD-MM-YYYY')
+
 
     function TratamentoError() {
         if (pessoasnum === 0) {
