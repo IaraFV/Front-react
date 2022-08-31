@@ -47,7 +47,7 @@ const Rout = () => {
         <Route path='/InspecionarEqui/:id_equipe' element={<InspecionarEqui />}></Route>
         <Route path='/EditarEquipe/:id_equipe' element={<EditarEquipe />}></Route>
         <Route path='/Idetiprojeto/:id_projeto' element={<Idetiprojeto />}></Route>
-
+        <Route path="/PostTasks/:id_projeto" element={<PostTasks/>}></Route>
       </Routes>
     </BrowserRouter>
 

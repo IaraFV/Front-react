@@ -1,6 +1,6 @@
-/*import React, { useEffect, useState, } from "react";
+import React, { useEffect, useState, } from "react";
 import { useForm } from 'react-hook-form'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate , useParams} from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './postT.css'
@@ -12,7 +12,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import api from "../../Login/services/api"
 
-function PostTasks() {
+function PostT() {
+
+    const { id_projeto } = useParams()
 
     const validacaoPostT = yup.object().shape({
         descricao_task: yup.string().required("A descrição é obrigatoria!"),
@@ -23,10 +25,11 @@ function PostTasks() {
 
     let navigate = useNavigate()
 
-    const addpostT = data => api.post("/tasks/", data)
+    const addpostT = data => api.post("/tasks", data)
         .then(() => {
             console.log("foi")
-            navigate("/Inspecionar");
+            alert('cadastrado com ssucesso')
+            navigate("/InspProjeto/:id_projeto");
         })
         .catch(() => {
             console.log("n foi")
@@ -35,74 +38,47 @@ function PostTasks() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
-    const [ projeto , setprojeto ] = useState([])
+
+
     useEffect(() => {
         api.get(`/projetos`)
             .then((response) => {
                 setprojeto(response.data)
-
+                console.log('deu certo')
             })
             .catch(() => {
                 console.log("deu errado")
             })
     }, []
     )
-    const [pessoa, setpessoa] = useState([])
+
+
     useEffect(() => {
         api.get(`/pessoas`)
             .then((response) => {
                 setpessoa(response.data)
-
+                console.log('deu certo')
             })
             .catch(() => {
                 console.log("deu errado")
             })
     }, []
     )
-    useEffect(() => {
-        const fetchequipe = async () => {
-            try {
-                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/');
-                const data = await response.json();
-                setpessoa(data);
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchequipe();
-    }, [])
-
-
-    useEffect(() => {
-
-        const fetchequipe = async () => {
-            try {
-                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/');
-                const data = await response.json();
-                setprojeto(data);
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchequipe();
-    }, [])
 
     function voltar() {
         window.history.back();
     }
-        //variavesi do seletor 
+        /**variavesi do seletor */
     const [vofNivel, setAge] = React.useState('');
     const [vofProjeto, setAgea] = React.useState('');
     const [vofPessoa, setVofPessoa] = React.useState('');
     
-    //variaveis dos arr de pessoa e projeto 
+    /**variaveis dos arr de pessoa e projeto */
     const [projeto, setprojeto] = useState([]);
     const [pessoa, setpessoa] = useState([]);
 
     
-    //funçoes de evento das variaves do seletor 
+    /**funçoes de evento das variaves do seletor */
     const handleChangea = (event) => {
         setAgea(event.target.value);
     };
@@ -118,19 +94,11 @@ function PostTasks() {
     };
 
 
-    //manipulaçao dos dados oriundos do arr de projetos(array geral)
-    const proj = projeto;
-    const filtro_statusProjet = proj.filter( statusPro => statusPro.status === "Em desenvolvimento");
-    console.log(filtro_statusProjet);
-    const filt = filtro_statusProjet.filter(pro => pro.id_projeto === vofProjeto);
-    const nomeEquipe = filt.map(p => p.equipe.id_equipe);
-    
-    //pega a a variavel (nomeEquipe que vem como string e muda para intero)
-    var idEquipe = parseInt(nomeEquipe);
-    
-    //manioulaçao do dados oriundos do arr de pessoas(array geral)
-    const l = pessoa;
-    const luc = l.filter(lucs => lucs.equipe_id === idEquipe);
+    /**manipulaçao dos dados oriundos do arr de projetos(array geral)*/
+    const idprojeto = parseInt(id_projeto)
+    const filterprojeto = projeto.filter(projfilt => projfilt.id_projeto === idprojeto)
+    const getId = parseInt(filterprojeto.map((lo) => lo.equipe_id));
+    const filtepessoa = pessoa.filter((peoplefilt) => peoplefilt.equipe_id === getId);
 
     return (
         <div>
@@ -186,7 +154,7 @@ function PostTasks() {
                                             onChange={handleChangea}>
 
 
-                                            {filtro_statusProjet.map((projetos) =>
+                                            {filterprojeto.map((projetos) =>
                                                 <MenuItem value={projetos.id_projeto} key={projetos.id_projeto}>{projetos.nome_projeto}</MenuItem>
                                             )}
                                         </Select>
@@ -209,7 +177,7 @@ function PostTasks() {
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChangeu}>
 
-                                            {luc.map((nomePessoa) =>
+                                            {filtepessoa.map((nomePessoa) =>
                                                 <MenuItem value={nomePessoa.id_pessoa} key={nomePessoa.id_pessoa}>{nomePessoa.nome_pessoa}</MenuItem>
                                             )}
                                         </Select>
@@ -237,4 +205,4 @@ function PostTasks() {
 
 }
 
-export default PostTasks;*/
+export default PostT;

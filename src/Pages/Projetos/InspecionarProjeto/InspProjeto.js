@@ -49,7 +49,10 @@ function InspProjeto() {
             })
     }, []
     )
-
+/**const idprojeto = parseInt(id_projeto)
+    const filterprojeto = projeto.filter(projfilt => projfilt.id_projeto === idprojeto)
+    const getId = parseInt(filterprojeto.map((lo) => lo.equipe_id));
+    const filtepessoa = pessoa.filter((peoplefilt) => peoplefilt.equipe_id === getId); */
     //função de delete
     function deleteprojetos(id_projeto) {
         api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
@@ -239,13 +242,7 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else if(totalTaskEmdesenvolvimento === 0 && totalTaskAfazer === 0){
-            var statss = 'Concluído';
-            api.put(`/projetos/${id_projeto}/status`,
-            {status: statss})
-            console.log('up de status OK')
-
-        }else if(totalTaskEmdesenvolvimento != 0) {
+        }else{
             return (
                 <>
                     {
@@ -286,7 +283,13 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else {
+        } else if(totalTaskEmdesenvolvimento === 0 && totalTaskAfazer === 0){
+            var statss = 'Concluído';
+            api.put(`/projetos/${id_projeto}/status`,
+            {status: statss})
+            console.log('up de status OK')
+
+        }else if (totalTaskEmdesenvolvimento != 0)  {
             return (
                 <>
                     {
@@ -357,7 +360,7 @@ function InspProjeto() {
                         <div id="header-status-afazer" >
                             <IoEllipseSharp id="icon-redondo-status-afazer" />
                             A fazer
-                            <Link to='/PostTasks'>
+                            <Link to={{ pathname: `/PostTasks/${projetos.id_projeto}` }}>
                                <FiPlus id="icon-add-task" />
                             </Link>
                         </div>
