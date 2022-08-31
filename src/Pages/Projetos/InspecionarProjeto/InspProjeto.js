@@ -49,10 +49,7 @@ function InspProjeto() {
             })
     }, []
     )
-/**const idprojeto = parseInt(id_projeto)
-    const filterprojeto = projeto.filter(projfilt => projfilt.id_projeto === idprojeto)
-    const getId = parseInt(filterprojeto.map((lo) => lo.equipe_id));
-    const filtepessoa = pessoa.filter((peoplefilt) => peoplefilt.equipe_id === getId); */
+
     //função de delete
     function deleteprojetos(id_projeto) {
         api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
@@ -80,9 +77,12 @@ function InspProjeto() {
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
+    const lu = projetos.status;
+    console.log(lu);
     var totalTaskAfazer = filtFazer.length;
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -196,11 +196,12 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else {
+        } else if (totalTaskAfazer === 0 && lu === 'Em planejamento'){
             var stats = 'Em desenvolvimento';
             api.put(`/projetos/${id_projeto}/status`,
             {status: stats})
             console.log('up de status OK')
+        }else if (totalTaskAfazer != 0){
             return (
                 <>
                     {
