@@ -20,7 +20,7 @@ const validacaoPostE = yup.object().shape({
     nome_pessoa: yup.string().required("Campo obrigatorio!")
 })
 
-function PostE() {
+function PostEquipe() {
 
     let navigate = useNavigate()
 
@@ -28,7 +28,7 @@ function PostE() {
         resolver: yupResolver(validacaoPostE)
     })
 
-    const addPostE = data => api.post("/equipes/", data)
+    const AdicionaEquipe = data => api.post("/equipes/", data)
         .then(() => {
             console.log("foi")
             navigate("/Equipes");
@@ -107,7 +107,7 @@ function PostE() {
 
                     <div className="body-post-equipe">
 
-                        <form onSubmit={handleSubmit(addPostE)}>
+                        <form onSubmit={handleSubmit(AdicionaEquipe)}>
 
                             <div className="fieldsequipe">
                                 <label>Nome</label>
@@ -131,4 +131,4 @@ function PostE() {
     )
 }
 
-export default PostE;
+export default PostEquipe;

@@ -9,9 +9,11 @@ import { Link } from 'react-router-dom';
 import imagemerro from './img/itensNaoencontrados.png';
 import api from '../Login/services/api';
 import { LampFill } from "react-bootstrap-icons";
-
+import Moment from 'moment';
+import moment from "moment";
 function Pessoas() {
 
+    
     const [pessoas, setpessoas] = useState([])
     const [initialpessoas, setInitialpessoas] = useState([])
 
@@ -74,6 +76,12 @@ function Pessoas() {
       }
      
      */
+     
+    
+    const recebe_data = pessoas.map((dat) => dat.data_contratacao)
+   //data_contratacao: new Date().toISOString().replace('T', '').replace('Z', '')
+     //const data_cont = Moment().format('DD-MM-YYYY')
+
 
     function TratamentoError() {
         if (pessoasnum === 0) {
@@ -130,7 +138,7 @@ function Pessoas() {
                 </div>
             </div>
             <div>
-                <Link to="/Post">
+                <Link to="/PostPessoa">
                     <button className="btn-adicionarp">Criar Cadastro</button>
                 </Link>
             </div>

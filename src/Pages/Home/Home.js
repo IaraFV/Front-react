@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
-import Grafico2 from "../Graficos/Grafico2"
+import Grafico2 from "../../Components/Graficos/Grafico2"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
 import { BsBarChartLine } from "react-icons/bs";
@@ -14,15 +14,13 @@ function Home() {
     const [pessoas, setPessoas] = useState([]);
     const [equipes, setEquipes] = useState([]);
     const [setInitialPessoas] = useState([]);
-
-    console.log(equipes);
+    
     useEffect(() => {
         api.get('/projetos/')
             .then((response) => {
                 setprojeto(response.data)
-                console.log("Deu certo men")
             }).catch(() => {
-                console.log("Deu BO Men")
+                console.log("Deu BO Men no projeto")
             })
     }, [])
 
@@ -30,7 +28,6 @@ function Home() {
         api.get('/pessoas/')
             .then((response) => {
                 setPessoas(response.data)
-                console.log("foi")
 
             })
             .catch(() => {
@@ -43,7 +40,7 @@ function Home() {
         api.get('/equipes/')
             .then((response) => {
                 setEquipes(response.data)
-                console.log("pegou eq")
+                
             })
             .catch(() => {
                 console.log("deu errado eq")
@@ -74,8 +71,7 @@ function Home() {
     for (var pega = 0; pega < 8; pega++) {
         receberProj.push(recebeprojetos[pega]);
     }
-    console.log(receberProj);
-    console.log(recebeprojetos);
+  
     /* for (var persone = 0; persone < 8; person++) {
          recebere.push(projeto[persone])
      }*/
@@ -93,23 +89,23 @@ function Home() {
 
     return (
         <>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-12">
-                        <div class="row justify-content-evelyn" id="caixa-geral-home-um">
-                            <div class="container" id="caixa-geral-projetos-home">
-                                <div class="row" >
-                                    <div class="card" id="render-projetos-conc-home">
-                                        <div class="card-body">
-                                            <h5 id="header-card-projeto-pagina-home" class="card-title">Atividades recentes</h5>
-                                            <p class="card-text"></p>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-sm-12">
+                        <div className="row justify-content-evelyn" id="caixa-geral-home-um">
+                            <div className="container" id="caixa-geral-projetos-home">
+                                <div className="row" >
+                                    <div className="card" id="render-projetos-conc-home">
+                                        <div className="card-body">
+                                            <h5 id="header-card-projeto-pagina-home" className="card-title">Atividades recentes</h5>
+                                            <p className="card-text"></p>
                                         </div>
-                                        <ul class="list-group list-group-flush" id="ul-projeto">
+                                        <ul className="list-group list-group-flush" id="ul-projeto">
                                             {
                                                 recebeprojetos.map((status) => {
                                                     return (
                                                         <>
-                                                            <li class="list-group-item" id='li-projeto'>{status.nome_projeto}
+                                                            <li className="list-group-item" id='li-projeto'>{status.nome_projeto}
                                                                 <Link id="link-pessoa-page-pessoa" to={"/ProjetosConcluidos"}>
                                                                     <button id="btn-ver-mais-projeto" >Ver mais</button>
                                                                 </Link>
@@ -126,10 +122,10 @@ function Home() {
 
                             </div>
 
-                            <div class="col-9" id="container-geral-dois-home">
-                                <div class="container">
-                                    <div class="row" id="col1-quant">
-                                        <div class="col-6 col-sm-4" id="card-quant-pessoa">
+                            <div className="col-9" id="container-geral-dois-home">
+                                <div className="container">
+                                    <div className="row" id="col1-quant">
+                                        <div className="col-6 col-sm-4" id="card-quant-pessoa">
                                             <div id="cont-quant-pessoa">
                                                 <div >
                                                     <AiOutlineUser id="icon-quant-pessoa-home" />
@@ -139,7 +135,7 @@ function Home() {
                                             </div>
                                         </div>
 
-                                        <div class="col-6 col-sm-4" id="card-quant-projetos">
+                                        <div className="col-6 col-sm-4" id="card-quant-projetos">
                                             <div id="cont-quant-projetos">
                                                 <div >
                                                     <AiOutlineSolution id="icon-quant-projetos-home" />
@@ -150,8 +146,8 @@ function Home() {
                                         </div>
                                     </div>
 
-                                    <div class="row" id="col2-quant">
-                                        <div class="col-6 col-sm-4" id="card-quant-equipes">
+                                    <div className="row" id="col2-quant">
+                                        <div className="col-6 col-sm-4" id="card-quant-equipes">
                                             <div id="cont-quant-equipes">
                                                 <div >
                                                     <AiOutlineTeam id="icon-quant-equipes-home" />
@@ -162,7 +158,7 @@ function Home() {
 
                                         </div>
 
-                                        <div class="col-6 col-sm-4" id="card-quant-de-tasks">
+                                        <div className="col-6 col-sm-4" id="card-quant-de-tasks">
                                             <div id="container-quantidade-task">
                                                 <div >
                                                     <BsBarChartLine id="icon-quant-task-page-home" />
@@ -178,14 +174,14 @@ function Home() {
                         </div>
                     </div>
 
-                    <div class="w-100 d-none d-md-block"></div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12">
-                            <div class="row justify-content-between" id="caixa-dois-home">
-                                <div class="col-2">
-                                    <div class="col-6 col-sm-4">
-                                        <div class="row" id="geral-graficoum">
-                                            <div class="col-6 col-sm-4">
+                    <div className="w-100 d-none d-md-block"></div>
+                    <div className="row">
+                        <div className="col-12 col-sm-12">
+                            <div className="row justify-content-between" id="caixa-dois-home">
+                                <div className="col-2">
+                                    <div className="col-6 col-sm-4">
+                                        <div className="row" id="geral-graficoum">
+                                            <div className="col-6 col-sm-4">
                                                 <Grafico2 pessoas={pessoas} />
                                             </div>
 
@@ -193,23 +189,23 @@ function Home() {
                                     </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <div class="col-6 col-sm-4" id="sla">
-                                        <div class="card" id="render-pessoas-home" >
-                                            <div class="card-body">
-                                                <h5 class="card-title" id="titulo-card-usuario-home">
+                                <div className="col-2">
+                                    <div className="col-6 col-sm-4" id="sla">
+                                        <div className="card" id="render-pessoas-home" >
+                                            <div className="card-body">
+                                                <h5 className="card-title" id="titulo-card-usuario-home">
                                                     Usuarios
                                                     <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
                                                         <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
                                                     </Link>
                                                 </h5>
-                                                <h6 class="card-subtitle mb-2 text-muted"></h6>
-                                                <ul class="list-group list-group-flush" id="ul-pessoa">
+                                                <h6 className="card-subtitle mb-2 text-muted"></h6>
+                                                <ul className="list-group list-group-flush" id="ul-pessoa">
                                                     {
                                                         nome.map((nome) => {
                                                             return (
                                                                 <>
-                                                                    <li class="list-group-item" id="li-pessoa">{nome}</li>
+                                                                    <li className="list-group-item" id="li-pessoa">{nome}</li>
                                                                 </>
                                                             );
                                                         })

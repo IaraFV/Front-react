@@ -45,7 +45,7 @@ function Edit() {
 
         const fetchequipe = async () => {
             try {
-                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/equipes/');
+                const response = await fetch('/equipes/');
                 const data = await response.json();
                 setequipe(data);
 
@@ -55,6 +55,21 @@ function Edit() {
         };
         fetchequipe();
     }, [])
+
+
+    useEffect(() => {
+        api.get('/equipes/')
+            .then((response) => {
+                setequipe(response.data)
+                console.log("pegou eq")
+            })
+            .catch(() => {
+                console.log("deu errado eq")
+            })
+    }, []
+    )
+
+
 
     const [age, setAge] = React.useState('');
     const [equipe, setequipe] = useState([]);
