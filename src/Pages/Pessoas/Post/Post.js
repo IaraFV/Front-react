@@ -13,7 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import api from '../../Login/services/api'
 
-function Post() {
+function PostPessoa() {
 
     const validacaoPost = yup.object().shape({
         nome_pessoa: yup.string().required("O nome é obrigatorio!"),
@@ -126,4 +126,4 @@ function Post() {
 
 }
 
-export default Post;
+export default PostPessoa;

@@ -13,6 +13,7 @@ import Moment from 'moment';
 import moment from "moment";
 function Pessoas() {
 
+    
     const [pessoas, setpessoas] = useState([])
     const [initialpessoas, setInitialpessoas] = useState([])
 
@@ -78,11 +79,8 @@ function Pessoas() {
      
     
     const recebe_data = pessoas.map((dat) => dat.data_contratacao)
-   
-   
-
-   
-     const data_cont = Moment().format('DD-MM-YYYY')
+   //data_contratacao: new Date().toISOString().replace('T', '').replace('Z', '')
+     //const data_cont = Moment().format('DD-MM-YYYY')
 
 
     function TratamentoError() {
@@ -140,7 +138,7 @@ function Pessoas() {
                 </div>
             </div>
             <div>
-                <Link to="/Post">
+                <Link to="/PostPessoa">
                     <button className="btn-adicionarp">Criar Cadastro</button>
                 </Link>
             </div>

@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Nav } from 'react-bootstrap'
-import teste from '../Home/img/Logo.webp'
+import teste from '../../Pages/Home/img/Logo.webp'
 import { Link } from 'react-router-dom';
 import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
