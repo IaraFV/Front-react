@@ -51,7 +51,7 @@ function Equipe() {
                 </div>
             </div>
             <div >
-                <Link to="/Add">
+                <Link to="/AdicionarEquipe">
                     <button className="btn-adicionarequipe">Criar Equipe</button>
                 </Link>
             </div>

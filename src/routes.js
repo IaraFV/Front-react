@@ -5,7 +5,7 @@ import Task from './Pages/Task/Task';
 import PostPessoa from './Pages/Pessoas/Post/Post';
 import Edit from './Pages/Pessoas/Edit/editPessoa';
 import Inspecionar from './Pages/Pessoas/Inspecionar/Inspecionar'
-import Add from './Pages/Equipes/Add/add'
+import AdicionarEquipe from './Pages/Equipes/AdicionarEquipe/AdicionarEquipe'
 import AddProjeto from './Pages/Projetos/AddProjeto/AddProjeto'
 import EditE from './Pages/Equipes/EditE/editeEquipe'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -39,7 +39,7 @@ const Rout = () => {
         <Route path="/PostPessoa" element={<PostPessoa />}></Route>
         <Route path="/Edit/:id_pessoa" element={<Edit />}></Route>
         <Route path="/Inspecionar/:id_pessoa" element={<Inspecionar />}></Route>
-        <Route path="/Add" element={<Add />}></Route>
+        <Route path="/AdicionarEquipe" element={<AdicionarEquipe />}></Route>
         <Route path="/AddProjeto" element={<AddProjeto />}></Route>
         <Route path="/EditE/:id_equipe" element={<EditE />}></Route>
         <Route path="/postT" element={<PostT />}></Route>

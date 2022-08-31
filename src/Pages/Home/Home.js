@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
-import Grafico2 from "../Graficos/Grafico2"
+import Grafico2 from "../../Components/Graficos/Grafico2"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
 import { BsBarChartLine } from "react-icons/bs";
