@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './AddProjeto.css'
 import { useNavigate } from 'react-router-dom'
-import api from '../../Login/services/api'
+import api from '../../../services/api'
 
 const validacaoPost = yup.object().shape({
     nome_projeto:  yup.string().required("O nome projeto é obrigatorio!"),

@@ -12,7 +12,7 @@ import Card from 'react-bootstrap/Card';
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from './img/falta_de_dados.png';
-import api from '../../Login/services/api';
+import api from '../../../services/api';
 
 function InspecionarEquipe() {
 

@@ -5,7 +5,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import imagemerro from './img/itensNaoencontrados.png';
-import api from "../../Login/services/api"
+import api from "../../../services/api"
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';

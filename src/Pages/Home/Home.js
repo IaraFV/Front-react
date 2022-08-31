@@ -1,11 +1,10 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Home.css'
 import Grafico2 from "../../Components/Graficos/Grafico2"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
 import { BsBarChartLine } from "react-icons/bs";
-import api from '../Login/services/api';
+import api from '../../services/api';
 
 function Home() {
     let navigate = useNavigate();
@@ -64,6 +63,8 @@ function Home() {
     for (var person = 0; person < 8; person++) {
         receber.push(pessoas[person])
     }
+
+    
     //pega 8 projetos concluidos os mais resentes
     const recebeprojetos = projeto.filter(getstatus => getstatus.status === "Concluído");
 

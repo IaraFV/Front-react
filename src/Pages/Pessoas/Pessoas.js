@@ -6,11 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import imagemerro from './img/itensNaoencontrados.png';
-import api from '../Login/services/api';
+import imagemerro from '../../assets/TratamentoDeErroNaoEncontrado/itensNaoencontrados.png';
+import api from '../../services/api';
 import { LampFill } from "react-bootstrap-icons";
 import Moment from 'moment';
-import moment from "moment";
+
 function Pessoas() {
 
     

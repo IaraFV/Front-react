@@ -17,7 +17,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import imagemerro from './img/falta_de_dados (cópia).png';
-import api from '../../Login/services/api'
+import api from '../../../services/api'
 
 const validacaoGet = yup.object().shape({
     favoritar: yup.number(),

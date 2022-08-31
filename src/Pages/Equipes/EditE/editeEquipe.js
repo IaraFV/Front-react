@@ -5,7 +5,7 @@ import * as yup from 'yup'
 import './editeEquipe.css'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
-import api from '../../Login/services/api'
+import api from '../../../services/api'
 const validacaoGet = yup.object().shape({
     nome_equipe: yup.string().required("O nome é obrigatorio!")
 })
