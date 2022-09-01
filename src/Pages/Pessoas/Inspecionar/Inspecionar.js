@@ -19,13 +19,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import imagemerro from '../../../assets/img/falta_de_dados (cópia).png';
 import api from '../../../services/api'
 
-const validacaoGet = yup.object().shape({
-    favoritar: yup.number(),
-})
+
 function Inspecionar() {
+
+    const validacaoGet = yup.object().shape({
+        favoritar: yup.number(),
+    })
     let navigate = useNavigate()
-    const [posts, setPosts] = useState([])
+    const [people, setPeople] = useState([])
     const [Task, setTask] = useState([])
+    const [setFavoritar ] = useState([])
     const { id_pessoa } = useParams()
    
    
@@ -36,7 +39,7 @@ function Inspecionar() {
     useEffect(() => {
         api.get(`/pessoas/${id_pessoa}`)
             .then((response) => {
-                setPosts(response.data)
+                setPeople(response.data)
 
             })
             .catch(() => {
@@ -56,11 +59,13 @@ function Inspecionar() {
             })
     }, []
     )
-    const nome = posts.nome_pessoa;
+    const nome = people.nome_pessoa;
+
     function deletePost(id_pessoa) {
         api.delete(`/pessoas/${id_pessoa}`)
-        setPosts(posts.filter(post => post.id_pessoa !== id_pessoa))
+        setPeople(people.filter(post => post.id_pessoa !== id_pessoa))
     }
+    
     function stringAvatar(name) {
         return {
             sx: {
@@ -71,7 +76,7 @@ function Inspecionar() {
         };
     }
     const ArrGeral_task = Task;
-    const recebId_pessoa = posts.id_pessoa;
+    const recebId_pessoa = people.id_pessoa;
     const idPessoaINT = parseInt(recebId_pessoa);
     const filtra_task = Task.filter(task => task.pessoa_id === idPessoaINT);
     /**pega o numero total de task */
@@ -80,18 +85,19 @@ function Inspecionar() {
     /*----------------------------------------------------------------------------------------------------------------------*/
 
 
-    var favoritar = parseInt(posts.favoritar);
+    var favoritar = parseInt(people.favoritar);
 
     console.log(favoritar);
    
 
     function favoritarFuncao() {
-        favoritar++
+     
         if (favoritar === 1) {
              api.put('/pessoas/' + id_pessoa + '/favoritar')
-                .then(() => {
-                    console.log("favoritou")
-                })
+             .then((response) => {
+                console.log("deu certo boy")
+
+            })
                 .catch(() => {
                     console.log("n favoritou")
                 })
@@ -99,7 +105,6 @@ function Inspecionar() {
         } 
         
     }
-
 
     
     function RenderCards() {
@@ -153,7 +158,7 @@ function Inspecionar() {
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
                     <div>
-                        <div  id="h1-insp-pagina-pessoa-insp">{posts.nome_pessoa}</div>
+                        <div  id="h1-insp-pagina-pessoa-insp">{people.nome_pessoa}</div>
                     </div>
                     <div id="geralestatistica">
                         <div id="estatisticaum">
@@ -164,7 +169,7 @@ function Inspecionar() {
                             </div>
                         </div>
                         <div id="estatisticadois" >
-                            <button type="submit"  onClick={favoritarFuncao}  className="star">
+                            <button type="submit" onClick={favoritarFuncao} className="star">
                                 <AiOutlineStar />
                             </button>
                         </div>
@@ -177,20 +182,20 @@ function Inspecionar() {
                         </div>
 
                         <div id="bodydetalhes">
-                            <p>Username: {posts.nome_pessoa}</p>
-                            <p>Função: {posts.funcao_pessoa}</p>
-                            <p>Data de contratação: {posts.data_contratacao}</p>
+                            <p>Username: {people.nome_pessoa}</p>
+                            <p>Função: {people.funcao_pessoa}</p>
+                            <p>Data de contratação: {people.data_contratacao}</p>
                         </div>
                     </div>
                     <div id="botoes-insp">
                         <div className="btn-editar">
-                            <Link to={{ pathname: `/Edit/${posts.id_pessoa}` }}>
+                            <Link to={{ pathname: `/Edit/${people.id_pessoa}` }}>
                                 <button type="submit">Editar</button>
                             </Link>
                         </div>
                         <div className="btn-excluir">
                             <Link to='/Pessoas'>
-                            <button onClick={() => deletePost(posts.id_pessoa)} aria-label="share" type="submit" >Deletar</button>
+                            <button onClick={() => deletePost(people.id_pessoa)} aria-label="share" type="submit" >Deletar</button>
                             </Link>
                         </div>
                     </div>

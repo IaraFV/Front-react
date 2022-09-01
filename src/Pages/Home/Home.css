@@ -151,7 +151,7 @@ projeto e contador task*/
 #total-equipes-page-home {
     color: #D9D9D9;
     font-size: 2.3rem;
-    margin-left: -18%;
+    margin-left: -16%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -161,7 +161,7 @@ projeto e contador task*/
 #total-de-tasks-pagina-home-h {
     color: #D9D9D9;
     font-size: 2.3rem;
-    margin-left: -17%;
+    margin-left: -15%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -564,7 +564,13 @@ projeto e contador task*/
     margin-right: 3%;
 }
 
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 
+.custom-toggler.navbar-toggler {
+  border-color: rgb(255,102,203);
+} 
 
 @media (min-width: 1040px) {
     #caixa-geral-home{

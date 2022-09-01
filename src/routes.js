@@ -2,7 +2,7 @@ import Home from './Pages/Home/Home'
 import Pessoas from './Pages/Pessoas/Pessoas'
 import Equipes from './Pages/Equipes/Equipes'
 import Task from './Pages/Task/Task';
-import PostPessoa from './Pages/Pessoas/Post/Post';
+import PostPessoa from './Pages/Pessoas/CadastroPessoa/Post';
 import Edit from './Pages/Pessoas/Edit/editPessoa';
 import Inspecionar from './Pages/Pessoas/Inspecionar/Inspecionar'
 import AdicionarEquipe from './Pages/Equipes/AdicionarEquipe/AdicionarEquipe'
