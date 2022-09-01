@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import './Pessoas.css';
-import axios from "axios";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import imagemerro from '../../assets/TratamentoDeErroNaoEncontrado/itensNaoencontrados.png';
-import api from '../../services/api';
+import imagemerro from '../../../assets/TratamentoDeErroNaoEncontrado/itensNaoencontrados.png';
+import api from '../../../services/api';
 import { LampFill } from "react-bootstrap-icons";
-import Moment from 'moment';
 
 function Pessoas() {
-
     
     const [pessoas, setpessoas] = useState([])
     const [initialpessoas, setInitialpessoas] = useState([])

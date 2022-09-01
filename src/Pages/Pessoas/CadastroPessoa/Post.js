@@ -28,8 +28,8 @@ function PostPessoa() {
     const addPost = data => api.post("/pessoas/", data)
         .then(() => {
             console.log(addPost);
-            alert('Cadastrado com sucesso')
-            window.location.href = '/Pessoas';
+            //alert('Cadastrado com sucesso')
+            //window.location.href = '/Pessoas';
         })
         .catch(() => {
             console.log("n foi")

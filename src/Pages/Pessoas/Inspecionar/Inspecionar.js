@@ -85,10 +85,10 @@ function Inspecionar() {
     /*----------------------------------------------------------------------------------------------------------------------*/
 
 
+    console.log(filtra_task)
     var favoritar = parseInt(people.favoritar);
 
-    console.log(favoritar);
-   
+    console.log(favoritar)
 
     function favoritarFuncao() {
      
@@ -113,6 +113,7 @@ function Inspecionar() {
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{marginLeft:'78%'}}  /></h2>
             )
         } else {
+            
             return (
                 <>
                     {filtra_task.map(t => {
@@ -120,16 +121,12 @@ function Inspecionar() {
                             <div id="container-render-projetos-insppessoas">
                                 <Card id="card-tarefas-dee-pessoas">
                                     <CardContent id="test">
-                                        <CardHeader
-                                            avatar={
-                                                <Avatar aria-label="recipe">
-                                                    <BsFillFileEarmarkFill id="cor" />
-                                                </Avatar>
-                                            }>
-                                                
-                                            </CardHeader>
-                                        <Typography >
-                                            <h5 id="titulo">{t.descricao_task}</h5>
+                                        
+                                        <Typography id="titulo">
+                                        {t.nome_projeto}
+                                        </Typography>
+                                        <Typography id="titulo">
+                                             {t.descricao_task}
                                         </Typography>
                                     </CardContent>
                                 </Card>

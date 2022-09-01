@@ -51,9 +51,6 @@
 
 }
 
-.star button:hover path {
-    fill: #EB5757;
-}
 
 #estatisticaum {
     display: flex;
@@ -188,16 +185,6 @@
     margin-top: 2%;
 }
 
-#cards-insp-tasks {
-    border: 2px solid green;
-    width: 17%;
-    height: 23%;
-    left: 5%;
-    margin-top: 15%;
-    background: rgba(186, 186, 186, 0.5);
-    opacity: 0.4;
-    border-radius: 15px;
-}
 
 #file {
     font-size: 2.5rem;
@@ -249,21 +236,25 @@
 #container-render-projetos-insppessoas {
     display: flex;
     padding: 3%;
-    width: 30%;
+    width: 50%;
     margin-top: 3%;
     justify-content: center;
+    border: 1px solid red;
+   
 }
-
+#organiza-card-task-insp{
+    border: 1px solid red;
+}
 #card-tarefas-dee-pessoas {
     background: rgba(186, 186, 186, 0.5);
-    opacity: 0.1;
+    opacity: 0.3;
     border-radius: 15px;
-    width: 10rem;
+    width: 25rem;
 }
 
 #test {
     align-items: center;
-    border: 1px solid red;
+    
 }
 
 #titulo {
@@ -274,5 +265,10 @@
     align-items: center;
     display: flex;
     color: #2684FF;
-    font-size: 1rem;
+    font-size: 3rem;
+}
+#avatar-fill{
+    width: 5.3rem;
+    height: 5rem;
+    color: rgba(164, 164, 164, 0.12);
 }
