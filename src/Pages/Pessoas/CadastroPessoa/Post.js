@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import api from '../../../services/api'
+import { BsArrowLeft } from "react-icons/bs";
 
 function PostPessoa() {
 
@@ -18,7 +19,6 @@ function PostPessoa() {
         nome_pessoa: yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
         equipe_id: yup.number(),
-        //data_contratacao: new Date().toISOString().replace('T', '').replace('Z', '')
     })
 
     console.log(new Date().toISOString().replace('T', '').replace('Z', ''));
@@ -28,7 +28,7 @@ function PostPessoa() {
         .then(() => {
             console.log(addPost);
             alert('Cadastrado com sucesso')
-            window.location.href = '/Pessoas';
+            window.location.reload(true);
         })
         .catch(() => {
             console.log("n foi")
@@ -68,7 +68,12 @@ function PostPessoa() {
         <div>
             <main>
                 <div className="card-post">
-                    <h1>Cadastrar Pessoa</h1>
+                    <div className="seta-titulo">
+                        <div>
+                            <BsArrowLeft onClick={voltar} id="setar" />
+                        </div>
+                        <h1>Cadastrar Pessoa</h1>
+                    </div>
                     <div className="line-post"></div>
 
                     <div className="body-post">
