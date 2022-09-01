@@ -29,7 +29,7 @@ function PostT() {
         .then(() => {
             console.log("foi")
             alert('cadastrado com ssucesso')
-            navigate(`/InspProjeto/${id_projeto}`);
+            window.location.reload(true);
         })
         .catch(() => {
             console.log("n foi")

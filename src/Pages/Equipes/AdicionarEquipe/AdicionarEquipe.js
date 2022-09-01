@@ -6,18 +6,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './add.css'
 import { useNavigate } from 'react-router-dom'
-import axios from "axios";
 import React, { useEffect, useState, } from "react";
+import api from '../../../services/api'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import api from '../../../services/api'
+
 
 const validacaoPostE = yup.object().shape({
     nome_equipe: yup.string().required("Campo obrigatorio!"),
-    nome_pessoa: yup.string().required("Campo obrigatorio!")
 })
 
 function PostEquipe() {
@@ -32,44 +31,42 @@ function PostEquipe() {
         .then(() => {
             console.log("foi")
             navigate("/Equipes");
+
         })
         .catch(() => {
             console.log("n foi")
         })
-    /**requisição GET do Array Pessoas da api */
+    /**requisição GET do Array Pessoas da api 
     const [pessoa, setpessoa] = useState([]);
 
     useEffect(() => {
-        const fetchequipe = async () => {
-            try {
-                const response = await fetch('https://sistema-aprendizes-brisanet-go.herokuapp.com/pessoas/');
-                const data = await response.json();
-                setpessoa(data);
-                console.log("deu certo Men")
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchequipe();
-    }, [])
+       api.get('/pessoas/')
+       .then((response) => {
+       setpessoa(response.data)
+        console.log('FOI')
+        })
+        .catch(() => {
+            console.log("nao foi")
+        })
+    }, []
+    )
 
     /**função de retorno */
     function voltar() {
         window.history.back();
     }
-    /**variavesi do seletor */
+    /**variavesi do seletor 
     const [valuPessoa, setvalue] = React.useState('');
 
-    /**funçoes de evento das variaves do seletor */
+    /**funçoes de evento das variaves do seletor 
     const handleChange = (event) => {
         setvalue(event.target.value);
     };
-    /**manipulação dos dados oriundos de pessoas */
+    /**manipulação dos dados oriundos de pessoas 
     var filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
 
      /** tratamento de erro para uma usuario que esta ou nao dentro de uma equipe/grupo*/
-    function Verificapessoas() {
+   /* function Verificapessoas() {
         if (filtrandoPesssoa.length === 0) {
             console.log('Não tem pessoas Sem equipe')
         } else {
@@ -97,7 +94,7 @@ function PostEquipe() {
                 </>
             );
         }
-    }
+    }*/
     return (
         <div>
             <main>
@@ -115,7 +112,7 @@ function PostEquipe() {
                                 <p className="error-message">{errors.nome_equipe?.message} </p>
                             </div>
                             <div className="fields">
-                                <Verificapessoas/>
+                               {/* <Verificapessoas/>*/}
                             </div>
                             <div className="btn-post-equipe">
                                 <button onClick={voltar}  id="btn-cancelarE" type='text' >Cancelar</button>

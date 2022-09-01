@@ -16,6 +16,7 @@ import { AiOutlineMore } from "react-icons/ai";
 import { IoEllipseSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
+import { toNestError } from "@hookform/resolvers";
 function InspProjeto() {
 
     //variaves das requisições GET
@@ -108,10 +109,27 @@ function InspProjeto() {
             api.put(`/tasks/${getid}/status`,
                 { status: valutask })
             alert("Cadastrado com Sucess");
+            window.location.reload(true);
+
         } else {
             alert("Não cadastrou");
         }
     }
+
+    /*funçoes de teste. força um PUT do estatudos do projeto
+    function putEmdesenvolvimento(){
+        var sta = "Em desenvolvimento"
+        api.put(`/projetos/${id_projeto}/status`, {
+            status: sta
+        })
+    }
+    function putconcluido(){
+        var stas = "Concluído"
+        api.put(`/projetos/${id_projeto}/status`, {
+            status: stas
+        })
+    }
+*/
 
     var [getid, Setteste] = React.useState();
 
@@ -196,12 +214,13 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else if (totalTaskAfazer === 0 && lu === 'Em planejamento'){
+        } else if (totalTaskAfazer != 0){
             var stats = 'Em desenvolvimento';
             api.put(`/projetos/${id_projeto}/status`,
             {status: stats})
-            console.log('up de status OK')
-        }else if (totalTaskAfazer != 0){
+            //window.location.reload(true);
+            console.log('up de status(Em desenvolvimento)')
+       
             return (
                 <>
                     {
@@ -288,9 +307,8 @@ function InspProjeto() {
             var statss = 'Concluído';
             api.put(`/projetos/${id_projeto}/status`,
             {status: statss})
-            console.log('up de status OK')
-
-        }else if (totalTaskEmdesenvolvimento != 0)  {
+            console.log('up de status(concluido)')
+            //window.location.reload(false);
             return (
                 <>
                     {
@@ -326,6 +344,7 @@ function InspProjeto() {
 
     return (
         <div>
+            
             <div id="cabecario-geral-pagina-insp-projeto">
                 <div id="iconvoltar-pesquisa">
                     <div>
