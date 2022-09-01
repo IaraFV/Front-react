@@ -176,7 +176,7 @@ function InspProjeto() {
                             </Box>
 
                         </Typography>
-                        <Button variant="outlined" onClick={PutStatus}>Primary</Button>
+                        <Button variant="outlined" onClick={PutStatus}>Mudar status</Button>
                     </Box>
                 </Modal>
             </>
