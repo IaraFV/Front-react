@@ -110,7 +110,6 @@ function InspecionarEquipe() {
         alert("Excluido com sucesso")
     }
 
-    console.log(projeto);
     function RenderCards() {
         if (projeto === null) {
             return (
@@ -179,7 +178,7 @@ function InspecionarEquipe() {
 
                     <div>
                         <div id='icon-plus-inspequi'>
-                            <Link to="/Post">
+                            <Link to="/PostPessoa">
                                 <AiOutlinePlus id="corr" />
                             </Link>
                         </div>

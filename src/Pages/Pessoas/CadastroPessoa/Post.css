@@ -10,6 +10,11 @@ main {
     padding: 30px 70px;
     border-radius: 15px;
 }
+.seta-titulo{
+    display: flex;
+    margin: 3px;
+    padding: 3px;
+}
 
 .card-post h1{
     font-family: Heebo;
@@ -34,6 +39,10 @@ main {
 
 .fields {
     margin-bottom: 20px;
+}
+#setar {
+    font-size: 20px;
+    color: #fff;
 }
 
 label {
