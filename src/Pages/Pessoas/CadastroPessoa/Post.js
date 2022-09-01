@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './Post.css'
 import { useNavigate } from 'react-router-dom'
-import axios from "axios";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -38,8 +37,10 @@ function PostPessoa() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPost)
     })
-
-  
+    /*formata a data
+    let data = new Date();
+    var dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
+    console.log(dataFormatada);*/
 
     useEffect(() => {
         api.get('/equipes/')
@@ -52,12 +53,10 @@ function PostPessoa() {
             })
     }, []
     )
-
     
     function voltar() {
         window.history.back();
     }
-
     
     const [age, setAge] = React.useState('');
     const [equipe, setequipe] = useState([]);
@@ -101,7 +100,6 @@ function PostPessoa() {
                                             label="Age"
                                             sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
                                             onChange={handleChange}
-                                            
                                             >
                                             {equipe.map((equipe) =>
                                                 <MenuItem  id="menuEquipe-pagepessoa" value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
