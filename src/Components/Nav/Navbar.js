@@ -11,6 +11,7 @@ import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
 import { BsColumnsGap } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
+import './Navbar.css'
 function NavbarHome() {
 
     let path = window.location.pathname;
@@ -25,8 +26,6 @@ function NavbarHome() {
 
     return (
         [false,].map((expand) => (
-
-
             <>
 
                 <Navbar key={expand} id="nav-bar-home-menu" expand={expand} className="mb-3" class="navbar navbar-dark ">
@@ -36,7 +35,9 @@ function NavbarHome() {
                             </div>
                         </Navbar.Brand>
 
-                        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+                        <Navbar.Toggle id="menu-a" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>    
+                        </Navbar.Toggle> 
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
                             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}

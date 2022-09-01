@@ -59,12 +59,13 @@
     display: flex;
 }
 
-#tasks-feitas-pagepessoa{
+#tasks-feitas-pagepessoa {
     margin-top: -1%;
     color: rgba(186, 186, 186, 0.87);
     width: 5rem;
 }
-#total-taskfeitas-pagepessoas{
+
+#total-taskfeitas-pagepessoas {
     color: rgba(186, 186, 186, 0.87);
     font-size: 1rem;
 }
@@ -92,13 +93,13 @@
 
 #nome {
     margin-left: 2%;
-    margin-top: 8%;     
+    margin-top: 8%;
     font-family: Heebo;
     display: flex;
     justify-content: center;
 }
 
-#h1-insp-pagina-pessoa-insp{
+#h1-insp-pagina-pessoa-insp {
     color: #fff;
     display: flex;
     align-items: center;
@@ -106,7 +107,7 @@
     font-size: 1.7rem;
 }
 
-h4 {
+#cabecariodetalhes {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -114,6 +115,7 @@ h4 {
     line-height: 160%;
     letter-spacing: 0.15px;
     color: rgba(255, 255, 255, 0.87);
+    border-bottom: 2px solid #3E445B;
 }
 
 #detalhes {
@@ -219,36 +221,58 @@ h4 {
     font-size: 1.5rem;
     margin-left: -3%;
 }
-#btn-addTask-pessoaInsp{
+
+#btn-addTask-pessoaInsp {
     display: flex;
     justify-content: space-between;
+    border-bottom: 2px solid #3E445B;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    color: rgba(255, 255, 255, 0.8);
+    align-items: center;
 }
-.btn-adicionartesk{
-    color: #2684FF;
+
+.btn-adicionartesk {
+    color: rgba(255, 255, 255, 0.8);
+
 }
-#lucas{
+
+#lucas {
     display: flex;
     max-width: 100%;
     flex-wrap: wrap;
 }
-#try{
+
+#container-render-projetos-insppessoas {
     display: flex;
-    padding: 1rem;
-    
+    padding: 3%;
+    width: 30%;
+    margin-top: 3%;
+    justify-content: center;
 }
-#cardtask{
-    background: rgba(230, 227, 227, 0.5);
+
+#card-tarefas-dee-pessoas {
+    background: rgba(186, 186, 186, 0.5);
     opacity: 0.1;
-    color: #fff;
+    border-radius: 15px;
+    width: 10rem;
 }
-#test{
+
+#test {
     align-items: center;
+    border: 1px solid red;
 }
-#titulo{
+
+#titulo {
     color: white;
 }
-#cor{
+
+#cor {
     align-items: center;
     display: flex;
     color: #2684FF;
+    font-size: 1rem;
 }

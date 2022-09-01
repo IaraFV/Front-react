@@ -16,7 +16,7 @@ import CardHeader from '@mui/material/CardHeader';
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
-import imagemerro from './img/falta_de_dados (cópia).png';
+import imagemerro from '../../../assets/img/falta_de_dados (cópia).png';
 import api from '../../../services/api'
 
 const validacaoGet = yup.object().shape({
@@ -74,7 +74,7 @@ function Inspecionar() {
     const recebId_pessoa = posts.id_pessoa;
     const idPessoaINT = parseInt(recebId_pessoa);
     const filtra_task = Task.filter(task => task.pessoa_id === idPessoaINT);
-    /**pega o numero total de tesk */
+    /**pega o numero total de task */
     const numero = filtra_task.length;
   
     /*----------------------------------------------------------------------------------------------------------------------*/
@@ -112,15 +112,17 @@ function Inspecionar() {
                 <>
                     {filtra_task.map(t => {
                         return (
-                            <div id="try">
-                                <Card id="cardtask">
+                            <div id="container-render-projetos-insppessoas">
+                                <Card id="card-tarefas-dee-pessoas">
                                     <CardContent id="test">
                                         <CardHeader
                                             avatar={
                                                 <Avatar aria-label="recipe">
                                                     <BsFillFileEarmarkFill id="cor" />
                                                 </Avatar>
-                                            }></CardHeader>
+                                            }>
+                                                
+                                            </CardHeader>
                                         <Typography >
                                             <h5 id="titulo">{t.descricao_task}</h5>
                                         </Typography>
@@ -171,9 +173,9 @@ function Inspecionar() {
                     <div id="detalhes">
 
                         <div id="cabecariodetalhes">
-                            <h4>Detalhes</h4>
-                            <div className="line-insp"></div>
+                            Detalhes
                         </div>
+
                         <div id="bodydetalhes">
                             <p>Username: {posts.nome_pessoa}</p>
                             <p>Função: {posts.funcao_pessoa}</p>
@@ -196,12 +198,12 @@ function Inspecionar() {
                 <div id="card-inspdois">
                     <div id="card-header-insp">
                         <div id="btn-addTask-pessoaInsp">
-                            <h2>Task's</h2>
+                            Task's
                             <Link to="/PostT">
                                 <AiOutlinePlus className="btn-adicionartesk"></AiOutlinePlus>
                             </Link>
                         </div>
-                        <div className="line-insp-dois"></div>
+                       
                     </div>
                     <div id="lucas">
                         <RenderCards />
