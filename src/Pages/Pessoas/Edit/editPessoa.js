@@ -18,7 +18,7 @@ function Edit() {
     const validacaoGet = yup.object().shape({
         nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
-        equipe_id: yup.number()
+        equipe_id: yup.number().required("é obrigatoria"),
     })
     
     let navigate = useNavigate()
@@ -47,7 +47,6 @@ function Edit() {
             try {
                 const response = await fetch('/equipes/');
                 const data = await response.json();
-                setequipe(data);
 
             } catch (error) {
                 console.log(error);
@@ -56,26 +55,7 @@ function Edit() {
         fetchequipe();
     }, [])
 
-
-    useEffect(() => {
-        api.get('/equipes/')
-            .then((response) => {
-                setequipe(response.data)
-                console.log("pegou eq")
-            })
-            .catch(() => {
-                console.log("deu errado eq")
-            })
-    }, []
-    )
-
-
-
-    const [age, setAge] = React.useState('');
-    const [equipe, setequipe] = useState([]);
-    const handleChange = (event) => {
-        setAge(event.target.value);
-      };
+    
       function voltar() {
         window.history.back()
         .then((response) => {
@@ -107,24 +87,8 @@ function Edit() {
                             </div>
 
                             <div className="fields">
-                            <label>Equipe</label>
-                            <Box sx={{ minWidth: 120 }}>
-                                <FormControl fullWidth>
-                                <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
-                                <Select
-                                    {...register("equipe_id")}
-                                    labelId="demo-simple-select-label"
-                                    id_equipe="demo-simple-select"
-                                    value={age}
-                                    label="Age"
-                                    sx={{bgcolor: '#fff', borderRadius: '1rem'}}
-                                    onChange={handleChange}>
-                                    { equipe.map((equipe) =>
-                                        <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
-                                    )}
-                                </Select>
-                                </FormControl>
-                            </Box>
+                            <label>Id da Equipe</label>
+                                <input type="text" disabled="true" name="nome equipe" {...register("equipe_id")}/>
                             </div>
 
                             <div className="botoes-edit-pessoa">

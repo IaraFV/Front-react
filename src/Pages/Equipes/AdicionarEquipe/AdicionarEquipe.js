@@ -36,65 +36,12 @@ function PostEquipe() {
         .catch(() => {
             console.log("n foi")
         })
-    /**requisição GET do Array Pessoas da api 
-    const [pessoa, setpessoa] = useState([]);
-
-    useEffect(() => {
-       api.get('/pessoas/')
-       .then((response) => {
-       setpessoa(response.data)
-        console.log('FOI')
-        })
-        .catch(() => {
-            console.log("nao foi")
-        })
-    }, []
-    )
 
     /**função de retorno */
     function voltar() {
         window.history.back();
     }
-    /**variavesi do seletor 
-    const [valuPessoa, setvalue] = React.useState('');
-
-    /**funçoes de evento das variaves do seletor 
-    const handleChange = (event) => {
-        setvalue(event.target.value);
-    };
-    /**manipulação dos dados oriundos de pessoas 
-    var filtrandoPesssoa = pessoa.filter(semEquipe => semEquipe.equipe_id === null);
-
-     /** tratamento de erro para uma usuario que esta ou nao dentro de uma equipe/grupo*/
-   /* function Verificapessoas() {
-        if (filtrandoPesssoa.length === 0) {
-            console.log('Não tem pessoas Sem equipe')
-        } else {
-            return (
-                <>
-                    <label>pessoas sem equipe</label>
-                    <Box sx={{ minWidth: 120 }}>
-                        <FormControl fullWidth>
-                            <InputLabel pessoa_id="demo-simple-select-label"></InputLabel>
-                            <Select
-                                {...register("nome_pessoa")}
-                                labelId="demo-simple-select-label"
-                                pessoa_id="demo-simple-select"
-                                value={valuPessoa}
-                                label="Age"
-                                sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                onChange={handleChange}>
-                                {filtrandoPesssoa.map((pessoas) =>
-                                    <MenuItem id="menuEquipe-pageequipe" value={pessoas.id_pessoa} key={pessoas.id_pessoa}>{pessoas.nome_pessoa}</MenuItem>
-                                )}
-                            </Select>
-                            <p className="error-message">{errors.nivel?.message} </p>
-                        </FormControl>
-                    </Box>
-                </>
-            );
-        }
-    }*/
+    
     return (
         <div>
             <main>

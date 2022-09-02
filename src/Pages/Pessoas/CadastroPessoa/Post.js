@@ -103,9 +103,11 @@ function PostPessoa() {
                                             onChange={handleChange}
                                             
                                             >
-                                            {equipe.map((equipe) =>
-                                                <MenuItem  id="menuEquipe-pagepessoa" value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
-                                            )}
+                                            <div id="barra-de-rolagem-equipe">
+                                                {equipe.map((equipe) =>
+                                                            <MenuItem  id="menuEquipe-pagepessoa" value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                                )}
+                                            </div>
                                         </Select>
                                     </FormControl>
                                 </Box>
