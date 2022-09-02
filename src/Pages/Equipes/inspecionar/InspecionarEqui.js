@@ -13,7 +13,7 @@ import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from './img/falta_de_dados.png';
 import api from '../../../services/api';
-
+import { IoHourglassOutline } from "react-icons/io5";
 function InspecionarEquipe() {
 
     const [equipe, setequipe] = useState([])
@@ -110,6 +110,12 @@ function InspecionarEquipe() {
         alert("Excluido com sucesso")
     }
 
+    /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+   
+    console.log(projeto)
+
+
     function RenderCards() {
         if (projeto === null) {
             return (
@@ -124,28 +130,15 @@ function InspecionarEquipe() {
                         projeto?.map((projeto, key) => {
                             return (
                                 <div >
-                                    <div id="div-card-page-inpequipe">
+                                    <div >
 
-                                        <Card id="div-card-projeto-equipe">
+
+
+                                        <Card id="div-card-page-inpequipe">
                                             <Card.Body>
-                                                <Card.Title id="header-projeto-inspequipe" key={key}>
-                                                    {projeto.nome_projeto}
-
-                                                    <div>
-                                                        <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }}>
-                                                            <AiOutlineArrowsAlt id="more-button-planejamento" />
-                                                        </Link>
-                                                    </div>
-                                                </Card.Title>
+                                              
                                                 <Card.Text id="status-projeto-isnpequipe">
-                                                    {projeto.status}
-                                                </Card.Text>
-                                               
-                                                <Card.Text>
-                                                    <div id="titulo-descricao-projeto">Descrição</div>
-                                                    <div id="corpo-descricao-projeto">
-                                                        {projeto.descricao_projeto}
-                                                    </div>
+                                                    {projeto.nome_projeto}
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
@@ -219,12 +212,10 @@ function InspecionarEquipe() {
 
                 <div id='insp-card-dois-pagina-inspequipe'>
                     <div>
-                        <div id='header-projetos-concluidos-insp-equipe'>Projetos</div>
+                        <div id='header-projetos-concluidos-insp-equipe'>Painel de Projetos</div>
                     </div>
 
-                    <div id='linha-progresso-eq'>
-                        <Progress.Line percent={percent} strokeColor={'#00DB99'} status={status} />
-                    </div>
+
                     <div>
                         <RenderCards />
                     </div>
