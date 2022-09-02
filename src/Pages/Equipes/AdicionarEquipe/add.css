@@ -7,7 +7,7 @@ main {
 }
 
 .card-post-equipe {
-    background-color: #2F3644;
+    background-color: #21222D;
     padding: 30px 70px;
     border-radius: 15px;
 }
@@ -17,16 +17,13 @@ main {
     font-weight: 800;
     text-align: center;
 
-    color: #D2DAF5;
+    color: #fff;
 
+    border-bottom: 2px solid #A4A4A4;
     font-size: 3rem;
     margin-bottom: 5px;
 }
 
-.line-post-equipe {
-    height: 2px;
-    background-color: #3E445B;
-}
 
 .card-body-post-equipe {
     margin-top: 25px;
@@ -35,6 +32,7 @@ main {
 
 .fieldsequipe {
     margin-bottom: 20px;
+    color: #fff;
 }
 
 label {
@@ -72,6 +70,9 @@ textarea {
 .btn-post-equipe{
     margin-top: 30px;
     text-align: center;
+    width: 24rem;
+    display: flex;
+    justify-content: space-around;
 
 }
 

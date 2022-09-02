@@ -78,13 +78,13 @@ function PostPessoa() {
 
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} />
+                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} className="inputgeral" />
                                 <p className="error-message">{errors.nome_pessoa?.message} </p>
                             </div>
 
                             <div className="fields">
                                 <label>Função</label>
-                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} />
+                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} className="inputgeral"/>
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
@@ -99,8 +99,9 @@ function PostPessoa() {
                                             id_equipe="demo-simple-select"
                                             value={age}
                                             label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            sx={{ bgcolor: 'rgba(33, 34, 45, 0.5)', border: '1px solid #D9D9D9' }}
                                             onChange={handleChange}
+                                            
                                             
                                             >
                                             <div id="barra-de-rolagem-equipe">
@@ -115,7 +116,7 @@ function PostPessoa() {
 
                             <div id="chat">
                                 <Link id="butaoC" onClick={voltar}>Cancelar</Link>
-                                <button type="submit"  className="butao" >Cadastrar</button>
+                                <button type="submit"  className="btn-post button" >Cadastrar</button>
                             </div>
                     
                 </form>

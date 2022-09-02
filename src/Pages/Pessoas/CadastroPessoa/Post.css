@@ -5,32 +5,32 @@ main {
 
     padding: 3rem 0;
 }
+
 .card-post {
-    background-color: #2F3644;
+    background-color: #21222D;
     padding: 30px 70px;
     border-radius: 15px;
 }
-.seta-titulo{
+
+.seta-titulo {
     display: flex;
     margin: 3px;
     padding: 3px;
 }
 
-.card-post h1{
+.card-post h1 {
     font-family: Heebo;
     font-weight: 800;
     text-align: center;
 
-    color: #D2DAF5;
+    color: #fff;
 
     font-size: 3rem;
     margin-bottom: 5px;
+    border-bottom: 3px solid rgba(164, 164, 164, 0.12);
 }
 
-.line-post {
-    height: 2px;
-    background-color: #3E445B;
-}
+
 
 .card-body-post {
     margin-top: 25px;
@@ -40,6 +40,7 @@ main {
 .fields {
     margin-bottom: 20px;
 }
+
 #setar {
     font-size: 20px;
     color: #fff;
@@ -49,13 +50,12 @@ label {
     display: block;
     margin-bottom: 7px;
     font-size: 1.2rem;
-
-    color: #D2DAF5;
-
-    font-family: Poppins;
+    color: #fff;
+    font-family: 'Inter';
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     border-radius: 10px;
     border: 0;
@@ -77,19 +77,19 @@ textarea {
     padding-top: 10px;
 }
 
-.btn-post{
+.btn-post {
     margin-top: 30px;
     text-align: center;
 
 }
 
-.btn-post button{
+.btn-post button {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
     padding: 5px 50px;
     color: #fff;
-    background-color: #E9C46A;
+    background-color: #2684FF;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
@@ -98,6 +98,7 @@ textarea {
 .error-message {
     color: rgb(240, 47, 47);
 }
+
 .btn-cancelar-post {
     text-decoration: none;
     font-family: Heebo;
@@ -110,13 +111,15 @@ textarea {
     border-radius: 10px;
     cursor: pointer;
 }
-.botoespost{
+
+.botoespost {
     display: flex;
     justify-content: space-between;
     width: 103%;
-   
+
     height: 45px;
 }
+
 .btn-post {
     font-family: Heebo;
     font-weight: 800;
@@ -130,13 +133,15 @@ textarea {
     height: 44px;
     margin-top: -0.1%;
 }
-#chat{
+
+#chat {
     display: flex;
     justify-content: space-between;
     width: 24rem;
-    
+
 }
-.butao{
+
+.butao {
     font-family: Heebo;
     font-weight: 800;
     font-size: 1.3rem;
@@ -146,10 +151,18 @@ textarea {
     border: 0;
     border-radius: 10px;
     cursor: pointer;
-    
+
 }
-#butaoC{
-  
+
+.inputgeral {
+    background: rgba(33, 34, 45, 0.5);
+    border: 1px solid #D9D9D9;
+    border-radius: 6px;
+    color: #fff;
+}
+
+#butaoC {
+
     text-decoration: none;
     font-family: Heebo;
     font-weight: 800;
@@ -162,7 +175,7 @@ textarea {
     cursor: pointer;
 }
 
-#menuEquipe-pagepessoa{
+#menuEquipe-pagepessoa {
     background: #2F3644;
     color: #fff;
     display: flex;
@@ -182,10 +195,12 @@ textarea {
     background-color: #D9D9D9;
     border-radius: 20px;
 }
-#barra-de-rolagem-equipe{
+
+#barra-de-rolagem-equipe {
     overflow: auto;
     height: 19rem;
 }
+
 #barra-de-rolagem-equipe::-webkit-scrollbar {
     background: #171821;
     width: 8px;
