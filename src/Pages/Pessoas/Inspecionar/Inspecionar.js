@@ -118,19 +118,19 @@ function Inspecionar() {
                 <>
                     {filtra_task.map(t => {
                         return (
-                            <div id="container-render-projetos-insppessoas">
-                                <Card id="card-tarefas-dee-pessoas">
-                                    <CardContent id="test">
-                                        
-                                        <Typography id="titulo">
-                                        {t.nome_projeto}
-                                        </Typography>
-                                        <Typography id="titulo">
-                                             {t.descricao_task}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </div>
+                                <div id="container-render-projetos-insppessoas">
+                                    <Card id="card-tarefas-dee-pessoas">
+                                        <CardContent id="test">
+                                
+                                            <Typography id="titulo">
+                                            {t.nome_projeto}
+                                            </Typography>
+                                            <Typography id="titulo">
+                                                 {t.descricao_task}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </div>
                         )
                     })}
                 </>
@@ -207,7 +207,7 @@ function Inspecionar() {
                         </div>
                        
                     </div>
-                    <div id="lucas">
+                    <div id="conteiner-das-tasks">
                         <RenderCards />
                     </div>
                 </div>
