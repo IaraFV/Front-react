@@ -59,7 +59,7 @@ function Edite() {
 
                             <div className="btn-postt">
                                 <button type="submit" onClick={voltar} id="btn-cancelar">cancelar</button>
-                                <button type="submit" onClick={voltar} id="btn-cadastrar">Cadastrar</button>
+                                <button type="submit" onClick={voltar} id="btn-cadastrar">Editar</button>
                             </div>
                         </form>
 

@@ -55,7 +55,7 @@ function PostEquipe() {
 
                             <div className="fieldsequipe">
                                 <label>Nome</label>
-                                <input type="text" name="nome_equipe" {...register("nome_equipe")} />
+                                <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral"/>
                                 <p className="error-message">{errors.nome_equipe?.message} </p>
                             </div>
                             <div className="fields">
