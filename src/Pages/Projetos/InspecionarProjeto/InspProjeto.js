@@ -78,8 +78,6 @@ function InspProjeto() {
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
-    const lu = projetos.status;
-    console.log(lu);
     var totalTaskAfazer = filtFazer.length;
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
@@ -116,20 +114,6 @@ function InspProjeto() {
         }
     }
 
-    /*funçoes de teste. força um PUT do estatudos do projeto
-    function putEmdesenvolvimento(){
-        var sta = "Em desenvolvimento"
-        api.put(`/projetos/${id_projeto}/status`, {
-            status: sta
-        })
-    }
-    function putconcluido(){
-        var stas = "Concluído"
-        api.put(`/projetos/${id_projeto}/status`, {
-            status: stas
-        })
-    }
-*/
 
     var [getid, Setteste] = React.useState();
 
@@ -182,7 +166,6 @@ function InspProjeto() {
             </>
         )
     }
-
     function ModaldoMenu() {
         const [opene, setOpene] = React.useState(false);
         const handleClosee = () => setOpene(false);
@@ -309,6 +292,7 @@ function InspProjeto() {
             {status: statss})
             console.log('up de status(concluido)')
             //window.location.reload(false);
+        }else if(totalTaskConcluído != 0){
             return (
                 <>
                     {

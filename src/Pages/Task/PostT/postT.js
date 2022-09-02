@@ -112,7 +112,7 @@ function PostT() {
 
                             <div className="fields">
                                 <label>Descricao</label>
-                                <input type="text" name="descricao_task" {...register("descricao_task")} />
+                                <input type="text" className="inputgeral"name="descricao_task" {...register("descricao_task")} />
                                 <p className="error-message">{errors.descricao_task?.message} </p>
                             </div>
                             <div className="fields">
@@ -126,9 +126,9 @@ function PostT() {
                                             projeto_id="demo-simple-select"
                                             value={vofNivel}
                                             label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            sx={{bgcolor: 'rgba(33, 34, 45, 0.5)', border: '1px solid #D9D9D9' }}
                                             onChange={handleChange}>
-                                            <MenuItem value={'facil'} key={'facil'}>facil</MenuItem>
+                                            <MenuItem  value={'facil'} key={'facil'}>facil</MenuItem>
                                             <MenuItem value={'medio'} key={'medio'}>medio</MenuItem>
                                             <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
 
@@ -149,7 +149,7 @@ function PostT() {
                                             projeto_id="demo-simple-select"
                                             value={vofProjeto}
                                             label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            sx={{ bgcolor: 'rgba(33, 34, 45, 0.5)', border: '1px solid #D9D9D9' }}
                                             onChange={handleChangea}>
 
 
@@ -173,7 +173,7 @@ function PostT() {
                                             equipes_id="demo-simple-select"
                                             value={vofPessoa}
                                             label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            sx={{bgcolor: 'rgba(33, 34, 45, 0.5)', border: '1px solid #D9D9D9' }}
                                             onChange={handleChangeu}>
 
                                             {filtepessoa.map((nomePessoa) =>
