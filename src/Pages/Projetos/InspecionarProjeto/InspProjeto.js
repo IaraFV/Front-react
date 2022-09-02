@@ -78,6 +78,8 @@ function InspProjeto() {
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
+    //const teste = (gettask.filter((get) => get.status === "Concluído")).length;
+
     var totalTaskAfazer = filtFazer.length;
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
@@ -93,10 +95,19 @@ function InspProjeto() {
         boxShadow: 24,
         p: 4,
     };
-
+    //modal 1
     function handleOpen(id_task) {
         if (id_task !== 0) {
             setOpen(true)
+            Setteste(id_task)
+        } else {
+            console.log('n foi true')
+        }
+    }
+    //modal 2
+    function handleOpenn(id_task) {
+        if (id_task !== 0) {
+            setOpenn(true)
             Setteste(id_task)
         } else {
             console.log('n foi true')
@@ -121,11 +132,16 @@ function InspProjeto() {
     const [open, setOpen] = React.useState(false);
     const handleClose = () => setOpen(false);
 
+    //variavel da manipulação do modal 2
+    const [openn, setOpenn] = React.useState(false);
+    const handleClosen = () => setOpenn(false);
+
     //variaveis do seletor modal 1 
     var [valutask, setvalue] = React.useState('');
     const handleChange = (event) => {
         setvalue(event.target.value);
     };
+    
 
     function CorpoModal() {
         return (
@@ -167,15 +183,12 @@ function InspProjeto() {
         )
     }
     function ModaldoMenu() {
-        const [opene, setOpene] = React.useState(false);
-        const handleClosee = () => setOpene(false);
-
         return (
             <>
                 <Modal
                     keepMounted
-                    open={opene}
-                    onClose={handleClosee}
+                    open={openn}
+                    onClose={handleClosen}
                     aria-labelledby="keep-mounted-modal-title"
                     aria-describedby="keep-mounted-modal-description"
                 >
@@ -258,7 +271,9 @@ function InspProjeto() {
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
                                                 <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
-                                            <button onClick={ModaldoMenu} className='btn-muda-status'> <AiOutlineMore className="cor-menu-pontos" /></button>
+                                            <button onClick={() => handleOpenn(projetos.id_task)} className='btn-muda-status'> 
+                                                <AiOutlineMore className="cor-menu-pontos" />
+                                            </button>
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
@@ -272,7 +287,7 @@ function InspProjeto() {
                             );
                         })
                     }
-
+                    <ModaldoMenu/>
                     <CorpoModal />
                 </>
             )
