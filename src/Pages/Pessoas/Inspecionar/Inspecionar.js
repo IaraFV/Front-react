@@ -28,14 +28,14 @@ function Inspecionar() {
     let navigate = useNavigate()
     const [people, setPeople] = useState([])
     const [Task, setTask] = useState([])
-    const [setFavoritar ] = useState([])
+    const [setFavoritar] = useState([])
     const { id_pessoa } = useParams()
-   
-   
+
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validacaoGet)
     })
-    
+
     useEffect(() => {
         api.get(`/pessoas/${id_pessoa}`)
             .then((response) => {
@@ -65,7 +65,7 @@ function Inspecionar() {
         api.delete(`/pessoas/${id_pessoa}`)
         setPeople(people.filter(post => post.id_pessoa !== id_pessoa))
     }
-    
+
     function stringAvatar(name) {
         return {
             sx: {
@@ -81,7 +81,7 @@ function Inspecionar() {
     const filtra_task = Task.filter(task => task.pessoa_id === idPessoaINT);
     /**pega o numero total de task */
     const numero = filtra_task.length;
-  
+
     /*----------------------------------------------------------------------------------------------------------------------*/
 
 
@@ -91,47 +91,47 @@ function Inspecionar() {
     console.log(favoritar)
 
     function favoritarFuncao() {
-     
-        if (favoritar === 1) {
-             api.put('/pessoas/' + id_pessoa + '/favoritar')
-             .then((response) => {
-                console.log("deu certo boy")
 
-            })
+        if (favoritar === 1) {
+            api.put('/pessoas/' + id_pessoa + '/favoritar')
+                .then((response) => {
+                    console.log("deu certo boy")
+
+                })
                 .catch(() => {
                     console.log("n favoritou")
                 })
-               
-        } 
-        
+
+        }
+
     }
 
-    
+
     function RenderCards() {
         if (numero === 0) {
             return (
-                <h2><img src={imagemerro} alt=" " width={'53%'} style={{marginLeft:'78%'}}  /></h2>
+                <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '78%' }} /></h2>
             )
         } else {
-            
+
             return (
                 <>
                     {filtra_task.map(t => {
                         return (
-                                <div id="container-render-projetos-insppessoas">
-                                    <Card id="card-tarefas-dee-pessoas">
-                                        <CardContent id="test">
-                                            <Typography id="titulo">
-                                                <p className="tagP">nome do projeto:</p>
+                            <div id="container-render-projetos-insppessoas">
+                                <Card id="card-tarefas-dee-pessoas">
+                                    <CardContent id="test">
+                                        <Typography id="titulo">
+                                            <p className="tagP">nome do projeto:</p>
                                             {t.nome_projeto}
-                                            </Typography>
-                                            <Typography id="titulo">
-                                                <p className="tagP">nome da tarefa:</p>
-                                                 {t.descricao_task}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                </div>
+                                        </Typography>
+                                        <Typography id="titulo">
+                                            <p className="tagP">nome da tarefa:</p>
+                                            {t.descricao_task}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         )
                     })}
                 </>
@@ -140,11 +140,11 @@ function Inspecionar() {
 
     }
 
-     
+
     function voltar() {
         window.history.back();
     }
-    
+
     return (
         <>
             <div id="geral-card-inspecionar">
@@ -156,7 +156,7 @@ function Inspecionar() {
                         <Avatar {...stringAvatar(`${nome}`)} />
                     </div>
                     <div>
-                        <div  id="h1-insp-pagina-pessoa-insp">{people.nome_pessoa}</div>
+                        <div id="h1-insp-pagina-pessoa-insp">{people.nome_pessoa}</div>
                     </div>
                     <div id="geralestatistica">
                         <div id="estatisticaum">
@@ -172,7 +172,7 @@ function Inspecionar() {
                             </button>
                         </div>
                     </div>
-                    
+
                     <div id="detalhes">
 
                         <div id="cabecariodetalhes">
@@ -193,7 +193,7 @@ function Inspecionar() {
                         </div>
                         <div className="btn-excluir">
                             <Link to='/Pessoas'>
-                            <button onClick={() => deletePost(people.id_pessoa)} aria-label="share" type="submit" >Deletar</button>
+                                <button onClick={() => deletePost(people.id_pessoa)} aria-label="share" type="submit" >Deletar</button>
                             </Link>
                         </div>
                     </div>
@@ -206,7 +206,7 @@ function Inspecionar() {
                                 <AiOutlinePlus className="btn-adicionartesk"></AiOutlinePlus>
                             </Link>
                         </div>
-                       
+
                     </div>
                     <div id="conteiner-das-tasks">
                         <RenderCards />
