@@ -29,3 +29,26 @@
     border-radius: 10px;
     cursor: pointer;
 }
+#barra-de-rolagem-projeto{
+    border: 1px solid red;
+    overflow: auto;
+    height: 20rem;
+}
+#barra-de-rolagem-projeto::-webkit-scrollbar {
+    background: #171821;
+    width: 8px;
+}
+
+#barra-de-rolagem-projeto::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
+    border-radius: 20px;
+}
+#menuEquipe-pageequipe{
+    background: #2F3644;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    height: 2.7rem;
+    border: none;
+}

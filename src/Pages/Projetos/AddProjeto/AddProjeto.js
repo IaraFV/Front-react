@@ -73,40 +73,39 @@ function AddProjeto() {
 
                                 <div className="fields">
                                     <label>Nome</label>
-                                    <input type="text" name="nome_projeto" {...register("nome_projeto")} />
+                                    <input type="text" name="nome_projeto" className="inputgeral" {...register("nome_projeto")} />
                                     <p className="error-message">{errors.nome_projeto?.message} </p>
                                 </div>
 
                                 <div className="fields">
                                     <label>nome equipe</label>
-                                    <Box sx={{ minWidth: 120 }}>
-                                        <FormControl fullWidth>
-                                            <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
-                                            <Select
-                                                {...register("equipe_id")}
-                                                labelId="demo-simple-select-label"
-                                                projeto_id="demo-simple-select"
-                                                value={valueequipe}
-                                                label="Age"
-                                                sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
-                                                onChange={handleChange}>
-                                                {
-                                                    equipe.map((equipe) => {
-                                                        return (
-                                                            <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
-                                                        )
-                                                    })
-                                                }
-                                            </Select>
-                                            <p className="error-message">{errors.nivel?.message} </p>
-                                        </FormControl>
-                                    </Box>
+                                        <Box sx={{ minWidth: 120 }}>
+                                            <FormControl fullWidth>
+                                                <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
+                                                <Select className="inputgeral"
+                                                    {...register("equipe_id")}
+                                                    labelId="demo-simple-select-label"
+                                                    projeto_id="demo-simple-select"
+                                                    value={valueequipe}
+                                                    label="Age"
+                                                    onChange={handleChange}>
+                                                    {
+                                                        equipe.map((equipe) => {
+                                                            return (
+                                                                <MenuItem value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                                            )
+                                                        })
+                                                    }
+                                                </Select>
+                                                <p className="error-message">{errors.nivel?.message} </p>
+                                            </FormControl>
+                                        </Box>
                                     <p className="error-message">{errors.equipe_id?.message} </p>
                                 </div>
 
                                 <div className="fields">
                                     <label>Descrição</label>
-                                    <textarea type="text" name="descricao_projeto" {...register("descricao_projeto")} />
+                                    <textarea type="text" name="descricao_projeto" className="inputgeral" {...register("descricao_projeto")} />
                                     <p className="error-message">{errors.descricao_projeto?.message} </p>
                                 </div>
 
