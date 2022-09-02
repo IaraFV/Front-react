@@ -127,6 +127,7 @@ function Inspecionar() {
                                     <Card id="card-tarefas-dee-pessoas">
                                         <CardContent id="test">
                                 
+
                                             <Typography id="titulo-projeto-tarefa-pessoa">
                                             {t.nome_projeto}
                                             </Typography>
@@ -134,8 +135,9 @@ function Inspecionar() {
                                                  {t.nivel}
                                             </Typography>
                                             <Typography id="nome-tarefa-inppessoa">
-                                                 {t.descricao_task}
+                                            {t.descricao_task}
                                             </Typography>
+
                                         </CardContent>
                                     </Card>
                                 </div>
