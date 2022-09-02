@@ -232,7 +232,7 @@
     max-width: 100%;
     flex-wrap: wrap;
     overflow: auto;
-    height: 30rem;
+    height: 40rem;
 }
 #conteiner-das-tasks::-webkit-scrollbar {
     background: #171821;
