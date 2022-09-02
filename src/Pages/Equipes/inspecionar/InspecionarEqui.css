@@ -161,6 +161,10 @@
 #div-card-page-inpequipe {
     width: 34rem;
     padding: 1%;
+    border: 1px solid red;
+    background: #171821;
+    border: 1px dashed #171821;
+    border-radius: 10px;
 
 
 }
@@ -200,11 +204,74 @@
     border: 1px dashed #171821;
     border-radius: 50px;
 }
-#header-projeto-inspequipe{
+
+#header-projeto-inspequipe {
     color: #FFFFFF;
     font-family: 'Inter';
     margin-top: 2%;
     display: flex;
     justify-content: space-between;
 
+}
+
+#body-cont-peojetos-equipe {
+    width: 12rem;
+    border: 1px solid red;
+    height: 80px;
+    background: #171821;
+    border: 1px dashed #171821;
+    border-radius: 10px;
+    color: #fff;
+}
+
+#body-cont-peojetos-equipe-desenv {
+    width: 12rem;
+    height: 80px;
+    background: #171821;
+    border: 1px dashed #171821;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.iconsgeralprojetosqeuipe {
+    color: #2684FF;
+    margin-left: 10%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.iconseq {
+    width: 2rem;
+    height: 2rem;
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.justf-projeto-equipe {
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9%;
+}
+
+.tittle-card-proj-eq {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.num {
+    margin-top: -5%;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+#ddd {
+
+    width: 40rem;
 }
