@@ -47,7 +47,6 @@ function Edit() {
             try {
                 const response = await fetch('/equipes/');
                 const data = await response.json();
-
             } catch (error) {
                 console.log(error);
             }

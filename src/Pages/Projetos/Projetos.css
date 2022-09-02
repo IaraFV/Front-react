@@ -122,3 +122,12 @@
     width: 30%;
     height: 2.5rem;
 }
+#corverde{
+    color: rgba(0, 219, 153, 0.9);
+}
+#corvermelha{
+    color: #EB5757;
+}
+#cormarelo{
+    color: #E9C46A;
+}

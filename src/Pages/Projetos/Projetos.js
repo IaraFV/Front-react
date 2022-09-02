@@ -24,7 +24,7 @@ function Projetos() {
                 console.log("Deu BO Men")
             })
     }, [])
-    console.log(projeto);
+
     //filter pesquisa
     const handlechange = ({ target }) => {
         if (!target.value) {
@@ -37,6 +37,17 @@ function Projetos() {
         setprojeto(filter);
     }
     const porjnum = parseInt(projeto.length);
+
+
+    function mudacor(status){
+        if (status === 'Em planejamento'){
+            return '#EB5757'
+        }
+        else if(status === 'Em desenvolvimento'){
+            return '#E9C46A'
+        }
+    
+    }     
 
     function TratamentoError() {
         if (porjnum === 0) {
@@ -61,7 +72,7 @@ function Projetos() {
                                                 </div>
                                             </Card.Title>
                                             <Card.Text id="status">
-                                                {projeto.status}
+                                               <span style={{color: mudacor(projeto.status)}}>{projeto.status}</span>
                                             </Card.Text>
                                             <Card.Text id="bandeira-data">
                                                 <div><BsFlagFill /></div>
