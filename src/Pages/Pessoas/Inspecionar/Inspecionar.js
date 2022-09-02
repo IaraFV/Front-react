@@ -121,12 +121,11 @@ function Inspecionar() {
                                 <div id="container-render-projetos-insppessoas">
                                     <Card id="card-tarefas-dee-pessoas">
                                         <CardContent id="test">
+                                
                                             <Typography id="titulo">
-                                                <p className="tagP">nome do projeto:</p>
                                             {t.nome_projeto}
                                             </Typography>
                                             <Typography id="titulo">
-                                                <p className="tagP">nome da tarefa:</p>
                                                  {t.descricao_task}
                                             </Typography>
                                         </CardContent>
