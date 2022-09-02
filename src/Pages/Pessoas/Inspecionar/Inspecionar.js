@@ -61,10 +61,15 @@ function Inspecionar() {
     )
     const nome = people.nome_pessoa;
 
+
+
     function deletePost(id_pessoa) {
         api.delete(`/pessoas/${id_pessoa}`)
         setPeople(people.filter(post => post.id_pessoa !== id_pessoa))
+        window.location.reload(true);
     }
+
+
     
     function stringAvatar(name) {
         return {
@@ -121,12 +126,14 @@ function Inspecionar() {
                                 <div id="container-render-projetos-insppessoas">
                                     <Card id="card-tarefas-dee-pessoas">
                                         <CardContent id="test">
-                                            <Typography id="titulo">
-                                                <p className="tagP">nome do projeto:</p>
+                                
+                                            <Typography id="titulo-projeto-tarefa-pessoa">
                                             {t.nome_projeto}
                                             </Typography>
-                                            <Typography id="titulo">
-                                                <p className="tagP">nome da tarefa:</p>
+                                            <Typography id='insppessoa-nivel'>
+                                                 {t.nivel}
+                                            </Typography>
+                                            <Typography id="nome-tarefa-inppessoa">
                                                  {t.descricao_task}
                                             </Typography>
                                         </CardContent>

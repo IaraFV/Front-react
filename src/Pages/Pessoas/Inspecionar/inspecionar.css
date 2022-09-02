@@ -227,13 +227,15 @@
 
 }
 
-#conteiner-das-tasks{
+#conteiner-das-tasks {
     display: flex;
     max-width: 100%;
     flex-wrap: wrap;
     overflow: auto;
-    height: 40rem;
+    height: 30rem;
+    margin-top: 5%;
 }
+
 #conteiner-das-tasks::-webkit-scrollbar {
     background: #171821;
     width: 8px;
@@ -243,31 +245,60 @@
     background-color: #D9D9D9;
     border-radius: 20px;
 }
+
 #container-render-projetos-insppessoas {
     display: flex;
-    padding: 3%;
+    padding: 2%;
     width: 50%;
-    margin-top: 3%;
+    height: 10rem;
     justify-content: center;
-   
+
 }
-#organiza-card-task-insp{
+
+#organiza-card-task-insp {
     border: 1px solid red;
 }
+
 #card-tarefas-dee-pessoas {
-    background: rgba(186, 186, 186, 0.5);
-    opacity: 0.3;
+    background: rgba(23, 24, 33, 0.9);
     border-radius: 15px;
-    width: 25rem;
+    width: 28rem;
+
 }
 
 #test {
     align-items: center;
-    
+
 }
 
-#titulo {
-    color: white;
+#insppessoa-nivel {
+    background: rgba(164, 164, 164, 0.12);
+    border-radius: 6px;
+    width: 3rem;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #2684FF;
+    margin-top: 1%;
+}
+
+#titulo-projeto-tarefa-pessoa {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 157%;
+    letter-spacing: 0.1px;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+#nome-tarefa-inppessoa {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 157%;
+    letter-spacing: 0.1px;
+    color: #BABABA;
+    margin-top: 1%;
 }
 
 #cor {
@@ -276,15 +307,18 @@
     color: #2684FF;
     font-size: 3rem;
 }
-#avatar-fill{
+
+#avatar-fill {
     width: 5.3rem;
     height: 5rem;
     color: rgba(164, 164, 164, 0.12);
 }
-#teste{
+
+#teste {
     border: 1px solid red;
 }
-.tagP{
+
+.tagP {
     margin-top: 0.4rem;
     color: #fff;
 }
