@@ -105,7 +105,7 @@ function PostPessoa() {
                                     filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
                                     onChange={onChange}
                                     value={age}
-                                    style={{ width: '21vw'}}
+                                    style={{ width: '21vw', display: 'flex'}}
                                     size={"large"}
                                 >
                                     <>
