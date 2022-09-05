@@ -1,19 +1,14 @@
 import './InspecionarEqui.css'
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { BsArrowLeft } from "react-icons/bs";
-import { Progress } from 'rsuite';
 import "rsuite/dist/rsuite.css";
 import Card from 'react-bootstrap/Card';
-import { AiOutlineArrowsAlt } from "react-icons/ai";
-import { BsFlagFill } from "react-icons/bs";
 import imagemerro from './img/falta_de_dados.png';
 import api from '../../../services/api';
-import { IoHourglassOutline } from "react-icons/io5";
 function InspecionarEquipe() {
 
     const [equipe, setequipe] = useState([])
@@ -97,7 +92,6 @@ function InspecionarEquipe() {
 
     /*----------------------------------------------COM A MANIPULAÇÃO DO ARRAY DE EQUIPE AGORA É FILTRADO OS NOMES DOS MEMBROS------------------------------------------------------------------*/
     const ArrGeral_pessoas = pessoa;
-
     /*-------------------------------------------------------NESSA PARTE É FILTRADO AS PESSOAS COM BASE NO ID DA EQUIPE ORIUNDO DO INTID_EQUIPE-------------------------------------------------*/
     const filtrandoPessoas = ArrGeral_pessoas.filter(pessoa_eque => pessoa_eque.equipe_id === INTid_equipe);
     const inicialLetra = filtrandoPessoas.map((letraini) => letraini.nome_pessoa);
@@ -111,10 +105,6 @@ function InspecionarEquipe() {
     }
 
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
-   
-    console.log(projeto)
-
 
     function RenderCards() {
         if (projeto === null) {
@@ -133,15 +123,15 @@ function InspecionarEquipe() {
 
 
 
-                                        <Card id="card-page-inpequipe">
-                                            <Card.Body>
-                                                <Card.Text id="status-projeto-isnpequipe">
-                                                    {projeto.nome_projeto}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
+                                    <Card id="card-page-inpequipe">
+                                        <Card.Body>
+                                            <Card.Text id="status-projeto-isnpequipe">
+                                                {projeto.nome_projeto}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
 
-                            
+
                                 </div>
                             );
                         })
@@ -151,7 +141,6 @@ function InspecionarEquipe() {
 
         }
     }
-
     return (
         <div id='just-cards-geral-inspequipe'>
             <div id="geral-card-inspecionar_equipe">
@@ -179,17 +168,31 @@ function InspecionarEquipe() {
                             <div>Membros</div>
                             <div>{totalmember}</div>
                         </div>
-                        <div className='avatares_Equipert'>
-                            {
-                                recebe.map((nomepessoa) => {
-                                    return (
-                                        <div>
-                                            <Avatar aria-label="recipe">{nomepessoa}</Avatar>
+                        <div id='apresentacao-dos-membros' className='avatares_Equipert' >
+                            <div id='divavatar'>
+                                {
+                                    recebe.map((nomepessoa) => {
+                                        return (
+                                            <div >
+                                                <Avatar aria-label="recipe">{nomepessoa}</Avatar>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div id='divnome'>
+                                {
+                                    filtrandoPessoas.map((nome) => {
+                                        return (
+                                            <>
+                                            <h6>{nome.nome_pessoa}</h6>
+                                            <p>{nome.funcao_pessoa}</p>
+                                            </> 
+                                        )
+                                    })
+                                }
 
-                                        </div>
-                                    )
-                                })
-                            }
+                            </div>
                         </div>
                         <div id='btn-opition'>
 

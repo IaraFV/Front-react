@@ -63,18 +63,22 @@
 }
 
 .avatares_Equipert {
-    display: flex;
-
-}
-
-.avatares_Equipe {
-    display: flex;
-    width: 18%;
-    flex-wrap: wrap;
-    padding: 1%;
     border: 1px solid red;
+    overflow-x: auto;
 }
-
+#apresentacao-dos-membros{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+#divavatar{
+    border: 1px solid pink;
+}
+#divnome{
+    border: 1px solid #3E445B;
+   
+}
 #seta {
     color: #fff;
 }
@@ -276,4 +280,9 @@
 #ddd {
 
     width: 40rem;
+}
+.avatar-apresent{
+    display: flex;
+    margin: 0.2rem;
+    padding: 0.3rem;
 }
