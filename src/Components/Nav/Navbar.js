@@ -45,18 +45,18 @@ function NavbarHome() {
                             style={{ backgroundColor: '#171821' }}
                         >
                             <Offcanvas.Header >
-                                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} >
+                                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} style={{ color: '#fff' }}>
                                     Menu
                                 </Offcanvas.Title>
                                 <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
                             </Offcanvas.Header>
                             <Offcanvas.Body style={{ color: '#FFF' }}>
                                 <Nav className="justify-content-end flex-grow-1 pe-3" style={{ color: '#fff' }}>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home" ><BsColumnsGap />Overview</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.5rem' }} as={Link} to="/Pessoas"><BsPerson />Pessoas</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Equipes"><BsPeople />Equipes</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile />Projetos</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} onClick={logout}><FiLogOut/>Sair</Nav.Link>
+                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home" ><BsColumnsGap /> Overview</Nav.Link>
+                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.5rem' }} as={Link} to="/Pessoas"><BsPerson /> Pessoas</Nav.Link>
+                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Equipes"><BsPeople /> Equipes</Nav.Link>
+                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile /> Projetos</Nav.Link>
+                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} onClick={logout}><FiLogOut/> Sair</Nav.Link>
                                 </Nav>
 
                             </Offcanvas.Body>

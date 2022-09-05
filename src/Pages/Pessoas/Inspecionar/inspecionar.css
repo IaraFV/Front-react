@@ -212,7 +212,6 @@
 #btn-addTask-pessoaInsp {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid #3E445B;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -232,7 +231,7 @@
     max-width: 100%;
     flex-wrap: wrap;
     overflow: auto;
-    height: 30rem;
+    height: 20rem;
     margin-top: 5%;
 }
 
@@ -248,11 +247,8 @@
 
 #container-render-projetos-insppessoas {
     display: flex;
-    padding: 2%;
-    width: 50%;
-    height: 10rem;
-    justify-content: center;
-
+    width: 32%;
+    height: 7rem; 
 }
 
 #organiza-card-task-insp {
@@ -262,8 +258,11 @@
 #card-tarefas-dee-pessoas {
     background: rgba(23, 24, 33, 0.9);
     border-radius: 15px;
-    width: 28rem;
-
+    width: 14rem;
+    flex-wrap: wrap;
+    display: flex;
+    border-left: 2px solid #2684FF;
+    
 }
 
 #test {
@@ -284,7 +283,7 @@
 #titulo-projeto-tarefa-pessoa {
     font-family: 'Inter';
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 157%;
     letter-spacing: 0.1px;
     color: rgba(255, 255, 255, 0.87);
