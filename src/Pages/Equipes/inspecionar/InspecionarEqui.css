@@ -156,14 +156,15 @@
     color: #FFFFFF;
 }
 
-#div-card-page-inpequipe {
-    width: 34rem;
-    padding: 1%;
-    border: 1px solid red;
+#card-page-inpequipe {
+    width: 32rem;
+    border-left: 2px solid #2684FF;
     background: #171821;
-    border: 1px dashed #171821;
     border-radius: 10px;
-
+    height: 3rem;
+    margin-top: 2%;
+    display:  flex;
+    justify-content: flex-start;
 
 }
 
@@ -172,11 +173,14 @@
     width: 100%;
     flex-wrap: wrap;
     overflow: auto;
-    justify-content: center;
-    overflow: auto;
     margin-top: 4%;
-    height: 37rem;
+    height: 20rem;
+}
 
+#status-projeto-isnpequipe{
+    color: #fff;
+    margin-top: -1%;
+    
 }
 
 #caixa-geral-de-projetos-inspequipe::-webkit-scrollbar {

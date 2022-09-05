@@ -231,7 +231,7 @@
     max-width: 100%;
     flex-wrap: wrap;
     overflow: auto;
-    height: 20rem;
+    height: 25rem;
     margin-top: 5%;
 }
 
@@ -248,7 +248,9 @@
 #container-render-projetos-insppessoas {
     display: flex;
     width: 32%;
-    height: 7rem; 
+    height: 8rem; 
+    flex-wrap: wrap;
+    margin-top: 2%;
 }
 
 #organiza-card-task-insp {
@@ -259,8 +261,6 @@
     background: rgba(23, 24, 33, 0.9);
     border-radius: 15px;
     width: 14rem;
-    flex-wrap: wrap;
-    display: flex;
     border-left: 2px solid #2684FF;
     
 }
