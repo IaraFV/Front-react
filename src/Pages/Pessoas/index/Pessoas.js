@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import imagemerro from '../../../assets/TratamentoDeErroNaoEncontrado/itensNaoencontrados.png';
 import api from '../../../services/api';
-import { LampFill } from "react-bootstrap-icons";
+
 
 function Pessoas() {
     
@@ -75,7 +75,11 @@ function Pessoas() {
      */
      
     
-    const recebe_data = pessoas.map((dat) => dat.data_contratacao)
+    const recebe_data = pessoas.map((dat) => dat.data_contratacao);
+
+    console.log(recebe_data)
+
+
    //data_contratacao: new Date().toISOString().replace('T', '').replace('Z', '')
      //const data_cont = Moment().format('DD-MM-YYYY')
 
