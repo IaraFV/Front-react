@@ -125,13 +125,8 @@
 }
 
 .cor-menu-pontos {
-    color: blue;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    left: -2px;
     font-size: 20px;
-    border: 1px solid red;
 }
 
 
@@ -202,14 +197,19 @@
     padding: 1%;
     background: #171821;
     border-radius: 8px;
-    width: 20rem;
+    width: 18rem;
 }
-
+#card-desenvolvimento-t{
+    padding: 1%;
+    background: #171821;
+    border-radius: 8px;
+    width: 18rem;
+}
 #card-concl {
     padding: 1%;
     background: #171821;
     border-radius: 8px;
-    width: 20rem;
+    width: 18rem;
 }
 
 #header-status-afazer {
