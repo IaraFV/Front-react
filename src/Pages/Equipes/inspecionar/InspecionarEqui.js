@@ -130,20 +130,18 @@ function InspecionarEquipe() {
                         projeto?.map((projeto, key) => {
                             return (
                                 <div >
-                                    <div >
 
 
 
-                                        <Card id="div-card-page-inpequipe">
+                                        <Card id="card-page-inpequipe">
                                             <Card.Body>
-                                              
                                                 <Card.Text id="status-projeto-isnpequipe">
                                                     {projeto.nome_projeto}
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
 
-                                    </div>
+                            
                                 </div>
                             );
                         })
