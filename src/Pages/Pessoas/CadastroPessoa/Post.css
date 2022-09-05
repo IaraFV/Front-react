@@ -95,6 +95,8 @@ textarea {
     cursor: pointer;
 }
 
+
+
 .error-message {
     color: rgb(240, 47, 47);
 }
@@ -154,11 +156,17 @@ textarea {
 
 }
 
+#input-pppp {
+    background: red;
+    width: 10rem;
+}
+
 .inputgeral {
     background: rgba(33, 34, 45, 0.5);
     border: 1px solid #D9D9D9;
     border-radius: 6px;
     color: #fff;
+
 }
 
 #butaoC {
@@ -199,4 +207,15 @@ textarea {
 #barra-de-rolagem-equipe::-webkit-scrollbar-thumb {
     background-color: #D9D9D9;
     border-radius: 20px;
+}
+
+.ant-select ant-select-single ant-select-show-arrow ant-select-show-search {
+    background: rgb(240, 47, 47);
+}
+
+.ant-select-selector {
+    background: rgba(33, 34, 45, 0.5)!important;
+    border: 1px solid #D9D9D9!important;
+    border-radius: 6px!important;
+    display: flex;
 }
