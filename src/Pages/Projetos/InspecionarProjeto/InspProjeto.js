@@ -17,6 +17,19 @@ import { IoEllipseSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
 import { toNestError } from "@hookform/resolvers";
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
+
 function InspProjeto() {
 
     //variaves das requisições GET
@@ -68,6 +81,13 @@ function InspProjeto() {
 
         setInitialtasks(filter);
     }
+    
+    function Deletetask() {
+        api.delete(`/tasks/${getid}`)
+        settasks(tasks.filter(task => task.id_task !== getid))
+        console.log('foi')
+    }
+
     /**pega o id do projeto selecionado e converte para inteiro*/
     const pegaid = parseInt(id_projeto);
     /**filtra as taks com basa no id do projeto */
@@ -84,18 +104,7 @@ function InspProjeto() {
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-    };
-    //modal 1
+    //modal 1 função que pega o id da task
     function handleOpen(id_task) {
         if (id_task !== 0) {
             setOpen(true)
@@ -104,15 +113,7 @@ function InspProjeto() {
             console.log('n foi true')
         }
     }
-    //modal 2
-    function handleOpenn(id_task) {
-        if (id_task !== 0) {
-            setOpenn(true)
-            Setteste(id_task)
-        } else {
-            console.log('n foi true')
-        }
-    }
+    //modal 1
     function PutStatus() {
         if (valutask !== '') {
             api.put(`/tasks/${getid}/status`,
@@ -125,7 +126,18 @@ function InspProjeto() {
         }
     }
 
+    //modal 2 função que pega o id da task
+    function handleOpenn(id_task) {
+        if (id_task !== 0) {
+            setOpenn(true)
+            Setteste(id_task)
+            console.log(id_task);
+        } else {
+            console.log('n foi true')
+        }
+    }
 
+    //variavel de recebimento do id da task
     var [getid, Setteste] = React.useState();
 
     //variavel da manipulação do modal 1
@@ -141,7 +153,7 @@ function InspProjeto() {
     const handleChange = (event) => {
         setvalue(event.target.value);
     };
-    
+
 
     function CorpoModal() {
         return (
@@ -182,6 +194,7 @@ function InspProjeto() {
             </>
         )
     }
+
     function ModaldoMenu() {
         return (
             <>
@@ -194,11 +207,12 @@ function InspProjeto() {
                 >
                     <Box sx={style}>
                         <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-                            Mudar Status
+                            Edições
                         </Typography>
                         <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
                         </Typography>
-                        <Button variant="outlined" onClick={PutStatus}>Primary</Button>
+                        <Button variant="outlined">Editar</Button>
+                        <Button variant="outlined" onClick={Deletetask}>Deletar</Button>
                     </Box>
                 </Modal>
             </>
@@ -210,26 +224,26 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else if (totalTaskAfazer != 0){
+        } else if (totalTaskAfazer != 0) {
             var stats = 'Em desenvolvimento';
             api.put(`/projetos/${id_projeto}/status`,
-            {status: stats})
+                { status: stats })
             //window.location.reload(true);
             console.log('up de status(Em desenvolvimento)')
-       
+
             return (
                 <>
                     {
                         filtFazer.map((projetos, key) => {
                             return (
                                 <div className="dropzone">
-                                    <Card className='card-color' id="card-afazer">
+                                    <Card id="card-desenvolvimento-t" className='card-color' >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
                                                 <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
-
+                                                <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
@@ -239,11 +253,11 @@ function InspProjeto() {
                                             </Card.Title>
                                         </Card.Body>
                                     </Card>
-
                                 </div>
                             );
                         })
                     }
+                    <ModaldoMenu />
                     <CorpoModal />
                 </>
             )
@@ -258,7 +272,7 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        }else{
+        } else {
             return (
                 <>
                     {
@@ -271,7 +285,7 @@ function InspProjeto() {
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
                                                 <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
-                                            <button onClick={() => handleOpenn(projetos.id_task)} className='btn-muda-status'> 
+                                            <button onClick={() => handleOpenn(projetos.id_task)} className='btn-muda-status'>
                                                 <AiOutlineMore className="cor-menu-pontos" />
                                             </button>
                                         </div>
@@ -287,7 +301,7 @@ function InspProjeto() {
                             );
                         })
                     }
-                    <ModaldoMenu/>
+                    <ModaldoMenu />
                     <CorpoModal />
                 </>
             )
@@ -301,13 +315,13 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else if(totalTaskEmdesenvolvimento === 0 && totalTaskAfazer === 0){
+        } else if (totalTaskEmdesenvolvimento === 0 && totalTaskAfazer === 0) {
             var statss = 'Concluído';
             api.put(`/projetos/${id_projeto}/status`,
-            {status: statss})
+                { status: statss })
             console.log('up de status(concluido)')
             //window.location.reload(false);
-        }else if(totalTaskConcluído != 0){
+        } else if (totalTaskConcluído != 0) {
             return (
                 <>
                     {
@@ -334,7 +348,7 @@ function InspProjeto() {
                             );
                         })
                     }
-
+                    <ModaldoMenu />
                     <CorpoModal />
                 </>
             )
@@ -343,7 +357,6 @@ function InspProjeto() {
 
     return (
         <div>
-            
             <div id="cabecario-geral-pagina-insp-projeto">
                 <div id="iconvoltar-pesquisa">
                     <div>
@@ -356,7 +369,6 @@ function InspProjeto() {
                     </div>
                 </div>
                 <div id="botoes-page-inp-projetos">
-
                     <div className="btn-editar-pagina-projeto">
                         <Link to={{ pathname: `/Idetiprojeto/${projetos.id_projeto}` }}>
                             <button type="submit">Editar</button>
@@ -372,7 +384,6 @@ function InspProjeto() {
                     <p style={{ color: '#fff' }}>Username:  {projetos.nome_projeto} </p>
                 </div>
             </div>
-
             <div className="d-flex ">
                 <div className="col-12 d-flex justify-content-around" style={{ height: "720px" }}>
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" >
@@ -380,12 +391,11 @@ function InspProjeto() {
                             <IoEllipseSharp id="icon-redondo-status-afazer" />
                             A fazer
                             <Link to={{ pathname: `/PostTasks/${projetos.id_projeto}` }}>
-                               <FiPlus id="icon-add-task" />
+                                <FiPlus id="icon-add-task" />
                             </Link>
                         </div>
                         <VerificaAfazer />
                     </div>
-
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolage"  >
                         <div id="header-status-desenv">
                             <IoEllipseSharp id="icon-redondo-status-desenv" />
@@ -405,5 +415,4 @@ function InspProjeto() {
         </div>
     )
 }
-
 export default InspProjeto;
