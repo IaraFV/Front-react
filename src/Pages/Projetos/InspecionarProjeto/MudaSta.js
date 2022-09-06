@@ -1,57 +1,30 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
+import React, { useState } from 'react';
+import 'antd/dist/antd.css';
+import './index.css';
+import { Button, Drawer } from 'antd';
 
 
-export default function SwipeableTemporaryDrawer() {
-  const [state, setState] = React.useState({
-    right: false,
-  });
+const App = () => {
+  const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
+  const showDrawer = () => {
+    setOpen(true);
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      
-    
-      <List>
-        d
-      </List>
-    </Box>
-  );
+  const onClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <div>
-      {['right',].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
-          >
-            {list(anchor)}
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
-    </div>
+    <>
+      <Button type="primary" onClick={showDrawer}>
+        Open
+      </Button>
+      <Drawer title="Basic Drawer" placement="right" onClose={onClose} open={open}>
+        <p>Some contents...</p>
+      </Drawer>
+    </>
   );
-}
+};
+
+export default App;
