@@ -16,7 +16,9 @@ import { AiOutlineMore } from "react-icons/ai";
 import { IoEllipseSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
-import { toNestError } from "@hookform/resolvers";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup'
+import { useForm } from 'react-hook-form'
 
 const style = {
     position: 'absolute',
@@ -81,7 +83,7 @@ function InspProjeto() {
 
         setInitialtasks(filter);
     }
-    
+
     function Deletetask() {
         api.delete(`/tasks/${getid}`)
         settasks(tasks.filter(task => task.id_task !== getid))
@@ -194,8 +196,28 @@ function InspProjeto() {
             </>
         )
     }
+    const validacaoPostT = yup.object().shape({
+        descricao_task: yup.string().required("A descrição é obrigatoria!"),
+        nivel: yup.string().required("O nivel é obrigatoria!"),
+        projeto_id: yup.number(),
+        pessoa_id: yup.number(),
+    })
 
     function ModaldoMenu() {
+
+
+        const { register, handleSubmit, formState: { errors }, reset } = useForm({
+            resolver: yupResolver(validacaoPostT)
+        })
+
+        const addPost = data => api.put(`/tasks/${getid}`, data)
+            .then(() => {
+                console.log("foi")
+
+            })
+            .catch(() => {
+                console.log("n foi")
+            })
         return (
             <>
                 <Modal
@@ -210,6 +232,28 @@ function InspProjeto() {
                             Edições
                         </Typography>
                         <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
+                            <form onSubmit={handleSubmit(addPost)}>
+                                <div className="fields">
+                                    <label>descricao_task</label>
+                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
+                                    <p className="error-message">{errors.nome_equipe?.message} </p>
+                                </div>
+                                <div className="fields">
+                                    <label>nivel</label>
+                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
+                                    <p className="error-message">{errors.nome_equipe?.message} </p>
+                                </div>
+                                <div className="fields">
+                                    <label>projeto_id</label>
+                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
+                                    <p className="error-message">{errors.nome_equipe?.message} </p>
+                                </div>
+                                <div className="fields">
+                                    <label>pessoa_id</label>
+                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
+                                    <p className="error-message">{errors.nome_equipe?.message} </p>
+                                </div>
+                            </form>
                         </Typography>
                         <Button variant="outlined">Editar</Button>
                         <Button variant="outlined" onClick={Deletetask}>Deletar</Button>
@@ -224,13 +268,7 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else if (totalTaskAfazer != 0) {
-            var stats = 'Em desenvolvimento';
-            api.put(`/projetos/${id_projeto}/status`,
-                { status: stats })
-            //window.location.reload(true);
-            console.log('up de status(Em desenvolvimento)')
-
+        } else {
             return (
                 <>
                     {
@@ -243,7 +281,7 @@ function InspProjeto() {
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
                                                 <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
-                                                <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
+                                            <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
@@ -315,13 +353,7 @@ function InspProjeto() {
             return (
                 <h2><img src={imagemerro} alt=" " width={'53%'} style={{ marginLeft: '28%', marginTop: '50%' }} /></h2>
             )
-        } else if (totalTaskEmdesenvolvimento === 0 && totalTaskAfazer === 0) {
-            var statss = 'Concluído';
-            api.put(`/projetos/${id_projeto}/status`,
-                { status: statss })
-            console.log('up de status(concluido)')
-            //window.location.reload(false);
-        } else if (totalTaskConcluído != 0) {
+        } else {
             return (
                 <>
                     {

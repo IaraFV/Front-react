@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './editeEquipe.css'
 import { useParams } from 'react-router-dom'
-import axios from "axios";
 import api from '../../../services/api'
 import Avatar from '@mui/material/Avatar';
 import { HiUserGroup } from "react-icons/hi";
