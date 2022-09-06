@@ -1,8 +1,6 @@
 main {
     display: flex;
     justify-content: center;
-
-
     padding: 3rem 0;
 }
 
@@ -12,38 +10,9 @@ main {
     border-radius: 15px;
 }
 
-.seta-titulo {
-    display: flex;
-    margin: 3px;
-    padding: 3px;
-}
-
-.card-post h1 {
-    font-family: Heebo;
-    font-weight: 800;
-    text-align: center;
-
-    color: #fff;
-
-    font-size: 3rem;
-    margin-bottom: 5px;
-    border-bottom: 3px solid rgba(164, 164, 164, 0.12);
-}
-
-
-
-.card-body-post {
-    margin-top: 25px;
-
-}
-
 .fields {
-    margin-bottom: 20px;
-}
-
-#setar {
-    font-size: 20px;
-    color: #fff;
+    margin-bottom: 24px;
+    margin-top: 6%;
 }
 
 label {
@@ -60,9 +29,7 @@ textarea {
     border-radius: 10px;
     border: 0;
     outline: 0;
-
     font-size: 1.2rem;
-
     padding-left: 15px;
 }
 
@@ -128,7 +95,7 @@ textarea {
     font-size: 1.3rem;
     padding: 5px 50px;
     color: #fff;
-    background-color: #E9C46A;
+    background-color: #2684FF;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
@@ -143,23 +110,6 @@ textarea {
 
 }
 
-.butao {
-    font-family: Heebo;
-    font-weight: 800;
-    font-size: 1.3rem;
-    padding: 5px 50px;
-    color: #fff;
-    background-color: #E9C46A;
-    border: 0;
-    border-radius: 10px;
-    cursor: pointer;
-
-}
-
-#input-pppp {
-    background: red;
-    width: 10rem;
-}
 
 .inputgeral {
     background: rgba(33, 34, 45, 0.5);
@@ -177,14 +127,14 @@ textarea {
     font-size: 1.3rem;
     padding: 5px 45px;
     color: #fff;
-    background-color: #A4A4A4;
+    background-color: #BABABA;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
 }
 
 #menuEquipe-pagepessoa {
-    background: #2F3644;
+    background: #21222D;
     color: #fff;
     display: flex;
     flex-wrap: wrap;
@@ -209,13 +159,22 @@ textarea {
     border-radius: 20px;
 }
 
-.ant-select ant-select-single ant-select-show-arrow ant-select-show-search {
-    background: rgb(240, 47, 47);
-}
+
 
 .ant-select-selector {
     background: rgba(33, 34, 45, 0.5)!important;
     border: 1px solid #D9D9D9!important;
     border-radius: 6px!important;
+    color: #fff;
 
+}
+
+#png-icon-cadastro{
+    width: 13vh;
+    height: 13vh;
+}
+#avatar-cadastro{
+    display: flex;
+    justify-content: center;
+    height: 8rem;
 }

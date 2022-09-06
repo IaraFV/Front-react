@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import { Select } from 'antd';
 import api from '../../../services/api'
 import 'antd/dist/antd.css';
+import Avatar from '@mui/material/Avatar';
 
 function PostPessoa() {
 
@@ -76,8 +77,10 @@ function PostPessoa() {
         <div>
             <main>
                 <div className="card-post">
-                    <h1>Cadastrar Pessoa</h1>
-                    <div className="line-post"></div>
+                  <div id="avatar-cadastro">
+                  <Avatar src="/broken-image.jpg" id='png-icon-cadastro'/>
+                  </div>
+                   
 
                     <div className="body-post">
 
@@ -105,7 +108,7 @@ function PostPessoa() {
                                     filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
                                     onChange={onChange}
                                     value={age}
-                                    style={{ width: '21vw', display: 'flex'}}
+                                    style={{ width: '21vw', display: 'flex', height: '45px'}}
                                     size={"large"}
                                 >
                                     <>
