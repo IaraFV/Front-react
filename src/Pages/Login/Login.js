@@ -14,15 +14,15 @@ export default function Login() {
         api.post('/login/', {
             email: email,
             senha: senha
-          })
-          .then(res => {
-            localStorage.setItem('token', JSON.stringify(res.data.token))
-            api.defaults.headers.Authorization = `Bearer ${res.data.token}`
-            window.location.href = '/Home'
         })
-        .catch(err => alert(err))
-      }
-      
+            .then(res => {
+                localStorage.setItem('token', JSON.stringify(res.data.token))
+                api.defaults.headers.Authorization = `Bearer ${res.data.token}`
+                window.location.href = '/Home'
+            })
+            .catch(err => alert(err))
+    }
+
 
     return (
         <>
@@ -39,7 +39,14 @@ export default function Login() {
                                     <div id="input-email">
                                         <div id='Text-email'>Email</div>
                                         <div class="input-group flex-nowrap" >
-                                            <input value={email} id='slaaa' type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => setEmail(e.target.value)}/>
+                                            <input
+                                                value={email}
+                                                id='email'
+                                                name='email'
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Username"
+                                                aria-label="Username" aria-describedby="addon-wrapping" onChange={(e) => setEmail(e.target.value)} />
 
                                         </div>
                                     </div>
