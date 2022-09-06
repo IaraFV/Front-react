@@ -11,19 +11,20 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import api from '../../../services/api';
+import Avatar from '@mui/material/Avatar';
 
 function Edit() {
-    
+
     const { id_pessoa } = useParams()
     const validacaoGet = yup.object().shape({
-        nome_pessoa:  yup.string().required("O nome é obrigatorio!"),
+        nome_pessoa: yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
         equipe_id: yup.number().required("é obrigatoria"),
     })
-    
+
     let navigate = useNavigate()
 
-     const editPost = data => api.put(`/pessoas/${id_pessoa}`, data)
+    const editPost = data => api.put(`/pessoas/${id_pessoa}`, data)
         .then(() => {
             console.log("foi");
         })
@@ -32,16 +33,16 @@ function Edit() {
         })
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(validacaoGet)
-})
+        resolver: yupResolver(validacaoGet)
+    })
 
-   
+
 
     useEffect(() => {
         api.get(`/pessoas/${id_pessoa}`)
-        .then((response) => {
-            reset(response.data)
-        })
+            .then((response) => {
+                reset(response.data)
+            })
 
         const fetchequipe = async () => {
             try {
@@ -54,46 +55,46 @@ function Edit() {
         fetchequipe();
     }, [])
 
-    
-      function voltar() {
+
+    function voltar() {
         window.history.back()
-        .then((response) => {
-            reset(response.data)
-        })
+            .then((response) => {
+                reset(response.data)
+            })
     }
 
-    return(
+    return (
         <div>
             <main>
                 <div className="card-post">
-                    <h1>Editar Cadastro</h1>
-                    <div className="line-post"></div>
+                    <div className="avatar-cadastro">
+                        <Avatar src="/broken-image.jpg" className='png-icon-cadastro' />
+                    </div>
 
                     <div className="body-post">
-
                         <form onSubmit={handleSubmit(editPost)}>
 
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} className="inputgeral"/>
+                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} className="inputgeral" />
                                 <p className="error-message">{errors.nome_pessoa?.message} </p>
                             </div>
 
                             <div className="fields">
                                 <label>Função</label>
-                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} className="inputgeral"/>
+                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} className="inputgeral" />
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
                             <div className="fields">
-                            <label>Id da Equipe</label>
-                                <input type="text" disabled="true" name="nome equipe" {...register("equipe_id")}/>
+                                <label>Id da Equipe</label>
+                                <input type="text" disabled="true" name="nome equipe" {...register("equipe_id")} />
                             </div>
 
                             <div className="botoes-edit-pessoa">
-                            <button className="btn-cancelar" onClick={voltar} >Cancelar</button>
-                            <button className="btn-edit" onClick={voltar} type="submit">Cadastrar</button>
-                                
+                                <button className="btn-cancelar" onClick={voltar} >Cancelar</button>
+                                <button className="btn-edit" onClick={voltar} type="submit">Editar</button>
+
                             </div>
                         </form>
 

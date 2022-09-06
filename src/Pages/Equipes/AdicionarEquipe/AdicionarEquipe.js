@@ -7,12 +7,9 @@ import * as yup from 'yup'
 import './add.css'
 import { useNavigate } from 'react-router-dom'
 import React, { useEffect, useState, } from "react";
-import api from '../../../services/api'
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import api from '../../../services/api';
+import Avatar from '@mui/material/Avatar';
+import { HiUserGroup } from "react-icons/hi";
 
 
 const validacaoPostE = yup.object().shape({
@@ -31,23 +28,26 @@ function PostEquipe() {
         .then(() => {
             console.log("foi")
             navigate("/Equipes");
-
         })
         .catch(() => {
             console.log("n foi")
         })
 
+
+
     /**função de retorno */
     function voltar() {
         window.history.back();
     }
-    
+
     return (
         <div>
             <main>
                 <div className="card-post-equipe">
-                    <h1>Criar Cadastro</h1>
-                    <div className="line-post-equipe"></div>
+                    <div className="card-Avatar">
+                        <Avatar id='avatar-eq-pagecadastro'><HiUserGroup style={{ fontSize: '4rem' }} /></Avatar>
+                    </div>
+
 
                     <div className="body-post-equipe">
 
@@ -55,14 +55,14 @@ function PostEquipe() {
 
                             <div className="fieldsequipe">
                                 <label>Nome</label>
-                                <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral"/>
+                                <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
                                 <p className="error-message">{errors.nome_equipe?.message} </p>
                             </div>
                             <div className="fields">
-                               {/* <Verificapessoas/>*/}
+                                {/* <Verificapessoas/>*/}
                             </div>
                             <div className="btn-post-equipe">
-                                <button onClick={voltar}  id="btn-cancelarE" type='text' >Cancelar</button>
+                                <button onClick={voltar} id="btn-cancelarE" type='text' >Cancelar</button>
                                 <button type="submit" >Cadastrar</button>
                             </div>
                         </form>

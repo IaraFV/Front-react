@@ -6,6 +6,9 @@ import './editeEquipe.css'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
 import api from '../../../services/api'
+import Avatar from '@mui/material/Avatar';
+import { HiUserGroup } from "react-icons/hi";
+
 const validacaoGet = yup.object().shape({
     nome_equipe: yup.string().required("O nome é obrigatorio!")
 })
@@ -44,8 +47,9 @@ function Edite() {
         <div>
             <main>
                 <div className="card-post">
-                    <h1>Editar Cadastro</h1>
-                    <div className="line-post"></div>
+                <div className="card-Avatar">
+                        <Avatar id='avatar-eq-pagecadastro'><HiUserGroup style={{ fontSize: '4rem' }} /></Avatar>
+                    </div>
 
                     <div className="body-post">
 

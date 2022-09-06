@@ -82,7 +82,7 @@ textarea {
     font-size: 1.3rem;
     padding: 5px 50px;
     color: #fff;
-    background-color: #E9C46A;
+    background-color: #2684FF;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
@@ -116,8 +116,17 @@ textarea {
     font-size: 1.3rem;
     padding: 5px 50px;
     color: #fff;
-    background-color: #A4A4A4;
+    background-color: #BABABA;
     border: 0;
     border-radius: 10px;
     cursor: pointer;
+}
+#avatar-eq-pagecadastro{
+    width: 11vh;
+    height: 11vh;
+}
+.card-Avatar{
+    height: 7rem;
+    display: flex;
+    justify-content: center;
 }

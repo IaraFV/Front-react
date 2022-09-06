@@ -169,11 +169,11 @@ textarea {
 
 }
 
-#png-icon-cadastro{
+.png-icon-cadastro{
     width: 13vh;
     height: 13vh;
 }
-#avatar-cadastro{
+.avatar-cadastro{
     display: flex;
     justify-content: center;
     height: 8rem;

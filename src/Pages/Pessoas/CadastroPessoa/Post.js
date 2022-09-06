@@ -77,8 +77,8 @@ function PostPessoa() {
         <div>
             <main>
                 <div className="card-post">
-                  <div id="avatar-cadastro">
-                  <Avatar src="/broken-image.jpg" id='png-icon-cadastro'/>
+                  <div className="avatar-cadastro">
+                  <Avatar src="/broken-image.jpg" className='png-icon-cadastro'/>
                   </div>
                    
 
