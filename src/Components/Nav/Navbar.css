@@ -1,12 +1,83 @@
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  }
-  
-  .custom-toggler.navbar-toggler {
-    border-color: rgb(255,102,203);
-  } 
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 
-#menu-a{
-    border-color:none;
-    
+.custom-toggler.navbar-toggler {
+  border-color: rgb(255, 102, 203);
+}
+
+#menu-a {
+  border-color: none;
+
+}
+
+#Home {
+
+  background: #171821;
+  color: #87888C;
+  margin-left: 2%;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+#Pessoas-Menu {
+
+  background: #171821;
+  color: #87888C;
+  margin-left: 2%;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+#Equipes-Menu {
+
+  background: #171821;
+  color: #87888C;
+  margin-left: 2%;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+#Projetos-Menu {
+
+  background: #171821;
+  color: #87888C;
+  margin-left: 2%;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+#Sair-Menu {
+
+  background: #171821;
+  color: #87888C;
+  margin-left: 2%;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+#Home:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+#Pessoas-Menu:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+
+#Equipes-Menu:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+#Projetos-Menu:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+#Sair-Menu:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
 }

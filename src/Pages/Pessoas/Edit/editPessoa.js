@@ -67,8 +67,8 @@ function Edit() {
         <div>
             <main>
                 <div className="card-post">
-                    <div className="avatar-cadastro">
-                        <Avatar src="/broken-image.jpg" className='png-icon-cadastro' />
+                    <div id="avatar-cadastro-editar">
+                        <Avatar src="/broken-image.jpg" id='png-icon-cadastro-editar' />
                     </div>
 
                     <div className="body-post">

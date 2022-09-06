@@ -26,3 +26,12 @@
     justify-content: space-around;
     width: 105%;
 }
+#avatar-cadastro-editar{
+    display: flex;
+    justify-content: center;
+    height: 8rem;
+}
+#png-icon-cadastro-editar{
+    width: 13vh;
+    height: 13vh;
+}

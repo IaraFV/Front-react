@@ -169,12 +169,13 @@ textarea {
 
 }
 
-.png-icon-cadastro{
+#png-icon-cadastrodepessoas{
     width: 13vh;
     height: 13vh;
 }
-.avatar-cadastro{
+#avatar-cadastrar-users{
     display: flex;
     justify-content: center;
     height: 8rem;
+    
 }

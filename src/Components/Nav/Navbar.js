@@ -52,11 +52,11 @@ function NavbarHome() {
                             </Offcanvas.Header>
                             <Offcanvas.Body style={{ color: '#FFF' }}>
                                 <Nav className="justify-content-end flex-grow-1 pe-3" style={{ color: '#fff' }}>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Home" ><BsColumnsGap /> Overview</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.5rem' }} as={Link} to="/Pessoas"><BsPerson /> Pessoas</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/Equipes"><BsPeople /> Equipes</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} as={Link} to="/ProjetosConcluidos"><AiOutlineFile /> Projetos</Nav.Link>
-                                    <Nav.Link style={{ background: '#171821', color: '#87888C', marginLeft: '2%', fontSize: '1.4rem' }} onClick={logout}><FiLogOut/> Sair</Nav.Link>
+                                    <Nav.Link id='Home' as={Link} to="/Home" ><BsColumnsGap /> Overview</Nav.Link>
+                                    <Nav.Link id="Pessoas-Menu" as={Link} to="/Pessoas"><BsPerson /> Pessoas</Nav.Link>
+                                    <Nav.Link id="Equipes-Menu" as={Link} to="/Equipes"><BsPeople /> Equipes</Nav.Link>
+                                    <Nav.Link id="Projetos-Menu" as={Link} to="/ProjetosConcluidos"><AiOutlineFile /> Projetos</Nav.Link>
+                                    <Nav.Link id="Sair-Menu" onClick={logout}><FiLogOut/> Sair</Nav.Link>
                                 </Nav>
 
                             </Offcanvas.Body>
