@@ -96,19 +96,14 @@ function Inspecionar() {
     console.log(favoritar)
 
     function favoritarFuncao() {
-
-        if (favoritar === 1) {
-            api.put('/pessoas/' + id_pessoa + '/favoritar')
+            api.put( id_pessoa + '/favoritar')
                 .then((response) => {
-                    console.log("deu certo boy")
+                    console.log("Favoritou essa budega")
 
                 })
                 .catch(() => {
                     console.log("n favoritou")
                 })
-
-        }
-
     }
 
 

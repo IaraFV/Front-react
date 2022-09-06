@@ -7,12 +7,21 @@
     margin-left: 2%;
     margin-top: 2%;
     margin-right: 5%;
+    
 }
 
 #card-pessoa-page {
     border-radius: 50px;
     height: 10rem;
+    
 }
+
+#card-pessoa-page:hover{
+    transform: scale(1.1);
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
 
 .btn-adicionarpessoa {
     width: 2.7rem;
