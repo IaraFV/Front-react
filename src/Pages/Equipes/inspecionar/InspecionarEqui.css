@@ -63,7 +63,6 @@
 }
 
 .avatares_Equipert {
-    border: 1px solid red;
     overflow-x: auto;
 }
 #apresentacao-dos-membros{
@@ -72,13 +71,7 @@
     align-items: center;
     
 }
-#divavatar{
-    border: 1px solid pink;
-}
-#divnome{
-    border: 1px solid #3E445B;
-   
-}
+
 #seta {
     color: #fff;
 }
