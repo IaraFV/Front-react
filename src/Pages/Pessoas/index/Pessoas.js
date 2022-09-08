@@ -42,6 +42,9 @@ function Pessoas() {
 
         setpessoas(filter);
     }
+
+
+
     const nome = pessoas.map((nom) => nom.nome_pessoa);
 
     function stringAvatar(nome) {
@@ -49,9 +52,13 @@ function Pessoas() {
             sx: {
                 width: '4rem', height: '4rem', fontSize: '3rem'
             },
-            children: `${nome.charAt(0)}`,
+            children: `${nome[0]}`,
         };
     }
+
+
+
+
     const pessoasnum = parseInt(pessoas.length);
 
     /* const lucas = pessoas.map((luc) => luc.data_contratacao);
@@ -138,7 +145,7 @@ function Pessoas() {
                     </div>
                 </div>
             </div>
-            <div>
+            <div id='geral-btn-cad-pessoa'>
                 <Link to="/PostPessoa">
                     <button className="btn-adicionarp">Criar Cadastro</button>
                 </Link>

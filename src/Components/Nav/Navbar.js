@@ -1,8 +1,6 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Nav } from 'react-bootstrap'
 import teste from '../../assets/Logo.webp'
@@ -11,7 +9,9 @@ import { AiOutlineFile, AiOutlineSetting } from "react-icons/ai";
 import { BsPeople, BsPerson } from "react-icons/bs";
 import { BsColumnsGap } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
-import './Navbar.css'
+import './Navbar.css';
+
+
 function NavbarHome() {
 
     let path = window.location.pathname;
@@ -44,11 +44,11 @@ function NavbarHome() {
                             placement="end"
                             style={{ backgroundColor: '#171821' }}
                         >
-                            <Offcanvas.Header >
+                            <Offcanvas.Header closeButton>
                                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} style={{ color: '#fff' }}>
                                     Menu
                                 </Offcanvas.Title>
-                                <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                               
                             </Offcanvas.Header>
                             <Offcanvas.Body style={{ color: '#FFF' }}>
                                 <Nav className="justify-content-end flex-grow-1 pe-3" style={{ color: '#fff' }}>
