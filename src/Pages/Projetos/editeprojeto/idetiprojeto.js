@@ -2,26 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
-import { useNavigate, useParams } from 'react-router-dom'
-import axios from "axios";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { useParams } from 'react-router-dom'
 import api from '../../../services/api'
+import { Link } from 'react-router-dom';
+
 function Editprojeto() {
-    
+
+    //variaves das requisições GET
+    const [projeto, setprojeto] = useState([]);
     const { id_projeto } = useParams()
+
     const validacaoGet = yup.object().shape({
-        nome_projeto:  yup.string().required("O campo é obrigatorio!"),
+        nome_projeto: yup.string().required("O campo é obrigatorio!"),
         descricao_projeto: yup.string().required("O campo é obrigatorio!"),
         equipe_id: yup.number()
     })
-    
-    let navigate = useNavigate()
 
-     const editProje = data => api.put(`/projetos/${id_projeto}`, data)
+    //função de PUT de projeto
+    const editProje = data => api.put(`/projetos/${id_projeto}`, data)
         .then(() => {
             console.log("foi");
             alert('cadastro realizado');
@@ -31,96 +29,56 @@ function Editprojeto() {
         })
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    resolver: yupResolver(validacaoGet)
-})
+        resolver: yupResolver(validacaoGet)
+    })
 
-   
-
+    //faz um get no array geral e retorna um projeto expecifico
     useEffect(() => {
         api.get(`/projetos/${id_projeto}`)
-        .then((response) => {
-            reset(response.data)
-            setprojeto(response.data)
-        })
-    }, [])
-    useEffect(() => {
-        api.get('/equipes/')
-        .then((response) => {
-            setequipe(response.data)
-        })
+            .then((response) => {
+                reset(response.data)
+                setprojeto(response.data)
+            })
     }, [])
 
-    const [age, setAge] = React.useState('');
-    const [equipe, setequipe] = useState([]);
-    const [projeto, setprojeto] = useState([]);
-    
-    const getequ = projeto.equipe;
-
-    const handleChange = (event) => {
-        setAge(event.target.value);
-      };
-      function voltar() {
+    //função de voltar uma(1) pagina
+    function voltar() {
         window.history.back()
-        .then((response) => {
-            reset(response.data)
-        })
     }
 
-    return(
-        <div>
+    return (
+        <>
             <main>
                 <div className="card-post">
                     <h1>Editar Projeto</h1>
                     <div className="line-post"></div>
-
                     <div className="body-post">
-
                         <form onSubmit={handleSubmit(editProje)}>
-
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_projeto" {...register("nome_projeto")}/>
+                                <input type="text" name="nome_projeto" {...register("nome_projeto")} />
                                 <p className="error-message">{errors.nome_projeto?.message} </p>
                             </div>
-
                             <div className="fields">
                                 <label>descrição</label>
-                                <input type="text" name="descricao_projeto" {...register("descricao_projeto")}/>
+                                <input type="text" name="descricao_projeto" {...register("descricao_projeto")} />
                                 <p className="error-message">{errors.descricao_projeto?.message} </p>
                             </div>
-
                             <div className="fields">
-                            <label>Equipe</label>
-                            <Box sx={{ minWidth: 120 }}>
-                                <FormControl fullWidth>
-                                <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
-                                <Select
-                                    {...register("equipe_id")}
-                                    labelId="demo-simple-select-label"
-                                    id_equipe="demo-simple-select"
-                                    value={age}
-                                    label="Age"
-                                    sx={{bgcolor: '#fff', borderRadius: '1rem'}}
-                                    onChange={handleChange}>
-                                    { 
-                                        <MenuItem value={getequ?.id_equipe} key={getequ?.id_equipe}>{getequ?.nome_equipe}</MenuItem>
-                                    }
-                                </Select>
-                                </FormControl>
-                            </Box>
+                                <label>Id da Equipe</label>
+                                <input type="text" disabled="true" name="nome equipe" {...register("equipe_id")} />
                             </div>
-
                             <div className="botoes-edit-pessoa">
-                            <button className="btn-cancelar" onClick={voltar} >Cancelar</button>
-                            <button className="btn-edit"  type="submit">Cadastrar</button>
-                                
+                                <Link to={{ pathname: '/InspProjeto/' + `${id_projeto}` }}>
+                                    <button className="btn-cancelar" >Cancelar</button>
+                                </Link>
+                                <button className="btn-edit" type="submit">Cadastrar</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </main>
-        </div>
+        </>
     )
 }
 
