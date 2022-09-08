@@ -96,7 +96,7 @@ function Inspecionar() {
     console.log(favoritar)
 
     function favoritarFuncao() {
-            api.put( id_pessoa + '/favoritar')
+            api.put('/pessoas/'+ id_pessoa + '/favoritar')
                 .then((response) => {
                     console.log("Favoritou essa budega")
 
