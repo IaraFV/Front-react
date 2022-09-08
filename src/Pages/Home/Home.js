@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import './Home.css'
 import Grafico2 from "../../Components/Graficos/Grafico2"
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam, AiOutlineFile } from "react-icons/ai";
+import { Link } from 'react-router-dom';
+import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam } from "react-icons/ai";
 import { BsBarChartLine } from "react-icons/bs";
 import api from '../../services/api';
+import imagemerro from './img/itensNaoencontrados.png';
 
 function Home() {
-    let navigate = useNavigate();
+
+    //variaves das requisições GET
     const [projeto, setprojeto] = useState([]);
     const [tasks, setTask] = useState([]);
     const [pessoas, setPessoas] = useState([]);
     const [equipes, setEquipes] = useState([]);
-    const [setInitialPessoas] = useState([]);
     
+     //get do array geral de projetos
     useEffect(() => {
         api.get('/projetos/')
             .then((response) => {
@@ -23,6 +25,7 @@ function Home() {
             })
     }, [])
 
+    //get do array geral de pessoas
     useEffect(() => {
         api.get('/pessoas/')
             .then((response) => {
@@ -30,11 +33,11 @@ function Home() {
 
             })
             .catch(() => {
-                console.log("deu errado")
+                console.log("deu errado pessoa")
             })
     }, []
     )
-
+    //get do array geral de equipe
     useEffect(() => {
         api.get('/equipes/')
             .then((response) => {
@@ -42,11 +45,11 @@ function Home() {
                 
             })
             .catch(() => {
-                console.log("deu errado eq")
+                console.log("deu errado equipe")
             })
     }, []
     )
-
+    //get do array geral de tasks
     useEffect(() => {
         api.get('/tasks/')
             .then((response) => {
@@ -58,35 +61,52 @@ function Home() {
     }, []
     )
 
-    //const recebetodaspessoas = projetos;
-    var receber = [];
+    //função de FOR, pega 8 pessoas recem Add
+    var receberPeople = [];
     for (var person = 0; person < 8; person++) {
-        receber.push(pessoas[person])
+        receberPeople.push(pessoas[person])
     }
-
+    const nomepeople = receberPeople.map((luc) => luc?.nome_pessoa);
     
-    //pega 8 projetos concluidos os mais resentes
+    //função de FOR, pega 8 projetos concluidos
     const recebeprojetos = projeto.filter(getstatus => getstatus.status === "Concluído");
-
     var receberProj = [];
     for (var pega = 0; pega < 8; pega++) {
         receberProj.push(recebeprojetos[pega]);
     }
-  
-    /* for (var persone = 0; persone < 8; person++) {
-         recebere.push(projeto[persone])
-     }*/
-    const nome = receber.map((luc) => luc?.nome_pessoa);
 
-
-
+    //contadores das variaveis
     const totalpessoas = pessoas.length;
-
     const totalprojetos = projeto.length;
-
     const totaltask = tasks.length;
     const totalequipes = equipes.length;
 
+    //Manipulação da variavel da função FOR
+     const recebe = receberProj.filter(get => get === "undefined")
+     const valida = recebe.length;
+
+    //função de verificação de erro
+     function Apresentaproj(){
+        if(valida === 0){
+            return (
+                <h2><img src={imagemerro} alt=" " width={'23%'} style={{ marginLeft: '38%', marginTop:'6%' }} /></h2>
+            )
+        }else {
+            {
+                recebeprojetos.map((status) => {
+                    return (
+                        <>
+                            <li className="list-group-item" id='li-projeto'>{status.nome_projeto}
+                                <Link id="link-pessoa-page-pessoa" to={"/ProjetosConcluidos"}>
+                                    <button id="btn-ver-mais-projeto" >Ver mais</button>
+                                </Link>
+                            </li>
+                        </>
+                    );
+                })
+            }
+        }
+     }
 
     return (
         <>
@@ -98,29 +118,14 @@ function Home() {
                                 <div className="row" >
                                     <div className="card" id="render-projetos-conc-home">
                                         <div className="card-body">
-                                            <h5 id="header-card-projeto-pagina-home" className="card-title">Atividades recentes</h5>
+                                            <h5 id="header-card-projeto-pagina-home" className="card-title">Ultimos projetos Concluidos</h5>
                                             <p className="card-text"></p>
                                         </div>
                                         <ul className="list-group list-group-flush" id="ul-projeto">
-                                            {
-                                                recebeprojetos.map((status) => {
-                                                    return (
-                                                        <>
-                                                            <li className="list-group-item" id='li-projeto'>{status.nome_projeto}
-                                                                <Link id="link-pessoa-page-pessoa" to={"/ProjetosConcluidos"}>
-                                                                    <button id="btn-ver-mais-projeto" >Ver mais</button>
-                                                                </Link>
-                                                            </li>
-                                                        </>
-                                                    );
-                                                })
-                                            }
-
-
+                                            <Apresentaproj/>
                                         </ul>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div className="col-9" id="container-geral-dois-home">
@@ -167,7 +172,6 @@ function Home() {
                                                 <div id="total-de-tasks-pagina-home-h">{totaltask}</div>
                                                 <div className="colorfff">Total de tarefas adiconadas</div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -203,7 +207,7 @@ function Home() {
                                                 <h6 className="card-subtitle mb-2 text-muted"></h6>
                                                 <ul className="list-group list-group-flush" id="ul-pessoa">
                                                     {
-                                                        nome.map((nome) => {
+                                                        nomepeople.map((nome) => {
                                                             return (
                                                                 <>
                                                                     <li className="list-group-item" id="li-pessoa">{nome}</li>
