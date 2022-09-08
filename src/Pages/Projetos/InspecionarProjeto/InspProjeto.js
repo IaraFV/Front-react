@@ -19,7 +19,9 @@ import { FaUser } from "react-icons/fa";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
-import { ConstructionOutlined } from "@mui/icons-material";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 const style = {
     position: 'absolute',
@@ -27,11 +29,19 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: 'background.paper',
+    bgcolor: 'rgba(33, 34, 45, 0.5)',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    color:'#fff'
 };
+
+const validacaoPostT = yup.object().shape({
+    descricao_task: yup.string().required("A descrição é obrigatoria!"),
+    nivel: yup.string().required("O nivel é obrigatoria!"),
+    projeto_id: yup.number(),
+    pessoa_id: yup.number(),
+})
 
 function InspProjeto() {
 
@@ -40,6 +50,7 @@ function InspProjeto() {
     const { id_projeto } = useParams()
     const [tasks, settasks] = useState([])
     const [initialtasks, setInitialtasks] = useState([])
+    const [pessoa, setpessoa] = useState([]);
 
     //get do array geral de projetos, sendo passado um parametro para busca com base no id passado
     useEffect(() => {
@@ -53,7 +64,7 @@ function InspProjeto() {
             })
     }, []
     )
-    console.log(tasks)
+
     //get do array geral de tasks
     useEffect(() => {
         api.get("/tasks/")
@@ -66,14 +77,26 @@ function InspProjeto() {
             })
     }, []
     )
+    //get do array geral de pessoas
+    useEffect(() => {
+        api.get(`/pessoas`)
+            .then((response) => {
+                setpessoa(response.data)
+                console.log('deu certo')
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
 
-    //função de delete
+    //função de delete projeto
     function deleteprojetos(id_projeto) {
         api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 
-    //filter pesquisa
+    //filtro de task( função de pesquisa de task)
     const handlechange = ({ target }) => {
         if (!target.value) {
             setInitialtasks(initialtasks)
@@ -85,28 +108,36 @@ function InspProjeto() {
         setInitialtasks(filter);
     }
 
+    //função de delete task
     function Deletetask() {
         api.delete(`/tasks/${getid}`)
         settasks(tasks.filter(task => task.id_task !== getid))
         console.log('foi')
     }
 
-    /**pega o id do projeto selecionado e converte para inteiro*/
+    //pega o id do projeto selecionado e converte para inteiro
     const pegaid = parseInt(id_projeto);
-    /**filtra as taks com basa no id do projeto */
+
+    //filtra as taks com basa no id do projeto 
     const gettask = tasks.filter((get) => get.projeto_id === pegaid);
 
-    /**divide as taks vindas da pimeira filtragem e as filtra novamento com base no status */
+    //filtro de taks com base no status 
     const filtFazer = gettask.filter((get) => get.status === "Em planejamento");
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
+    const testeidp = tasks.map((pegaid) => pegaid.pessoa_id)
     //const teste = (gettask.filter((get) => get.status === "Concluído")).length;
-    console.log(filtFazer);
+    
+    console.log(testeidp);
 
+    //contadores de tasks com base no status
     var totalTaskAfazer = filtFazer.length;
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
+
+
+
 
     //modal 1 função que pega o id da task
     function handleOpen(id_task) {
@@ -141,7 +172,7 @@ function InspProjeto() {
         }
     }
 
-    //variavel de recebimento do id da task
+    //variavel geral de recebimento do id da task selecionada (onClick)
     var [getid, Setteste] = React.useState();
 
     //variavel da manipulação do modal 1
@@ -158,7 +189,7 @@ function InspProjeto() {
         setvalue(event.target.value);
     };
 
-
+    //modal para realizar o PUT do status de tasks
     function CorpoModal() {
         return (
             <>
@@ -198,21 +229,13 @@ function InspProjeto() {
             </>
         )
     }
-    const validacaoPostT = yup.object().shape({
-        descricao_task: yup.string().required("A descrição é obrigatoria!"),
-        nivel: yup.string().required("O nivel é obrigatoria!"),
-        projeto_id: yup.number(),
-        pessoa_id: yup.number(),
+    
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: yupResolver(validacaoPostT)
     })
 
-    function ModaldoMenu() {
-
-
-        const { register, handleSubmit, formState: { errors }, reset } = useForm({
-            resolver: yupResolver(validacaoPostT)
-        })
-
-        const addPost = data => api.put(`/tasks/${getid}`, data)
+    const addPost = data => api.put(`/tasks/${getid}`, data)
             .then(() => {
                 console.log("foi")
 
@@ -220,6 +243,14 @@ function InspProjeto() {
             .catch(() => {
                 console.log("n foi")
             })
+    //modal de ediçoes (edite e deletar)
+    const [vofNivel, setAge] = React.useState('');
+    
+    const handleChangeg = (event) => {
+        setAge(event.target.value);
+    };
+
+    function ModaldoMenu() {
         return (
             <>
                 <Modal
@@ -237,14 +268,31 @@ function InspProjeto() {
                             <form onSubmit={handleSubmit(addPost)}>
                                 <div className="fields">
                                     <label>descricao_task</label>
-                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
-                                    <p className="error-message">{errors.nome_equipe?.message} </p>
+                                    <input type="text" name="descricao_task" {...register("descricao_task")} className="inputgeral" />
+                                    <p className="error-message">{errors.descricao_task?.message} </p>
                                 </div>
                                 <div className="fields">
-                                    <label>nivel</label>
-                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
-                                    <p className="error-message">{errors.nome_equipe?.message} </p>
-                                </div>
+                                <label>nivel</label>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("nivel")}
+                                            labelId="demo-simple-select-label"
+                                            projeto_id="demo-simple-select"
+                                            value={vofNivel}
+                                            label="Age"
+                                            sx={{bgcolor: 'rgba(33, 34, 45, 0.5)', border: '1px solid #D9D9D9' }}
+                                            onChange={handleChangeg}>
+                                            <MenuItem  value={'facil'} key={'facil'}>facil</MenuItem>
+                                            <MenuItem value={'medio'} key={'medio'}>medio</MenuItem>
+                                            <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
+
+                                        </Select>
+                                        <p className="error-message">{errors.nivel?.message} </p>
+                                    </FormControl>
+                                </Box>
+                            </div>
                                 <div className="fields">
                                     <label>projeto_id</label>
                                     <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
@@ -265,6 +313,12 @@ function InspProjeto() {
         );
     }
 
+    function peganome(){
+
+    }
+    /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
+     * de "nenhum item encontrado".
+    */
     function VerificaAfazer() {
         if (totalTaskAfazer === 0) {
             return (
@@ -289,7 +343,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
+                                                <div className="header-nome-pessoa" >{projetos.pessoa_id}</div>
                                             </Card.Title>
                                         </Card.Body>
                                     </Card>
@@ -303,7 +357,6 @@ function InspProjeto() {
             )
         }
     }
-
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
      * de "nenhum item encontrado".
     */
