@@ -1,4 +1,3 @@
-
 const url = "http://localhost:3000"
 
 
@@ -20,19 +19,36 @@ describe('Pagina Home', () => {
 
 })
 
-  describe('Pagina pessoas', () => {
+describe('Pagina pessoas', () => {
 
   it('Todos usuarios', () => {
     cy.get('#Pessoas-Menu').click();
     cy.get('.btn-close').click();
-    
+
   })
 
   it('Cadastro', () => {
-    cy.get('.btn-adicionarp').click();
+    /*cy.get('.btn-adicionarp').click();
     cy.get('input[name="nome_pessoa"]').type('Teste cy')
     cy.get('input[name="funcao_pessoa"]').type('Teste cy')
     cy.get('.ant-select-selector').type('Os Vingadores')
-    cy.get('.btn-post').click()
+    cy.get('.btn-post').click()*/
+
+
   })
+
+  it('Card', () => {
+    cy.get('#card-pessoa-page').click()
+  })
+
+  it('Favoritar', () => {
+    cy.get('.star').click()
+  })
+
+  it('Editar', () => {
+    cy.get('.btn-editar').click()
+    cy.get('.btn-cancelar').click()
+  })
+
+
 })
