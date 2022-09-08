@@ -46,14 +46,15 @@
     align-items: center;
     justify-content: center;
     height: 2.1rem;
-    color: #2684FF;
     font-size: 1.5rem;
 
-}
+}*/
 
 
-#estatisticaum {
+.estatisticaumdeum {
     display: flex;
+    border: 1px solid red;
+   
 }
 
 #tasks-feitas-pagepessoa {
@@ -73,10 +74,11 @@
 
 #geralestatistica {
     display: flex;
-    justify-content: space-around;
-    margin-left: 30%;
+    justify-content: space-between;
+    margin-left: 25%;
     margin-top: 8%;
-    width: 38%;
+    width: 50%;
+    
 }
 
 #textoestatistica {
@@ -85,7 +87,8 @@
     font-size: 0.8rem;
     line-height: 143%;
     letter-spacing: 0.15px;
-    margin-left: 5%;
+    margin-left: 60%;
+    margin-top: -40%;
 }
 
 #nome {

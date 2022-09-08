@@ -87,25 +87,35 @@ function Inspecionar() {
     /**pega o numero total de task */
     const numero = filtra_task.length;
 
-    /*----------------------------------------------------------------------------------------------------------------------*/
 
-
-    console.log(filtra_task)
     var favoritar = parseInt(people.favoritar);
 
     console.log(favoritar)
 
-    function favoritarFuncao() {
-            api.put('/pessoas/'+ id_pessoa + '/favoritar')
-                .then((response) => {
-                    console.log("Favoritou essa budega")
+    /*----------------------------------------------------------------------------------------------------------------------*/
 
-                })
-                .catch(() => {
-                    console.log("n favoritou")
-                })
+
+    console.log(filtra_task)
+
+
+    function favoritarFuncao() {
+        api.put('/pessoas/' + id_pessoa + '/favoritar')
+        .then(() =>{
+            window.location.reload(true)
+
+        })
+
     }
 
+    function mudarCor() {
+        if (favoritar === 1) {
+            return '#2684FF'
+
+        }
+        else if (favoritar === 0){
+            return '#fffff'
+        }
+    }
 
     function RenderCards() {
         if (numero === 0) {
@@ -158,16 +168,20 @@ function Inspecionar() {
                         <div id="h1-insp-pagina-pessoa-insp">{people.nome_pessoa}</div>
                     </div>
                     <div id="geralestatistica">
-                        <div id="estatisticaum">
-                            <div className="doneicon"><CheckIcon /></div>
+                        <div className="estatisticaumdeum">
+                            <div className="doneicon">
+                                <CheckIcon/></div>
                             <div id="textoestatistica">
                                 <p id="total-taskfeitas-pagepessoas">{numero}</p>
                                 <p id="tasks-feitas-pagepessoa">Total Tasks</p>
                             </div>
                         </div>
+
                         <div id="estatisticadois" >
-                            <button type="submit" onClick={favoritarFuncao} className="star">
-                                <AiOutlineStar />
+                            <button className="star">
+                                <span style={{ color: mudarCor(favoritarFuncao) }}>
+                                    <AiOutlineStar type="submit" onClick={favoritarFuncao}  />
+                                </span>
                             </button>
                         </div>
                     </div>
