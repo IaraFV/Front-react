@@ -19,6 +19,7 @@ import { FaUser } from "react-icons/fa";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const style = {
     position: 'absolute',
@@ -52,7 +53,7 @@ function InspProjeto() {
             })
     }, []
     )
-
+    console.log(tasks)
     //get do array geral de tasks
     useEffect(() => {
         api.get("/tasks/")
@@ -96,11 +97,12 @@ function InspProjeto() {
     const gettask = tasks.filter((get) => get.projeto_id === pegaid);
 
     /**divide as taks vindas da pimeira filtragem e as filtra novamento com base no status */
-    const filtFazer = gettask.filter((get) => get.status === "A fazer");
+    const filtFazer = gettask.filter((get) => get.status === "Em planejamento");
     const filtFazendo = gettask.filter((get) => get.status === "Em desenvolvimento");
     const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
     //const teste = (gettask.filter((get) => get.status === "Concluído")).length;
+    console.log(filtFazer);
 
     var totalTaskAfazer = filtFazer.length;
     var totalTaskEmdesenvolvimento = filtFazendo.length;
@@ -323,9 +325,7 @@ function InspProjeto() {
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
                                                 <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
-                                            <button onClick={() => handleOpenn(projetos.id_task)} className='btn-muda-status'>
-                                                <AiOutlineMore className="cor-menu-pontos" />
-                                            </button>
+                                            <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
@@ -366,7 +366,7 @@ function InspProjeto() {
                                                 <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
                                                 <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
                                             </div>
-                                            <button onClick={ModaldoMenu} className='btn-muda-status'> <AiOutlineMore className="cor-menu-pontos" /></button>
+                                            <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
