@@ -1,6 +1,4 @@
-
 const url = "http://localhost:3000/"
-
 
 describe('Gerenciador de Projetos', () => {
   it('Login', () => {
