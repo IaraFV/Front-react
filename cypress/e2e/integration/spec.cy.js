@@ -1,6 +1,4 @@
 
-
-
 const url = "http://localhost:3000/"
 
 
@@ -22,7 +20,6 @@ describe('Pagina Home', () => {
   })
 
 })
-
 
 /*
 describe('Pagina pessoas', () => {
@@ -70,8 +67,21 @@ describe('Pagina equipes', () => {
 
   })
 
+  /*
+  it('Cadastro equipe', () => {
+    cy.get('.btn-adicionarequipe').click();
+    cy.get('input[name="nome_equipe"]').type('Teste cy')
+    cy.get('button[name="cadastrar-equipe"]').click()
+
+
+  })*/
+
+
   it('Card equipe', () => {
     cy.get('#icon-nomeequipe-pegeequipe').click()
+    cy.get('.link-inspequi').click()
+    cy.get('#btn-cancelar').click()
+    cy.get('#seta').click()
   })
 
 })
