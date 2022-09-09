@@ -133,7 +133,7 @@
 
 
 #BarraRolagem {
-    height: 710px;
+    height: 680px;
     background: #21222D;
     border-radius: 10px;
     overflow: auto;
@@ -152,7 +152,7 @@
 }
 
 #BarraRolage {
-    height: 710px;
+    height: 680px;
     background: #21222D;
     border-radius: 10px;
     overflow: auto;
@@ -170,7 +170,7 @@
 }
 
 #BarraRolag {
-    height: 710px;
+    height: 680px;
     background: #21222D;
     border-radius: 10px;
     overflow: auto;
@@ -275,3 +275,13 @@
 #icon-redondo-status-con {
     color: #C8D9CF;
 }
+
+.campo_comentario{
+    border: none;
+   
+    background: rgba(33, 34, 45, 0.5);
+    border-radius: 10px;
+}
+
+
+
