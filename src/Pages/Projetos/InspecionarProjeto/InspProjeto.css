@@ -28,10 +28,12 @@
 }
 
 #botoes-page-inp-projetos {
-    width: 14%;
+    width: 13%;
     display: flex;
     justify-content: space-between;
     margin-top: 2%;
+    margin-left: 50px;
+    margin-bottom: 2rem;
 }
 
 .btn-editar-pagina-projeto button {
@@ -224,12 +226,14 @@
     display: flex;
     align-items: center;
     padding: 0.8%;
+    justify-content: space-between;
 }
 
 #icon-add-task {
     color: #EB5757;
     background: rgba(235, 87, 87, 0.2);
-    margin-left: 80%;
+    display: flex;
+    right: 5%;
 }
 
 #icon-redondo-status-afazer {

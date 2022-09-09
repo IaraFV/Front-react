@@ -33,7 +33,7 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-    color:'#fff'
+    color: '#fff'
 };
 
 const validacaoPostT = yup.object().shape({
@@ -128,16 +128,11 @@ function InspProjeto() {
 
     const testeidp = tasks.map((pegaid) => pegaid.pessoa_id)
     //const teste = (gettask.filter((get) => get.status === "Concluído")).length;
-    
-    console.log(testeidp);
 
     //contadores de tasks com base no status
     var totalTaskAfazer = filtFazer.length;
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
-
-
-
 
     //modal 1 função que pega o id da task
     function handleOpen(id_task) {
@@ -148,6 +143,7 @@ function InspProjeto() {
             console.log('n foi true')
         }
     }
+
     //modal 1
     function PutStatus() {
         if (valutask !== '') {
@@ -189,7 +185,7 @@ function InspProjeto() {
         setvalue(event.target.value);
     };
 
-    //modal para realizar o PUT do status de tasks
+    //modal para realizar o PUT do status de tasks (modal 1)
     function CorpoModal() {
         return (
             <>
@@ -229,27 +225,28 @@ function InspProjeto() {
             </>
         )
     }
-    
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
 
+    //função de put
     const addPost = data => api.put(`/tasks/${getid}`, data)
-            .then(() => {
-                console.log("foi")
+        .then(() => {
+            console.log("foi")
 
-            })
-            .catch(() => {
-                console.log("n foi")
-            })
-    //modal de ediçoes (edite e deletar)
+        })
+        .catch(() => {
+            console.log("n foi")
+        })
+
+    //variaves do modal de modal de ediçoes de task (modal 2)
     const [vofNivel, setAge] = React.useState('');
-    
     const handleChangeg = (event) => {
         setAge(event.target.value);
     };
 
+    //modal de ediçoes de task (modal 2)
     function ModaldoMenu() {
         return (
             <>
@@ -272,27 +269,27 @@ function InspProjeto() {
                                     <p className="error-message">{errors.descricao_task?.message} </p>
                                 </div>
                                 <div className="fields">
-                                <label>nivel</label>
-                                <Box sx={{ minWidth: 120 }}>
-                                    <FormControl fullWidth>
-                                        <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
-                                        <Select
-                                            {...register("nivel")}
-                                            labelId="demo-simple-select-label"
-                                            projeto_id="demo-simple-select"
-                                            value={vofNivel}
-                                            label="Age"
-                                            sx={{bgcolor: 'rgba(33, 34, 45, 0.5)', border: '1px solid #D9D9D9' }}
-                                            onChange={handleChangeg}>
-                                            <MenuItem  value={'facil'} key={'facil'}>facil</MenuItem>
-                                            <MenuItem value={'medio'} key={'medio'}>medio</MenuItem>
-                                            <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
+                                    <label>nivel</label>
+                                    <Box sx={{ minWidth: 120 }}>
+                                        <FormControl fullWidth>
+                                            <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
+                                            <Select
+                                                {...register("nivel")}
+                                                labelId="demo-simple-select-label"
+                                                projeto_id="demo-simple-select"
+                                                value={vofNivel}
+                                                label="Age"
+                                                sx={{ bgcolor: 'rgba(33, 34, 45, 0.5)', border: '1px solid #D9D9D9' }}
+                                                onChange={handleChangeg}>
+                                                <MenuItem value={'facil'} key={'facil'}>facil</MenuItem>
+                                                <MenuItem value={'medio'} key={'medio'}>medio</MenuItem>
+                                                <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
 
-                                        </Select>
-                                        <p className="error-message">{errors.nivel?.message} </p>
-                                    </FormControl>
-                                </Box>
-                            </div>
+                                            </Select>
+                                            <p className="error-message">{errors.nivel?.message} </p>
+                                        </FormControl>
+                                    </Box>
+                                </div>
                                 <div className="fields">
                                     <label>projeto_id</label>
                                     <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
@@ -313,9 +310,36 @@ function InspProjeto() {
         );
     }
 
-    function peganome(){
-
+    //função de mudar a cor da fonte com base no nivel
+    function MudacorNivel(nivel) {
+        if (nivel === 'facil') {
+            return '#00DB99'
+        }
+        else if (nivel === 'medio') {
+            return '#E9C46A'
+        } else if (nivel === 'dificil') {
+            return '#EB5757'
+        }
     }
+
+    //função de mudar a cor da fonte com base no status
+    function MudacorStatus(status){
+        if (status === 'Em planejamento'){
+            return '#EB5757'
+        }
+        else if(status === 'Em desenvolvimento'){
+            return '#E9C46A'
+        }else if(status === 'concluido'){
+            return '#00DB99'
+        }
+    
+    }
+
+    function tets(pessoa_id){
+        console.log(pessoa_id)
+    }
+    var [pessoaid, setpessoaid] = React.useState('');
+    console.log(pessoaid);
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
      * de "nenhum item encontrado".
     */
@@ -341,9 +365,11 @@ function InspProjeto() {
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" >{projetos.pessoa_id}</div>
+                                                <div className="header-nome-pessoa" value={setpessoaid} >
+                                                    <p value={projetos.pessoa_id} >{projetos.pessoa_id}</p></div>
                                             </Card.Title>
                                         </Card.Body>
                                     </Card>
@@ -382,6 +408,7 @@ function InspProjeto() {
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
                                                 <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
@@ -423,6 +450,7 @@ function InspProjeto() {
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
+                                            <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
                                                 <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
@@ -453,28 +481,34 @@ function InspProjeto() {
                         <input type="text" id="input-insp-projeto" placeholder="Meu nome é Zé" onChange={handlechange}></input>
                     </div>
                 </div>
-                <div id="botoes-page-inp-projetos">
-                    <div className="btn-editar-pagina-projeto">
-                        <Link to={{ pathname: `/Idetiprojeto/${projetos.id_projeto}` }}>
-                            <button type="submit">Editar</button>
-                        </Link>
-                    </div>
-                    <div className="btn-excluir-pagina-projeto">
-                        <button onClick={() => deleteprojetos(projetos.id_projeto)} aria-label="share" type="submit" to='/pessoas'>Deletar</button>
-                    </div>
-                </div>
+
             </div>
             <div>
                 <div >
-                    <p style={{ color: '#fff' }}>Username:  {projetos.nome_projeto} </p>
+                    <p style={{ color: '#fff', marginTop: '2rem', marginLeft: '50px', fontSize: '25px' }}>{projetos.nome_projeto} </p>
+                    <p style={{ color: '#fff', marginBottom: '2rem', marginLeft: '50px' }}>
+                        <span style={{color: MudacorStatus(projetos.status)}}>{projetos.status}</span>
+                    </p>
+                </div>
+            </div>
+            <div id="botoes-page-inp-projetos">
+                <div className="btn-editar-pagina-projeto">
+                    <Link to={{ pathname: `/Idetiprojeto/${projetos.id_projeto}` }}>
+                        <button type="submit">Editar</button>
+                    </Link>
+                </div>
+                <div className="btn-excluir-pagina-projeto">
+                    <button onClick={() => deleteprojetos(projetos.id_projeto)} aria-label="share" type="submit" to='/pessoas'>Deletar</button>
                 </div>
             </div>
             <div className="d-flex ">
                 <div className="col-12 d-flex justify-content-around" style={{ height: "720px" }}>
                     <div className="col-3 d-flex flex-column align-items-center" id="BarraRolagem" >
                         <div id="header-status-afazer" >
-                            <IoEllipseSharp id="icon-redondo-status-afazer" />
-                            A fazer
+                            <p>
+                                <IoEllipseSharp id="icon-redondo-status-afazer" />
+                                Em planejamento
+                            </p>
                             <Link to={{ pathname: `/PostTasks/${projetos.id_projeto}` }}>
                                 <FiPlus id="icon-add-task" />
                             </Link>
