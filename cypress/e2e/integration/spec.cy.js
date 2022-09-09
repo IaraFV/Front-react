@@ -1,4 +1,7 @@
-const url = "http://localhost:3000"
+
+
+
+const url = "http://localhost:3000/"
 
 
 describe('Gerenciador de Projetos', () => {
@@ -13,11 +16,14 @@ describe('Gerenciador de Projetos', () => {
 describe('Pagina Home', () => {
   it('Menu', () => {
     cy.get('#menu-a').click();
-    cy.get('#Pessoas-Menu').click()
+    //cy.get('#Pessoas-Menu').click()
+    cy.get('#Equipes-Menu').click()
 
   })
 
 })
+
+
 /*
 describe('Pagina pessoas', () => {
 
@@ -27,6 +33,7 @@ describe('Pagina pessoas', () => {
 
   })
 
+  
   it('Cadastro', () => {
     cy.get('.btn-adicionarp').click();
     cy.get('input[name="nome_pessoa"]').type('Teste cy')
@@ -38,11 +45,11 @@ describe('Pagina pessoas', () => {
   })
 
   it('Card', () => {
-    cy.request({
-      url: 'http://localhost:3000/Inspecionar/1'
-    })
-    cy.get('#card-pessoa-page').click()
+    cy.visit('http://localhost:3000/Inspecionar/1')
+    cy.get('#link-pessoa-page-pessoa').click()
   })
+  
+
 
   it('Favoritar', () => {
     cy.get('.star').click()
@@ -55,3 +62,16 @@ describe('Pagina pessoas', () => {
 
 
 })*/
+
+describe('Pagina equipes', () => {
+
+  it('Todas as equipes', () => {
+    cy.get('.btn-close').click();
+
+  })
+
+  it('Card equipe', () => {
+    cy.get('#icon-nomeequipe-pegeequipe').click()
+  })
+
+})
