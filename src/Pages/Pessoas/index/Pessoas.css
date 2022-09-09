@@ -1,13 +1,14 @@
 .cardpessoas {
     border-radius: 3rem;
     display: flex;
-    width: 17%;
+    width: 20rem;
     height: 10rem;
     align-items: center;
     margin-left: 2%;
     margin-top: 2%;
     margin-right: 5%;
-    
+    flex-wrap: wrap;
+    min-width: 15rem;
 }
 
 #card-pessoa-page {

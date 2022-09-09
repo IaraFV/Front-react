@@ -142,7 +142,7 @@ function Home() {
                                             </div>
                                         </div>
 
-                                        <div className="col-6 col-sm-4" id="card-quant-projetos">
+                                        <div className="col-6 col-sm-4" id="card-quant-pessoa">
                                             <div id="cont-quant-projetos">
                                                 <div >
                                                     <AiOutlineSolution id="icon-quant-projetos-home" />
