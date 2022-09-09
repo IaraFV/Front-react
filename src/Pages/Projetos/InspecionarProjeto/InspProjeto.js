@@ -22,6 +22,35 @@ import { useForm } from 'react-hook-form'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import 'antd/dist/antd.css';
+import { Collapse } from 'antd';
+import { Avatar, Comment, Form, Input, List } from 'antd';
+import moment from 'moment';
+
+const { TextArea } = Input;
+
+const CommentList = ({ comments }) => (
+    <List
+        dataSource={comments}
+        header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
+        itemLayout="horizontal"
+        renderItem={(props) => <Comment {...props} />}
+    />
+);
+
+const Editor = ({ onChange, onSubmit, submitting, value }) => (
+    <>
+        <Form.Item>
+            <TextArea rows={2} onChange={onChange} value={value} />
+        </Form.Item>
+        <Form.Item>
+            <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
+                Comentar
+            </Button>
+        </Form.Item>
+    </>
+);
+const { Panel } = Collapse;
 
 const style = {
     position: 'absolute',
@@ -323,25 +352,67 @@ function InspProjeto() {
     }
 
     //função de mudar a cor da fonte com base no status
-    function MudacorStatus(status){
-        if (status === 'Em planejamento'){
+    function MudacorStatus(status) {
+        if (status === 'Em planejamento') {
             return '#EB5757'
         }
-        else if(status === 'Em desenvolvimento'){
+        else if (status === 'Em desenvolvimento') {
             return '#E9C46A'
-        }else if(status === 'concluido'){
+        } else if (status === 'concluido') {
             return '#00DB99'
         }
-    
+
     }
 
-    function Tets(){
-        const people = pessoa.filter((get) => get.id_pessoa === pessoaid)
-        const mapeople = people.map((get) => get.nome_pessoa)
-        return <p>{mapeople}</p>
+    //função de add comentario
+    function Comentario() {
+        const [comments, setComments] = useState([]);
+        const [submitting, setSubmitting] = useState(false);
+        const [value, setValue] = useState('');
+
+        const handleSubmit = () => {
+            if (!value) return;
+            setSubmitting(true);
+            setTimeout(() => {
+                setSubmitting(false);
+                setValue('');
+                setComments([
+                    ...comments,
+                    {
+                        author: 'Han Solo',
+                        avatar: 'https://joeschmoe.io/api/v1/random',
+                        content: <p>{value}</p>,
+                        datetime: moment('2016-11-22').fromNow(),
+                    },
+                ]);
+            }, 500);
+        };
+
+        const handleChange = (e) => {
+            setValue(e.target.value);
+        };
+        return (
+            <>
+                <Collapse className='campo_comentario' >
+                    <Panel header="Comentarios" key="1" style={{ border: 'none'}}>
+                        {comments.length > 0 && <CommentList comments={comments} />}
+                        <Comment
+                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
+                            content={
+                                <Editor
+                                    onChange={handleChange}
+                                    onSubmit={handleSubmit}
+                                    submitting={submitting}
+                                    value={value}
+                                />
+                            }
+                        />
+                    </Panel>
+                </Collapse>
+            </>
+        )
     }
-    var [pessoaid, setpessoaid] = React.useState('');
-    console.log(tasks);
+
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
      * de "nenhum item encontrado".
     */
@@ -370,10 +441,11 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" value={setpessoaid(projetos.pessoa_id)} >
-                                                    <p > <Tets/> </p>
-                                                </div>
+                                                <div className="header-nome-pessoa" >nome_pessoa</div>
                                             </Card.Title>
+                                            <div>
+                                                <Comentario />
+                                            </div>
                                         </Card.Body>
                                     </Card>
                                 </div>
@@ -414,8 +486,11 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
+                                                <div className="header-nome-pessoa" >nome_pessoa</div>
                                             </Card.Title>
+                                            <div>
+                                                <Comentario />
+                                            </div>
                                         </Card.Body>
                                     </Card>
                                 </div>
@@ -456,8 +531,11 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa">{projetos.nome_pessoa}</div>
+                                                <div className="header-nome-pessoa" >nome_pessoa</div>
                                             </Card.Title>
+                                            <div>
+                                                <Comentario />
+                                            </div>
                                         </Card.Body>
                                     </Card>
                                 </div>
@@ -490,7 +568,7 @@ function InspProjeto() {
                 <div >
                     <p style={{ color: '#fff', marginTop: '2rem', marginLeft: '50px', fontSize: '25px' }}>{projetos.nome_projeto} </p>
                     <p style={{ color: '#fff', marginBottom: '2rem', marginLeft: '50px' }}>
-                        <span style={{color: MudacorStatus(projetos.status)}}>{projetos.status}</span>
+                        <span style={{ color: MudacorStatus(projetos.status) }}>{projetos.status}</span>
                     </p>
                 </div>
             </div>
