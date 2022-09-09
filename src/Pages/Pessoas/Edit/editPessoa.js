@@ -56,6 +56,7 @@ function Edit() {
     }, [])
 
 
+    
     function voltar() {
         window.history.back()
             .then((response) => {
@@ -86,10 +87,7 @@ function Edit() {
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
-                            <div className="fields">
-                                <label>Id da Equipe</label>
-                                <input type="text" disabled="true" name="nome equipe" {...register("equipe_id")} />
-                            </div>
+                            
 
                             <div className="botoes-edit-pessoa">
                                 <button className="btn-cancelar" onClick={voltar} >Cancelar</button>
@@ -106,3 +104,8 @@ function Edit() {
 }
 
 export default Edit;
+
+/*<div className="fields">
+                                <label>Id da Equipe</label>
+                                <input type="text" disabled="true" name="nome equipe" {...register("equipe_id")} />
+                            </div> */

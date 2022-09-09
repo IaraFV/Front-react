@@ -18,7 +18,7 @@ describe('Pagina Home', () => {
   })
 
 })
-
+/*
 describe('Pagina pessoas', () => {
 
   it('Todos usuarios', () => {
@@ -28,16 +28,19 @@ describe('Pagina pessoas', () => {
   })
 
   it('Cadastro', () => {
-    /*cy.get('.btn-adicionarp').click();
+    cy.get('.btn-adicionarp').click();
     cy.get('input[name="nome_pessoa"]').type('Teste cy')
     cy.get('input[name="funcao_pessoa"]').type('Teste cy')
     cy.get('.ant-select-selector').type('Os Vingadores')
-    cy.get('.btn-post').click()*/
+    cy.get('.btn-post').click()
 
 
   })
 
   it('Card', () => {
+    cy.request({
+      url: 'http://localhost:3000/Inspecionar/1'
+    })
     cy.get('#card-pessoa-page').click()
   })
 
@@ -51,4 +54,4 @@ describe('Pagina pessoas', () => {
   })
 
 
-})
+})*/
