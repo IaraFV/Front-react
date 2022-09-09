@@ -205,7 +205,9 @@ function InspecionarEquipe() {
 
                             </div>
                             <div>
+                                <Link to='/Equipes'>
                                 <button type="submit" onClick={() => { deleteEquipe(equipe.id_equipe) }} id="btn-excluir">Excluir</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

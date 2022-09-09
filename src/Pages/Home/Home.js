@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineSolution, AiOutlineTeam } from "react-icons/ai";
 import { BsBarChartLine } from "react-icons/bs";
 import api from '../../services/api';
-import imagemerro from './img/itensNaoencontrados.png';
-
+import nenhumprojeto from '../../assets/NenhumProjeto/Group 1000004639.png';
+import { Empty } from 'antd';
 function Home() {
 
     //variaves das requisições GET
@@ -89,7 +89,8 @@ function Home() {
      function Apresentaproj(){
         if(valida === 0){
             return (
-                <h2><img src={imagemerro} alt=" " width={'23%'} style={{ marginLeft: '38%', marginTop:'6%' }} /></h2>
+                <><img src={nenhumprojeto} alt=" " width={'23%'} style={{ marginLeft: '38%', marginTop:'6%' }} /></>
+                  
             )
         }else {
             {

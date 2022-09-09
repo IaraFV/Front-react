@@ -63,7 +63,7 @@ function PostEquipe() {
                             </div>
                             <div className="btn-post-equipe">
                                 <button onClick={voltar} id="btn-cancelarE" type='text' >Cancelar</button>
-                                <button type="submit" >Cadastrar</button>
+                                <button type="submit" name="cadastrar-equipe">Cadastrar</button>
                             </div>
                         </form>
 
