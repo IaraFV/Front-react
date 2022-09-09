@@ -335,11 +335,13 @@ function InspProjeto() {
     
     }
 
-    function tets(pessoa_id){
-        console.log(pessoa_id)
+    function Tets(){
+        const people = pessoa.filter((get) => get.id_pessoa === pessoaid)
+        const mapeople = people.map((get) => get.nome_pessoa)
+        return <p>{mapeople}</p>
     }
     var [pessoaid, setpessoaid] = React.useState('');
-    console.log(pessoaid);
+    console.log(tasks);
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
      * de "nenhum item encontrado".
     */
@@ -368,8 +370,9 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" value={setpessoaid} >
-                                                    <p value={projetos.pessoa_id} >{projetos.pessoa_id}</p></div>
+                                                <div className="header-nome-pessoa" value={setpessoaid(projetos.pessoa_id)} >
+                                                    <p > <Tets/> </p>
+                                                </div>
                                             </Card.Title>
                                         </Card.Body>
                                     </Card>
