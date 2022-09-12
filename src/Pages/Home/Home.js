@@ -125,7 +125,15 @@ function Home() {
     <>
       <div id="caixa-geral-home-um">
         <div id="projeto-geralcont">
-          <div id="caixa-geral-projetos-home">a</div>
+          <div id="caixa-geral-projetos-home"><div className="card" id="render-projetos-conc-home">
+                                        <div className="card-body">
+                                            <h5 id="header-card-projeto-pagina-home" className="card-title">Ultimos projetos Concluidos</h5>
+                                            <p className="card-text"></p>
+                                        </div>
+                                        <ul className="list-group list-group-flush" id="ul-projeto">
+                                            <Apresentaproj/>
+                                        </ul>
+                                    </div></div>
 
           <div id="format-cards-contadores">
             <div className="body-card-home-pro">

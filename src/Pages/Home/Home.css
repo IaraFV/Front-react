@@ -13,13 +13,6 @@
 projeto e contador task*/
 
 /*----------------------------------------------------------card geral de fundo-------------------------------------------------------*/
-#cards {
-  width: 94%;
-  height: 50rem;
-  margin-left: 2%;
-  border-radius: 1rem;
-  margin-top: 2%;
-}
 
 #geral-graficoum {
   width: 64rem;
@@ -29,24 +22,6 @@ projeto e contador task*/
   border-radius: 0.5rem;
 }
 
-#nome-projeto-pagina-homep {
-  color: #ffff;
-  font-weight: 400;
-  font-size: 1.1rem;
-  line-height: 30px;
-  color: #ffffff;
-  margin-top: 5%;
-}
-
-#data-projeto-pagehome {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 0.7rem;
-  line-height: 14px;
-  margin-top: 3%;
-  color: #7a7585;
-}
 
 #card-projeto-pagina-home {
   background: #171821;
@@ -55,17 +30,6 @@ projeto e contador task*/
   width: 13rem;
   margin-left: 1%;
 }
-
-#col1-quant {
-  display: flex;
-  justify-content: space-around;
-}
-
-#col2-quant {
-  display: flex;
-  justify-content: space-around;
-}
-
 .card-quant-pessoa {
   background: #21222d;
   border-radius: 10px;
@@ -80,13 +44,10 @@ projeto e contador task*/
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 46rem;
-  height: 25rem;
-  border: 1px solid blueviolet;
+  width: 44rem;
 }
 
 .body-card-home-pro {
-  border: 1px solid blueviolet;
   background: #21222d;
   border-radius: 1rem;
   width: 20rem;
@@ -102,66 +63,13 @@ projeto e contador task*/
   flex-direction: column;
   margin-top: 10%;
 }
-#cont-quant-projetos {
-  display: flex;
-  width: 98%;
-  height: 95%;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-#cont-quant-equipes {
-  display: flex;
-  width: 98%;
-  height: 95%;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-#container-quantidade-task {
-  border: 1px solid #21222d;
-  display: flex;
-  width: 98%;
-  height: 95%;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
-#total-pessoas-page-home {
-  color: #d9d9d9;
-  font-size: 2.3rem;
-  margin-left: -18%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 24%;
-}
-
-#total-projetos-page-home {
-  color: #d9d9d9;
-  font-size: 2.3rem;
-  margin-left: -18%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 24%;
-}
 .total-page-home {
   color: #d9d9d9;
   font-size: 2.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-#total-de-tasks-pagina-home-h {
-  color: #d9d9d9;
-  font-size: 2.3rem;
-  margin-left: -15%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 24%;
 }
 
 .icon-quant-pessoa-home {
@@ -171,68 +79,13 @@ projeto e contador task*/
   background: rgba(164, 164, 164, 0.12);
   border-radius: 6px;
 }
-#icon-quant-projetos-home {
-  color: #2684ff;
-  width: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.8rem;
-  background: rgba(164, 164, 164, 0.12);
-  border-radius: 6px;
-  margin-top: 80%;
-}
+
 .colorfff {
   color: #fff;
-}
-#icon-quant-equipes-home {
-  color: #2684ff;
-  width: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.8rem;
-  background: rgba(164, 164, 164, 0.12);
-  border-radius: 6px;
-  margin-top: 80%;
-}
-#icon-quant-task-page-home {
-  color: #2684ff;
-  width: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 1.9rem;
-  background: rgba(164, 164, 164, 0.12);
-  border-radius: 6px;
-  margin-top: 80%;
-  margin-left: 8%;
-  font-size: 0.4rem;
-}
-
-#card-quant-projetos {
-  background: #21222d;
-  border-radius: 10px;
-  width: 248px;
-  height: 12.3rem;
-}
-
-#card-quant-equipes {
-  background: #21222d;
-  border-radius: 10px;
-  width: 248px;
-  height: 12.3rem;
-}
-#card-quant-de-tasks {
-  background: #21222d;
-  border-radius: 10px;
-  width: 248px;
-  height: 12.3rem;
 }
 
 #header-card-projeto-pagina-home {
   width: 30rem;
-  margin-left: -2%;
   font-family: "Inter";
   font-style: normal;
   font-size: 1.8rem;
@@ -361,22 +214,18 @@ projeto e contador task*/
   background: #21222d;
   border-radius: 10px;
   width: 65rem;
-
   min-width: 50rem;
-  border: 1px solid red;
 }
 
 #caixa-geral-home-um {
   width: 100%;
   height: 90vh;
-  border: 1px solid red;
   display: block;
 }
 #projeto-geralcont {
   display: flex;
   justify-content: space-around;
   min-width: 5rem;
-  border: 1px solid blue;
   
 }
 
@@ -386,149 +235,8 @@ projeto e contador task*/
   flex-wrap: wrap;
   width: 100%;
   min-width: 5rem;
-  border: 1px solid blue;
   height: 27rem;
   margin-top: 1%;
-}
-
-#caixa-dois-home {
-  width: 100rem;
-  height: 28rem;
-  margin-left: -16.3%;
-}
-
-#sla {
-  width: 34rem;
-  height: 40vh;
-  margin-left: -20rem;
-  margin-top: 10%;
-}
-
-#container-geralum {
-  width: 45%;
-  background: #21222d;
-  border-radius: 10px;
-}
-
-#just-card-projetos-page-home {
-  width: 88%;
-  height: 25rem;
-  margin-left: 6%;
-  margin-top: 11%;
-}
-
-/*------------------------------------------------------------------------------------------------------------------------------*/
-/*card pessoas*/
-#cardum {
-  width: 30%;
-  height: 24rem;
-  margin-top: 3%;
-  margin-left: 3%;
-  border-radius: 0.5rem;
-}
-
-#cardum h3 {
-  color: beige;
-  margin-left: 7%;
-  font-size: 2rem;
-}
-
-#carddois h3 {
-  color: beige;
-  margin-left: 8%;
-  font-size: 1.9rem;
-  margin-top: 1%;
-}
-
-#cardtres h3 {
-  color: beige;
-  margin-left: 9%;
-  margin-top: 13.5%;
-}
-
-.amarelo {
-  color: #bababa;
-}
-
-#calendario {
-  width: 30em;
-  background: #21222d;
-  height: 20.5rem;
-  align-items: center;
-  margin-top: 1.3%;
-  border-radius: 1rem;
-  margin-left: -30%;
-}
-
-#projetos-concluidos-page-home {
-  background: #21222d;
-  width: 30rem;
-  margin-left: 71%;
-  margin-top: -47%;
-  height: 54.3rem;
-  border-radius: 1rem;
-}
-
-#title-card-projeto-paginahome {
-  color: #ffffff;
-  margin-left: 6%;
-  font-size: 1.6rem;
-  position: relative;
-}
-
-#totalp1 {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.2rem;
-  display: flex;
-  text-align: start;
-  justify-content: center;
-  width: 70%;
-  margin-top: 5%;
-  margin-left: 7%;
-}
-
-#totalp2 {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.2rem;
-  display: flex;
-  text-align: start;
-  justify-content: center;
-  width: 70%;
-  margin-top: 0.2%;
-  margin-left: 7%;
-}
-
-#totalp3 {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.2rem;
-  display: flex;
-  text-align: start;
-  justify-content: center;
-  width: 70%;
-  margin-top: 6%;
-  margin-left: 8%;
-}
-
-#carddois {
-  width: 30%;
-  border-radius: 0.5rem;
-  margin-left: 35.5%;
-  height: 23rem;
-  margin-top: -59.5%;
-}
-
-#cardtres {
-  width: 30%;
-  height: 23rem;
-  border-radius: 0.5rem;
-  margin-left: 68%;
-  margin-top: -59.5%;
 }
 
 #iconpeoplefill {
@@ -552,12 +260,5 @@ projeto e contador task*/
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.custom-toggler.navbar-toggler {
-  border-color: rgb(255, 102, 203);
-}
 
-@media (min-width: 1040px) {
-  #caixa-geral-home {
-    border: 10px solid royalblue;
-  }
-}
+
