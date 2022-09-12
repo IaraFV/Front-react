@@ -55,32 +55,10 @@ function Pessoas() {
 
   const pessoasnum = parseInt(pessoas.length);
 
-  /* const lucas = pessoas.map((luc) => luc.data_contratacao);
-     const ld = lucas.map((lj) => lj.slice(0,10));
-     console.log(ld);
-     const tets = lucas.map((luc) => luc.data_contratacao);
-     //console.log(lucas); 
-     let data = new Date();
-     let dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
-     console.log(dataFormatada);
-     
-     {ld.map((data) =>{
-        return(
-            <>
-                <Typography id="data-contratacao">{data}</Typography>
-            </>
-            )
-        })
-      }
-     
-     */
-
-  const recebe_data = pessoas.map((dat) => dat.data_contratacao);
-
-  console.log(recebe_data);
-
-  //data_contratacao: new Date().toISOString().replace('T', '').replace('Z', '')
-  //const data_cont = Moment().format('DD-MM-YYYY')
+  function formdata(data) {
+    let Data = new Date(data);
+    return Data.toLocaleDateString("pt-BR")
+  }
 
   function TratamentoError() {
     if (pessoasnum === 0) {
@@ -123,7 +101,7 @@ function Pessoas() {
                           {pessoas.nome_pessoa}
                         </Typography>
                         <Typography id="data-contratacao">
-                          {pessoas.data_contratacao}
+                          {formdata(pessoas.data_contratacao)}
                         </Typography>
                       </CardContent>
                     </Card>
