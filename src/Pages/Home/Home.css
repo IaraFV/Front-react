@@ -24,10 +24,9 @@ projeto e contador task*/
 }
 
 #geral-graficoum {
-    width: 60rem;
-    height: 23.8rem;
+    width: 64rem;
+   height: 25rem;
     padding: 1%;
-    margin-top: 34%;
     background: #21222D;
     border-radius: 0.5rem;
 
@@ -73,10 +72,10 @@ projeto e contador task*/
     justify-content: space-around;
 }
 
-#card-quant-pessoa {
+.card-quant-pessoa {
     background: #21222D;
     border-radius: 10px;
-    width: 248px;
+    width: 100%;
     height: 12.3rem;
     display: flex;
     align-items: center;
@@ -84,15 +83,32 @@ projeto e contador task*/
 
 }
 
-#cont-quant-pessoa {
-  
+#format-cards-contadores{
     display: flex;
-    width: 98%;
-    height: 95%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 40rem;
+    height: 25rem;
+    border: 1px solid blueviolet;
+}
+
+.body-card-home-pro{
+    border: 1px solid blueviolet;
+    background: #21222D;
+    border-radius: 1rem;
+    width: 18rem;
+    margin-bottom: 1rem;
+    height: 11.5rem;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
-
+    align-items: center;
+   
+  
+}
+.org{
+    border: 1px solid blueviolet;
+   
 }
 #cont-quant-projetos {
    
@@ -169,16 +185,13 @@ projeto e contador task*/
     margin-top: 24%;
 }
 
-#icon-quant-pessoa-home {
+.icon-quant-pessoa-home {
     color: #2684FF;
     width: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 1.8rem;
     background: rgba(164, 164, 164, 0.12);
     border-radius: 6px;
-    margin-top: 80%;
+   
 }
 #icon-quant-projetos-home {
     color: #2684FF;
@@ -281,7 +294,8 @@ projeto e contador task*/
 
 #render-pessoas-home {
     background: #21222D;
-    height: 23.8rem;
+    height: 25rem;
+    width: 40%;
 
 
 }
@@ -379,15 +393,35 @@ projeto e contador task*/
     background: #21222D;
     border-radius: 10px;
     width: 60.5%;
-    height: 42vh;
-    margin-left: -0.1%;
+    height: 41vh;
+  
 }
 
 #caixa-geral-home-um {
-    width: 100rem;
-    height: 42vh;
-    margin-left: -16%;
-    border: none;
+    width: 100%;
+    height: 90vh;
+    border: 1px solid red;
+    display: block;
+}
+#projeto-geralcont{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    min-width: 5rem;
+    border: 1px solid blue;
+    height: 50%;
+  
+}
+
+#projeto-geralcontdois{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 5rem;
+    border: 1px solid blue;
+    height: 27rem;
+    margin-top: 2.3%;
 }
 
 #caixa-dois-home {
@@ -540,9 +574,7 @@ projeto e contador task*/
     margin-top: -59.5%;
 }
 
-#corpograf2 {
-    border: 9px solid red;
-}
+
 
 
 #iconpeoplefill {
