@@ -67,9 +67,16 @@
     color: #9E9E9E;
     margin-left: 7%;
     width: 10rem;
-
 }
-
+.header-task-mudastatus-conclu {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 1rem;
+    color: #9E9E9E;
+    margin-left: 7%;
+    width: 5rem;
+}
 .render-footer-card-task {
     margin-left: -2%;
     width: 7.1rem;
@@ -282,6 +289,12 @@
     background: rgba(33, 34, 45, 0.5);
     border-radius: 10px;
 }
+.pteste{
+    font-size: 10px;
+}
+.stilo-btn{
+    background:none ;
+    display: flex;
 
-
+}
 

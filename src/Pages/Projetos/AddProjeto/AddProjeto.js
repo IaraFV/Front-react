@@ -16,7 +16,7 @@ import Select from '@mui/material/Select';
 
 const validacaoPost = yup.object().shape({
     nome_projeto: yup.string().required("O nome projeto é obrigatorio!"),
-    equipe_id: yup.string().required("A id equipe é obrigatoria"),
+    equipe_id: yup.number(),
     descricao_projeto: yup.string().required("A descrição é obrigatoria")
 })
 

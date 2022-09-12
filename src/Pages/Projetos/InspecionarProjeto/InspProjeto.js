@@ -121,7 +121,7 @@ function InspProjeto() {
 
     //função de delete projeto
     function deleteprojetos(id_projeto) {
-        api.delete(`https://sistema-aprendizes-brisanet-go.herokuapp.com/projetos/${id_projeto}`)
+        api.delete(`/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
 
@@ -394,7 +394,7 @@ function InspProjeto() {
         return (
             <>
                 <Collapse className='campo_comentario' >
-                    <Panel header="Comentarios" key="1" style={{ border: 'none'}}>
+                    <Panel header="Comentarios" key="1" style={{ border: 'none' }}>
                         {comments.length > 0 && <CommentList comments={comments} />}
                         <Comment
                             avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
@@ -412,7 +412,66 @@ function InspProjeto() {
             </>
         )
     }
+    //variaveis modal 3
+    const [abrir, setabrir] = React.useState(false);
+    const handlefechar = () => setabrir(false);
 
+    //modal 3 
+    function lol(id_task) {
+        if (id_task !== 0) {
+            setabrir(true)
+            Setteste(id_task)
+            console.log(id_task);
+        } else {
+            console.log('n foi true')
+        }
+    }
+
+    //modal de teste para o novo loud (3)
+    function Modalbeta() {
+        const getpeople = tasks.filter((nome) => nome.id_task === getid)
+        const nomepeople = getpeople.map((getn) => getn.nome_pessoa)
+        const datatesk = getpeople.map((getdata) => getdata.created_at.slice(0,10))
+        
+        function Datanew(data){
+            let Data = new Date(data);
+            return Data.toLocaleDateString("pt-BR")
+        }
+        return (
+            <>
+                <Modal
+                    open={abrir}
+                    onClose={handlefechar}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            Informações
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <p className="pteste">Responsavel</p>
+                            <div style={{ display: 'flex' }}>
+                                <FaUser className="people-task" />
+                                <div className="header-nome-pessoa" >{nomepeople}</div>
+                            </div>
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <p className="pteste">Data de inicio</p>
+                            <div style={{ display: 'flex' }}>
+                                <div className="header-nome-pessoa" >{Datanew(datatesk)}</div>
+                            </div>
+                        </Typography>
+                        <Typography>
+                            <div>
+
+                            </div>
+                        </Typography>
+                    </Box>
+                </Modal>
+            </>
+        )
+    }
     /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
      * de "nenhum item encontrado".
     */
@@ -441,7 +500,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" >nome_pessoa</div>
+                                                <div className="header-nome-pessoa" >{projetos.nome_pessoa}</div>
                                             </Card.Title>
                                             <div>
                                                 <Comentario />
@@ -486,7 +545,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <Card.Title className="render-footer-card-task">
                                                 <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" >nome_pessoa</div>
+                                                <div className="header-nome-pessoa" >{projetos.nome_pessoa}</div>
                                             </Card.Title>
                                             <div>
                                                 <Comentario />
@@ -521,18 +580,16 @@ function InspProjeto() {
                                     <Card id="card-concl" className='card-color' >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
-                                                <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
-                                                <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
+                                                <button onClick={() => handleOpen(projetos.id_task)} className='stilo-btn'>
+                                                    <div className='btn-muda-status'></div>
+                                                    <Card.Text className="header-task-mudastatus-conclu">{projetos.status}</Card.Text>
+                                                </button>
                                             </div>
-                                            <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
+                                            <AiOutlineMore onClick={() => lol(projetos.id_task)} className="cor-menu-pontos" />
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
-                                            <Card.Title className="render-footer-card-task">
-                                                <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" >nome_pessoa</div>
-                                            </Card.Title>
                                             <div>
                                                 <Comentario />
                                             </div>
@@ -542,13 +599,13 @@ function InspProjeto() {
                             );
                         })
                     }
+                    <Modalbeta />
                     <ModaldoMenu />
                     <CorpoModal />
                 </>
             )
         }
     }
-
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
