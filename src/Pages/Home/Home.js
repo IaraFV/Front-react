@@ -130,45 +130,47 @@ function Home() {
           <div id="format-cards-contadores">
             <div className="body-card-home-pro">
               <div className="org">
-                <div>{totalpessoas}</div>
-                <div>
+              <div>
                   <AiOutlineUser className="icon-quant-pessoa-home" />
                 </div>
+                <div className="total-page-home">{totalpessoas}</div>
+                
                 <div className="colorfff">Total de pessoas adiconadas</div>
               </div>
             </div>
 
             <div className="body-card-home-pro">
               <div className="org">
-                <div>{totalpessoas}</div>
                 <div>
-                  <AiOutlineUser className="icon-quant-pessoa-home" />
+                  <AiOutlineSolution className="icon-quant-pessoa-home" />
                 </div>
-                <div className="colorfff">Total de pessoas adiconadas</div>
+                <div className="total-page-home">{totalprojetos}</div>
+                <div className="colorfff">Total de projetos adiconadas</div>
               </div>
             </div>
 
             <div className="body-card-home-pro">
               <div className="org">
-                <div>{totalpessoas}</div>
                 <div>
-                  <AiOutlineUser className="icon-quant-pessoa-home" />
+                  <AiOutlineTeam className="icon-quant-pessoa-home" />
                 </div>
-                <div className="colorfff">Total de pessoas adiconadas</div>
+                <div className="total-page-home">{totalequipes}</div>
+                <div className="colorfff">Total de equipes adiconadas</div>
               </div>
             </div>
 
             <div className="body-card-home-pro">
-              <div className="org">
-                <div>{totalpessoas}</div>
-                <div>
-                  <AiOutlineUser className="icon-quant-pessoa-home" />
+              <div className="org"><div>
+                  <BsBarChartLine className="icon-quant-pessoa-home" />
                 </div>
-                <div className="colorfff">Total de pessoas adiconadas</div>
+                <div className="total-page-home">{totaltask}</div>
+                
+                <div className="colorfff">Total de tarefas adiconadas</div>
               </div>
             </div>
           </div>
 
+        </div>
           <div id="projeto-geralcontdois">
             <div id="geral-graficoum">
               <Grafico2 pessoas={pessoas} />
@@ -197,7 +199,6 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );
