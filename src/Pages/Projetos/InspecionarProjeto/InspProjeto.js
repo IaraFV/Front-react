@@ -58,9 +58,8 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: 'rgba(33, 34, 45, 0.5)',
+    bgcolor: '#171821',
     border: '2px solid #000',
-    boxShadow: 24,
     p: 4,
     color: '#fff'
 };
@@ -227,7 +226,7 @@ function InspProjeto() {
                 >
                     <Box sx={style}>
                         <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-                            Mudar Status
+                            Status da tarefa
                         </Typography>
                         <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
                             <Box sx={{ minWidth: 120 }}>
@@ -239,7 +238,7 @@ function InspProjeto() {
                                             name: 'age',
                                             id: 'uncontrolled-native',
                                         }}>
-                                        <option >status</option>
+                                        <option>Opçoes</option>
                                         <option value={'A fazer'}>A fazer</option>
                                         <option value={'Em desenvolvimento'}>Em desenvolvimento</option>
                                         <option value={'Concluído'}>Concluído</option>
@@ -248,7 +247,7 @@ function InspProjeto() {
                             </Box>
 
                         </Typography>
-                        <Button variant="outlined" onClick={PutStatus}>Mudar status</Button>
+                        <Button variant="outlined" onClick={PutStatus}>Alterar status</Button>
                     </Box>
                 </Modal>
             </>
