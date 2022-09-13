@@ -75,8 +75,9 @@ function Projetos() {
                                                <span style={{color: mudacor(projeto.status)}}>{projeto.status}</span>
                                             </Card.Text>
                                             <Card.Text id="bandeira-data">
-                                                <div><BsFlagFill /></div>
-                                                <div>{formdata(projeto.data_inicio)}</div>
+                                                <div>
+                                                    <BsFlagFill />{formdata(projeto.data_inicio)}
+                                                </div>
                                             </Card.Text>
                                             <Card.Text>
                                                 <div className="titulo-descricao-projeto">Descrição</div>

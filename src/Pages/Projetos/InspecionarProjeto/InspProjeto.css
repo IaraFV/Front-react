@@ -295,6 +295,7 @@
 .stilo-btn{
     background:none ;
     display: flex;
-
 }
-
+.btn-modal-put-status{
+    background: none;
+}

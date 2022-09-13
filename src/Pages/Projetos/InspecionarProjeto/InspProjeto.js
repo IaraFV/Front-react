@@ -431,9 +431,9 @@ function InspProjeto() {
     function Modalbeta() {
         const getpeople = tasks.filter((nome) => nome.id_task === getid)
         const nomepeople = getpeople.map((getn) => getn.nome_pessoa)
-        const datatesk = getpeople.map((getdata) => getdata.created_at.slice(0,10))
-        
-        function Datanew(data){
+        const datatesk = getpeople.map((getdata) => getdata.created_at.slice(0, 10))
+
+        function Datanew(data) {
             let Data = new Date(data);
             return Data.toLocaleDateString("pt-BR")
         }
@@ -606,6 +606,42 @@ function InspProjeto() {
             )
         }
     }
+    //funtion put de status projeto
+    function PutStatusproj() {
+        const getstatus = projetos.status
+
+        const [openst, setOpenst] = React.useState(true);
+        const handleClosest = () => setOpenst(false);
+        var statucucl = 'Concluído'
+        const putprojstatus = () => 
+        api.put(`/projetos/${id_projeto}/status/`,
+        {status: statucucl})
+
+        if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído') {
+            return (
+                <>
+                    <Modal
+                        open={openst}
+                        onClose={handleClosest}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                              Você quer marca esse Projeto como concluido?
+                            </Typography>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                               <div>
+                                    <button className="btn-modal-put-status" onClick={putprojstatus}> Sim </button>
+                                    <button className="btn-modal-put-status" onClick={handleClosest}> Não </button>
+                               </div>
+                            </Typography>
+                        </Box>
+                    </Modal>
+                </>
+            )
+        }
+    }
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
@@ -666,6 +702,7 @@ function InspProjeto() {
                             Concluídos
                         </div>
                         <VerificaConcluído />
+                        <PutStatusproj />
                     </div>
                 </div>
             </div>
