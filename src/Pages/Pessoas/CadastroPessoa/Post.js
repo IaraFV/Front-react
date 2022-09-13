@@ -5,14 +5,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './Post.css'
 import { useNavigate } from 'react-router-dom'
+import axios from "axios";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import { Select } from 'antd';
+import Select from '@mui/material/Select';
 import api from '../../../services/api'
-import 'antd/dist/antd.css';
-import Avatar from '@mui/material/Avatar';
 
 function PostPessoa() {
 
@@ -22,11 +21,8 @@ function PostPessoa() {
         equipe_id: yup.number(),
     })
 
-    let navigate = useNavigate()
-
     const addPost = data => api.post("/pessoas/", data)
         .then(() => {
-            console.log(addPost);
             alert('Cadastrado com sucesso')
             window.location.href = '/Pessoas';
         })
@@ -37,8 +33,6 @@ function PostPessoa() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPost)
     })
-
-
 
     useEffect(() => {
         api.get('/equipes/')
@@ -52,35 +46,23 @@ function PostPessoa() {
     }, []
     )
 
-
+    
     function voltar() {
         window.history.back();
     }
-
-
-    const [age, setAge] = useState('');
+    
+    const [age, setAge] = React.useState('');
     const [equipe, setequipe] = useState([]);
-
-    const onChange = (value) => {
-        setAge(value);
+    const handleChange = (event) => {
+        setAge(event.target.value);
     };
 
-
-
-
-    const { Option } = Select;
-
-    const onSearch = (value) => {
-        console.log('search:', value);
-    };
     return (
         <div>
             <main>
                 <div className="card-post">
-                  <div id="avatar-cadastrar-users">
-                  <Avatar id='png-icon-cadastrodepessoas'/>
-                  </div>
-                   
+                    <h1>Cadastrar Pessoa</h1>
+                    <div className="line-post"></div>
 
                     <div className="body-post">
 
@@ -88,47 +70,47 @@ function PostPessoa() {
 
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} className="inputgeral" />
+                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} />
                                 <p className="error-message">{errors.nome_pessoa?.message} </p>
                             </div>
 
                             <div className="fields">
                                 <label>Função</label>
-                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} className="inputgeral" />
+                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} />
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
                             <div className="fields">
                                 <label>Equipe</label>
-                                <Select
-                                    showSearch
-                                    placeholder="Select a person"
-                                    optionFilterProp="children"
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
-                                    onChange={onChange}
-                                    value={age}
-                                    style={{ width: '21vw', display: 'flex', height: '45px'}}
-                                    size={"large"}
-                                >
-                                    <>
-                                        {equipe.map((equipe) =>
-                                            <Option id="menuEquipe-pagepessoa" value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</Option>
-                                        )}
-                                    </>
-
-
-                                </Select>
+                                <Box sx={{ minWidth: 120 }} >
+                                    <FormControl fullWidth >
+                                        <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
+                                        <Select
+                                            {...register("equipe_id")}
+                                            labelId="demo-simple-select-label"
+                                            id_equipe="demo-simple-select"
+                                            value={age}
+                                            label="Age"
+                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            onChange={handleChange}
+                                            
+                                            >
+                                            {equipe.map((equipe) =>
+                                                <MenuItem  id="menuEquipe-pagepessoa" value={equipe.id_equipe} key={equipe.id_equipe}>{equipe.nome_equipe}</MenuItem>
+                                            )}
+                                        </Select>
+                                    </FormControl>
+                                </Box>
                             </div>
 
                             <div id="chat">
                                 <Link id="butaoC" onClick={voltar}>Cancelar</Link>
-                                <button type="submit" className="btn-post button" >Cadastrar</button>
+                                <button type="submit"  className="butao" >Cadastrar</button>
                             </div>
+                    
+                </form>
 
-                        </form>
-
-                    </div>
+        </div>
                 </div >
             </main >
         </div >
