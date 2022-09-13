@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Projetos.css';
 import Card from 'react-bootstrap/Card';
@@ -37,8 +36,6 @@ function Projetos() {
         setprojeto(filter);
     }
     const porjnum = parseInt(projeto.length);
-
-
     function mudacor(status){
         if (status === 'Em planejamento'){
             return '#EB5757'
@@ -48,7 +45,10 @@ function Projetos() {
         }
     
     }     
-
+    function formdata(data){
+        let Data = new Date(data);
+            return Data.toLocaleDateString("pt-BR")
+    }
     function TratamentoError() {
         if (porjnum === 0) {
             return (
@@ -76,7 +76,7 @@ function Projetos() {
                                             </Card.Text>
                                             <Card.Text id="bandeira-data">
                                                 <div><BsFlagFill /></div>
-                                                <div>{projeto.data_inicio}</div>
+                                                <div>{formdata(projeto.data_inicio)}</div>
                                             </Card.Text>
                                             <Card.Text>
                                                 <div className="titulo-descricao-projeto">Descrição</div>
@@ -95,7 +95,6 @@ function Projetos() {
         }
 
     }
-
 
     return (
         <>
