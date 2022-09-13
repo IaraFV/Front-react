@@ -52,7 +52,7 @@ function Pessoas() {
       children: `${nome[0]}`,
     };
   }
-
+console.log(pessoas)
   const pessoasnum = parseInt(pessoas.length);
 
   function formdata(data) {

@@ -178,7 +178,7 @@ function InspProjeto() {
         if (valutask !== '') {
             api.put(`/tasks/${getid}/status`,
                 { status: valutask })
-            alert("Cadastrado com Sucess");
+            alert("Cadastrado com Sucesso");
             window.location.reload(true);
 
         } else {
@@ -269,7 +269,7 @@ function InspProjeto() {
             console.log("n foi")
         })
 
-    //variaves do modal de modal de ediçoes de task (modal 2)
+    //variaves do modal de ediçoes de task (modal 2)
     const [vofNivel, setAge] = React.useState('');
     const handleChangeg = (event) => {
         setAge(event.target.value);
@@ -332,7 +332,6 @@ function InspProjeto() {
                             </form>
                         </Typography>
                         <Button variant="outlined">Editar</Button>
-                        <Button variant="outlined" onClick={Deletetask}>Deletar</Button>
                     </Box>
                 </Modal>
             </>
@@ -412,6 +411,7 @@ function InspProjeto() {
             </>
         )
     }
+    
     //variaveis modal 3
     const [abrir, setabrir] = React.useState(false);
     const handlefechar = () => setabrir(false);
@@ -464,7 +464,9 @@ function InspProjeto() {
                         </Typography>
                         <Typography>
                             <div>
-
+                                <button className="btn-novo-style" onClick={Deletetask}> Deletar </button>
+                                <button className="btn-novo-style" onClick={Comentario}> Comentar </button>
+                                <button className="btn-novo-style" onClick={ModaldoMenu}> Editar </button>
                             </div>
                         </Typography>
                     </Box>
@@ -613,11 +615,13 @@ function InspProjeto() {
         const [openst, setOpenst] = React.useState(true);
         const handleClosest = () => setOpenst(false);
         var statucucl = 'Concluído'
-        const putprojstatus = () => 
+        const putprojstatus = () => {
         api.put(`/projetos/${id_projeto}/status/`,
         {status: statucucl})
+        alert('Status alterado')
+        setOpenst(false)    }
 
-        if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído') {
+        if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído' && totalTaskConcluído != 0) {
             return (
                 <>
                     <Modal

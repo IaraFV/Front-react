@@ -27,7 +27,7 @@ function Equipe() {
             })
     }, []
     )
-
+console.log(posts)
     /*----------------------------------------FILTRO----------------------------------------------------*/
     const handlechange = ({ target }) => {
         if (!target.value) {
