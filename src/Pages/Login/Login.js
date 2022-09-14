@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import "./login.css"
 import api from "../../services/api"
-
+import Alert from '@mui/material/Alert';
+import { message } from "antd";
 
 export default function Login() {
 
@@ -20,7 +21,9 @@ export default function Login() {
                 api.defaults.headers.Authorization = `Bearer ${res.data.token}`
                 window.location.href = '/Home'
             })
-            .catch(err => alert(err))
+            .catch(() => {
+                message.error('Email ou senha incorreto!')
+            })
     }
 
 

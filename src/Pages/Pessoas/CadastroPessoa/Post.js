@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './Post.css'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import axios from "axios";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -12,8 +12,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import api from '../../../services/api'
+import { message } from "antd";
+import Avatar from '@mui/material/Avatar';
 
 function PostPessoa() {
+   
+    let navigate = useNavigate()
 
     const validacaoPost = yup.object().shape({
         nome_pessoa: yup.string().required("O nome é obrigatorio!"),
@@ -21,14 +25,16 @@ function PostPessoa() {
         equipe_id: yup.number(),
     })
 
-    const addPost = data => api.post("/pessoas/", data)
-        .then(() => {
-            alert('Cadastrado com sucesso')
-            window.location.href = '/Pessoas';
-        })
-        .catch(() => {
-            console.log("n foi")
-        })
+        const addPost = data => api.post("/pessoas/", data)
+            .then(() => {
+                message.success("Usuario cadastrado!");
+                navigate("/Pessoas")
+                
+            })
+            .catch(() => {
+                message.error('Ocorreu algum erro e o usuario não foi cadastrado!')
+            })
+        
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPost)
@@ -38,14 +44,11 @@ function PostPessoa() {
         api.get('/equipes/')
             .then((response) => {
                 setequipe(response.data)
-                console.log("pegou eq")
             })
             .catch(() => {
-                console.log("deu errado eq")
             })
     }, []
     )
-
     
     function voltar() {
         window.history.back();
@@ -60,9 +63,10 @@ function PostPessoa() {
     return (
         <div>
             <main>
-                <div className="card-post">
-                    <h1>Cadastrar Pessoa</h1>
-                    <div className="line-post"></div>
+            <div className="card-post">
+                  <div id="avatar-cadastrar-users">
+                  <Avatar id='png-icon-cadastrodepessoas'/>
+                  </div>
 
                     <div className="body-post">
 
@@ -70,13 +74,13 @@ function PostPessoa() {
 
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} />
+                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} className="inputgeral" />
                                 <p className="error-message">{errors.nome_pessoa?.message} </p>
                             </div>
 
                             <div className="fields">
                                 <label>Função</label>
-                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} />
+                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} className="inputgeral" />
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 
@@ -86,12 +90,13 @@ function PostPessoa() {
                                     <FormControl fullWidth >
                                         <InputLabel id_equipe="demo-simple-select-label"></InputLabel>
                                         <Select
+                                        className="inputgeral"
                                             {...register("equipe_id")}
                                             labelId="demo-simple-select-label"
                                             id_equipe="demo-simple-select"
                                             value={age}
                                             label="Age"
-                                            sx={{ bgcolor: '#fff', borderRadius: '1rem' }}
+                                            sx={{ bgcolor: 'rgba(33, 34, 45, 0.5)', borderRadius: '6px',  color: 'white' }}
                                             onChange={handleChange}
                                             
                                             >
@@ -105,7 +110,7 @@ function PostPessoa() {
 
                             <div id="chat">
                                 <Link id="butaoC" onClick={voltar}>Cancelar</Link>
-                                <button type="submit"  className="butao" >Cadastrar</button>
+                                <button type="submit" className="btn-post button" >Cadastrar</button>
                             </div>
                     
                 </form>

@@ -18,7 +18,8 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import imagemerro from '../../../assets/img/falta_de_dados (cópia).png';
 import api from '../../../services/api'
-
+import Alert from '@mui/material/Alert';
+import { message } from "antd";
 
 function Inspecionar() {
 
@@ -65,6 +66,7 @@ function Inspecionar() {
 
     function deletePost(id_pessoa) {
         api.delete(`/pessoas/${id_pessoa}`)
+        message.success('Usuario deletado!')
         setPeople(people.filter(post => post.id_pessoa !== id_pessoa))
         window.location.reload(true);
     }
@@ -100,19 +102,26 @@ function Inspecionar() {
 
     function favoritarFuncao() {
         api.put('/pessoas/' + id_pessoa + '/favoritar')
+        message.success('Usuario favoritado!')
         .then(() =>{
+            
             window.location.reload(true)
 
+        })
+        .catch(() => {
+            message.error('Usuario não foi favoritado!')
         })
 
     }
 
     function mudarCor() {
         if (favoritar === 1) {
+            
             return '#2684FF'
 
         }
         else if (favoritar === 0){
+            message.warning('Usuario desfavoritado!')
             return '#fffff'
         }
     }
