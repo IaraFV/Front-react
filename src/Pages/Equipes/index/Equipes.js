@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import { BsPeople } from "react-icons/bs";
 import Tilt from 'react-vanilla-tilt';
-import api from '../../services/api';
+import api from '../../../services/api';
 
 function Equipe() {
     /*---------------------------------------VARIAVEIS DOS GETs-------------------------------------------------*/

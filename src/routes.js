@@ -1,6 +1,6 @@
 import Home from './Pages/Home/Home'
 import Pessoas from './Pages/Pessoas/index/Pessoas'
-import Equipes from './Pages/Equipes/Equipes'
+import Equipes from './Pages/Equipes/index/Equipes'
 import Task from './Pages/Task/Task';
 import PostPessoa from './Pages/Pessoas/CadastroPessoa/Post';
 import Edit from './Pages/Pessoas/Edit/editPessoa';

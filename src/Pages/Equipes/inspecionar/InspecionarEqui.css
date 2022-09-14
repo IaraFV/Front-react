@@ -12,6 +12,15 @@
     width: 35%;
     height: 50rem;
 }
+#avatar-pessoa-group{
+    padding: 1%;
+    margin-bottom: 15%;
+   
+}
+#nome-user-group{
+    color: #FFFFFF;
+    margin-bottom: 3%;
+}
 
 #just-cards-geral-inspequipe {
     display: flex;
@@ -67,8 +76,9 @@
 }
 #apresentacao-dos-membros{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    width: 12.7rem;
     
 }
 

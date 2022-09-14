@@ -11,6 +11,12 @@ import { BsBarChartLine } from "react-icons/bs";
 import api from "../../services/api";
 import nenhumprojeto from "../../assets/NenhumProjeto/Group 1000004639.png";
 import { Empty } from "antd";
+
+import Card from 'react-bootstrap/Card';
+import { BsFlagFill } from "react-icons/bs";
+import imagemerro from './img/itensNaoencontrados.png';
+import { AiOutlineArrowsAlt } from "react-icons/ai";
+
 function Home() {
   //variaves das requisições GET
   const [projeto, setprojeto] = useState([]);
@@ -76,7 +82,7 @@ function Home() {
     (getstatus) => getstatus.status === "Concluído"
   );
   var receberProj = [];
-  for (var pega = 0; pega < 8; pega++) {
+  for (var pega = 0; pega < 2; pega++) {
     receberProj.push(recebeprojetos[pega]);
   }
 
@@ -86,44 +92,56 @@ function Home() {
   const totaltask = tasks.length;
   const totalequipes = equipes.length;
 
-
   //função de verificação de erro
   function Apresentaproj() {
-    return(
+    return (
       <>
-      {
-        receberProj?.map((status) => {
-        return (
-          <>
-            <li className="list-group-item" id="li-projeto">
-              {status?.nome_projeto}
-              <Link id="link-pessoa-page-pessoa" to={"/ProjetosConcluidos"}>
-                <button id="btn-ver-mais-projeto">Ver mais</button>
-              </Link>
-            </li>
-          </>
-        );
-      })
-
-    }
+        {receberProj?.map((status) => {
+          return (
+            <>
+              <Card id="div-card-projeto">
+                <Card.Body>
+                  <Card.Title id="nome-projeto-plan" >
+                    {projeto.nome_projeto}
+                    <div>
+                      <Link
+                        to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }}
+                      >
+                        <AiOutlineArrowsAlt id="more-button-planejamento" />
+                      </Link>
+                    </div>
+                  </Card.Title>
+                  <Card.Text id="status">
+                    <span >
+                      {projeto.status}
+                    </span>
+                  </Card.Text>
+                  <Card.Text id="bandeira-data">
+                    <div>
+                      <BsFlagFill />
+                      {(projeto.data_inicio)}
+                    </div>
+                  </Card.Text>
+                  <Card.Text>
+                    <div className="titulo-descricao-projeto">Descrição</div>
+                    <div id="corpo-descricao-projeto">
+                      {projeto.descricao_projeto}
+                    </div>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </>
+          );
+        })}
       </>
-    )
+    );
   }
 
   return (
     <>
       <div id="caixa-geral-home-um">
         <div id="projeto-geralcont">
-          <div id="caixa-geral-projetos-home"><div className="card" id="render-projetos-conc-home">
-            <div className="card-body">
-              <h5 id="header-card-projeto-pagina-home" className="card-title">Ultimos projetos Concluidos</h5>
-              <p className="card-text"></p>
-            </div>
-            <ul className="list-group list-group-flush" id="ul-projeto">
-              <Apresentaproj/>
-            </ul>
-          </div></div>
-
+          <div><Apresentaproj/></div>
           <div id="format-cards-contadores">
             <div className="body-card-home-pro">
               <div className="org">
@@ -157,16 +175,16 @@ function Home() {
             </div>
 
             <div className="body-card-home-pro">
-              <div className="org"><div>
-                <BsBarChartLine className="icon-quant-pessoa-home" />
-              </div>
+              <div className="org">
+                <div>
+                  <BsBarChartLine className="icon-quant-pessoa-home" />
+                </div>
                 <div className="total-page-home">{totaltask}</div>
 
                 <div className="colorfff">Total de tarefas adiconadas</div>
               </div>
             </div>
           </div>
-
         </div>
         <div id="projeto-geralcontdois">
           <div id="geral-graficoum">
@@ -320,3 +338,13 @@ export default Home;
                 </div>
             </div>
 */
+
+/*div id="caixa-geral-projetos-home"><div className="card" id="render-projetos-conc-home">
+            <div className="card-body">
+              <h5 id="header-card-projeto-pagina-home" className="card-title">Ultimos projetos Concluidos</h5>
+              <p className="card-text"></p>
+            </div>
+            <ul className="list-group list-group-flush" id="ul-projeto">
+              <Apresentaproj/>
+            </ul>
+          </div></div> */
