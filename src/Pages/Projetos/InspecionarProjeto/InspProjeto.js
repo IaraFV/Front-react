@@ -38,18 +38,6 @@ const CommentList = ({ comments }) => (
     />
 );
 
-const Editor = ({ onChange, onSubmit, submitting, value }) => (
-    <>
-        <Form.Item>
-            <TextArea rows={2} onChange={onChange} value={value} />
-        </Form.Item>
-        <Form.Item>
-            <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
-                Comentar
-            </Button>
-        </Form.Item>
-    </>
-);
 const { Panel } = Collapse;
 
 const style = {
@@ -99,6 +87,19 @@ function InspProjeto() {
             .then((response) => {
                 settasks(response.data)
                 setInitialtasks(response.data)
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+    const [k,settask] = useState([])
+    console.log(k)
+
+    useEffect(() => {
+        api.get(`tasks/${2}/comentarios`)
+            .then((response) => {
+                settask(response.data)
             })
             .catch(() => {
                 console.log("deu errado")
@@ -361,56 +362,37 @@ function InspProjeto() {
         }
 
     }
-
+    console.log(tasks)
     //função de add comentario
     function Comentario() {
+
+        const Teste = (id_task) =>{
+            if (id_task === 0){
+                console.log('id_ taske é zero')
+            } else{
+                const comentario = value;
+            api.post(`/tasks/${2}/comentarios`,
+            {comentario: comentario})
+            alert('cadastro de comentario')
+            }
+        }
         const [comments, setComments] = useState([]);
-        const [submitting, setSubmitting] = useState(false);
-        const [value, setValue] = useState('');
+        var [value, setValue] = useState('');
 
-        const handleSubmit = () => {
-            if (!value) return;
-            setSubmitting(true);
-            setTimeout(() => {
-                setSubmitting(false);
-                setValue('');
-                setComments([
-                    ...comments,
-                    {
-                        author: 'Han Solo',
-                        avatar: 'https://joeschmoe.io/api/v1/random',
-                        content: <p>{value}</p>,
-                        datetime: moment('2016-11-22').fromNow(),
-                    },
-                ]);
-            }, 500);
-        };
+        
 
+       
         const handleChange = (e) => {
             setValue(e.target.value);
         };
+        
         return (
             <>
-                <Collapse className='campo_comentario' >
-                    <Panel header="Comentarios" key="1" style={{ border: 'none' }}>
-                        {comments.length > 0 && <CommentList comments={comments} />}
-                        <Comment
-                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
-                            content={
-                                <Editor
-                                    onChange={handleChange}
-                                    onSubmit={handleSubmit}
-                                    submitting={submitting}
-                                    value={value}
-                                />
-                            }
-                        />
-                    </Panel>
-                </Collapse>
+                comentarios
             </>
         )
     }
-    
+
     //variaveis modal 3
     const [abrir, setabrir] = React.useState(false);
     const handlefechar = () => setabrir(false);
@@ -464,7 +446,6 @@ function InspProjeto() {
                         <Typography>
                             <div>
                                 <button className="btn-novo-style" onClick={Deletetask}> Deletar </button>
-                                <button className="btn-novo-style" onClick={Comentario}> Comentar </button>
                                 <button className="btn-novo-style" onClick={ModaldoMenu}> Editar </button>
                             </div>
                         </Typography>
@@ -491,18 +472,16 @@ function InspProjeto() {
                                     <Card id="card-desenvolvimento-t" className='card-color' >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
-                                                <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
-                                                <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
+                                                <button onClick={() => handleOpen(projetos.id_task)} className='stilo-btn'>
+                                                    <div className='btn-muda-status'></div>
+                                                    <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
+                                                </button>
                                             </div>
-                                            <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
+                                            <AiOutlineMore onClick={() => lol(projetos.id_task)} className="cor-menu-pontos" />
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
-                                            <Card.Title className="render-footer-card-task">
-                                                <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" >{projetos.nome_pessoa}</div>
-                                            </Card.Title>
                                             <div>
                                                 <Comentario />
                                             </div>
@@ -536,18 +515,16 @@ function InspProjeto() {
                                     <Card id="card-desenvolvimento" className='card-color' >
                                         <div className="menu-dos-filtros-statusTask">
                                             <div className="menu-dos-filtros-statusTask">
-                                                <button onClick={() => handleOpen(projetos.id_task)} className='btn-muda-status'></button>
-                                                <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
+                                                <button onClick={() => handleOpen(projetos.id_task)} className='stilo-btn'>
+                                                    <div className='btn-muda-status'></div>
+                                                    <Card.Text className="header-task-mudastatus">{projetos.status}</Card.Text>
+                                                </button>
                                             </div>
-                                            <AiOutlineMore onClick={() => handleOpenn(projetos.id_task)} className="cor-menu-pontos" />
+                                            <AiOutlineMore onClick={() => lol(projetos.id_task)} className="cor-menu-pontos" />
                                         </div>
                                         <Card.Body>
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
-                                            <Card.Title className="render-footer-card-task">
-                                                <FaUser className="people-task" />
-                                                <div className="header-nome-pessoa" >{projetos.nome_pessoa}</div>
-                                            </Card.Title>
                                             <div>
                                                 <Comentario />
                                             </div>
@@ -557,6 +534,7 @@ function InspProjeto() {
                             );
                         })
                     }
+                     <Modalbeta />
                     <ModaldoMenu />
                     <CorpoModal />
                 </>
@@ -615,10 +593,11 @@ function InspProjeto() {
         const handleClosest = () => setOpenst(false);
         var statucucl = 'Concluído'
         const putprojstatus = () => {
-        api.put(`/projetos/${id_projeto}/status/`,
-        {status: statucucl})
-        alert('Status alterado')
-        setOpenst(false)    }
+            api.put(`/projetos/${id_projeto}/status/`,
+                { status: statucucl })
+            alert('Status alterado')
+            setOpenst(false)
+        }
 
         if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído' && totalTaskConcluído != 0) {
             return (
@@ -631,13 +610,13 @@ function InspProjeto() {
                     >
                         <Box sx={style}>
                             <Typography id="modal-modal-title" variant="h6" component="h2">
-                              Você quer marca esse Projeto como concluido?
+                                Você quer marca esse Projeto como concluido?
                             </Typography>
                             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                               <div>
+                                <div>
                                     <button className="btn-modal-put-status" onClick={putprojstatus}> Sim </button>
                                     <button className="btn-modal-put-status" onClick={handleClosest}> Não </button>
-                               </div>
+                                </div>
                             </Typography>
                         </Box>
                     </Modal>

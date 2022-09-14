@@ -284,10 +284,13 @@
 }
 
 .campo_comentario{
-    border: none;
-   
-    background: rgba(33, 34, 45, 0.5);
-    border-radius: 10px;
+    
+    color: #BABABA;
+    border: none!important;
+}
+.color{
+    background: #21222D;
+    border: none!important;
 }
 .pteste{
     font-size: 10px;
@@ -301,4 +304,8 @@
 }
 .btn-novo-style{
     background: none;
+}
+#color{
+    border: 1px solid red;
+    border: none;
 }
