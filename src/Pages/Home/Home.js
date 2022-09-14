@@ -86,39 +86,28 @@ function Home() {
   const totaltask = tasks.length;
   const totalequipes = equipes.length;
 
-  //Manipulação da variavel da função FOR
-  const recebe = receberProj.filter((get) => get === "undefined");
-  const valida = recebe.length;
 
   //função de verificação de erro
   function Apresentaproj() {
-    if (valida === 0) {
-      return (
-        <>
-          <img
-            src={nenhumprojeto}
-            alt=" "
-            width={"23%"}
-            style={{ marginLeft: "38%", marginTop: "6%" }}
-          />
-        </>
-      );
-    } else {
+    return(
+      <>
       {
-        recebeprojetos.map((status) => {
-          return (
-            <>
-              <li className="list-group-item" id="li-projeto">
-                {status.nome_projeto}
-                <Link id="link-pessoa-page-pessoa" to={"/ProjetosConcluidos"}>
-                  <button id="btn-ver-mais-projeto">Ver mais</button>
-                </Link>
-              </li>
-            </>
-          );
-        });
-      }
+        receberProj?.map((status) => {
+        return (
+          <>
+            <li className="list-group-item" id="li-projeto">
+              {status?.nome_projeto}
+              <Link id="link-pessoa-page-pessoa" to={"/ProjetosConcluidos"}>
+                <button id="btn-ver-mais-projeto">Ver mais</button>
+              </Link>
+            </li>
+          </>
+        );
+      })
+
     }
+      </>
+    )
   }
 
   return (
@@ -126,23 +115,23 @@ function Home() {
       <div id="caixa-geral-home-um">
         <div id="projeto-geralcont">
           <div id="caixa-geral-projetos-home"><div className="card" id="render-projetos-conc-home">
-                                        <div className="card-body">
-                                            <h5 id="header-card-projeto-pagina-home" className="card-title">Ultimos projetos Concluidos</h5>
-                                            <p className="card-text"></p>
-                                        </div>
-                                        <ul className="list-group list-group-flush" id="ul-projeto">
-                                            <Apresentaproj/>
-                                        </ul>
-                                    </div></div>
+            <div className="card-body">
+              <h5 id="header-card-projeto-pagina-home" className="card-title">Ultimos projetos Concluidos</h5>
+              <p className="card-text"></p>
+            </div>
+            <ul className="list-group list-group-flush" id="ul-projeto">
+              <Apresentaproj/>
+            </ul>
+          </div></div>
 
           <div id="format-cards-contadores">
             <div className="body-card-home-pro">
               <div className="org">
-              <div>
+                <div>
                   <AiOutlineUser className="icon-quant-pessoa-home" />
                 </div>
                 <div className="total-page-home">{totalpessoas}</div>
-                
+
                 <div className="colorfff">Total de pessoas adiconadas</div>
               </div>
             </div>
@@ -169,44 +158,44 @@ function Home() {
 
             <div className="body-card-home-pro">
               <div className="org"><div>
-                  <BsBarChartLine className="icon-quant-pessoa-home" />
-                </div>
+                <BsBarChartLine className="icon-quant-pessoa-home" />
+              </div>
                 <div className="total-page-home">{totaltask}</div>
-                
+
                 <div className="colorfff">Total de tarefas adiconadas</div>
               </div>
             </div>
           </div>
 
         </div>
-          <div id="projeto-geralcontdois">
-            <div id="geral-graficoum">
-              <Grafico2 pessoas={pessoas} />
-            </div>
+        <div id="projeto-geralcontdois">
+          <div id="geral-graficoum">
+            <Grafico2 pessoas={pessoas} />
+          </div>
 
-            <div className="card" id="render-pessoas-home">
-              <div className="card-body">
-                <h5 className="card-title" id="titulo-card-usuario-home">
-                  Usuarios
-                  <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
-                    <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
-                  </Link>
-                </h5>
-                <h6 className="card-subtitle mb-2 text-muted"></h6>
-                <ul className="list-group list-group-flush" id="ul-pessoa">
-                  {nomepeople.map((nome) => {
-                    return (
-                      <>
-                        <li className="list-group-item" id="li-pessoa">
-                          {nome}
-                        </li>
-                      </>
-                    );
-                  })}
-                </ul>
-              </div>
+          <div className="card" id="render-pessoas-home">
+            <div className="card-body">
+              <h5 className="card-title" id="titulo-card-usuario-home">
+                Usuarios
+                <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
+                  <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
+                </Link>
+              </h5>
+              <h6 className="card-subtitle mb-2 text-muted"></h6>
+              <ul className="list-group list-group-flush" id="ul-pessoa">
+                {nomepeople.map((nome) => {
+                  return (
+                    <>
+                      <li className="list-group-item" id="li-pessoa">
+                        {nome}
+                      </li>
+                    </>
+                  );
+                })}
+              </ul>
             </div>
           </div>
+        </div>
       </div>
     </>
   );
