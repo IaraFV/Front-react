@@ -362,36 +362,19 @@ function InspProjeto() {
         }
 
     }
-    console.log(tasks)
-    //função de add comentario
-    function Comentario() {
 
-        const Teste = (id_task) =>{
+    //função de add comentario
+    function Comentario(id_task) {
+        var comentarios = ''
             if (id_task === 0){
                 console.log('id_ taske é zero')
             } else{
-                const comentario = value;
-            api.post(`/tasks/${2}/comentarios`,
-            {comentario: comentario})
-            alert('cadastro de comentario')
+                api.post(`tasks/${id_task}/comentarios`, {
+                    comentario: comentarios
+                })
             }
         }
-        const [comments, setComments] = useState([]);
-        var [value, setValue] = useState('');
-
         
-
-       
-        const handleChange = (e) => {
-            setValue(e.target.value);
-        };
-        
-        return (
-            <>
-                comentarios
-            </>
-        )
-    }
 
     //variaveis modal 3
     const [abrir, setabrir] = React.useState(false);
@@ -483,7 +466,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
-                                                <Comentario />
+                                                <button style={{background:'none'}} onClick={() => Comentario(projetos.id_task)}> comentarios </button>
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -526,7 +509,6 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
-                                                <Comentario />
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -570,7 +552,6 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
-                                                <Comentario />
                                             </div>
                                         </Card.Body>
                                     </Card>
