@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import api from '../../../services/api';
 import Avatar from '@mui/material/Avatar';
+import { message } from "antd";
 
 function Edit() {
 
@@ -26,6 +27,7 @@ function Edit() {
 
     const editPost = data => api.put(`/pessoas/${id_pessoa}`, data)
         .then(() => {
+            message.success("Usuario editado!")
             console.log("foi");
         })
         .catch(() => {
