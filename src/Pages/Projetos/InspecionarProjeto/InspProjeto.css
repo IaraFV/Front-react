@@ -309,3 +309,47 @@
     border: 1px solid red;
     border: none;
 }
+.stilo-card-coment{
+    height: 150px;
+    margin-bottom: 0.5rem;
+    overflow-x: auto;
+    border-radius: 1rem;
+    background-color:#21222D;
+}
+#cardtsk{
+    height: 30px;
+    margin-left: 6px;
+    margin-top: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    max-width: 90%;
+    padding: 0.3rem;
+    font-size: 13px;
+    background-color: #D9D9D9;
+    color: #171821;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+#input-coment{
+    border-radius: 10px;
+    max-width: 90%;
+   margin-left: 35PX;
+   color: #FFFFFF;
+   background-color:#21222D;
+}
+.btn-put-coment{
+    display: flex;
+    margin-top: 0.4rem;
+    max-width: 70%;
+    margin-left: 80px;
+    justify-content: space-around;
+}
+
+#btn-put-coment-post{
+    height: 30px;
+    border-radius: 10px;
+}
+#btn-put-coment-cancel{
+    border-radius: 10px;
+}

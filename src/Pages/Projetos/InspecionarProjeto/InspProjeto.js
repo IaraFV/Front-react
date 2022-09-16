@@ -23,31 +23,19 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import 'antd/dist/antd.css';
-import { Collapse } from 'antd';
-import { Avatar, Comment, Form, Input, List } from 'antd';
-import moment from 'moment';
-
-const { TextArea } = Input;
-
-const CommentList = ({ comments }) => (
-    <List
-        dataSource={comments}
-        header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
-        itemLayout="horizontal"
-        renderItem={(props) => <Comment {...props} />}
-    />
-);
-
-const { Panel } = Collapse;
-
+import CardContent from '@mui/material/CardContent';
+import moment from "moment";
+import Avatar from '@mui/material/Avatar';
+import { BsTrash } from "react-icons/bs";
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: '#171821',
+    bgcolor: 'rgba(33, 34, 45, 0.5)',
     border: '2px solid #000',
+    boxShadow: 24,
     p: 4,
     color: '#fff'
 };
@@ -93,19 +81,6 @@ function InspProjeto() {
             })
     }, []
     )
-    const [k,settask] = useState([])
-    console.log(k)
-
-    useEffect(() => {
-        api.get(`tasks/${2}/comentarios`)
-            .then((response) => {
-                settask(response.data)
-            })
-            .catch(() => {
-                console.log("deu errado")
-            })
-    }, []
-    )
     //get do array geral de pessoas
     useEffect(() => {
         api.get(`/pessoas`)
@@ -118,12 +93,76 @@ function InspProjeto() {
             })
     }, []
     )
+    /* --------------------------------------- FUNÇÕES DE DELETE ------------------------------*/
 
     //função de delete projeto
     function deleteprojetos(id_projeto) {
         api.delete(`/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
+
+    //função de delete task
+    function Deletetask() {
+        api.delete(`/tasks/${getid}`)
+        settasks(tasks.filter(task => task.id_task !== getid))
+        console.log('foi')
+    }
+
+    /* --------------------------------------- FUNÇÃO DE PUT ------------------------------*/
+    //função de put
+    const addPost = data => api.put(`/tasks/${getid}`, data)
+        .then(() => {
+            console.log("foi")
+
+        })
+        .catch(() => {
+            console.log("n foi")
+        })
+
+
+    /* ----------------------- FUNÇÃO DE VERIFICAÇÃO PARA REALIZAR O PUT DE STATUS PROJ -------------------------*/
+
+    //funtion put de status projeto
+    function PutStatusproj() {
+        const getstatus = projetos.status
+
+        const [openst, setOpenst] = React.useState(true);
+        const handleClosest = () => setOpenst(false);
+        var statucucl = 'Concluído'
+        const putprojstatus = () => {
+            api.put(`/projetos/${id_projeto}/status/`,
+                { status: statucucl })
+            alert('Status alterado')
+            setOpenst(false)
+            window.location.reload(true);
+        }
+
+        if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído' && totalTaskConcluído != 0) {
+            return (
+                <>
+                    <Modal
+                        open={openst}
+                        onClose={handleClosest}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                Você quer marca esse Projeto como concluido?
+                            </Typography>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                <div>
+                                    <button className="btn-modal-put-status" onClick={putprojstatus}> Sim </button>
+                                    <button className="btn-modal-put-status" onClick={handleClosest}> Não </button>
+                                </div>
+                            </Typography>
+                        </Box>
+                    </Modal>
+                </>
+            )
+        }
+    }
+    /* --------------------------------------- FUNÇÃO DE FILTRO ------------------------------*/
 
     //filtro de task( função de pesquisa de task)
     const handlechange = ({ target }) => {
@@ -137,12 +176,7 @@ function InspProjeto() {
         setInitialtasks(filter);
     }
 
-    //função de delete task
-    function Deletetask() {
-        api.delete(`/tasks/${getid}`)
-        settasks(tasks.filter(task => task.id_task !== getid))
-        console.log('foi')
-    }
+    /* -------------------------------- MANIPULAÇÃO DOS DADOS DOS GETs GERAIS --------------------*/
 
     //pega o id do projeto selecionado e converte para inteiro
     const pegaid = parseInt(id_projeto);
@@ -162,6 +196,49 @@ function InspProjeto() {
     var totalTaskAfazer = filtFazer.length;
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
+
+    /* -------------------------------- FUNÇÕES DE MUDANÇA DE CORES -------------------------*/
+
+    //função de mudar a cor da fonte com base no nivel
+    function MudacorNivel(nivel) {
+        if (nivel === 'facil') {
+            return '#00DB99'
+        }
+        else if (nivel === 'medio') {
+            return '#E9C46A'
+        } else if (nivel === 'dificil') {
+            return '#EB5757'
+        }
+    }
+
+    //função de mudar a cor da fonte com base no status
+    function MudacorStatus(status) {
+        if (status === 'Em planejamento') {
+            return '#EB5757'
+        }
+        else if (status === 'Em desenvolvimento') {
+            return '#E9C46A'
+        } else if (status === 'concluido') {
+            return '#00DB99'
+        }
+
+    }
+
+    /* -------------------------------- FUNÇÕES DOS MODAIS -------------------------*/
+    //variavel geral de recebimento do id da task selecionada (onClick)
+    var [getid, Setteste] = React.useState();
+
+    /* -------------------------------- MODAL 1 -------------------------*/
+
+    //variavel da manipulação do modal 1
+    const [open, setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
+
+    //variaveis do seletor modal 1 
+    var [valutask, setvalue] = React.useState('');
+    const handleChange = (event) => {
+        setvalue(event.target.value);
+    };
 
     //modal 1 função que pega o id da task
     function handleOpen(id_task) {
@@ -186,36 +263,8 @@ function InspProjeto() {
         }
     }
 
-    //modal 2 função que pega o id da task
-    function handleOpenn(id_task) {
-        if (id_task !== 0) {
-            setOpenn(true)
-            Setteste(id_task)
-            console.log(id_task);
-        } else {
-            console.log('n foi true')
-        }
-    }
-
-    //variavel geral de recebimento do id da task selecionada (onClick)
-    var [getid, Setteste] = React.useState();
-
-    //variavel da manipulação do modal 1
-    const [open, setOpen] = React.useState(false);
-    const handleClose = () => setOpen(false);
-
-    //variavel da manipulação do modal 2
-    const [openn, setOpenn] = React.useState(false);
-    const handleClosen = () => setOpenn(false);
-
-    //variaveis do seletor modal 1 
-    var [valutask, setvalue] = React.useState('');
-    const handleChange = (event) => {
-        setvalue(event.target.value);
-    };
-
     //modal para realizar o PUT do status de tasks (modal 1)
-    function CorpoModal() {
+    function Modaldeputstatus() {
         return (
             <>
                 <Modal
@@ -227,7 +276,7 @@ function InspProjeto() {
                 >
                     <Box sx={style}>
                         <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-                            Status da tarefa
+                            Mudar Status
                         </Typography>
                         <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
                             <Box sx={{ minWidth: 120 }}>
@@ -239,8 +288,7 @@ function InspProjeto() {
                                             name: 'age',
                                             id: 'uncontrolled-native',
                                         }}>
-                                        <option>Opçoes</option>
-                                        <option value={'A fazer'}>A fazer</option>
+                                        <option >status</option>
                                         <option value={'Em desenvolvimento'}>Em desenvolvimento</option>
                                         <option value={'Concluído'}>Concluído</option>
                                     </NativeSelect>
@@ -248,26 +296,22 @@ function InspProjeto() {
                             </Box>
 
                         </Typography>
-                        <Button variant="outlined" onClick={PutStatus}>Alterar status</Button>
+                        <Button variant="outlined" onClick={PutStatus}>Mudar status</Button>
                     </Box>
                 </Modal>
             </>
         )
     }
 
+    /* -------------------------------- MODAL 2 -------------------------*/
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
 
-    //função de put
-    const addPost = data => api.put(`/tasks/${getid}`, data)
-        .then(() => {
-            console.log("foi")
-
-        })
-        .catch(() => {
-            console.log("n foi")
-        })
+    //variavel da manipulação do modal 2
+    const [openn, setOpenn] = React.useState(false);
+    const handleClosen = () => setOpenn(false);
 
     //variaves do modal de ediçoes de task (modal 2)
     const [vofNivel, setAge] = React.useState('');
@@ -275,8 +319,19 @@ function InspProjeto() {
         setAge(event.target.value);
     };
 
+    //modal 2 função que pega o id da task
+    function handleOpenn(id_task) {
+        if (id_task !== 0) {
+            setOpenn(true)
+            Setteste(id_task)
+            console.log(id_task);
+        } else {
+            console.log('n foi true')
+        }
+    }
+
     //modal de ediçoes de task (modal 2)
-    function ModaldoMenu() {
+    function ModaldeEdicaoTask() {
         return (
             <>
                 <Modal
@@ -338,43 +393,7 @@ function InspProjeto() {
         );
     }
 
-    //função de mudar a cor da fonte com base no nivel
-    function MudacorNivel(nivel) {
-        if (nivel === 'facil') {
-            return '#00DB99'
-        }
-        else if (nivel === 'medio') {
-            return '#E9C46A'
-        } else if (nivel === 'dificil') {
-            return '#EB5757'
-        }
-    }
-
-    //função de mudar a cor da fonte com base no status
-    function MudacorStatus(status) {
-        if (status === 'Em planejamento') {
-            return '#EB5757'
-        }
-        else if (status === 'Em desenvolvimento') {
-            return '#E9C46A'
-        } else if (status === 'concluido') {
-            return '#00DB99'
-        }
-
-    }
-
-    //função de add comentario
-    function Comentario(id_task) {
-        var comentarios = ''
-            if (id_task === 0){
-                console.log('id_ taske é zero')
-            } else{
-                api.post(`tasks/${id_task}/comentarios`, {
-                    comentario: comentarios
-                })
-            }
-        }
-        
+    /* -------------------------------- MODAL 3 -------------------------*/
 
     //variaveis modal 3
     const [abrir, setabrir] = React.useState(false);
@@ -392,7 +411,7 @@ function InspProjeto() {
     }
 
     //modal de teste para o novo loud (3)
-    function Modalbeta() {
+    function Modaldeinformaçoes() {
         const getpeople = tasks.filter((nome) => nome.id_task === getid)
         const nomepeople = getpeople.map((getn) => getn.nome_pessoa)
         const datatesk = getpeople.map((getdata) => getdata.created_at.slice(0, 10))
@@ -429,7 +448,7 @@ function InspProjeto() {
                         <Typography>
                             <div>
                                 <button className="btn-novo-style" onClick={Deletetask}> Deletar </button>
-                                <button className="btn-novo-style" onClick={ModaldoMenu}> Editar </button>
+                                <button className="btn-novo-style" onClick={Modaldeputstatus}> Editar </button>
                             </div>
                         </Typography>
                     </Box>
@@ -437,9 +456,103 @@ function InspProjeto() {
             </>
         )
     }
-    /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
-     * de "nenhum item encontrado".
-    */
+
+    /* -------------------------------- FUNÇÃO DE COMENTARIO -------------------------*/
+    
+    //modal 1 função que pega o id da task
+    function handleOpeny(id_task) {
+        if (id_task !== 0) {
+            setOpeny(true)
+            Setteste(id_task)
+        } else {
+            console.log('n foi true')
+        }
+    }
+    const [openy, setOpeny] = React.useState(false);
+    const handleClosey = () => setOpeny(false);
+
+    //função de add comentario
+    function Comentario() {
+
+    var [comentTasks, setcomentTasks] = useState([])
+
+    //Delete comentario
+    function Deletetaskcoment(id_comentario) {
+    api.delete(`/tasks/${getid}/comentarios/${id_comentario}`)
+    setcomentTasks(comentTasks.filter(comentario => comentario.id_comentario !== id_comentario))
+    }
+        useEffect(() => {
+            api.get(`/tasks/${getid}/comentarios`)
+                .then((response) => {
+                    setcomentTasks(response.data)
+                    console.log('pegou o comentario')
+                })
+                .catch(() => {
+                    console.log("deu errado")
+                })
+        }, []
+        )
+        var [value, setValue] = useState('');
+
+        const handleChange = (e) => {
+            setValue(e.target.value);
+        };
+
+        const putcomentTask = () => {
+            api.post(`tasks/${getid}/comentarios`, {
+                comentario: value
+            })
+            alert('post de comentario OK')
+        }
+
+        return (
+            <>
+                <Modal
+                    open={openy}
+                    onClose={handleClosey}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            Comentarios
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <div className='stilo-card-coment' >
+                                {
+                                    comentTasks?.map((pegacoment) => {
+                                        return (
+                                            <>
+                                                <div id='cardtsk'>
+                                                    <h6  > {pegacoment.comentario}</h6>
+                                                   <button onClick={() => Deletetaskcoment(pegacoment.id_comentario)} style={{background:'none', fontSize:'12px'}}><BsTrash/></button>
+                                                </div>
+                                            </>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </Typography>
+                        <Typography>
+                            <div>
+                                <input type={"text"} placeholder='digite aqui....' id="input-coment" onChange={handleChange}></input>
+                            </div>
+                            <div className='btn-put-coment'>
+
+                                <button onClick={putcomentTask} style={{ background: 'none' }} id='btn-put-coment-post'>Comentar</button>
+                                <button onClick={handleClosey} style={{ background: 'none' }} id='btn-put-coment-cancel'>Cancelar</button>
+
+                            </div>
+                        </Typography>
+                    </Box>
+                </Modal>
+            </>
+        )
+    }
+
+    /* --------------------------------FUNÇÕES DE VERIFICAÇÃO DE ERROS
+    ----------------------------------- RENDERIZAÇÃO DOS CARDS DAS TASKS -------------------------*/
+
     function VerificaAfazer() {
         if (totalTaskAfazer === 0) {
             return (
@@ -466,7 +579,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
-                                                <button style={{background:'none'}} onClick={() => Comentario(projetos.id_task)}> comentarios </button>
+                                                <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios</button>
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -474,15 +587,11 @@ function InspProjeto() {
                             );
                         })
                     }
-                    <ModaldoMenu />
-                    <CorpoModal />
                 </>
             )
         }
     }
-    /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
-     * de "nenhum item encontrado".
-    */
+
     function VerificaDesenvolvimento() {
         if (totalTaskEmdesenvolvimento === 0) {
             return (
@@ -509,6 +618,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
+                                            <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios</button>
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -516,16 +626,11 @@ function InspProjeto() {
                             );
                         })
                     }
-                     <Modalbeta />
-                    <ModaldoMenu />
-                    <CorpoModal />
                 </>
             )
         }
     }
-    /**Esta função faz uma verificação de erro. Caso o Array velha vazio ele retorna uma imagem 
-     * de "nenhum item encontrado".
-    */
+
     function VerificaConcluído() {
         if (totalTaskConcluído === 0) {
             return (
@@ -552,6 +657,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
+                                            <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios</button>
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -559,52 +665,12 @@ function InspProjeto() {
                             );
                         })
                     }
-                    <Modalbeta />
-                    <ModaldoMenu />
-                    <CorpoModal />
                 </>
             )
         }
     }
-    //funtion put de status projeto
-    function PutStatusproj() {
-        const getstatus = projetos.status
 
-        const [openst, setOpenst] = React.useState(true);
-        const handleClosest = () => setOpenst(false);
-        var statucucl = 'Concluído'
-        const putprojstatus = () => {
-            api.put(`/projetos/${id_projeto}/status/`,
-                { status: statucucl })
-            alert('Status alterado')
-            setOpenst(false)
-        }
 
-        if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído' && totalTaskConcluído != 0) {
-            return (
-                <>
-                    <Modal
-                        open={openst}
-                        onClose={handleClosest}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                    >
-                        <Box sx={style}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                                Você quer marca esse Projeto como concluido?
-                            </Typography>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                <div>
-                                    <button className="btn-modal-put-status" onClick={putprojstatus}> Sim </button>
-                                    <button className="btn-modal-put-status" onClick={handleClosest}> Não </button>
-                                </div>
-                            </Typography>
-                        </Box>
-                    </Modal>
-                </>
-            )
-        }
-    }
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
@@ -669,6 +735,10 @@ function InspProjeto() {
                     </div>
                 </div>
             </div>
+            <Modaldeinformaçoes/>
+            <Comentario />
+            <ModaldeEdicaoTask />
+            <Modaldeputstatus />
         </div>
     )
 }
