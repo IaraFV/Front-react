@@ -21,11 +21,13 @@ import {
   TituloHome,
   BodyText,
 } from "./style";
+import { Avatar, Comment } from 'antd';
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from "./img/itensNaoencontrados.png";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
+import Avatares from "./avatar";
 
-function Home() {
+function Home(props) {
   //variaves das requisições GET
   const [projeto, setprojeto] = useState([]);
   const [tasks, setTask] = useState([]);
@@ -93,8 +95,10 @@ function Home() {
   for (var pega = 0; pega < 8; pega++) {
     receberProj.push(recebeprojetos[pega]);
   }
+  
 
-  console.log(receberProj);
+  
+  
 
   //contadores das variaveis
   const totalpessoas = pessoas.length;
@@ -106,6 +110,7 @@ function Home() {
     let Data = new Date(data);
     return Data.toLocaleDateString("pt-BR");
   }
+
 
   //função de verificação de erro
   function Apresentaproj() {
@@ -208,10 +213,14 @@ function Home() {
                 </Link>
               </h5>
               <h6 className="card-subtitle mb-2 text-muted"></h6>
+              
               <ul className="list-group list-group-flush" id="ul-pessoa">
+                
                 {nomepeople.map((nome) => {
+                  
                   return (
                     <>
+                      <li>{<Avatares/>}</li>
                       <li className="list-group-item" id="li-pessoa">
                         {nome}
                       </li>

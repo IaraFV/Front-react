@@ -2,8 +2,17 @@ import styled from "styled-components";
 
 export const OrgCard = styled.div`
     width: 60rem;
+    min-width: 15rem;
     overflow-x: auto;
     height: 20rem;
+    ::-webkit-scrollbar {
+        background: #171821;
+        width: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #d9d9d9;
+        border-radius: 20px;
+      }
 `;
 
 export const CardP = styled.div`
