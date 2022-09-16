@@ -1,21 +1,24 @@
 import styled from "styled-components";
 
 export const OrgCard = styled.div`
-    width: 66rem;
-    display: flex;
-    justify-content: space-between;
-    
+    width: 60rem;
+    overflow-x: auto;
+    height: 20rem;
 `;
 
 export const CardP = styled.div`
-    width: 21rem;
+    width: 58rem;
     border-radius: 10px;
     background: #21222D;
-    padding: 0.5rem;
+    padding: 0.5rem!important;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    border-left: 2px solid #2684FF;
 `;
 
 export const CardBody = styled.div`
     
+    justify-content: space-between;
 `;
 export const CardTitle= styled.div`
     font-family: 'Roboto';
@@ -26,23 +29,22 @@ export const CardTitle= styled.div`
     color: #FFFFFF;
 `;
 
-export const Status = styled.div`
-    font-family: 'Roboto';
-    font-style: normal;
-    font-size: 1rem;
-    line-height: 15px;
-    margin-top: 2%;
-    color: rgba(0, 219, 153, 0.9); 
- `;
-
  export const CardTextData = styled.div`
     font-style: normal;
     font-weight: 500;
     font-size: 0.8rem;
     line-height: 15px;
     color: #717986;
-    margin-top: 4%;
+    margin-top: 1%;
 `;
-export const CardText = styled.div`
-    margin-top: 4%;
+
+export const TituloHome = styled.div`
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 39px;
+    color: #FFFFFF;
+    width: 10rem;
 `;
+

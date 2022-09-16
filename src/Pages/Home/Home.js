@@ -10,7 +10,17 @@ import {
 import { BsBarChartLine } from "react-icons/bs";
 import api from "../../services/api";
 import nenhumprojeto from "../../assets/NenhumProjeto/Group 1000004639.png";
-import { CardP, CardTitle, CardBody,Status, CardText, OrgCard, CardTextData } from "./style";
+import {
+  CardP,
+  CardTitle,
+  CardBody,
+  Status,
+  CardText,
+  OrgCard,
+  CardTextData,
+  TituloHome,
+  BodyText,
+} from "./style";
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from "./img/itensNaoencontrados.png";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
@@ -80,7 +90,7 @@ function Home() {
     (getstatus) => getstatus.status === "Concluído"
   );
   var receberProj = [];
-  for (var pega = 0; pega < 3; pega++) {
+  for (var pega = 0; pega < 8; pega++) {
     receberProj.push(recebeprojetos[pega]);
   }
 
@@ -92,44 +102,39 @@ function Home() {
   const totaltask = tasks.length;
   const totalequipes = equipes.length;
 
-
   function formdata(data) {
     let Data = new Date(data);
-    return Data.toLocaleDateString("pt-BR")
+    return Data.toLocaleDateString("pt-BR");
   }
-
 
   //função de verificação de erro
   function Apresentaproj() {
     return (
       <>
+        <TituloHome>
+          Projetos <span style={{ color: '#2684FF' }}>Concluidos</span>
+        </TituloHome>
         <OrgCard>
           {receberProj.map((receberProj, key) => {
             return (
               <>
-
+                <li style={{ listStyle: 'none' }}>
                 <CardP>
                   <CardBody>
                     <CardTitle>
                       {receberProj?.nome_projeto}
                     </CardTitle>
-                    <Status>
-                      <span>{receberProj?.status}</span>
-                    </Status>
+
                     <CardTextData>
                       <div>
-                        <BsFlagFill />
+                        Data de conclusão: 
                         {formdata(receberProj?.data_inicio)}
                       </div>
                     </CardTextData>
-                    <CardText>
-                      <div className="titulo-descricao-projeto">Descrição</div>
-                      <div id="corpo-descricao-projeto">
-                        {receberProj?.descricao_projeto}
-                      </div>
-                    </CardText>
                   </CardBody>
                 </CardP>
+                </li>
+                
               </>
             );
           })}
