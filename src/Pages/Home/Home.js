@@ -12,9 +12,9 @@ import api from "../../services/api";
 import nenhumprojeto from "../../assets/NenhumProjeto/Group 1000004639.png";
 import { Empty } from "antd";
 
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 import { BsFlagFill } from "react-icons/bs";
-import imagemerro from './img/itensNaoencontrados.png';
+import imagemerro from "./img/itensNaoencontrados.png";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 
 function Home() {
@@ -86,6 +86,8 @@ function Home() {
     receberProj.push(recebeprojetos[pega]);
   }
 
+  console.log(receberProj)
+
   //contadores das variaveis
   const totalpessoas = pessoas.length;
   const totalprojetos = projeto.length;
@@ -99,9 +101,9 @@ function Home() {
         {receberProj?.map((status) => {
           return (
             <>
-              <Card id="div-card-projeto">
+              <Card style={{ width: "35rem" }}>
                 <Card.Body>
-                  <Card.Title id="nome-projeto-plan" >
+                  <Card.Title>
                     {projeto.nome_projeto}
                     <div>
                       <Link
@@ -112,14 +114,12 @@ function Home() {
                     </div>
                   </Card.Title>
                   <Card.Text id="status">
-                    <span >
-                      {projeto.status}
-                    </span>
+                    <span>{projeto.status}</span>
                   </Card.Text>
                   <Card.Text id="bandeira-data">
                     <div>
                       <BsFlagFill />
-                      {(projeto.data_inicio)}
+                      {projeto.data_inicio}
                     </div>
                   </Card.Text>
                   <Card.Text>
@@ -141,7 +141,9 @@ function Home() {
     <>
       <div id="caixa-geral-home-um">
         <div id="projeto-geralcont">
-          <div><Apresentaproj/></div>
+          <div>
+            <Apresentaproj />
+          </div>
           <div id="format-cards-contadores">
             <div className="body-card-home-pro">
               <div className="org">
