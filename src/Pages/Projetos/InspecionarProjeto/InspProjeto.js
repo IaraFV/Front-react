@@ -16,15 +16,13 @@ import { AiOutlineMore } from "react-icons/ai";
 import { IoEllipseSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup'
-import { useForm } from 'react-hook-form'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import 'antd/dist/antd.css';
 import { BsTrash } from "react-icons/bs";
 import { message } from "antd";
+import { RiChat3Line } from "react-icons/ri";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -37,13 +35,6 @@ const style = {
     p: 4,
     color: '#fff'
 };
-
-const validacaoPostT = yup.object().shape({
-    descricao_task: yup.string().required("A descrição é obrigatoria!"),
-    nivel: yup.string().required("O nivel é obrigatoria!"),
-    projeto_id: yup.number(),
-    pessoa_id: yup.number(),
-})
 
 function InspProjeto() {
 
@@ -91,16 +82,6 @@ function InspProjeto() {
         settasks(tasks.filter(task => task.id_task !== getid))
         console.log('foi')
     }
-    // --------------------------------------- FUNÇÃO DE PUT ------------------------------
-    //função de put
-    const addPost = data => api.put(`/tasks/${getid}`, data)
-        .then(() => {
-            console.log("foi")
-
-        })
-        .catch(() => {
-            console.log("n foi")
-        })
 
     // ----------------------- FUNÇÃO DE VERIFICAÇÃO PARA REALIZAR O PUT DE STATUS PROJ -------------------------
     //funtion put de status projeto
@@ -282,23 +263,36 @@ function InspProjeto() {
     }
 
     // -------------------------------- MODAL 2 -------------------------
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({
-        resolver: yupResolver(validacaoPostT)
-    })
-    console.log(tasks)
     function Editetask() {
         setOpenn(true)
         setabrir(false)
     }
+
     //variavel da manipulação do modal 2
     const [openn, setOpenn] = React.useState(false);
     const handleClosen = () => setOpenn(false);
 
     //variaves do modal de ediçoes de task (modal 2)
-    const [vofNivel, setAge] = React.useState('');
+    var [vofNivel, setAge] = React.useState('');
     const handleChangeg = (event) => {
         setAge(event.target.value);
     };
+    var [vofdesc, setdesc] = useState('');
+    const handleChangedesc = (event) => {
+        setdesc(event.target.value);
+    };
+    console.log(vofdesc)
+    const taskget = tasks.filter((get) => get.id_task === getid);
+    var idpessoa = taskget.map((get) => get.pessoa_id)
+
+    const Putdetask = () => {
+        api.put(`/tasks/${getid}`, {
+            descricao_task: vofdesc,
+            nivel: vofNivel,
+            projeto_id: id_projeto,
+            pessoa_id: idpessoa,
+        })
+    }
 
     //modal de ediçoes de task (modal 2)
     function ModaldeEdicaoTask() {
@@ -316,11 +310,10 @@ function InspProjeto() {
                             Edições
                         </Typography>
                         <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-                            <form onSubmit={handleSubmit(addPost)}>
                                 <div className="fields">
                                     <label>descricao_task</label>
-                                    <input type="text" name="descricao_task" {...register("descricao_task")} className="inputgeral" />
-                                    <p className="error-message">{errors.descricao_task?.message} </p>
+                                    <input type="text"  onChange={handleChangedesc} className="inputgeral" />
+                                    
                                 </div>
                                 <div className="fields">
                                     <label>nivel</label>
@@ -328,7 +321,6 @@ function InspProjeto() {
                                         <FormControl fullWidth>
                                             <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
                                             <Select
-                                                {...register("nivel")}
                                                 labelId="demo-simple-select-label"
                                                 projeto_id="demo-simple-select"
                                                 value={vofNivel}
@@ -340,23 +332,12 @@ function InspProjeto() {
                                                 <MenuItem value={'dificil'} key={'dificil'}>dificil</MenuItem>
 
                                             </Select>
-                                            <p className="error-message">{errors.nivel?.message} </p>
+                                            <p className="error-message"></p>
                                         </FormControl>
                                     </Box>
                                 </div>
-                                <div className="fields">
-                                    <label>projeto_id</label>
-                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
-                                    <p className="error-message">{errors.nome_equipe?.message} </p>
-                                </div>
-                                <div className="fields">
-                                    <label>pessoa_id</label>
-                                    <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral" />
-                                    <p className="error-message">{errors.nome_equipe?.message} </p>
-                                </div>
-                            </form>
                         </Typography>
-                        <Button variant="outlined">Editar</Button>
+                        <Button variant="outlined" onClick={Putdetask}>Editar</Button>
                     </Box>
                 </Modal>
             </>
@@ -465,7 +446,7 @@ function InspProjeto() {
         const handleChange = (e) => {
             setValue(e.target.value);
         };
-        
+
         function atualiza() {
             api.get(`/tasks/${getid}/comentarios`)
             .then((response) => {
@@ -559,7 +540,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
-                                                <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios</button>
+                                                <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios <RiChat3Line /> </button>
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -597,7 +578,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
-                                            <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios</button>
+                                            <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios <RiChat3Line /></button>
                                             </div>
                                         </Card.Body>
                                     </Card>
@@ -635,7 +616,7 @@ function InspProjeto() {
                                             <Card.Title className="name-task-inpprojeto" key={key}>{projetos.descricao_task}</Card.Title>
                                             <Card.Title className="name-task-inpprojeto"><span style={{ color: MudacorNivel(projetos.nivel) }}>{projetos.nivel}</span></Card.Title>
                                             <div>
-                                            <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios</button>
+                                            <button style={{background:'none'}} onClick={() => handleOpeny(projetos.id_task)}>comentarios <RiChat3Line /></button>
                                             </div>
                                         </Card.Body>
                                     </Card>
