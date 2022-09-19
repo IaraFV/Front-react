@@ -113,12 +113,14 @@ function InspProjeto() {
 
         const putprojstatus = () => {
             api.put(`/projetos/${id_projeto}/status/`,
-                { status: statucucl })
-            message.success('Status alterado!')
-            setOpenst(false)
-            window.location.reload(true);
+                { status: statucucl 
+                })
+                .then(() => {
+                    setOpenst(false)
+                    window.location.reload(true);
+                });
         }
-        if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído' && totalTaskConcluído != 0) {
+        if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído' && totalTaskConcluído != 0 ) {
             return (
                 <>
                     <Modal
@@ -283,7 +285,11 @@ function InspProjeto() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
-
+    console.log(tasks)
+    function Editetask() {
+        setOpenn(true)
+        setabrir(false)
+    }
     //variavel da manipulação do modal 2
     const [openn, setOpenn] = React.useState(false);
     const handleClosen = () => setOpenn(false);
@@ -409,7 +415,7 @@ function InspProjeto() {
                         <Typography>
                             <div>
                                 <button className="btn-novo-style" onClick={Deletetask}> Deletar </button>
-                                <button className="btn-novo-style" onClick={Modaldeputstatus}> Editar </button>
+                                <button className="btn-novo-style" onClick={Editetask}> Editar </button>
                             </div>
                         </Typography>
                     </Box>
