@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import './inspecionar.css'
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from "axios";
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
-import { BsFillFileEarmarkFill } from "react-icons/bs";
 import CheckIcon from '@mui/icons-material/Check';
 import { AiOutlineStar } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import CardHeader from '@mui/material/CardHeader';
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import imagemerro from '../../../assets/img/falta_de_dados (cópia).png';
 import api from '../../../services/api'
-import Alert from '@mui/material/Alert';
 import { message } from "antd";
 
 function Inspecionar() {
@@ -236,7 +231,3 @@ function Inspecionar() {
     )
 }
 export default Inspecionar;
-
-/*<Link to="/PostT">
-                                <AiOutlinePlus className="btn-adicionartesk"></AiOutlinePlus>
-                            </Link> */

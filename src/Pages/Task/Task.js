@@ -1,4 +1,4 @@
-import axios from "axios";
+/*import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './Task.css';
 import Table from 'react-bootstrap/Table';
@@ -49,7 +49,7 @@ function Task() {
 
     var Sta = stats.filter(states => states.status === 'Concluído');
 
-    /** our cards */
+    /** our cards 
     cards.forEach(card => {
         card.addEventListener('dragstart', dragstart)
         card.addEventListener('drag', drag)
@@ -76,7 +76,7 @@ function Task() {
         this.classList.remove('is-dragging')
     }
 
-    /** place where we will drop cards */
+    /** place where we will drop cards 
     dropzones.forEach(dropzone => {
         dropzone.addEventListener('dragenter', dragenter)
         dropzone.addEventListener('dragover', dragover)
@@ -111,7 +111,7 @@ function Task() {
         this.classList.remove('over')
     }
 
-/**função de filtro */
+/**função de filtro 
     const handlechange = ({ target }) => {
         if (!target.value) {
             setPosts(initialPosts)
@@ -220,4 +220,4 @@ function Task() {
         </div>
     )
 }
-export default Task;
+export default Task;*/
