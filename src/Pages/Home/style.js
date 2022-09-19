@@ -55,5 +55,6 @@ export const TituloHome = styled.div`
     line-height: 39px;
     color: #FFFFFF;
     width: 10rem;
+    margin-top: -2%;
 `;
 
