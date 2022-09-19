@@ -1,0 +1,22 @@
+.menu-task-add {
+    background: #21222D;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    height: 2.7rem;
+    border: none;
+
+}
+
+#botoespostTask{
+    margin-top: 30px;
+    text-align: center;
+}
+
+#btn-post-taskspagecad{
+    display: flex;
+    justify-content: space-between;
+    width: 24rem;
+    margin-top: 5%;
+}

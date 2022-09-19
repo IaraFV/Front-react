@@ -67,6 +67,10 @@ function Inspecionar() {
     }
 
 
+    function formdata(data) {
+        let Data = new Date(data);
+        return Data.toLocaleDateString("pt-BR")
+      }
 
     function stringAvatar(name) {
         return {
@@ -199,7 +203,7 @@ function Inspecionar() {
                         <div id="bodydetalhes">
                             <p>Username: {people.nome_pessoa}</p>
                             <p>Função: {people.funcao_pessoa}</p>
-                            <p>Data de contratação: {people.data_contratacao}</p>
+                            <p>Data de contratação: {formdata(people.data_contratacao)}</p>
                         </div>
                     </div>
                     <div id="botoes-insp">

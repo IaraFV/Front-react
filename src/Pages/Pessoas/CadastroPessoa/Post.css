@@ -7,7 +7,8 @@ main {
 .card-post {
     background-color: #21222D;
     padding: 30px 70px;
-    border-radius: 15px;
+    border-radius: 10px;
+    margin-top: -2%;
 }
 
 .fields {
@@ -182,9 +183,16 @@ textarea {
     width: 13vh;
     height: 13vh;
 }
+#icon-folder{
+    width: 8vh;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+}
 #avatar-cadastrar-users{
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 8rem;
     
 }
