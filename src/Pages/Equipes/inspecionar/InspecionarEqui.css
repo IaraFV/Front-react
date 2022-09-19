@@ -20,6 +20,8 @@
 #nome-user-group{
     color: #FFFFFF;
     margin-bottom: 3%;
+    width: 17rem;
+    margin-left: 0%;
 }
 
 #just-cards-geral-inspequipe {
@@ -35,9 +37,6 @@
     height: 50rem;
 }
 
-#recebe-membros-equipe {
-    border: 1px solid red;
-}
 
 .line-insp-doiss {
     height: 2px;
@@ -73,13 +72,13 @@
 
 .avatares_Equipert {
     overflow-x: auto;
+    overflow-y: none;
 }
 #apresentacao-dos-membros{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 12.7rem;
-    
+    width: 20rem;
 }
 
 #seta {
@@ -225,7 +224,6 @@
 
 #body-cont-peojetos-equipe {
     width: 12rem;
-    border: 1px solid red;
     height: 80px;
     background: #171821;
     border: 1px dashed #171821;

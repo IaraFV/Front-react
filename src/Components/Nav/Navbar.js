@@ -31,8 +31,7 @@ function NavbarHome() {
                 <Navbar key={expand} id="nav-bar-home-menu" expand={expand} className="mb-3" class="navbar navbar-dark ">
                     <Container fluid >
                         <Navbar.Brand >
-                            <div id='img-brisa-home'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '-53px' }} />
-                            </div>
+                            
                         </Navbar.Brand>
 
                         <Navbar.Toggle id="menu-a" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
@@ -57,6 +56,9 @@ function NavbarHome() {
                                     <Nav.Link id="Equipes-Menu" as={Link} to="/Equipes"><BsPeople /> Equipes</Nav.Link>
                                     <Nav.Link id="Projetos-Menu" as={Link} to="/ProjetosConcluidos"><AiOutlineFile /> Projetos</Nav.Link>
                                     <Nav.Link id="Sair-Menu" onClick={logout}><FiLogOut/> Sair</Nav.Link>
+
+                                    <div id='img-brisa-home'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '30rem', marginLeft: '5rem' }} />
+                            </div>
                                 </Nav>
 
                             </Offcanvas.Body>

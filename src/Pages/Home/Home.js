@@ -21,7 +21,7 @@ import {
   TituloHome,
   BodyText,
 } from "./style";
-import { Avatar, Comment } from 'antd';
+import { Avatar, Comment } from "antd";
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from "./img/itensNaoencontrados.png";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
@@ -57,6 +57,8 @@ function Home(props) {
         console.log("deu errado pessoa");
       });
   }, []);
+
+  console.log(pessoas);
   //get do array geral de equipe
   useEffect(() => {
     api
@@ -82,7 +84,7 @@ function Home(props) {
 
   //função de FOR, pega 8 pessoas recem Add
   var receberPeople = [];
-  for (var person = 0; person < 8; person++) {
+  for (var person = 0; person < 4; person++) {
     receberPeople.push(pessoas[person]);
   }
   const nomepeople = receberPeople.map((luc) => luc?.nome_pessoa);
@@ -92,13 +94,9 @@ function Home(props) {
     (getstatus) => getstatus.status === "Concluído"
   );
   var receberProj = [];
-  for (var pega = 0; pega < 8; pega++) {
+  for (var pega = 0; pega < 7; pega++) {
     receberProj.push(recebeprojetos[pega]);
   }
-  
-
-  
-  
 
   //contadores das variaveis
   const totalpessoas = pessoas.length;
@@ -111,35 +109,31 @@ function Home(props) {
     return Data.toLocaleDateString("pt-BR");
   }
 
-
   //função de verificação de erro
   function Apresentaproj() {
     return (
       <>
         <TituloHome>
-          Projetos <span style={{ color: '#2684FF' }}>Concluidos</span>
+          Projetos <span style={{ color: "#2684FF" }}>Concluidos</span>
         </TituloHome>
         <OrgCard>
           {receberProj.map((receberProj, key) => {
             return (
               <>
-                <li style={{ listStyle: 'none' }}>
-                <CardP>
-                  <CardBody>
-                    <CardTitle>
-                      {receberProj?.nome_projeto}
-                    </CardTitle>
+                <li style={{ listStyle: "none" }}>
+                  <CardP>
+                    <CardBody>
+                      <CardTitle>{receberProj?.nome_projeto}</CardTitle>
 
-                    <CardTextData>
-                      <div>
-                        Data de conclusão: 
-                        {formdata(receberProj?.data_inicio)}
-                      </div>
-                    </CardTextData>
-                  </CardBody>
-                </CardP>
+                      <CardTextData>
+                        <div>
+                          Data de conclusão:
+                          {formdata(receberProj?.data_inicio)}
+                        </div>
+                      </CardTextData>
+                    </CardBody>
+                  </CardP>
                 </li>
-                
               </>
             );
           })}
@@ -208,19 +202,13 @@ function Home(props) {
             <div className="card-body">
               <h5 className="card-title" id="titulo-card-usuario-home">
                 Usuarios
-                <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
-                  <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
-                </Link>
               </h5>
               <h6 className="card-subtitle mb-2 text-muted"></h6>
-              
+
               <ul className="list-group list-group-flush" id="ul-pessoa">
-                
                 {nomepeople.map((nome) => {
-                  
                   return (
                     <>
-                      <li>{<Avatares/>}</li>
                       <li className="list-group-item" id="li-pessoa">
                         {nome}
                       </li>
@@ -228,6 +216,9 @@ function Home(props) {
                   );
                 })}
               </ul>
+              <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
+                <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
+              </Link>
             </div>
           </div>
         </div>
