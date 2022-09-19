@@ -26,7 +26,7 @@ import 'antd/dist/antd.css';
 import { Collapse } from 'antd';
 import { Avatar, Comment, Form, Input, List } from 'antd';
 import moment from 'moment';
-
+import { BsTrash } from "react-icons/bs";
 const { TextArea } = Input;
 
 const CommentList = ({ comments }) => (
@@ -38,7 +38,7 @@ const CommentList = ({ comments }) => (
     />
 );
 
-const Editor = ({ onChange, onSubmit, submitting, value }) => (
+/*const Editor = ({ onChange, onSubmit, submitting, value }) => (
     <>
         <Form.Item>
             <TextArea rows={2} onChange={onChange} value={value} />
@@ -49,7 +49,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
             </Button>
         </Form.Item>
     </>
-);
+);*/
 const { Panel } = Collapse;
 
 const style = {
@@ -483,13 +483,26 @@ function InspProjeto() {
         )
     }
 
-     /* -------------------------------- FUNÇÃO DE COMENTARIO -------------------------*/
+    /* -------------------------------- FUNÇÃO DE COMENTARIO -------------------------*/
 
     //função de add comentario
     function Comentario() {
         const [comments, setComments] = useState([]);
         const [submitting, setSubmitting] = useState(false);
         var [value, setValue] = useState('');
+        var [comentTasks, setcomentTasks] = useState([])
+
+        useEffect(() => {
+            api.get(`/tasks/${getid}/comentarios`)
+                .then((response) => {
+                    setcomentTasks(response.data)
+                    console.log('pegou o comentario')
+                })
+                .catch(() => {
+                    console.log("deu errado")
+                })
+        }, []
+        )
 
         const handleSubmit = () => {
             if (!value) return;
@@ -507,25 +520,54 @@ function InspProjeto() {
                     },
                 ]);
             }, 500);
+            api.post(`tasks/${getid}/comentarios`, {
+                comentario: value
+            })
+            alert('post de comentario OK')
         };
 
         const handleChange = (e) => {
             setValue(e.target.value);
         };
+        function Deletetaskcoment(id_comentario) {
+            api.delete(`/tasks/${getid}/comentarios/${id_comentario}`)
+            setcomentTasks(comentTasks.filter(comentario => comentario.id_comentario !== id_comentario))
+            }
+
         return (
             <>
                 <Collapse className='campo_comentario' >
                     <Panel header="Comentarios" key="1" className='color'>
-                        {comments.length > 0 && <CommentList comments={comments} />}
+                        <div style={{border:'1px solid red', height:'100px', msOverflowY:'auto'}}>
+                            {
+                                    comentTasks?.map((pegacoment) => {
+                                        return (
+                                            <>
+                                                <div id='cardtsk'>
+                                                    <h6  > {pegacoment.comentario}</h6>
+                                                   <button onClick={() => Deletetaskcoment(pegacoment.id_comentario)} style={{background:'none', fontSize:'12px'}}><BsTrash/></button>
+                                                </div>
+                                            </>
+                                        )
+                                    })
+                                }
+                                {comments.length > 0 && <CommentList comments={comments} />}
+                        </div>
+                        
+                        
                         <Comment
                             avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
                             content={
-                                <Editor
-                                    onChange={handleChange}
-                                    onSubmit={handleSubmit}
-                                    submitting={submitting}
-                                    value={value}
-                                />
+                                <>
+                                    <Form.Item>
+                                        <TextArea rows={2} onChange={handleChange}  />
+                                    </Form.Item>
+                                    <Form.Item>
+                                        <Button htmlType="submit" loading={submitting} onClick={handleSubmit} type="primary">
+                                            Comentar
+                                        </Button>
+                                    </Form.Item>
+                                </>
                             }
                         />
                     </Panel>
@@ -612,7 +654,7 @@ function InspProjeto() {
                             );
                         })
                     }
-                     <Modalbeta />
+                    <Modalbeta />
                     <ModaldoMenu />
                     <CorpoModal />
                 </>
@@ -661,7 +703,7 @@ function InspProjeto() {
             )
         }
     }
-    
+
 
     return (
         <div>

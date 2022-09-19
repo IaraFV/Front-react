@@ -23,10 +23,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import 'antd/dist/antd.css';
-import CardContent from '@mui/material/CardContent';
-import moment from "moment";
-import Avatar from '@mui/material/Avatar';
 import { BsTrash } from "react-icons/bs";
+import { message } from "antd";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -54,7 +52,6 @@ function InspProjeto() {
     const { id_projeto } = useParams()
     const [tasks, settasks] = useState([])
     const [initialtasks, setInitialtasks] = useState([])
-    const [pessoa, setpessoa] = useState([]);
 
     //get do array geral de projetos, sendo passado um parametro para busca com base no id passado
     useEffect(() => {
@@ -81,34 +78,20 @@ function InspProjeto() {
             })
     }, []
     )
-    //get do array geral de pessoas
-    useEffect(() => {
-        api.get(`/pessoas`)
-            .then((response) => {
-                setpessoa(response.data)
-                console.log('deu certo')
-            })
-            .catch(() => {
-                console.log("deu errado")
-            })
-    }, []
-    )
-    /* --------------------------------------- FUNÇÕES DE DELETE ------------------------------*/
-
+    
+    // --------------------------------------- FUNÇÕES DE DELETE ------------------------------
     //função de delete projeto
     function deleteprojetos(id_projeto) {
         api.delete(`/projetos/${id_projeto}`)
         setprojetos(projetos.filter(projetos => projetos.id_projeto !== id_projeto))
     }
-
     //função de delete task
     function Deletetask() {
         api.delete(`/tasks/${getid}`)
         settasks(tasks.filter(task => task.id_task !== getid))
         console.log('foi')
     }
-
-    /* --------------------------------------- FUNÇÃO DE PUT ------------------------------*/
+    // --------------------------------------- FUNÇÃO DE PUT ------------------------------
     //função de put
     const addPost = data => api.put(`/tasks/${getid}`, data)
         .then(() => {
@@ -119,24 +102,22 @@ function InspProjeto() {
             console.log("n foi")
         })
 
-
-    /* ----------------------- FUNÇÃO DE VERIFICAÇÃO PARA REALIZAR O PUT DE STATUS PROJ -------------------------*/
-
+    // ----------------------- FUNÇÃO DE VERIFICAÇÃO PARA REALIZAR O PUT DE STATUS PROJ -------------------------
     //funtion put de status projeto
     function PutStatusproj() {
-        const getstatus = projetos.status
 
+        const getstatus = projetos.status
         const [openst, setOpenst] = React.useState(true);
         const handleClosest = () => setOpenst(false);
         var statucucl = 'Concluído'
+
         const putprojstatus = () => {
             api.put(`/projetos/${id_projeto}/status/`,
                 { status: statucucl })
-            alert('Status alterado')
+            message.success('Status alterado!')
             setOpenst(false)
             window.location.reload(true);
         }
-
         if (totalTaskAfazer === 0 && totalTaskEmdesenvolvimento === 0 && getstatus != 'Concluído' && totalTaskConcluído != 0) {
             return (
                 <>
@@ -162,8 +143,8 @@ function InspProjeto() {
             )
         }
     }
-    /* --------------------------------------- FUNÇÃO DE FILTRO ------------------------------*/
 
+    // --------------------------------------- FUNÇÃO DE FILTRO ------------------------------
     //filtro de task( função de pesquisa de task)
     const handlechange = ({ target }) => {
         if (!target.value) {
@@ -176,7 +157,7 @@ function InspProjeto() {
         setInitialtasks(filter);
     }
 
-    /* -------------------------------- MANIPULAÇÃO DOS DADOS DOS GETs GERAIS --------------------*/
+    // -------------------------------- MANIPULAÇÃO DOS DADOS DOS GETs GERAIS --------------------
 
     //pega o id do projeto selecionado e converte para inteiro
     const pegaid = parseInt(id_projeto);
@@ -197,8 +178,7 @@ function InspProjeto() {
     var totalTaskEmdesenvolvimento = filtFazendo.length;
     var totalTaskConcluído = filtFeito.length;
 
-    /* -------------------------------- FUNÇÕES DE MUDANÇA DE CORES -------------------------*/
-
+    // -------------------------------- FUNÇÕES DE MUDANÇA DE CORES -------------------------
     //função de mudar a cor da fonte com base no nivel
     function MudacorNivel(nivel) {
         if (nivel === 'facil') {
@@ -210,7 +190,6 @@ function InspProjeto() {
             return '#EB5757'
         }
     }
-
     //função de mudar a cor da fonte com base no status
     function MudacorStatus(status) {
         if (status === 'Em planejamento') {
@@ -224,12 +203,11 @@ function InspProjeto() {
 
     }
 
-    /* -------------------------------- FUNÇÕES DOS MODAIS -------------------------*/
+    // -------------------------------- FUNÇÕES DOS MODAIS -------------------------
     //variavel geral de recebimento do id da task selecionada (onClick)
     var [getid, Setteste] = React.useState();
 
-    /* -------------------------------- MODAL 1 -------------------------*/
-
+    // -------------------------------- MODAL 1 -------------------------
     //variavel da manipulação do modal 1
     const [open, setOpen] = React.useState(false);
     const handleClose = () => setOpen(false);
@@ -249,20 +227,18 @@ function InspProjeto() {
             console.log('n foi true')
         }
     }
-
     //modal 1
     function PutStatus() {
         if (valutask !== '') {
             api.put(`/tasks/${getid}/status`,
                 { status: valutask })
-            alert("Cadastrado com Sucesso");
+            message.success('Cadastrado com Sucesso!')
             window.location.reload(true);
 
         } else {
             alert("Não cadastrou");
         }
     }
-
     //modal para realizar o PUT do status de tasks (modal 1)
     function Modaldeputstatus() {
         return (
@@ -303,8 +279,7 @@ function InspProjeto() {
         )
     }
 
-    /* -------------------------------- MODAL 2 -------------------------*/
-
+    // -------------------------------- MODAL 2 -------------------------
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validacaoPostT)
     })
@@ -318,17 +293,6 @@ function InspProjeto() {
     const handleChangeg = (event) => {
         setAge(event.target.value);
     };
-
-    //modal 2 função que pega o id da task
-    function handleOpenn(id_task) {
-        if (id_task !== 0) {
-            setOpenn(true)
-            Setteste(id_task)
-            console.log(id_task);
-        } else {
-            console.log('n foi true')
-        }
-    }
 
     //modal de ediçoes de task (modal 2)
     function ModaldeEdicaoTask() {
@@ -393,12 +357,10 @@ function InspProjeto() {
         );
     }
 
-    /* -------------------------------- MODAL 3 -------------------------*/
-
+    // -------------------------------- MODAL 3 -------------------------
     //variaveis modal 3
     const [abrir, setabrir] = React.useState(false);
     const handlefechar = () => setabrir(false);
-
     //modal 3 
     function lol(id_task) {
         if (id_task !== 0) {
@@ -409,7 +371,6 @@ function InspProjeto() {
             console.log('n foi true')
         }
     }
-
     //modal de teste para o novo loud (3)
     function Modaldeinformaçoes() {
         const getpeople = tasks.filter((nome) => nome.id_task === getid)
@@ -457,9 +418,8 @@ function InspProjeto() {
         )
     }
 
-    /* -------------------------------- FUNÇÃO DE COMENTARIO -------------------------*/
-    
-    //modal 1 função que pega o id da task
+    // -------------------------------- FUNÇÃO DE COMENTARIO -------------------------
+    //modal comentario função que pega o id da task
     function handleOpeny(id_task) {
         if (id_task !== 0) {
             setOpeny(true)
@@ -470,7 +430,6 @@ function InspProjeto() {
     }
     const [openy, setOpeny] = React.useState(false);
     const handleClosey = () => setOpeny(false);
-
     //função de add comentario
     function Comentario() {
 
@@ -481,6 +440,7 @@ function InspProjeto() {
     api.delete(`/tasks/${getid}/comentarios/${id_comentario}`)
     setcomentTasks(comentTasks.filter(comentario => comentario.id_comentario !== id_comentario))
     }
+
         useEffect(() => {
             api.get(`/tasks/${getid}/comentarios`)
                 .then((response) => {
@@ -492,17 +452,32 @@ function InspProjeto() {
                 })
         }, []
         )
-        var [value, setValue] = useState('');
 
+        
+        var [value, setValue] = useState('');
+        
         const handleChange = (e) => {
             setValue(e.target.value);
         };
+        
+        function atualiza() {
+            api.get(`/tasks/${getid}/comentarios`)
+            .then((response) => {
+                setcomentTasks(response.data)
+                console.log('pegou o comentario')
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+        }
 
         const putcomentTask = () => {
             api.post(`tasks/${getid}/comentarios`, {
                 comentario: value
             })
-            alert('post de comentario OK')
+            .then(() => {
+                atualiza()
+            })
         }
 
         return (
@@ -550,9 +525,8 @@ function InspProjeto() {
         )
     }
 
-    /* --------------------------------FUNÇÕES DE VERIFICAÇÃO DE ERROS
-    ----------------------------------- RENDERIZAÇÃO DOS CARDS DAS TASKS -------------------------*/
-
+    // --------------------------------FUNÇÕES DE VERIFICAÇÃO DE ERROS
+    //---------------------------------RENDERIZAÇÃO DOS CARDS DAS TASKS -------------------------
     function VerificaAfazer() {
         if (totalTaskAfazer === 0) {
             return (
@@ -591,7 +565,6 @@ function InspProjeto() {
             )
         }
     }
-
     function VerificaDesenvolvimento() {
         if (totalTaskEmdesenvolvimento === 0) {
             return (
@@ -630,7 +603,6 @@ function InspProjeto() {
             )
         }
     }
-
     function VerificaConcluído() {
         if (totalTaskConcluído === 0) {
             return (
@@ -669,8 +641,6 @@ function InspProjeto() {
             )
         }
     }
-
-
     return (
         <div>
             <div id="cabecario-geral-pagina-insp-projeto">
