@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import api from '../../../services/api'
 import { Link } from 'react-router-dom';
+import { message } from "antd";
 
 function Editprojeto() {
 
     //variaves das requisições GET
+    let navigate = useNavigate()
     const [projeto, setprojeto] = useState([]);
     const { id_projeto } = useParams()
 
@@ -22,10 +24,11 @@ function Editprojeto() {
     const editProje = data => api.put(`/projetos/${id_projeto}`, data)
         .then(() => {
             console.log("foi");
-            alert('cadastro realizado');
+            message.success('Edições realizadas!')
+            navigate(`/InspProjeto/${id_projeto}`)
         })
         .catch(() => {
-            console.log("n foi")
+            message.error('Não foi possivel fazer as alterações !')
         })
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
