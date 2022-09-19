@@ -121,9 +121,9 @@ function PostT() {
                 <label>Descrição</label>
                 <textarea
                   type="text"
-                  name="descricao_projeto"
+                  name="descricao_task"
                   className="inputgeral"
-                  {...register("descricao_projeto")}
+                  {...register("descricao_task")}
                 />
                 <p className="error-message">
                   {errors.descricao_task?.message}{" "}
