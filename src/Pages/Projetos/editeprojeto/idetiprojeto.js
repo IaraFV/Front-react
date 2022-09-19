@@ -11,7 +11,6 @@ function Editprojeto() {
 
     //variaves das requisições GET
     let navigate = useNavigate()
-    const [projeto, setprojeto] = useState([]);
     const { id_projeto } = useParams()
 
     const validacaoGet = yup.object().shape({
@@ -40,14 +39,8 @@ function Editprojeto() {
         api.get(`/projetos/${id_projeto}`)
             .then((response) => {
                 reset(response.data)
-                setprojeto(response.data)
             })
     }, [])
-
-    //função de voltar uma(1) pagina
-    function voltar() {
-        window.history.back()
-    }
 
     return (
         <>
