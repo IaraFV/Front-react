@@ -11,8 +11,8 @@ import EditE from './Pages/Equipes/EditE/editeEquipe'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import ProjetosConcluidos from './Pages/Projetos/Projetos';
-import PostT from './Pages/Task/PostT/postT'
+import ProjetosConcluidos from './Pages/Projetos/index/Projetos'
+import PostT from './Pages/Task/PostT/postT';
 import InspProjeto from './Pages/Projetos/InspecionarProjeto/InspProjeto';
 import InspecionarEqui from './Pages/Equipes/inspecionar/InspecionarEqui';
 import EditarEquipe from './Pages/Equipes/EditE/editeEquipe'

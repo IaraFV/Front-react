@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import './Projetos.css';
 import Card from 'react-bootstrap/Card';
 import { BsFlagFill } from "react-icons/bs";
-import imagemerro from './img/itensNaoencontrados.png';
+import imagemerro from '../img/itensNaoencontrados.png';
 import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import api from '../../services/api';
+import api from '../../../services/api';
 
 function Projetos() {
 

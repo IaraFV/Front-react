@@ -4,6 +4,7 @@
     border-radius: 30px;
     width: 20rem;
     height: 2.2rem;
+    
 }
 
 #iconvoltar-pesquisa {
@@ -24,7 +25,6 @@
     align-items: center;
     justify-content: space-between;
     width: 99%;
-
 }
 
 #botoes-page-inp-projetos {
@@ -229,13 +229,13 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 19px;
-    color: #9E9E9E;
+    color: #fff;
     border-bottom: 3px solid rgba(235, 87, 87, 0.9);
     display: flex;
     align-items: center;
-    padding: 0.8%;
+    padding: 1rem;
     justify-content: space-between;
 }
 
@@ -243,11 +243,9 @@
     color: #EB5757;
     background: rgba(235, 87, 87, 0.2);
     display: flex;
-    right: 5%;
-}
-
-#icon-redondo-status-afazer {
-    color: #EB5757;
+    width: 24px;
+    height: 22px;
+    border-radius: 6px;
 }
 
 #header-status-desenv {
@@ -255,15 +253,37 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 19px;
-    color: #9E9E9E;
+    color: #fff;
     border-bottom: 3px solid rgba(233, 196, 106, 0.9);
     display: flex;
     align-items: center;
-    padding: 0.8%;
+    padding: 1rem;
+}
+.status-tarefas{
+    background: #171821!important;
+    color: #fff!important;
+    
+}
+.status-tarefas:focus{
+    background: #171821!important;
+    color: #fff!important;
+    
+}
+.status-tarefas:hover{
+    background: #171821!important;
+    color: #fff!important;
+    
 }
 
+#btn-tarefas-status{
+    width: 20rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 7%;
+}
 #icon-redondo-status-desenv {
     color: #E9C46A;
 }
@@ -273,13 +293,13 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 19px;
-    color: #9E9E9E;
+    color: #fff;
     border-bottom: 3px solid #C8D9CF;
     display: flex;
     align-items: center;
-    padding: 0.8%;
+    padding: 1rem;
 }
 
 #icon-redondo-status-con {
@@ -309,7 +329,7 @@
     background: none;
 }
 #color{
-    border: 1px solid red;
+  
     border: none;
 }
 .stilo-card-coment{
