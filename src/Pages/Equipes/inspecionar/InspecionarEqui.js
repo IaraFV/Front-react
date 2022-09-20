@@ -113,9 +113,8 @@ function InspecionarEquipe() {
   const totalmember = inicialLetra.length;
 
   /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
   function RenderCards() {
-    if (projeto === null) {
+    if (projeto.length === 0) {
       return (
         <h2>
           <img
