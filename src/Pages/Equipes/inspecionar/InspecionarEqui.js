@@ -9,13 +9,29 @@ import "rsuite/dist/rsuite.css";
 import Card from "react-bootstrap/Card";
 import imagemerro from "./img/falta_de_dados.png";
 import api from "../../../services/api";
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+import { BsTrash } from "react-icons/bs";
+import { message } from "antd";
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-40%, -40%)',
+  width: 400,
+  bgcolor: 'rgba(16, 16, 20, 0.5)',
+  border: '2px solid #000',
+  p: 4,
+  color: '#fff'
+};
+
 function InspecionarEquipe() {
   const [equipe, setequipe] = useState([]);
   const [pessoa, setpessoa] = useState([]);
   const [projeto, setprojeto] = useState([]);
   const { id_equipe } = useParams();
   const [percent, setPercent] = React.useState(50);
-  const status = percent === 100 ? "success" : null;
   let navigate = useNavigate();
 
   /*------------------------------------------------------------------------------GET EQUIPE--------------------------------------------------------------------*/
@@ -24,7 +40,6 @@ function InspecionarEquipe() {
       .get(`/equipes/${id_equipe}`)
       .then((response) => {
         setequipe(response.data);
-        console.log("deu certo Men");
       })
       .catch(() => {
         console.log("deu errado");
@@ -38,7 +53,6 @@ function InspecionarEquipe() {
       .get("/equipes/" + id_equipe + "/projetos")
       .then((response) => {
         setprojeto(response.data);
-        console.log("deu certo Men");
       })
       .catch(() => {
         console.log("deu errado");
@@ -52,7 +66,6 @@ function InspecionarEquipe() {
       .get("/pessoas/")
       .then((response) => {
         setpessoa(response.data);
-        console.log("deu certo Men");
       })
       .catch(() => {
         console.log("deu errado");
@@ -78,7 +91,7 @@ function InspecionarEquipe() {
       children: `${name.split(" ")[0][0]}`,
     };
   }
-  function voltar() {
+  function Voltar() {
     window.history.back();
   }
 
@@ -99,14 +112,9 @@ function InspecionarEquipe() {
   /*----------------------------------------------------------------------------------AQUI É CALCULADO O TOTAL DE MEMBROS---------------------------------------------------------------------*/
   const totalmember = inicialLetra.length;
 
-  function alentsuccess() {
-    alert("Excluido com sucesso");
-  }
-
   /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
   function RenderCards() {
-    if (projeto === null) {
+    if (projeto.length === 0) {
       return (
         <h2>
           <img
@@ -137,12 +145,71 @@ function InspecionarEquipe() {
       );
     }
   }
+  const [open, setOpen] = useState(false);
+  const HandleClos = () => setOpen(false);
+  const Handleopen = () => setOpen(true);
+
+  function PostpeopleEquipe() {
+
+    const [nome, setnome] = useState([]);
+    const [fucao, setfucao] = useState([]);
+
+    const getvaluenome = (e) => { setnome(e.target.value) }
+    const getvaluefucao = (e) => { setfucao(e.target.value) }
+
+    const Postpeople = () => {
+      api.post(`/pessoas/`, {
+        nome_pessoa: nome,
+        funcao_pessoa: fucao,
+        equipe_id: parseInt(id_equipe)
+      })
+      window.location.reload(true);
+    }
+
+    return (
+      <>
+        <Modal
+          open={open}
+          onClose={HandleClos}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography variant="h6" component="h2">
+              Cadastro de membros
+            </Typography>
+            <Typography sx={{ mt: 2 }}>
+              <div className="fields">
+                <label>Nome</label>
+                <input type={"text"} placeholder='digite aqui....' className="inputgeral" onChange={getvaluenome}></input>
+                <label>Função</label>
+                <input type={"text"} placeholder='digite aqui....' className="inputgeral" onChange={getvaluefucao}></input>
+              </div>
+              <div className='btn-put-coment'>
+
+                <button onClick={Postpeople} style={{ background: 'none' }} >Cadastrar</button>
+                <button onClick={HandleClos} style={{ background: 'none' }} >Cancelar</button>
+
+              </div>
+            </Typography>
+          </Box>
+        </Modal>
+      </>
+    )
+  }
+  function Deletepeopleequipe(id_pessoa){
+    if(id_pessoa != 0) {
+      api.delete(`/pessoas/${id_pessoa}`)
+      setpessoa(pessoa.filter(pessoa => pessoa.id_pessoa !== id_pessoa))
+      message.success('Deletado com sucesso')
+    }
+  }
   return (
     <div id="just-cards-geral-inspequipe">
       <div id="geral-card-inspecionar_equipe">
         <div id="card-inspecionar_equipe">
           <div>
-            <BsArrowLeft onClick={voltar} id="seta" />
+            <BsArrowLeft onClick={Voltar} id="seta" />
           </div>
           <div id="card-header">
             <Avatar {...stringAvatar(`${nome}`)} />
@@ -153,9 +220,9 @@ function InspecionarEquipe() {
 
           <div>
             <div id="icon-plus-inspequi">
-              <Link to="/PostPessoa">
+              <button onClick={Handleopen} style={{ background: 'none' }}>
                 <AiOutlinePlus id="corr" />
-              </Link>
+              </button>
             </div>
 
             <div id="tituloinsp">
@@ -178,9 +245,14 @@ function InspecionarEquipe() {
                 {filtrandoPessoas.map((nome) => {
                   return (
                     <>
-                      <div id="nome-user-group">
-                        <h6>{nome.nome_pessoa}</h6>
-                        <p>{nome.funcao_pessoa}</p>
+                      <div id="div-membros-inpequipe">
+                        <div id="nome-user-group">
+                          <h6>{nome.nome_pessoa}</h6>
+                          <p>{nome.funcao_pessoa}</p>
+                        </div>
+                        <div>
+                          <button style={{background:'none'}} onClick={() => Deletepeopleequipe(nome.id_pessoa)}> <BsTrash/></button>
+                        </div>
                       </div>
                     </>
                   );
@@ -230,6 +302,7 @@ function InspecionarEquipe() {
           </div>
         </div>
       </div>
+      <PostpeopleEquipe />
     </div>
   );
 }

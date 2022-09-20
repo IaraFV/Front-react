@@ -21,9 +21,13 @@
     color: #FFFFFF;
     margin-bottom: 3%;
     width: 17rem;
-    margin-left: 0%;
+    margin-left: 5%;
 }
-
+#div-membros-inpequipe{
+    display: flex;
+    max-width: 60%;
+    align-items: center;
+}
 #just-cards-geral-inspequipe {
     display: flex;
     justify-content: center;
@@ -71,7 +75,6 @@
 }
 
 .avatares_Equipert {
-    overflow-x: auto;
     overflow-y: none;
 }
 #apresentacao-dos-membros{
