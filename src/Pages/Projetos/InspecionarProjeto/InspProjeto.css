@@ -203,18 +203,21 @@
 }
 
 #card-desenvolvimento {
+    margin-top: 1rem;
     padding: 1%;
     background: #171821;
     border-radius: 8px;
     width: 18rem;
 }
 #card-desenvolvimento-t{
+    margin-top: 1rem;
     padding: 1%;
     background: #171821;
     border-radius: 8px;
     width: 18rem;
 }
 #card-concl {
+    margin-top: 1rem;
     padding: 1%;
     background: #171821;
     border-radius: 8px;
@@ -317,7 +320,7 @@
     background-color:#21222D;
 }
 #cardtsk{
-    height: 30px;
+    height: 40px;
     margin-left: 6px;
     margin-top: 10px;
     align-items: center;
@@ -352,4 +355,10 @@
 }
 #btn-put-coment-cancel{
     border-radius: 10px;
+}
+.div-btn-modalEdit{
+    display: flex;
+    justify-content: space-around;
+    max-width: 80%;
+    margin-left: 40px;
 }

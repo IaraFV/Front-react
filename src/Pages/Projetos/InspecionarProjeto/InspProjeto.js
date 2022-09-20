@@ -27,11 +27,10 @@ const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-40%, -40%)',
     width: 400,
-    bgcolor: 'rgba(33, 34, 45, 0.5)',
+    bgcolor: 'rgba(16, 16, 20, 0.5)',
     border: '2px solid #000',
-    boxShadow: 24,
     p: 4,
     color: '#fff'
 };
@@ -271,31 +270,35 @@ function InspProjeto() {
     //variavel da manipulação do modal 2
     const [openn, setOpenn] = React.useState(false);
     const handleClosen = () => setOpenn(false);
+   
+    //modal de ediçoes de task (modal 2)
+    function ModaldeEdicaoTask() {
 
-    //variaves do modal de ediçoes de task (modal 2)
-    var [vofNivel, setAge] = React.useState('');
+        var [vofdesc, setdesc] = useState('');
+        console.log(vofdesc)
+        const lucas = (e) => {
+            setdesc(e.target.value);
+        };
+        //variaves do modal de ediçoes de task (modal 2)
+    var [vofNivel, setAge] = useState('');
     const handleChangeg = (event) => {
         setAge(event.target.value);
     };
-    var [vofdesc, setdesc] = useState('');
-    const handleChangedesc = (event) => {
-        setdesc(event.target.value);
-    };
-    console.log(vofdesc)
+
     const taskget = tasks.filter((get) => get.id_task === getid);
-    var idpessoa = taskget.map((get) => get.pessoa_id)
+    const idpessoa = taskget.map((get) => get.pessoa_id)
 
-    const Putdetask = () => {
-        api.put(`/tasks/${getid}`, {
-            descricao_task: vofdesc,
-            nivel: vofNivel,
-            projeto_id: id_projeto,
-            pessoa_id: idpessoa,
-        })
-    }
+        const Putdetask = () => {
+            api.put(`/tasks/${getid}`, {
+                descricao_task: vofdesc,
+                nivel: vofNivel,
+                pessoa_id: parseInt(idpessoa),
+                projeto_id: parseInt(id_projeto),
+            })
+            window.location.reload(true);
+        }
+        const handleClosen = () => setOpenn(false);
 
-    //modal de ediçoes de task (modal 2)
-    function ModaldeEdicaoTask() {
         return (
             <>
                 <Modal
@@ -310,14 +313,13 @@ function InspProjeto() {
                             Edições
                         </Typography>
                         <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-                                <div className="fields">
-                                    <label>descricao_task</label>
-                                    <input type="text"  onChange={handleChangedesc} className="inputgeral" />
-                                    
-                                </div>
-                                <div className="fields">
-                                    <label>nivel</label>
-                                    <Box sx={{ minWidth: 120 }}>
+                            <div className="fields">
+                                <label>Descrição Task</label>
+                                <input type={"text"} placeholder='Digite aqui...' className="inputgeral" onChange={lucas} ></input>
+                            </div>
+                            <div className="fields">
+                            <label>Nivel</label>
+                            <Box sx={{ minWidth: 120 }}>
                                         <FormControl fullWidth>
                                             <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
                                             <Select
@@ -335,9 +337,12 @@ function InspProjeto() {
                                             <p className="error-message"></p>
                                         </FormControl>
                                     </Box>
-                                </div>
+                            </div>
                         </Typography>
-                        <Button variant="outlined" onClick={Putdetask}>Editar</Button>
+                        <div className="div-btn-modalEdit">
+                            <Button variant="outlined" onClick={handleClosen}>Cancelar</Button>
+                            <Button variant="outlined" onClick={Putdetask}>Editar</Button>
+                        </div>
                     </Box>
                 </Modal>
             </>
@@ -417,10 +422,49 @@ function InspProjeto() {
     }
     const [openy, setOpeny] = React.useState(false);
     const handleClosey = () => setOpeny(false);
+
     //função de add comentario
     function Comentario() {
 
     var [comentTasks, setcomentTasks] = useState([])
+
+    var [value, setValue] = useState('');
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    };
+    console.log(value)
+    useEffect(() => {
+        api.get(`/tasks/${getid}/comentarios`)
+            .then((response) => {
+                setcomentTasks(response.data)
+            })
+            .catch(() => {
+                console.log("deu errado")
+            })
+    }, []
+    )
+
+    function atualiza() {
+        api.get(`/tasks/${getid}/comentarios`)
+        .then((response) => {
+            setcomentTasks(response.data)
+        })
+        .catch(() => {
+            console.log("deu errado")
+        })
+    }
+
+    function PutcomentTask(){
+        if(value != ''){
+            api.post(`tasks/${getid}/comentarios`, {
+                comentario: value
+            })
+            .then(() => {
+                atualiza()
+            })
+        }else{ message.error('Campo de vazio') }
+    }
+    
 
     //Delete comentario
     function Deletetaskcoment(id_comentario) {
@@ -428,45 +472,10 @@ function InspProjeto() {
     setcomentTasks(comentTasks.filter(comentario => comentario.id_comentario !== id_comentario))
     }
 
-        useEffect(() => {
-            api.get(`/tasks/${getid}/comentarios`)
-                .then((response) => {
-                    setcomentTasks(response.data)
-                    console.log('pegou o comentario')
-                })
-                .catch(() => {
-                    console.log("deu errado")
-                })
-        }, []
-        )
-
-        
-        var [value, setValue] = useState('');
-        
-        const handleChange = (e) => {
-            setValue(e.target.value);
-        };
-
-        function atualiza() {
-            api.get(`/tasks/${getid}/comentarios`)
-            .then((response) => {
-                setcomentTasks(response.data)
-                console.log('pegou o comentario')
-            })
-            .catch(() => {
-                console.log("deu errado")
-            })
-        }
-
-        const putcomentTask = () => {
-            api.post(`tasks/${getid}/comentarios`, {
-                comentario: value
-            })
-            .then(() => {
-                atualiza()
-            })
-        }
-
+    function Datanew(data) {
+        let Data = new Date(data);
+        return Data.toLocaleDateString("pt-BR")
+    }
         return (
             <>
                 <Modal
@@ -486,7 +495,10 @@ function InspProjeto() {
                                         return (
                                             <>
                                                 <div id='cardtsk'>
-                                                    <h6  > {pegacoment.comentario}</h6>
+                                                    <div>
+                                                        <p style={{fontSize:'8px'}} >{Datanew(pegacoment.created_at)}</p>
+                                                        <h6  > {pegacoment.comentario}</h6>
+                                                    </div>
                                                    <button onClick={() => Deletetaskcoment(pegacoment.id_comentario)} style={{background:'none', fontSize:'12px'}}><BsTrash/></button>
                                                 </div>
                                             </>
@@ -501,7 +513,7 @@ function InspProjeto() {
                             </div>
                             <div className='btn-put-coment'>
 
-                                <button onClick={putcomentTask} style={{ background: 'none' }} id='btn-put-coment-post'>Comentar</button>
+                                <button onClick={PutcomentTask} style={{ background: 'none' }} id='btn-put-coment-post'>Comentar</button>
                                 <button onClick={handleClosey} style={{ background: 'none' }} id='btn-put-coment-cancel'>Cancelar</button>
 
                             </div>
@@ -511,7 +523,6 @@ function InspProjeto() {
             </>
         )
     }
-
     // --------------------------------FUNÇÕES DE VERIFICAÇÃO DE ERROS
     //---------------------------------RENDERIZAÇÃO DOS CARDS DAS TASKS -------------------------
     function VerificaAfazer() {
