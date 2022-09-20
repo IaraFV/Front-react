@@ -35,25 +35,26 @@
     font-weight: 500;
     font-size: 15px;
     color: rgba(0, 219, 153, 0.9);
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 #bandeira-data {
-    color: #717986;
+    color: #9E9E9E;
     display: flex;
     width: 46%;
     justify-content: space-between;
     font-family: 'Poppins';
-    margin-top: -2%;
-    font-size: 1rem;
+    margin-top: 1%;
+    font-size: 0.9rem;
+    align-items: center;
 }
 
 .titulo-descricao-projeto {
-    font-family: 'Poppins';
+    font-family: 'Inter';
     font-weight: 550;
     font-size: 16px;
-    color: #717986;
-    margin-top: -2%;
+    color: #9E9E9E;
+    margin-top: 1%;
 }
 
 #status-desen {

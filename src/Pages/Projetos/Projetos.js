@@ -18,9 +18,9 @@ function Projetos() {
             .then((response) => {
                 setprojeto(response.data)
                 setInitialprojeto(response.data)
-                console.log("Deu BOM Men")
+               
             }).catch(() => {
-                console.log("Deu BO Men")
+               
             })
     }, [])
 
@@ -36,6 +36,7 @@ function Projetos() {
         setprojeto(filter);
     }
     const porjnum = parseInt(projeto.length);
+
     function mudacor(status){
         if (status === 'Em planejamento'){
             return '#EB5757'
@@ -43,12 +44,15 @@ function Projetos() {
         else if(status === 'Em desenvolvimento'){
             return '#E9C46A'
         }
-    
     }     
+
+    //formataçao de data
     function formdata(data){
         let Data = new Date(data);
             return Data.toLocaleDateString("pt-BR")
     }
+
+
     function TratamentoError() {
         if (porjnum === 0) {
             return (
@@ -61,22 +65,18 @@ function Projetos() {
                         projeto.map((projeto, key) => {
                             return (
                                 <div id="div-card-page-projetos">
+                                     <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }} style={{ textDecoration: 'none' }}>
                                     <Card id="div-card-projeto">
                                         <Card.Body>
                                             <Card.Title id="nome-projeto-plan" key={key}>
                                                 {projeto.nome_projeto}
-                                                <div>
-                                                    <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }}>
-                                                        <AiOutlineArrowsAlt id="more-button-planejamento" />
-                                                    </Link>
-                                                </div>
                                             </Card.Title>
                                             <Card.Text id="status">
                                                <span style={{color: mudacor(projeto.status)}}>{projeto.status}</span>
                                             </Card.Text>
                                             <Card.Text id="bandeira-data">
                                                 <div>
-                                                    <BsFlagFill />{formdata(projeto.data_inicio)}
+                                                   <span> <BsFlagFill /> </span>{formdata(projeto.data_inicio)}
                                                 </div>
                                             </Card.Text>
                                             <Card.Text>
@@ -87,6 +87,7 @@ function Projetos() {
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
+                                     </Link>
                                 </div>
                             );
                         })

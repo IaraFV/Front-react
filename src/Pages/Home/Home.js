@@ -7,7 +7,7 @@ import {
   AiOutlineSolution,
   AiOutlineTeam,
 } from "react-icons/ai";
-import { BsBarChartLine } from "react-icons/bs";
+import { BsBarChartLine, BsCircleFill } from "react-icons/bs";
 import api from "../../services/api";
 import nenhumprojeto from "../../assets/NenhumProjeto/Group 1000004639.png";
 import {
@@ -84,9 +84,8 @@ function Home(props) {
   //função de FOR, pega 8 pessoas recem Add
   var receberPeople = [];
   for (var person = 0; person < 4; person++) {
-    receberPeople.push(pessoas[person]);
+    receberPeople?.push(pessoas[person]);
   }
-  const nomepeople = receberPeople.map((luc) => luc?.nome_pessoa);
 
   //função de FOR, pega 8 projetos concluidos
   const recebeprojetos = projeto.filter(
@@ -174,13 +173,13 @@ function Home(props) {
 
             <div>
               <div className="body-card-home-pro">
-                  <div className="org">
-                    <div>
-                      <AiOutlineTeam className="icon-quant-pessoa-home" />
-                    </div>
-                    <div className="total-page-home">{totalequipes}</div>
-                    <div className="white">Total de equipes adiconadas</div>
+                <div className="org">
+                  <div>
+                    <AiOutlineTeam className="icon-quant-pessoa-home" />
                   </div>
+                  <div className="total-page-home">{totalequipes}</div>
+                  <div className="white">Total de equipes adiconadas</div>
+                </div>
               </div>
 
               <div className="body-card-home-pro">
@@ -204,24 +203,30 @@ function Home(props) {
           <div className="card" id="render-pessoas-home">
             <div className="card-body">
               <h5 className="card-title" id="titulo-card-usuario-home">
-                Usuarios
+                Atividades recentes
+                <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
+                <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
+              </Link>
               </h5>
+              
               <h6 className="card-subtitle mb-2 text-muted"></h6>
 
               <ul className="list-group list-group-flush" id="ul-pessoa">
-                {nomepeople.map((nome) => {
+                {receberPeople?.map((nome) => {
                   return (
                     <>
                       <li className="list-group-item" id="li-pessoa">
-                        {nome}
+                        <div>{nome?.nome_pessoa}</div>
+
+                        <div style={{ color: '#717986' }}>
+                  
+                          {formdata(nome?.data_contratacao)}
+                        </div>
                       </li>
                     </>
                   );
                 })}
               </ul>
-              <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
-                <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
-              </Link>
             </div>
           </div>
         </div>
