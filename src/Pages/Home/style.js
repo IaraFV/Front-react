@@ -13,6 +13,11 @@ export const OrgCard = styled.div`
         background-color: #d9d9d9;
         border-radius: 20px;
       }
+
+      @media (max-width: 1650px) {
+         
+          width: 47rem;
+      }
 `;
 
 export const CardP = styled.div`
@@ -26,7 +31,6 @@ export const CardP = styled.div`
 `;
 
 export const CardBody = styled.div`
-    
     justify-content: space-between;
 `;
 export const CardTitle= styled.div`

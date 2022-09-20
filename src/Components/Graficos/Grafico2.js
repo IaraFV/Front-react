@@ -8,7 +8,7 @@ import {
   CartesianGrid,
   Tooltip
 } from "recharts";
-
+import './graf.css'
 
 function Grafico2(props) {
 
@@ -70,6 +70,7 @@ function Grafico2(props) {
   return (
     <div>
       <AreaChart
+      id="graf"
         width={980}
         height={340}
         data={datac}

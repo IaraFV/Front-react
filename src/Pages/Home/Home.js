@@ -25,7 +25,6 @@ import { Avatar, Comment } from "antd";
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from "./img/itensNaoencontrados.png";
 import { AiOutlineArrowsAlt } from "react-icons/ai";
-import Avatares from "./avatar";
 
 function Home(props) {
   //variaves das requisições GET
@@ -150,45 +149,49 @@ function Home(props) {
             <Apresentaproj />
           </div>
           <div id="format-cards-contadores">
-            <div className="body-card-home-pro">
-              <div className="org">
-                <div>
-                  <AiOutlineUser className="icon-quant-pessoa-home" />
-                </div>
-                <div className="total-page-home">{totalpessoas}</div>
+            <div>
+              <div className="body-card-home-pro">
+                <div className="org">
+                  <div>
+                    <AiOutlineUser className="icon-quant-pessoa-home" />
+                  </div>
+                  <div className="total-page-home">{totalpessoas}</div>
 
-                <div className="colorfff">Total de pessoas adiconadas</div>
+                  <div className="white">Total de pessoas adiconadas</div>
+                </div>
+              </div>
+
+              <div className="body-card-home-pro">
+                <div className="org">
+                  <div>
+                    <AiOutlineSolution className="icon-quant-pessoa-home" />
+                  </div>
+                  <div className="total-page-home">{totalprojetos}</div>
+                  <div className="white">Total de projetos adiconadas</div>
+                </div>
               </div>
             </div>
 
-            <div className="body-card-home-pro">
-              <div className="org">
-                <div>
-                  <AiOutlineSolution className="icon-quant-pessoa-home" />
-                </div>
-                <div className="total-page-home">{totalprojetos}</div>
-                <div className="colorfff">Total de projetos adiconadas</div>
+            <div>
+              <div className="body-card-home-pro">
+                  <div className="org">
+                    <div>
+                      <AiOutlineTeam className="icon-quant-pessoa-home" />
+                    </div>
+                    <div className="total-page-home">{totalequipes}</div>
+                    <div className="white">Total de equipes adiconadas</div>
+                  </div>
               </div>
-            </div>
 
-            <div className="body-card-home-pro">
-              <div className="org">
-                <div>
-                  <AiOutlineTeam className="icon-quant-pessoa-home" />
+              <div className="body-card-home-pro">
+                <div className="org">
+                  <div>
+                    <BsBarChartLine className="icon-quant-pessoa-home" />
+                  </div>
+                  <div className="total-page-home">{totaltask}</div>
+
+                  <div className="white">Total de tarefas adiconadas</div>
                 </div>
-                <div className="total-page-home">{totalequipes}</div>
-                <div className="colorfff">Total de equipes adiconadas</div>
-              </div>
-            </div>
-
-            <div className="body-card-home-pro">
-              <div className="org">
-                <div>
-                  <BsBarChartLine className="icon-quant-pessoa-home" />
-                </div>
-                <div className="total-page-home">{totaltask}</div>
-
-                <div className="colorfff">Total de tarefas adiconadas</div>
               </div>
             </div>
           </div>
