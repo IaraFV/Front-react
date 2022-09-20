@@ -146,6 +146,9 @@ projeto e contador task*/
   border: 0;
   margin-top: 4%;
   border-bottom: 1px solid rgba(164, 164, 164, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 #li-projeto {
   display: flex;
@@ -185,22 +188,22 @@ projeto e contador task*/
 #btn-ver-usuario-projeto {
   width: 6rem;
   height: 1.8rem;
-  background: rgba(164, 164, 164, 0.12);
+  background: none;
   border-radius: 6px;
   font-family: "Inter";
-  font-weight: 400;
+  font-weight: 900;
   font-size: 13px;
   line-height: 20px;
   display: flex;
-  border: 1px solid #d9d9d9;
+  border: none;
   align-items: center;
-  color: #fff;
+  color: #2684FF;
   justify-content: center;
 }
 
 #link-pessoa-page-pessoa {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 #caixa-geral-projetos-home {
   background: #21222d;
