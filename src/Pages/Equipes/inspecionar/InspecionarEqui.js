@@ -14,6 +14,11 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import { BsTrash } from "react-icons/bs";
 import { message } from "antd";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -31,7 +36,6 @@ function InspecionarEquipe() {
   const [pessoa, setpessoa] = useState([]);
   const [projeto, setprojeto] = useState([]);
   const { id_equipe } = useParams();
-  const [percent, setPercent] = React.useState(50);
   let navigate = useNavigate();
 
   /*------------------------------------------------------------------------------GET EQUIPE--------------------------------------------------------------------*/
@@ -113,19 +117,141 @@ function InspecionarEquipe() {
   const totalmember = inicialLetra.length;
 
   /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-  function RenderCards() {
-    if (projeto.length === 0) {
-      return (
-        <h2>
-          <img
-            src={imagemerro}
-            alt=" deu bom"
-            width={"53%"}
-            style={{ marginLeft: "18%" }}
-          />
-        </h2>
-      );
-    } else {
+  var [selecproj, setselecproj] = useState([])
+  
+  function Selector() {
+    
+    const handleChangeselec = (e) => setselecproj(e.target.value);
+
+    return (
+      <>
+        <Box sx={{ minWidth: 120, marginTop:3 ,color: '#fff'}}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Select</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={selecproj}
+          label="Age"
+          className="seletor-format"
+          onChange={handleChangeselec}
+        >
+          <MenuItem value={''}>none</MenuItem>
+          <MenuItem value={'Em planejamento'}>Em planejamento</MenuItem>
+          <MenuItem value={'Em desenvolvimento'}>Em desenvolvimento</MenuItem>
+          <MenuItem value={'Concluído'}>Concluído</MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
+      </>
+    )
+  }
+  function Cardplaneja(){
+
+    const getstatusplaneja = projeto?.filter((get) => get.status === selecproj)
+
+    if(selecproj === '' && getstatusplaneja.length === 0){
+      return(
+        <>
+          <h2>
+            <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+          </h2>
+        </>
+      )
+    }else{
+        return(
+          <>
+          <div id="caixa-geral-de-projetos-inspequipe">
+          {getstatusplaneja?.map((projeto, key) => {
+            return (
+              <div>
+                <Card id="card-page-inpequipe">
+                  <Card.Body>
+                    <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
+                      {projeto.nome_projeto}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })}
+        </div>
+
+          </>
+        )
+      }
+  }
+
+  function Carddesenvov(){
+
+      const getstatusdesenvolve = projeto?.filter((get) => get.status === selecproj)
+      
+      if(selecproj === '' && getstatusdesenvolve.length === 0){
+        return(
+          <>
+            <h2>
+              <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+            </h2>
+          </>
+        )
+      }else{
+          return(
+            <>
+            <div id="caixa-geral-de-projetos-inspequipe">
+            {getstatusdesenvolve?.map((projeto, key) => {
+              return (
+                <div>
+                  <Card id="card-page-inpequipe">
+                    <Card.Body>
+                      <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
+                        {projeto.nome_projeto}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
+          </>
+          )
+        }
+  }
+  function Cardconcluido(){
+
+        const getstatusconcluido = projeto?.filter((get) => get.status === selecproj)
+        
+        if(selecproj === '' && getstatusconcluido.length === 0){
+          return(
+            <>
+              <h2>
+                <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+              </h2>
+            </>
+          )
+        }else{
+            return(
+              <>
+              <div id="caixa-geral-de-projetos-inspequipe">
+              {getstatusconcluido?.map((projeto, key) => {
+                return (
+                  <div>
+                    <Card id="card-page-inpequipe">
+                      <Card.Body>
+                        <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
+                          {projeto.nome_projeto}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
+            </>
+            )
+          }
+  }
+    
+  function Cardgeral() {
       return (
         <div id="caixa-geral-de-projetos-inspequipe">
           {projeto?.map((projeto, key) => {
@@ -133,7 +259,7 @@ function InspecionarEquipe() {
               <div>
                 <Card id="card-page-inpequipe">
                   <Card.Body>
-                    <Card.Text id="status-projeto-isnpequipe">
+                    <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                       {projeto.nome_projeto}
                     </Card.Text>
                   </Card.Body>
@@ -144,7 +270,19 @@ function InspecionarEquipe() {
         </div>
       );
     }
+  
+  function RenderCards(){
+    if(projeto.length === 0 && selecproj.length === 0){
+      return(
+        <>
+          <h2>
+            <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+          </h2>
+        </>
+      )
+    }
   }
+
   const [open, setOpen] = useState(false);
   const HandleClos = () => setOpen(false);
   const Handleopen = () => setOpen(true);
@@ -197,8 +335,9 @@ function InspecionarEquipe() {
       </>
     )
   }
-  function Deletepeopleequipe(id_pessoa){
-    if(id_pessoa != 0) {
+
+  function Deletepeopleequipe(id_pessoa) {
+    if (id_pessoa != 0) {
       api.delete(`/pessoas/${id_pessoa}`)
       setpessoa(pessoa.filter(pessoa => pessoa.id_pessoa !== id_pessoa))
       message.success('Deletado com sucesso')
@@ -248,10 +387,10 @@ function InspecionarEquipe() {
                       <div id="div-membros-inpequipe">
                         <div id="nome-user-group">
                           <h6>{nome.nome_pessoa}</h6>
-                          <p>{nome.funcao_pessoa}</p>
+                          <p style={{ color: '#717986' }}>{nome.funcao_pessoa}</p>
                         </div>
                         <div>
-                          <button style={{background:'none'}} onClick={() => Deletepeopleequipe(nome.id_pessoa)}> <BsTrash/></button>
+                          <button style={{ background: 'none', color: '#fff' }} onClick={() => Deletepeopleequipe(nome.id_pessoa)}> <BsTrash /></button>
                         </div>
                       </div>
                     </>
@@ -295,6 +434,7 @@ function InspecionarEquipe() {
             <div id="header-projetos-concluidos-insp-equipe">
               Painel de Projetos
             </div>
+            <Selector/>
           </div>
 
           <div>

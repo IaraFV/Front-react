@@ -13,6 +13,7 @@ import api from "../../../services/api";
 import Avatar from '@mui/material/Avatar'; 
 import { BsFileEarmarkCheck } from "react-icons/bs";
 import { Link } from "@mui/material";
+import { message } from "antd";
 
 function PostT() {
     
@@ -31,7 +32,7 @@ function PostT() {
       .post("/tasks", data)
       .then(() => {
         console.log("foi");
-        alert("cadastrado com ssucesso");
+        message.success("Cadastrado com Sucesso");
         window.location.reload(true);
       })
       .catch(() => {
