@@ -146,6 +146,10 @@ function InspecionarEquipe() {
       </>
     )
   }
+  function Goinspecionar(id_projeto){
+    if(id_projeto != 0){
+    }
+  }
   function Cardplaneja(){
 
     const getstatusplaneja = projeto?.filter((get) => get.status === selecproj)
@@ -235,9 +239,16 @@ function InspecionarEquipe() {
                   <div>
                     <Card id="card-page-inpequipe">
                       <Card.Body>
-                        <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
-                          {projeto.nome_projeto}
-                        </Card.Text>
+                        <div>
+                          <div className="card-apresent">
+                            <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
+                              {projeto.nome_projeto}
+                            </Card.Text>
+                          <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
+                            <button className="btn-vermais-inspequi" onClick={() => Goinspecionar(projeto.id_projeto)}>Ver Mais</button>
+                          </Card.Text>
+                          </div>
+                        </div>
                       </Card.Body>
                     </Card>
                   </div>

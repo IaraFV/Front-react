@@ -290,6 +290,12 @@
     color: #fff;
     border: none;
 }
-.cor-select{
-    background-color: #21222D;
+.btn-vermais-inspequi{
+    background: none;
+    color: blue;
+    font-size: 10px;
+}
+.card-apresent{
+    display: flex;
+    justify-content: space-between;
 }
