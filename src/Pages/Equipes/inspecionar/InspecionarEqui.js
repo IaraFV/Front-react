@@ -117,7 +117,7 @@ function InspecionarEquipe() {
   const totalmember = inicialLetra.length;
 
   /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-  var [selecproj, setselecproj] = useState([])
+  var [selecproj, setselecproj] = useState('')
   
   function Selector() {
     
@@ -150,7 +150,7 @@ function InspecionarEquipe() {
 
     const getstatusplaneja = projeto?.filter((get) => get.status === selecproj)
 
-    if(selecproj === '' && getstatusplaneja.length === 0){
+    if(getstatusplaneja.length === 0){
       return(
         <>
           <h2>
@@ -217,7 +217,6 @@ function InspecionarEquipe() {
         }
   }
   function Cardconcluido(){
-
         const getstatusconcluido = projeto?.filter((get) => get.status === selecproj)
         
         if(selecproj === '' && getstatusconcluido.length === 0){
@@ -272,14 +271,22 @@ function InspecionarEquipe() {
     }
   
   function RenderCards(){
-    if(projeto.length === 0 && selecproj.length === 0){
+    if(projeto.length === 0 && selecproj === ''){
       return(
         <>
           <h2>
-            <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+            <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%", marginTop:'10%'}}/>
           </h2>
         </>
       )
+    }else if(projeto.length !== 0 && selecproj === ''){
+      return <Cardgeral/>
+    }else if(selecproj === 'Em planejamento'){
+      return <Cardplaneja/>
+    }else if(selecproj === 'Em desenvolvimento'){
+      return <Carddesenvov/>
+    }else if(selecproj === 'Concluído'){
+      return <Cardconcluido/>
     }
   }
 
@@ -335,7 +342,6 @@ function InspecionarEquipe() {
       </>
     )
   }
-
   function Deletepeopleequipe(id_pessoa) {
     if (id_pessoa != 0) {
       api.delete(`/pessoas/${id_pessoa}`)
@@ -443,6 +449,7 @@ function InspecionarEquipe() {
         </div>
       </div>
       <PostpeopleEquipe />
+     
     </div>
   );
 }
