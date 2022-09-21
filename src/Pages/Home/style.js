@@ -14,9 +14,9 @@ export const OrgCard = styled.div`
         border-radius: 20px;
       }
 
-      @media (max-width: 1650px) {
-         
-          width: 47rem;
+      @media (max-width: 1750px) {
+        border: 1px solid blue;
+          width: 50rem;
       }
 `;
 
@@ -27,6 +27,9 @@ export const CardP = styled.div`
     padding: 0.5rem!important;
     margin-bottom: 2%;
     margin-top: 1%;
+    @media (max-width: 1750px) {
+        width: 48rem;
+    }
     border-left: 2px solid #2684FF;
 `;
 

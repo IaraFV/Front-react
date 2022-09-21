@@ -1,8 +1,9 @@
-@media (max-width: 1650px) {
+@media (max-width: 1750px) {
     #graf{
-        width: 48rem;
-        height: 18rem;
-        margin-left: -3%;
+        width: 49rem;
+        height: 24rem;
+        margin-left: -1%;
         margin-top: -2%;
+        border: 1px solid burlywood
     }
 }
