@@ -136,10 +136,10 @@ function InspecionarEquipe() {
           className="seletor-format"
           onChange={handleChangeselec}
         >
-          <MenuItem value={''}>none</MenuItem>
-          <MenuItem value={'Em planejamento'}>Em planejamento</MenuItem>
-          <MenuItem value={'Em desenvolvimento'}>Em desenvolvimento</MenuItem>
-          <MenuItem value={'Concluído'}>Concluído</MenuItem>
+            <MenuItem value={''}>none</MenuItem>
+            <MenuItem value={'Em planejamento'}>Em planejamento</MenuItem>
+            <MenuItem value={'Em desenvolvimento'}>Em desenvolvimento</MenuItem>
+            <MenuItem value={'Concluído'}>Concluído</MenuItem>
         </Select>
       </FormControl>
     </Box>
@@ -154,7 +154,7 @@ function InspecionarEquipe() {
       return(
         <>
           <h2>
-            <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+            <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%", marginTop:'10%'}}/>
           </h2>
         </>
       )
@@ -181,16 +181,15 @@ function InspecionarEquipe() {
         )
       }
   }
-
   function Carddesenvov(){
 
       const getstatusdesenvolve = projeto?.filter((get) => get.status === selecproj)
       
-      if(selecproj === '' && getstatusdesenvolve.length === 0){
+      if(getstatusdesenvolve.length === 0){
         return(
           <>
             <h2>
-              <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+              <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%", marginTop:'10%'}}/>
             </h2>
           </>
         )
@@ -219,11 +218,11 @@ function InspecionarEquipe() {
   function Cardconcluido(){
         const getstatusconcluido = projeto?.filter((get) => get.status === selecproj)
         
-        if(selecproj === '' && getstatusconcluido.length === 0){
+        if(getstatusconcluido.length === 0){
           return(
             <>
               <h2>
-                <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%" }}/>
+                <img src={imagemerro} alt=" deu bom" width={"53%"} style={{ marginLeft: "18%", marginTop:'10%'}}/>
               </h2>
             </>
           )
@@ -249,7 +248,6 @@ function InspecionarEquipe() {
             )
           }
   }
-    
   function Cardgeral() {
       return (
         <div id="caixa-geral-de-projetos-inspequipe">
@@ -269,7 +267,6 @@ function InspecionarEquipe() {
         </div>
       );
     }
-  
   function RenderCards(){
     if(projeto.length === 0 && selecproj === ''){
       return(

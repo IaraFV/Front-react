@@ -284,8 +284,12 @@
     padding: 0.3rem;
 }
 .seletor-format{
-    background-color: rgba(33, 34, 45, 0.5);
     border-radius: 6px;
     color: white;
     width: 13rem;
+    color: #fff;
+    border: none;
+}
+.cor-select{
+    background-color: #21222D;
 }
