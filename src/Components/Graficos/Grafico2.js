@@ -71,14 +71,14 @@ function Grafico2(props) {
     <div>
       <AreaChart
         id="graf"
-        width={1030}
+        width={1050}
         height={380}
         data={datac}
         syncId="anyId"
         margin={{
           top: 9,
           right: 70,
-          left: -25,
+          left: -20,
           bottom: 0
         }}
       >

@@ -15,8 +15,14 @@ export const OrgCard = styled.div`
       }
 
       @media (max-width: 1750px) {
-        border: 1px solid blue;
-          width: 50rem;
+        
+          width: 57rem;
+
+          ::-webkit-scrollbar {
+            background: #171821;
+            width: 8px;
+            margin-right: 41%!important;
+          }
       }
 `;
 

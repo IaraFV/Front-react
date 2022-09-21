@@ -268,18 +268,18 @@ projeto e contador task*/
   #caixa-geral-home-um {
     width: 100%;
     display: block;
-    border: 1px solid red;
+    
   }
 
   #projeto-geralcont {
     width: 100%;
-    border: 1px solid yellow;
+   
     display: flex;
     justify-content: space-evenly;
   }
   #projeto-geralcontdois{
     width: 100%;
-    border: 1px solid yellow;
+    
     display: flex;
     justify-content: space-evenly;
   }
@@ -287,14 +287,14 @@ projeto e contador task*/
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    width: 29rem;
-    border: 1px solid blue;
+    width: 31rem;
+    
   }
   .body-card-home-pro{
-    width: 12.5rem;
+    width: 14rem;
     display: flex;
     justify-content: center;
-    border: 1px solid blue;
+   
   }
   .white{
     font-size: 0.8rem;
@@ -307,5 +307,10 @@ projeto e contador task*/
   #render-pessoas-home{
     width: 35rem;
     height: 18.5rem;
+  }
+  #render-pessoas-home{
+    
+    width: 40rem;
+    height: 24rem;
   }
 }
