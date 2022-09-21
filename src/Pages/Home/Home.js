@@ -21,6 +21,7 @@ import {
   TituloHome,
   BodyText,
 } from "./style";
+import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Comment } from "antd";
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from "./img/itensNaoencontrados.png";
@@ -203,12 +204,9 @@ function Home(props) {
           <div className="card" id="render-pessoas-home">
             <div className="card-body">
               <h5 className="card-title" id="titulo-card-usuario-home">
-                Atividades recentes
-                <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
-                <button id="btn-ver-usuario-projeto">Ver Usuarios</button>
-              </Link>
+                Usuarios cadastrados
               </h5>
-              
+
               <h6 className="card-subtitle mb-2 text-muted"></h6>
 
               <ul className="list-group list-group-flush" id="ul-pessoa">
@@ -216,11 +214,21 @@ function Home(props) {
                   return (
                     <>
                       <li className="list-group-item" id="li-pessoa">
-                        <div>{nome?.nome_pessoa}</div>
-
-                        <div style={{ color: '#717986' }}>
-                  
-                          {formdata(nome?.data_contratacao)}
+                        <Avatar size="large" icon={<UserOutlined />} />
+                        <div id="org-lista">
+                          <div id="ava-date">
+                            <span> {nome?.nome_pessoa}</span>
+                            <div style={{ color: "#717986" }}>
+                              {formdata(nome?.data_contratacao)}
+                            </div>
+                          </div>
+                          <div>
+                            <Link id="link-pessoa-page-pessoa" to={"/Pessoas"}>
+                              <button id="btn-ver-usuario-projeto">
+                                Ver mais
+                              </button>
+                            </Link>
+                          </div>
                         </div>
                       </li>
                     </>
