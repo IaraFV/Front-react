@@ -86,6 +86,7 @@ function Editprojeto() {
                     name="descricao_projeto"
                     className="inputgeral"
                     {...register("descricao_projeto")}
+                    maxLength={200}
                   />
                 <p className="error-message">
                   {errors.descricao_projeto?.message}{" "}

@@ -3,7 +3,6 @@ import './Projetos.css';
 import Card from 'react-bootstrap/Card';
 import { BsFlagFill } from "react-icons/bs";
 import imagemerro from '../img/itensNaoencontrados.png';
-import { AiOutlineArrowsAlt } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import api from '../../../services/api';
 
@@ -18,9 +17,9 @@ function Projetos() {
             .then((response) => {
                 setprojeto(response.data)
                 setInitialprojeto(response.data)
-               
+
             }).catch(() => {
-               
+
             })
     }, [])
 
@@ -37,19 +36,19 @@ function Projetos() {
     }
     const porjnum = parseInt(projeto.length);
 
-    function mudacor(status){
-        if (status === 'Em planejamento'){
+    function mudacor(status) {
+        if (status === 'Em planejamento') {
             return '#EB5757'
         }
-        else if(status === 'Em desenvolvimento'){
+        else if (status === 'Em desenvolvimento') {
             return '#E9C46A'
         }
-    }     
+    }
 
     //formataçao de data
-    function formdata(data){
+    function formdata(data) {
         let Data = new Date(data);
-            return Data.toLocaleDateString("pt-BR")
+        return Data.toLocaleDateString("pt-BR")
     }
 
 
@@ -65,29 +64,29 @@ function Projetos() {
                         projeto.map((projeto, key) => {
                             return (
                                 <div id="div-card-page-projetos">
-                                     <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }} style={{ textDecoration: 'none' }}>
-                                    <Card id="div-card-projeto">
-                                        <Card.Body>
-                                            <Card.Title id="nome-projeto-plan" key={key}>
-                                                {projeto.nome_projeto}
-                                            </Card.Title>
-                                            <Card.Text id="status">
-                                               <span style={{color: mudacor(projeto.status)}}>{projeto.status}</span>
-                                            </Card.Text>
-                                            <Card.Text id="bandeira-data">
-                                                <div>
-                                                   <span> <BsFlagFill /> </span>{formdata(projeto.data_inicio)}
-                                                </div>
-                                            </Card.Text>
-                                            <Card.Text>
-                                                <div className="titulo-descricao-projeto">Descrição</div>
-                                                <div id="corpo-descricao-projeto">
-                                                    {projeto.descricao_projeto}
-                                                </div>
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                     </Link>
+                                    <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }} style={{ textDecoration: 'none' }}>
+                                        <Card id="div-card-projeto">
+                                            <Card.Body>
+                                                <Card.Title id="nome-projeto-plan" key={key}>
+                                                    {projeto.nome_projeto}
+                                                </Card.Title>
+                                                <Card.Text id="status">
+                                                    <span style={{ color: mudacor(projeto.status) }}>{projeto.status}</span>
+                                                </Card.Text>
+                                                <Card.Text id="bandeira-data">
+                                                    <div>
+                                                        <span> <BsFlagFill /> </span>{formdata(projeto.data_inicio)}
+                                                    </div>
+                                                </Card.Text>
+                                                <Card.Text>
+                                                    <div className="titulo-descricao-projeto">Descrição</div>
+                                                    <div id="corpo-descricao-projeto">
+                                                        {projeto.descricao_projeto}
+                                                    </div>
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                    </Link>
                                 </div>
                             );
                         })

@@ -9,23 +9,16 @@ import {
 } from "react-icons/ai";
 import { BsBarChartLine, BsCircleFill } from "react-icons/bs";
 import api from "../../services/api";
-import nenhumprojeto from "../../assets/NenhumProjeto/Group 1000004639.png";
 import {
   CardP,
   CardTitle,
   CardBody,
-  Status,
-  CardText,
   OrgCard,
   CardTextData,
   TituloHome,
-  BodyText,
 } from "./style";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Comment } from "antd";
-import { BsFlagFill } from "react-icons/bs";
-import imagemerro from "./img/itensNaoencontrados.png";
-import { AiOutlineArrowsAlt } from "react-icons/ai";
 
 function Home(props) {
   //variaves das requisições GET

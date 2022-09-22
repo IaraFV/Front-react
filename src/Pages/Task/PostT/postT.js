@@ -125,6 +125,7 @@ function PostT() {
                   name="descricao_task"
                   className="inputgeral"
                   {...register("descricao_task")}
+                  maxLength={100}
                 />
                 <p className="error-message">
                   {errors.descricao_task?.message}{" "}

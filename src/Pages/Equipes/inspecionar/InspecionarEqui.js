@@ -18,6 +18,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { BsEyeFill } from "react-icons/bs";
 
 const style = {
   position: 'absolute',
@@ -148,6 +149,7 @@ function InspecionarEquipe() {
   }
   function Goinspecionar(id_projeto){
     if(id_projeto != 0){
+      navigate(`/InspProjeto/${id_projeto}`)
     }
   }
   function Cardplaneja(){
@@ -170,10 +172,11 @@ function InspecionarEquipe() {
             return (
               <div>
                 <Card id="card-page-inpequipe">
-                  <Card.Body>
+                  <Card.Body className="format-projet-equi">
                     <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                       {projeto.nome_projeto}
                     </Card.Text>
+                    <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
                   </Card.Body>
                 </Card>
               </div>
@@ -205,10 +208,11 @@ function InspecionarEquipe() {
               return (
                 <div>
                   <Card id="card-page-inpequipe">
-                    <Card.Body>
+                    <Card.Body className="format-projet-equi">
                       <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                         {projeto.nome_projeto}
                       </Card.Text>
+                      <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
                     </Card.Body>
                   </Card>
                 </div>
@@ -238,17 +242,11 @@ function InspecionarEquipe() {
                 return (
                   <div>
                     <Card id="card-page-inpequipe">
-                      <Card.Body>
-                        <div>
-                          <div className="card-apresent">
+                      <Card.Body className="format-projet-equi">
                             <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                               {projeto.nome_projeto}
                             </Card.Text>
-                          <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
-                            <button className="btn-vermais-inspequi" onClick={() => Goinspecionar(projeto.id_projeto)}>Ver Mais</button>
-                          </Card.Text>
-                          </div>
-                        </div>
+                            <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
                       </Card.Body>
                     </Card>
                   </div>
@@ -266,10 +264,11 @@ function InspecionarEquipe() {
             return (
               <div>
                 <Card id="card-page-inpequipe">
-                  <Card.Body>
+                  <Card.Body className="format-projet-equi">
                     <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                       {projeto.nome_projeto}
                     </Card.Text>
+                    <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
                   </Card.Body>
                 </Card>
               </div>

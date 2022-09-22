@@ -31,23 +31,23 @@ function NavbarHome() {
                 <Navbar key={expand} id="nav-bar-home-menu" expand={expand} className="mb-3" class="navbar navbar-dark ">
                     <Container fluid >
                         <Navbar.Brand >
-                            
+
                         </Navbar.Brand>
 
                         <Navbar.Toggle id="menu-a" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>    
-                        </Navbar.Toggle> 
+                            <span class="navbar-toggler-icon"></span>
+                        </Navbar.Toggle>
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
                             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
                             placement="end"
                             style={{ backgroundColor: '#171821' }}
                         >
-                            <Offcanvas.Header closeButton>
+                            <Offcanvas.Header  >
                                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} style={{ color: '#fff' }}>
                                     Menu
                                 </Offcanvas.Title>
-                               
+
                             </Offcanvas.Header>
                             <Offcanvas.Body style={{ color: '#FFF' }}>
                                 <Nav className="justify-content-end flex-grow-1 pe-3" style={{ color: '#fff' }}>
@@ -55,10 +55,9 @@ function NavbarHome() {
                                     <Nav.Link id="Pessoas-Menu" as={Link} to="/Pessoas"><BsPerson /> Pessoas</Nav.Link>
                                     <Nav.Link id="Equipes-Menu" as={Link} to="/Equipes"><BsPeople /> Equipes</Nav.Link>
                                     <Nav.Link id="Projetos-Menu" as={Link} to="/ProjetosConcluidos"><AiOutlineFile /> Projetos</Nav.Link>
-                                    <Nav.Link id="Sair-Menu" onClick={logout}><FiLogOut/> Sair</Nav.Link>
-
+                                    <Nav.Link id="Sair-Menu" onClick={logout}><FiLogOut /> Sair</Nav.Link>
                                     <div id='img-brisa-home'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '30rem', marginLeft: '5rem' }} />
-                            </div>
+                                    </div>
                                 </Nav>
 
                             </Offcanvas.Body>
