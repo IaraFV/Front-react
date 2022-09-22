@@ -76,6 +76,7 @@ function PostPessoa() {
                 <label>Nome</label>
                 <input
                   type="text"
+                  data-cy='cadpeople-nome'
                   name="nome_pessoa"
                   {...register("nome_pessoa")}
                   className="inputgeral"
@@ -90,6 +91,7 @@ function PostPessoa() {
                   name="funcao_pessoa"
                   {...register("funcao_pessoa")}
                   className="inputgeral"
+                  data-cy='cadpeople-fucao'
                 />
                 <p className="error-message">
                   {errors.funcao_pessoa?.message}{" "}
@@ -113,6 +115,7 @@ function PostPessoa() {
                         borderRadius: "6px",
                         color: "white",
                       }}
+                      data-cy='cadpeople-selec-equip'
                       onChange={handleChange}
                     >
                       {equipe.map((equipe) => (

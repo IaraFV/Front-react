@@ -74,7 +74,7 @@ console.log(pessoas)
             return (
               <>
                 <div className="cardpessoas">
-                  <Link
+                  <Link data-cy='link-inspecina-people'
                     id="link-pessoa-page-pessoa"
                     to={{ pathname: `/Inspecionar/${pessoas.id_pessoa}` }}
                   >

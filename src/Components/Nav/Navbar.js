@@ -52,10 +52,10 @@ function NavbarHome() {
                             <Offcanvas.Body style={{ color: '#FFF' }}>
                                 <Nav className="justify-content-end flex-grow-1 pe-3" style={{ color: '#fff' }}>
                                     <Nav.Link id='Home' as={Link} to="/Home" ><BsColumnsGap /> Overview</Nav.Link>
-                                    <Nav.Link id="Pessoas-Menu" as={Link} to="/Pessoas"><BsPerson /> Pessoas</Nav.Link>
-                                    <Nav.Link id="Equipes-Menu" as={Link} to="/Equipes"><BsPeople /> Equipes</Nav.Link>
-                                    <Nav.Link id="Projetos-Menu" as={Link} to="/ProjetosConcluidos"><AiOutlineFile /> Projetos</Nav.Link>
-                                    <Nav.Link id="Sair-Menu" onClick={logout}><FiLogOut /> Sair</Nav.Link>
+                                    <Nav.Link data-cy='Pessoas-Menu' id="Pessoas-Menu" as={Link} to="/Pessoas"><BsPerson /> Pessoas</Nav.Link>
+                                    <Nav.Link data-cy='Equipes-Menu' id="Equipes-Menu" as={Link} to="/Equipes"><BsPeople /> Equipes</Nav.Link>
+                                    <Nav.Link data-cy='Projetos-Menu' id="Projetos-Menu" as={Link} to="/ProjetosConcluidos"><AiOutlineFile /> Projetos</Nav.Link>
+                                    <Nav.Link data-cy='' id="Sair-Menu" onClick={logout}><FiLogOut /> Sair</Nav.Link>
                                     <div id='img-brisa-home'><img src={teste} alt=" " width={'80%'} style={{ marginTop: '30rem', marginLeft: '5rem' }} />
                                     </div>
                                 </Nav>

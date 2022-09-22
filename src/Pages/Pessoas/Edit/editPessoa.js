@@ -79,13 +79,13 @@ function Edit() {
 
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_pessoa" {...register("nome_pessoa")} className="inputgeral" />
+                                <input type="text" data-cy="nome_pessoa" {...register("nome_pessoa")} className="inputgeral" />
                                 <p className="error-message">{errors.nome_pessoa?.message} </p>
                             </div>
 
                             <div className="fields">
                                 <label>Função</label>
-                                <input type="text" name="funcao_pessoa" {...register("funcao_pessoa")} className="inputgeral" />
+                                <input type="text" data-cy="funcao_pessoa" {...register("funcao_pessoa")} className="inputgeral" />
                                 <p className="error-message">{errors.funcao_pessoa?.message} </p>
                             </div>
 

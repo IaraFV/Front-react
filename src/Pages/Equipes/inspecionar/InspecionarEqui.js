@@ -5,7 +5,6 @@ import Avatar from "@mui/material/Avatar";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
-import "rsuite/dist/rsuite.css";
 import Card from "react-bootstrap/Card";
 import imagemerro from "./img/falta_de_dados.png";
 import api from "../../../services/api";
