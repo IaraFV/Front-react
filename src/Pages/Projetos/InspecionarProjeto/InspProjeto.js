@@ -593,14 +593,14 @@ function InspProjeto() {
               <div className="btn-put-coment">
                 <button
                   onClick={PutcomentTask}
-                  style={{ background: "none" }}
+                  className="btn-style-generic"
                   id="btn-put-coment-post"
                 >
                   Comentar
                 </button>
                 <button
                   onClick={handleClosey}
-                  style={{ background: "none" }}
+                  className="btn-style-generic"
                   id="btn-put-coment-cancel"
                 >
                   Cancelar
@@ -614,7 +614,7 @@ function InspProjeto() {
   }
   // --------------------------------FUNÇÕES DE VERIFICAÇÃO DE ERROS
   //---------------------------------RENDERIZAÇÃO DOS CARDS DAS TASKS -------------------------
-  function VerificaAfazer() {
+  function VerificaAfazer() { 
     if (totalTaskAfazer === 0) {
       return (
         <h2>
@@ -661,7 +661,7 @@ function InspProjeto() {
                     </Card.Title>
                     <div>
                       <button
-                        style={{ background: "none" }}
+                        className="btn-style-generic"
                         onClick={() => handleOpeny(projetos.id_task)}
                       >
                         comentarios <RiChat3Line />{" "}
@@ -723,7 +723,7 @@ function InspProjeto() {
                     </Card.Title>
                     <div>
                       <button
-                        style={{ background: "none" }}
+                        className="btn-style-generic"
                         onClick={() => handleOpeny(projetos.id_task)}
                       >
                         comentarios <RiChat3Line />
@@ -785,7 +785,7 @@ function InspProjeto() {
                     </Card.Title>
                     <div>
                       <button
-                        style={{ background: "none" }}
+                        className="btn-style-generic"
                         onClick={() => handleOpeny(projetos.id_task)}
                       >
                         comentarios <RiChat3Line />

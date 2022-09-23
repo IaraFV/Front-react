@@ -321,6 +321,12 @@
 .stilo-btn{
     background:none ;
     display: flex;
+    border: none;
+}
+.btn-style-generic{
+    border:none;
+    background: none;
+    color: #9E9E9E;
 }
 .btn-modal-put-status{
     background: none;
