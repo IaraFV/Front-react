@@ -4,12 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 import './edit.css'
 import { useNavigate, useParams } from 'react-router-dom'
-import axios from "axios";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import api from '../../../services/api';
 import Avatar from '@mui/material/Avatar';
 import { message } from "antd";
@@ -17,18 +11,19 @@ import { message } from "antd";
 function Edit() {
 
     const { id_pessoa } = useParams()
+    let navegate = useNavigate()
     const validacaoGet = yup.object().shape({
         nome_pessoa: yup.string().required("O nome é obrigatorio!"),
         funcao_pessoa: yup.string().required("A função é obrigatoria"),
         equipe_id: yup.number().required("é obrigatoria"),
     })
 
-    let navigate = useNavigate()
 
     const editPost = data => api.put(`/pessoas/${id_pessoa}`, data)
         .then(() => {
             message.success("Usuario editado!")
-            console.log("foi");
+            navegate(`/Inspecionar/${id_pessoa}`)
+            
         })
         .catch(() => {
             console.log("n foi")
@@ -48,7 +43,7 @@ function Edit() {
 
         const fetchequipe = async () => {
             try {
-                const response = await fetch('/equipes/');
+                const response = await api.get('/equipes/');
                 const data = await response.json();
             } catch (error) {
                 console.log(error);
@@ -61,9 +56,6 @@ function Edit() {
     
     function voltar() {
         window.history.back()
-            .then((response) => {
-                reset(response.data)
-            })
     }
 
     return (
@@ -92,8 +84,8 @@ function Edit() {
                             
 
                             <div className="botoes-edit-pessoa">
-                                <button className="btn-cancelar" onClick={voltar} >Cancelar</button>
-                                <button className="btn-edit" onClick={voltar} type="submit">Editar</button>
+                                <h1 className="btn-cancelar" onClick={voltar} >Cancelar</h1>
+                                <button className="btn-edit"  type="submit">Editar</button>
 
                             </div>
                         </form>

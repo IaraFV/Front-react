@@ -14,11 +14,7 @@ button{
     width: 35%;
     height: 50rem;
 }
-#avatar-pessoa-group{
-    padding: 1%;
-    margin-bottom: 15%;
-   
-}
+
 #nome-user-group{
     color: #FFFFFF;
     margin-bottom: 3%;
@@ -27,7 +23,9 @@ button{
 }
 #div-membros-inpequipe{
     display: flex;
+    margin-top: 4.5%;
     align-items: center;
+    height: 50px;
 }
 #just-cards-geral-inspequipe {
     display: flex;
@@ -75,14 +73,18 @@ button{
     margin-left: -2%;
 }
 
-.avatares_Equipert {
-    overflow-y: none;
-}
 #apresentacao-dos-membros{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 20rem;
+    overflow-y: none;
+
+}
+#avatar-pessoa-group{
+    padding: 1%;
+    margin-bottom: 15%;
+   
 }
 
 #seta {

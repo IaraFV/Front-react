@@ -256,23 +256,31 @@ function InspecionarEquipe() {
             )
           }
   }
+  function NumberList() {
+    const numbers =[1, 2, 3, 4, 5];
+    const listItems = numbers.map((number) =>
+      // Correct! Key should be specified inside the array.
+      <li key={number.toString()} value={number} />
+    );
+    return (
+      <ul>
+        {listItems}
+      </ul>
+    );
+  }     
   function Cardgeral() {
+    const cardkey = projeto?.map((projeto, key) => 
+      <Card id="card-page-inpequipe" key={key.id_projeto}>
+        <Card.Body className="format-projet-equi">
+          <Card.Text id="status-projeto-isnpequipe" >
+            {projeto.nome_projeto}
+          </Card.Text>
+          <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)} />
+        </Card.Body>
+      </Card>)
       return (
         <div id="caixa-geral-de-projetos-inspequipe">
-          {projeto?.map((projeto, key) => {
-            return (
-              <div>
-                <Card id="card-page-inpequipe">
-                  <Card.Body className="format-projet-equi">
-                    <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
-                      {projeto.nome_projeto}
-                    </Card.Text>
-                    <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
-                  </Card.Body>
-                </Card>
-              </div>
-            );
-          })}
+          {cardkey}
         </div>
       );
     }
@@ -332,9 +340,9 @@ function InspecionarEquipe() {
             <Typography sx={{ mt: 2 }}>
               <div className="fields">
                 <label>Nome</label>
-                <input type={"text"} placeholder='digite aqui....' className="inputgeral" onChange={getvaluenome}></input>
+                <input type="text" id='input-add-membro-Nome' placeholder='digite aqui....' className="inputgeral" onChange={getvaluenome}></input>
                 <label>Função</label>
-                <input type={"text"} placeholder='digite aqui....' className="inputgeral" onChange={getvaluefucao}></input>
+                <input type="text" id='input-add-membro-Fucao' placeholder='digite aqui....' className="inputgeral" onChange={getvaluefucao}></input>
               </div>
               <div className='btn-put-coment'>
 
@@ -355,7 +363,9 @@ function InspecionarEquipe() {
       message.success('Deletado com sucesso')
     }
   }
+
   return (
+
     <div id="just-cards-geral-inspequipe">
       <div id="geral-card-inspecionar_equipe">
         <div id="card-inspecionar_equipe">
@@ -376,40 +386,33 @@ function InspecionarEquipe() {
               </button>
             </div>
 
-            <div id="tituloinsp">
-              <div>Membros</div>
-              <div>{totalmember}</div>
-            </div>
-            <div id="apresentacao-dos-membros" className="avatares_Equipert">
-              <div>
-                {recebe.map((nomepessoa) => {
-                  return (
-                    <div>
-                      <Avatar aria-label="recipe" id="avatar-pessoa-group">
-                        {nomepessoa}
-                      </Avatar>
-                    </div>
-                  );
-                })}
+            <div>
+              <div id="tituloinsp">
+                <div>Membros</div>
+                <div>{totalmember}</div>
               </div>
-              <div>
-                {filtrandoPessoas.map((nome) => {
-                  return (
-                    <>
-                      <div id="div-membros-inpequipe">
-                        <div id="nome-user-group">
-                          <h6>{nome.nome_pessoa}</h6>
-                          <p style={{ color: '#717986' }}>{nome.funcao_pessoa}</p>
-                        </div>
-                        <div>
-                          <button style={{ background: 'none', color: '#fff' }} onClick={() => Deletepeopleequipe(nome.id_pessoa)}> <BsTrash /></button>
-                        </div>
-                      </div>
-                    </>
-                  );
-                })}
-              </div>
+              
+              <div id="apresentacao-dos-membros">
+                  <div>
+                    {filtrandoPessoas.map((nome) => {
+                      return (
+                        <>
+                          <div id="div-membros-inpequipe">
+                            <div id="nome-user-group">
+                              <h6>{nome.nome_pessoa}</h6>
+                              <p style={{ color: '#717986' }}>{nome.funcao_pessoa}</p>
+                            </div>
+                            <div>
+                              <button style={{ background: 'none', color: '#fff' }} onClick={() => Deletepeopleequipe(nome.id_pessoa)}> <BsTrash /></button>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                </div>
             </div>
+
             <div id="btn-opition">
               <div>
                 <Link

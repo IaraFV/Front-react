@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './inspecionar.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 import CheckIcon from '@mui/icons-material/Check';
@@ -21,10 +21,8 @@ function Inspecionar() {
     const validacaoGet = yup.object().shape({
         favoritar: yup.number(),
     })
-    let navigate = useNavigate()
     const [people, setPeople] = useState([])
     const [Task, setTask] = useState([])
-    const [setFavoritar] = useState([])
     const { id_pessoa } = useParams()
 
 
@@ -81,13 +79,12 @@ function Inspecionar() {
             children: `${name.split(' ')[0][0]}`,
         };
     }
-    const ArrGeral_task = Task;
     const recebId_pessoa = people.id_pessoa;
     const idPessoaINT = parseInt(recebId_pessoa);
     const filtra_task = Task.filter(task => task.pessoa_id === idPessoaINT);
+    
     /**pega o numero total de task */
     const numero = filtra_task.length;
-
 
     var favoritar = parseInt(people.favoritar);
 
@@ -95,7 +92,6 @@ function Inspecionar() {
 
     function favoritarFuncao() {
         api.put('/pessoas/' + id_pessoa + '/favoritar')
-        message.success('Usuario favoritado!')
         .then(() =>{
             
             window.location.reload(true)
@@ -109,12 +105,9 @@ function Inspecionar() {
 
     function mudarCor() {
         if (favoritar === 1) {
-            
-            return '#2684FF'
-
+            return '#2684FF' 
         }
         else if (favoritar === 0){
-            message.warning('Usuario desfavoritado!')
             return '#fffff'
         }
     }
@@ -202,7 +195,7 @@ function Inspecionar() {
                     </div>
                     <div id="botoes-insp">
                         <div className="btn-editar">
-                            <Link to={{ pathname: `/Edit/${people.id_pessoa}` }}>
+                            <Link to={{ pathname: `/Edit/${id_pessoa}` }}>
                                 <button type="submit">Editar</button>
                             </Link>
                         </div>
