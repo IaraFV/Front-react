@@ -62,8 +62,8 @@ function PostEquipe() {
                                 {/* <Verificapessoas/>*/}
                             </div>
                             <div className="btn-post-equipe">
-                                <button onClick={voltar} id="btn-cancelarE" type='text' >Cancelar</button>
-                                <button type="submit" name="cadastrar-equipe">Cadastrar</button>
+                                <h1 onClick={voltar} id="btn-cancelarE" type='text' >Cancelar</h1>
+                                <button type="submit" >Cadastrar</button>
                             </div>
                         </form>
 

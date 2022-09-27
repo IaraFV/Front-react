@@ -91,13 +91,7 @@ function Inspecionar() {
 
     var favoritar = parseInt(people.favoritar);
 
-    console.log(favoritar)
-
     /*----------------------------------------------------------------------------------------------------------------------*/
-
-
-    console.log(filtra_task)
-
 
     function favoritarFuncao() {
         api.put('/pessoas/' + id_pessoa + '/favoritar')
@@ -188,7 +182,7 @@ function Inspecionar() {
                         <div id="estatisticadois" >
                             <button className="star">
                                 <span style={{ color: mudarCor(favoritarFuncao) }}>
-                                    <AiOutlineStar type="submit" onClick={favoritarFuncao}  />
+                                    <AiOutlineStar onClick={favoritarFuncao}  />
                                 </span>
                             </button>
                         </div>

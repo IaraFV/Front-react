@@ -123,6 +123,7 @@
 .card-color {
     background: #21222D;
     border-radius: 20px;
+    height: 150px;
 }
 
 .menu-dos-filtros-statusTask {
@@ -140,7 +141,7 @@
 
 
 #BarraRolagem {
-    height: 680px;
+    height: 600px;
     background: #21222D;
     border-radius: 10px;
     overflow: auto;
@@ -159,7 +160,7 @@
 }
 
 #BarraRolage {
-    height: 680px;
+    height: 600px;
     background: #21222D;
     border-radius: 10px;
     overflow: auto;
@@ -177,7 +178,7 @@
 }
 
 #BarraRolag {
-    height: 680px;
+    height: 600px;
     background: #21222D;
     border-radius: 10px;
     overflow: auto;

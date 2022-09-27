@@ -4,7 +4,9 @@
     margin-top: 1%;
     width: 75%;
 }
-
+button{
+    border:none;
+}
 #card-inspecionar_equipe {
     background-color: #21222D;
     padding: 30px 70px;

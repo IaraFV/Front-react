@@ -41,6 +41,7 @@
 .star {
     background: rgba(164, 164, 164, 0.12);
     border-radius: 6px;
+    border: none;
     width: 2.4rem;
     display: flex;
     align-items: center;

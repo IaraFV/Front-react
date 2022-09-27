@@ -142,20 +142,6 @@ function InspProjeto() {
     }
   }
 
-  // --------------------------------------- FUNÇÃO DE FILTRO ------------------------------
-  //filtro de task( função de pesquisa de task)
-  const handlechange = ({ target }) => {
-    if (!target.value) {
-      setInitialtasks(initialtasks);
-      return;
-    }
-    const filter = tasks.filter(({ descricao_task }) =>
-      descricao_task.toUpperCase().includes(target.value.toUpperCase())
-    );
-
-    setInitialtasks(filter);
-  };
-
   // -------------------------------- MANIPULAÇÃO DOS DADOS DOS GETs GERAIS --------------------
 
   //pega o id do projeto selecionado e converte para inteiro
@@ -163,7 +149,7 @@ function InspProjeto() {
 
   //filtra as taks com basa no id do projeto
   const gettask = tasks.filter((get) => get.projeto_id === pegaid);
-
+  var [fitertask, setfiltertask] = useState(gettask)
   //filtro de taks com base no status
   const filtFazer = gettask.filter((get) => get.status === "Em planejamento");
   const filtFazendo = gettask.filter(
@@ -171,13 +157,26 @@ function InspProjeto() {
   );
   const filtFeito = gettask.filter((get) => get.status === "Concluído");
 
-  const testeidp = tasks.map((pegaid) => pegaid.pessoa_id);
-  //const teste = (gettask.filter((get) => get.status === "Concluído")).length;
-
   //contadores de tasks com base no status
   var totalTaskAfazer = filtFazer.length;
   var totalTaskEmdesenvolvimento = filtFazendo.length;
   var totalTaskConcluído = filtFeito.length;
+
+  console.log(fitertask);
+
+  // --------------------------------------- FUNÇÃO DE FILTRO ------------------------------
+  //filtro de task( função de pesquisa de task)
+  const handlechanger = ({ target }) => {
+    if (!target.value) {
+      setfiltertask(fitertask);
+      return;
+    }
+    const filter = gettask.filter(({ descricao_task }) =>
+      descricao_task.toUpperCase().includes(target.value.toUpperCase())
+    );
+
+    setfiltertask(filter);
+  };
 
   // -------------------------------- FUNÇÕES DE MUDANÇA DE CORES -------------------------
   //função de mudar a cor da fonte com base no nivel
@@ -755,7 +754,7 @@ function InspProjeto() {
         <>
           {filtFeito.map((projetos, key) => {
             return (
-              <div>
+              <div >
                 <Card id="card-concl" className="card-color">
                   <div className="menu-dos-filtros-statusTask">
                     <div className="menu-dos-filtros-statusTask">
@@ -802,7 +801,7 @@ function InspProjeto() {
   }
   return (
     <div>
-      <div id="cabecario-geral-pagina-insp-projeto">
+      {/*<div id="cabecario-geral-pagina-insp-projeto">
         <div id="iconvoltar-pesquisa">
           <div>
             <Link to="/ProjetosConcluidos">
@@ -814,12 +813,17 @@ function InspProjeto() {
               type="text"
               id="input-insp-projeto"
               placeholder="Meu nome é Zé"
-              onChange={handlechange}
+              onChange={handlechanger}
             ></input>
           </div>
         </div>
-      </div>
+      </div>*/}
       <div>
+      <div>
+            <Link to="/ProjetosConcluidos">
+              <BsArrowLeft id="icon-voltar-projetosconcluidos" />
+            </Link>
+          </div>
         <div>
           <p
             style={{
