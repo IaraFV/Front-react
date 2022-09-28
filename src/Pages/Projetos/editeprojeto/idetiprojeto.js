@@ -72,6 +72,7 @@ function Editprojeto() {
               <div className="fields">
                 <label>Nome</label>
                 <input
+                  data-cy='input-edite-proje-nome'
                   type="text"
                   name="nome_projeto"
                   className="inputgeral"
@@ -82,6 +83,7 @@ function Editprojeto() {
               <div className="fields">
                 <label>Descrição</label>
                 <textarea
+                  data-cy='input-edite-proje-descricao'
                     type="text"
                     name="descricao_projeto"
                     className="inputgeral"

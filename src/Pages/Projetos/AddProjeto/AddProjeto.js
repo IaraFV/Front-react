@@ -80,6 +80,7 @@ function AddProjeto() {
                   <label>Nome</label>
                   <input
                     type="text"
+                    data-cy='add-projeto-nome'
                     name="nome_projeto"
                     className="inputgeral"
                     {...register("nome_projeto")}
@@ -96,6 +97,7 @@ function AddProjeto() {
                       <InputLabel projeto_id="demo-simple-select-label"></InputLabel>
                       <Select
                         className="inputgeral"
+                        data-cy='add-projeto-selec-equipe'
                         {...register("equipe_id")}
                         labelId="demo-simple-select-label"
                         projeto_id="demo-simple-select"
@@ -126,6 +128,7 @@ function AddProjeto() {
                     type="text"
                     name="descricao_projeto"
                     className="inputgeral"
+                    data-cy='add-projeto-descricao'
                     {...register("descricao_projeto")}
                     maxLength={200}
                   />
@@ -135,10 +138,10 @@ function AddProjeto() {
                 </div>
 
                 <div id="chat">
-                  <Link id="butaoC" onClick={voltar}>
+                  <Link id="butaoC" data-cy='btn-projeto-cancelar' onClick={voltar}>
                     Cancelar
                   </Link>
-                  <button type="submit" className="butao">
+                  <button type="submit" data-cy='btn-projeto-cadastrar' className="butao">
                     Cadastrar
                   </button>
                 </div>

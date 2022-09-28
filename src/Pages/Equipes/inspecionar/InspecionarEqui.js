@@ -175,7 +175,9 @@ function InspecionarEquipe() {
                     <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                       {projeto.nome_projeto}
                     </Card.Text>
-                    <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
+                    <button data-cy='btn-insp-goinsp-proje'>
+            <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)} />
+          </button>
                   </Card.Body>
                 </Card>
               </div>
@@ -211,7 +213,9 @@ function InspecionarEquipe() {
                       <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                         {projeto.nome_projeto}
                       </Card.Text>
-                      <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
+                      <button data-cy='btn-insp-goinsp-proje'>
+            <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)} />
+          </button>
                     </Card.Body>
                   </Card>
                 </div>
@@ -245,7 +249,9 @@ function InspecionarEquipe() {
                             <Card.Text id="status-projeto-isnpequipe" key={key.id_projeto}>
                               {projeto.nome_projeto}
                             </Card.Text>
-                            <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)}/>
+                            <button data-cy='btn-insp-goinsp-proje'>
+            <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)} />
+          </button>
                       </Card.Body>
                     </Card>
                   </div>
@@ -256,6 +262,7 @@ function InspecionarEquipe() {
             )
           }
   }
+  /*função react de exemplo para implementar chave primaria
   function NumberList() {
     const numbers =[1, 2, 3, 4, 5];
     const listItems = numbers.map((number) =>
@@ -267,7 +274,7 @@ function InspecionarEquipe() {
         {listItems}
       </ul>
     );
-  }     
+  }   */  
   function Cardgeral() {
     const cardkey = projeto?.map((projeto, key) => 
       <Card id="card-page-inpequipe" key={key.id_projeto}>
@@ -275,7 +282,9 @@ function InspecionarEquipe() {
           <Card.Text id="status-projeto-isnpequipe" >
             {projeto.nome_projeto}
           </Card.Text>
-          <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)} />
+          <button data-cy='btn-insp-goinsp-proje'>
+            <BsEyeFill onClick={() => Goinspecionar(projeto.id_projeto)} />
+          </button>
         </Card.Body>
       </Card>)
       return (
@@ -346,8 +355,8 @@ function InspecionarEquipe() {
               </div>
               <div className='btn-put-coment'>
 
-                <button onClick={Postpeople} style={{ background: 'none' }} >Cadastrar</button>
-                <button onClick={HandleClos} style={{ background: 'none' }} >Cancelar</button>
+                <button onClick={Postpeople} data-cy='btn-cadastra-membro'>Cadastrar</button>
+                <button onClick={HandleClos} data-cy='btn-cancelar-cadastro'>Cancelar</button>
 
               </div>
             </Typography>
@@ -381,7 +390,7 @@ function InspecionarEquipe() {
 
           <div>
             <div id="icon-plus-inspequi">
-              <button onClick={Handleopen} style={{ background: 'none' }}>
+              <button onClick={Handleopen} data-cy='btn-abrir-modal-addmembro'>
                 <AiOutlinePlus id="corr" />
               </button>
             </div>
@@ -393,7 +402,7 @@ function InspecionarEquipe() {
               </div>
               
               <div id="apresentacao-dos-membros">
-                  <div>
+                  <div className='div-apresentacao-membros'>
                     {filtrandoPessoas.map((nome) => {
                       return (
                         <>

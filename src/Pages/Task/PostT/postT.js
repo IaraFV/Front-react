@@ -122,6 +122,7 @@ function PostT() {
                 <label>Descrição</label>
                 <textarea
                   type="text"
+                  data-cy='casdastro-task-projet'
                   name="descricao_task"
                   className="inputgeral"
                   {...register("descricao_task")}

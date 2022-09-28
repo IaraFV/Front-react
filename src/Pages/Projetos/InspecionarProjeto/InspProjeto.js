@@ -255,33 +255,28 @@ function InspProjeto() {
             </Typography>
             <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
               <Box sx={{ minWidth: 120, background: "#171821" }}>
-                <FormControl fullWidth>
-                  <NativeSelect
-                    style={{ color: "#fff" }}
+                <FormControl fullWidth data-cy='select-status-task'>
+                <InputLabel projeto_id="demo-simple-select-label">status</InputLabel>
+                <Select
+                      labelId="demo-simple-select-label"
+                      projeto_id="demo-simple-select"
+                      style={{ color: "#fff" }}
                     defaultValue={valutask}
                     onChange={handleChange}
-                    inputProps={{
-                      name: "age",
-                      id: "uncontrolled-native",
-                    }}
-                  >
-                    <option className="status-tarefas">Status</option>
-                    <option
-                      className="status-tarefas"
-                      value={"Em desenvolvimento"}
                     >
+                      <MenuItem value={"Em desenvolvimento"} key={"Em desenvolvimento"}>
                       Em desenvolvimento
-                    </option>
-                    <option className="status-tarefas" value={"Concluído"}>
+                      </MenuItem>
+                      <MenuItem value={"Concluído"} key={"Concluído"}>
                       Concluído
-                    </option>
-                  </NativeSelect>
+                      </MenuItem>
+                    </Select>
                 </FormControl>
               </Box>
             </Typography>
             <Typography id="btn-tarefas-status"
             >
-              <Button variant="outlined">Cancelar</Button>
+              <Button variant="outlined" onClick={handleClose}>Cancelar</Button>
               <Button variant="outlined" onClick={PutStatus}>
                 Editar status
               </Button>
@@ -758,7 +753,7 @@ function InspProjeto() {
                 <Card id="card-concl" className="card-color">
                   <div className="menu-dos-filtros-statusTask">
                     <div className="menu-dos-filtros-statusTask">
-                      <button
+                      <button data-cy="btn-muda-status-task"
                         onClick={() => handleOpen(projetos.id_task)}
                         className="stilo-btn"
                       >
@@ -847,7 +842,7 @@ function InspProjeto() {
       <div id="botoes-page-inp-projetos">
         <div className="btn-editar-pagina-projeto">
           <Link to={{ pathname: `/Idetiprojeto/${projetos.id_projeto}` }}>
-            <button type="submit">Editar</button>
+            <button type="submit" data-cy='btn-inspecionar-proje'>Editar</button>
           </Link>
         </div>
         <div className="btn-excluir-pagina-projeto">

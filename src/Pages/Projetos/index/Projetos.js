@@ -64,7 +64,7 @@ function Projetos() {
                         projeto.map((projeto, key) => {
                             return (
                                 <div id="div-card-page-projetos">
-                                    <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }} style={{ textDecoration: 'none' }}>
+                                    <Link to={{ pathname: `/InspProjeto/${projeto.id_projeto}` }} style={{ textDecoration: 'none' }} data-cy='projeto-inspecionar'>
                                         <Card id="div-card-projeto">
                                             <Card.Body>
                                                 <Card.Title id="nome-projeto-plan" key={key}>

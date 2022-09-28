@@ -56,7 +56,7 @@ function Edite() {
 
                             <div className="fields">
                                 <label>Nome</label>
-                                <input type="text" name="nome_equipe" {...register("nome_equipe")} className="inputgeral"/>
+                                <input type="text" data-cy="nome_equipe" {...register("nome_equipe")} className="inputgeral"/>
                                 <p className="error-message">{errors.nome_equipe?.message} </p>
                             </div>
 
