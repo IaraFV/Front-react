@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 
-import { type } from "@testing-library/user-event/dist/type";
 
 it('teste Inspecionar projeto', () => {
     cy.visit('http://localhost:3000/');
